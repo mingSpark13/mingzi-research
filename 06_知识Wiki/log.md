@@ -2,6 +2,13 @@
 updated: "2026-05-13 16:03"
 ---
 
+## [2026-05-13 17:18] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：refactor dry-run确认**828个sources正文均≤25行**（✅0膨胀，13039 total lines）；无膨胀/断链修复项，距上次15:32约106min，filesystem确认**0新增阅读笔记**（find -newer log.md无输出）；quality check同历史残留18篇缺「**核心要点**」格式，属已知问题
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（概念7✓/对比7✓/总览4✓），无新增编译项
+- **阶段C**：coverage script返回10篇uncovered，逐项filesystem核验**全部10篇为已知stem假阳性**——`OA-WAM✓已有source.2605.06481_OA-WAM`✓/`Learning_Dynamic_Pick-and-Place✓已有source.Learning_Dynamic_Pick-and-Place`✓/`DQ-Net✓已有source.2508.08328_DQ-Net`✓/`Tactile_Aware✓已有source.2604.27224_Tactile_Aware_Quadrupedal_LocoManip`✓/`论文笔记汇总✓非实际paper笔记`✓/`AerialVLN_Survey✓已有source.2604_07705_AerialVLN_Survey`✓/`UMI✓已有source.2025-03-13_UMI-on-Air`✓/`RT-2✓已有source.2307.10820_RT-2`✓/`LeWorldModel✓已有source.2026-05-06_LeWorldModel_2603.19312`✓；均已存在对应source页✅；0补建
+- **覆盖率**：828 sources / ~360 notes（✅实质全覆盖，script系统性stem假阳性已知）
+
+---
 ## [2026-05-13 15:32] 知识Wiki定时维护（知识库管理者）
 - **阶段A Lint**：refactor dry-run 确认 **826 个 sources 正文均 ≤25 行**（✅ 0 膨胀，13007 total lines）；无膨胀/断链修复项，距上次13:14约138min，filesystem 确认 **0 新增阅读笔记**（find -newer log.md 无输出）；quality check 同历史残留缺「**核心要点**」格式，属已知问题
 - **阶段B**：SKILL.md 第6节优先编译清单全部完成（概念7✓/对比6✓/总览4✓），无新增编译项

@@ -31,6 +31,7 @@
 
 | 日期 | 响应的批注 | 执行动作 |
 |------|-----------|---------|
+| 2026-05-13 | 无新增批注 | 按默认轮换推进 D07，基于本地锚点（KG-M3PO / DiSCo / Reactive Dexterous Grasping / ARM）补写 PAPER.md 4.66，新增 disturbance-disambiguation overlay 规则，明确 semantic-state 与 sequence-copilot 只能在四行核心 bundle、reward-retention-projection 冲突裁决、sim2sim 一致性与 fixed-flight→coupled-base 晋级通过后，作为 support-side overlay 解锁 |
 | 2026-05-13 | 无新增批注 | 按默认轮换推进 D07，基于本地锚点（RL vs Optimal Control / Squint / Reactive Dexterous Grasping）补写 PAPER.md 4.65，新增 RL-versus-optimal-control routing 规则，要求后续 RL/最优控制对照继续服从同一套 W2/W3、sim2sim、一致性与 coupled-base promotion 闸门 |
 | 2026-05-13 | 无新增批注 | 按默认轮换推进 D07，基于本地锚点（DiSCo / KG-M3PO / ARM / Reactive Dexterous Grasping）补写 PAPER.md 4.64，新增 sim2sim-consistent deployment ladder，明确 semantic/shared-autonomy 只能在四行核心 bundle 通过 reward-retention-projection 冲突裁决、Sim2Sim 一致性与 fixed-flight→coupled-base 晋级后再介入 |
 | 2026-05-13 | 无新增批注 | 按默认轮换推进 D07，基于本地锚点（KG-M3PO / DiSCo / ARM / Reactive Dexterous Grasping）补写 PAPER.md 4.62-4.63，新增 semantic/shared-autonomy deferred-promotion 与 reward-retention-projection conflict-resolution 规则，继续锁死首轮标题路由边界 |
