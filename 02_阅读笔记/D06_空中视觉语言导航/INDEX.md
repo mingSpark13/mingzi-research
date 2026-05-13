@@ -24,7 +24,7 @@
 | [2026-05-05_2604.27620_SpaAct.md](2026-05-05_2604.27620_SpaAct.md) | `2026-05-05_2604.27620_SpaAct.md` | SpaAct |
 | [2026-05-07_2605.03788_Say_the_Mission_Execute_the_Swarm.md](2026-05-07_2605.03788_Say_the_Mission_Execute_the_Swarm.md) | `2026-05-07_2605.03788_Say_the_Mission_Execute_the_Swarm.md` | Say_the_Mission_Execute_the_Swarm |
 | [2026-05-08_2602.05552_VLN-Pilot.md](2026-05-08_2602.05552_VLN-Pilot.md) | `2026-05-08_2602.05552_VLN-Pilot.md` | VLN-Pilot |
-| [2026-05-08_Action_Agent_2605.01477.md](2026-05-08_Action_Agent_2605.01477.md) | `2026-05-08_2605.01477_Action_Agent_2605.01477.md` | Action_Agent_2605.01477 |
+| [2026-05-08_2605.01477_Action_Agent.md](2026-05-08_2605.01477_Action_Agent.md) | `2026-05-08_2605.01477_Action_Agent.md` | Action_Agent |
 | [2026-05-09_2602.15400_GTA.md](2026-05-09_2602.15400_GTA.md) | `2026-05-09_2602.15400_GTA.md` | GTA |
 | [2026-05-11_2603.07824_MINT_Drone_Planning_Active_Elicitation.md](2026-05-11_2603.07824_MINT_Drone_Planning_Active_Elicitation.md) | `2026-05-11_2603.07824_MINT_Drone_Planning_Active_Elicitation.md` | MINT_Drone_Planning_Active_Elicitation |
 | [2026-05-11_2603.16141_Communication_Aware_MARL_UAV_Deployment.md](2026-05-11_2603.16141_Communication_Aware_MARL_UAV_Deployment.md) | `2026-05-11_2603.16141_Communication_Aware_MARL_UAV_Deployment.md` | Communication_Aware_MARL_UAV_Deployment |
