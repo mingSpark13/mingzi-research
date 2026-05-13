@@ -1,0 +1,2 @@
+- [02_阅读笔记/2026-05-12_ActiveVLA_Injecting_Active_Perception_into_Vision-Language-Action_Models_for_Precise_3D_Robotic_Manipulation.md] 候选概念：主动视角选择（频次：首次出现）
+- [02_阅读笔记/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control.md] 候选概念：接触感知VIO（频次：首次出现）

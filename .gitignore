@@ -1,0 +1,23 @@
+# 排除 PDF 大文件
+01_论文库/**/*.pdf
+*.pdf
+
+# 排除临时文件和日志
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/*.log
+.obsidian/graph.json
+
+# 排除插件日志
+.obsidian/plugins/**/*.log
+.obsidian/plugins/**/*.mdb
+
+# 排除系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 排除备份文件
+*.bak
+*.tmp
+*~

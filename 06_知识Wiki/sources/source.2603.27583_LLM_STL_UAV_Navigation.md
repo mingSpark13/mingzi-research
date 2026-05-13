@@ -1,0 +1,15 @@
+---
+type: "source"
+tags: []
+summary: "**原始资料**:"
+origins: ["../../02_阅读笔记/D06_空中视觉语言导航/2026-05-03_2603.27583_LLM_STL_UAV_Navigation", "02_阅读笔记/D06_空中视觉语言导航/2026-05-03_2603.27583_LLM_STL_UAV_Navigation"]
+updated: "2026-04-17"
+---
+
+# source.2603.27583_LLM_STL_UAV_Navigation
+
+**核心价值**: **原始资料**:
+
+**原始资料**:
+- [[../../02_阅读笔记/D06_空中视觉语言导航/2026-05-03_2603.27583_LLM_STL_UAV_Navigation]]
+- [[02_阅读笔记/D06_空中视觉语言导航/2026-05-03_2603.27583_LLM_STL_UAV_Navigation]]
