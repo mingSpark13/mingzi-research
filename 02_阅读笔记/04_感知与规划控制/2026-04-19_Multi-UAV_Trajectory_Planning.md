@@ -47,3 +47,8 @@ Trajectory Planning for a Multi-UAV Rigid-Payload Cascaded Transportation System
 ## 🔗 相关链接
 
 - [[2025-12-22_IndoorUAV]] - IndoorUAV的规划方法与本文可对比
+
+## 📌 待探索问题
+
+- Tube-RRT* 的采样增益在更复杂动力学约束下是否仍成立，还是会被后端优化吞掉优势？
+- 对柔性负载或风扰更强的空中运输场景，当前刚体负载建模是否会明显失真？

@@ -1,3 +1,32 @@
+---
+title: 'LAP: Language-Action Pre-Training Enables Zero-shot Cross-Embodiment Transfer'
+authors: 待补充
+arxiv: '2602.10556'
+date: '2026-02-14'
+institution: 待补充
+conf: arXiv
+keywords:
+- 语言-动作预训练
+- 跨载体泛化
+- VLA
+- 动作空间统一
+tags:
+- 跨载体泛化
+- 动作空间统一
+- 零样本泛化
+- VLA架构
+domain: 跨载体泛化
+pdf_path: ../../01_论文库/D04_跨载体泛化/2602.10556_LAP.pdf
+reading_date: '2026-04-08'
+reading_status: 已读
+summary: LAP 将低层动作翻译成自然语言监督 VLM 骨干，让语义层成为跨载体共享接口，在未见机器人上实现强零样本迁移。
+related_concepts:
+- 跨载体泛化
+- 动作空间统一
+- 零样本泛化
+- VLA架构
+---
+
 # LAP: Language-Action Pre-Training Enables Zero-shot Cross-Embodiment Transfer
 
 > **arXiv**: 2602.10556 | **方向**: D04_跨载体泛化 | **深挖时间**: 2026-04-08 R536 | **状态**: ✅ 已入库

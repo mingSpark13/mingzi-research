@@ -1,6 +1,70 @@
+## R896 本轮推进结论：把 D06 从“family-matched consume-time routing 已成立”继续压到“experiments 必须和 claim gate 同字段对齐，否则任何晚期正结果都不得升级成 packet-contract superiority”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `README.md / PAPER.md / OWNER_NOTES.md / REPORT.md / experiments.md / 研究状态追踪` 与近几轮 D06 收束记录；本轮尝试补做近 30 天 L1/QMD 外查，但 cron 环境命令仍受限，因此严格按“本地覆盖已足够、PAPER 写作优先”执行
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量仍不在继续扩论文，而在把 `experiments.md`、主表字段与结果段升级门槛彻底绑成同一份 submission-ready 合同
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.52 Experiment-Table Alignment Contract for Family-Matched Consume-Time Claims** 与 **4.2.53 Current Evidence-Consistent Freeze after Experiment-Field Alignment**。核心新增是把 reviewer-facing 主表字段正式与实验记录协议一一对齐：任何结果若未同时给出 `Family-Matched Comparator / Closure Level / Promotion Ceiling / Promotion Blocker`，并补齐 `Λ^+_{D06}` 与 `route-identity-consume` 相关最小字段，就只能冻结为 **planner-time reasoning gain / runtime continuity gain / latent execution sufficiency / bounded rescue**，不得升级成 **full packet-contract accountability** 或 **NtM handoff preservation**。
+- **核心价值**：这一步把 D06 从“知道 family-matched consume-time claim 应该怎么读”推进到“知道 experiments 到底要记哪些字段，才能让主表和结果段合法升级”。也就是说，D06 现在不仅审 `same route / same referent / same thread / same consume-time boundary`，还开始审 **实验字段是否已经对齐到同一份 claim gate 合同**，进一步防止把日志不全的局部正结果写成完整 handoff 胜利。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，优先把 `experiments.md` 中的对应 sanity check 输出字段正式收束为 `Family-Matched Comparator / Closure Level / Promotion Ceiling / Promotion Blocker / Λ^+_{D06}` 五组最小记录模板，再放行新的主结果叙事。
+
+## R895 本轮推进结论：把 D06 从“same route under same identity”继续压到“没有 consume-time route-identity closure，就禁止把任何晚期正结果写成 packet-contract superiority”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `D06/README.md`、`PAPER.md`、`OWNER_NOTES.md`、`REPORT.md`、`experiments.md` 与研究状态追踪近期 D06 轮次；本轮尝试补做 L1/QMD 检索，但 cron 环境 `find/qmd` 命令均被 allowlist 拦截，因此严格按“本地覆盖已足够、PAPER 写作优先”执行
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量仍不在继续扩论文，而在把晚期结果的 route / identity / consume-time 三者闭环压成更硬的 narrative gate
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.47 Consume-Time Route-Identity Closure Rule for Late-Window Claims** 与 **4.2.48 Submission-Ready Logging Fields for Route-Identity-Consume Closure**。核心新增是把 D06 的晚期升级条件从 `Route-Closure Check + Identity-Preservation Outcome` 再收紧一步：任何结果若不能同时闭合 **same route**, **same referent/thread**, **same consume-time boundary**，则最多只能冻结为 **planner-time gain / runtime continuity / latent execution sufficiency / bounded rescue** 之一，不得升格为 full packet-contract 或 NtM-handoff superiority。
+- **核心价值**：这一步把 D06 从“知道 route 和 identity 要对齐”推进到“知道它们还必须在同一个 consume-time 窗口里对齐”。也就是说，D06 现在不仅审 same route、same referent、same thread，还开始审 **same route under same identity at the same consume-time boundary**，进一步防止把 late-window continuity、延迟补偿或局部救场误写成完整 packet-contract 胜利。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，优先把 `experiments.md` 中的最小日志模板正式升级为 submission-ready `Λ^{++}_{D06}`，补齐 `route / obj / anchor / clause / thread / consume-boundary` 六元闭环字段，再放行新的主结果叙事。
+
+## R894 本轮推进结论：把 D06 从“identity-aware late-window audit 已建立”继续压到“没有 route-closed identity evidence，就禁止把晚期正结果升级成 packet-contract superiority”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `D06/README.md`、`PAPER.md`、`OWNER_NOTES.md`、`experiments.md` 与研究状态追踪近期 D06 轮次；补扫本地近 30 天 L1 命中 **AerialVLA / OnFly / HTNav / LiveVLN / AirNav / LookasideVLN**，并尝试 QMD `aerial visual language navigation UAV VLN drone language grounding trajectory --no-rerank`，但结果未形成可靠新增或仅回流既有家族
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量仍不在继续扩论文，而在把 identity-aware claim gate 与 route closure 进一步绑死
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.45 Route-Closed Identity Audit before Packet-Contract Promotion** 与 **4.2.46 Minimal Route-Identity Table Extension for Late-Window D06 Claims**。核心新增是把晚期结果的升级条件从 `Λ^+_{D06}` 再收紧一步：除了 `A^{dir}/A^{ctx}/A^{shell}/A^{guard}` 与 `α=(o^{obj}, a^{anchor}, c^{clause}, θ^{thread})` 外，还必须显式补齐 `Route-Closure Check`，确认主导收益路线与 identity tuple 指向的是同一对象、同一锚点、同一子句、同一进度线程。
+- **核心价值**：这一步把 D06 从“知道 packet field 和 referent/thread 还活着”推进到“知道它们是不是沿着同一条解释路线活着”。也就是说，D06 现在不仅审 consume-time contract、same referent、same thread，还开始审 **same route under same identity**，进一步防止把 runtime continuity、latent execution sufficiency 或 bounded rescue 误写成 full packet-contract / NtM-handoff superiority。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，优先把 `experiments.md` 的最小日志模板从 `Λ^+_{D06}` 升级为带 `Route-Closure Check / Identity-Preservation Outcome` 的 submission-ready 记录协议。
+
+## R897 本轮推进结论：把 D06 从“WildOS 是负控家族”继续压到“实验日志必须显式做 outdoor-search negative-control subtraction，否则任何户外增益都不得升级成 packet-contract claim”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `D06/README.md`、`PAPER.md`、`OWNER_NOTES.md`、`experiments.md` 与研究状态追踪；当前 cron 环境下 L1/QMD 命令仍受 allowlist 限制，因此严格按“本地覆盖已足够、PAPER 写作优先”执行
+- **扫描结论**：高价值新增论文 **1 篇候选路径（WildOS 负控家族继续吸收）**，新增正式入库 **0 篇**；本轮没有触发完整入库流程，重心放在把 WildOS 从 related-work caution 升级成 experiments 里的硬性 reporting gate
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.7 Outdoor-Search Matched Negative-Control Logging Contract** 与 **4.2.8 Current Evidence-Consistent Freeze after Outdoor Search Negative-Control Alignment**。核心新增是要求所有可能被 open-vocabulary outdoor search 解释的 D06 结果，必须补齐 `Negative-Control Family / Search-Only Win Window / Packet-Field Survival after Search Conditioning / Promotion Blocker after Search Conditioning` 四项字段；若户外增益在做完 WildOS-style subtraction 后只剩 region discovery 或 target-zone narrowing，则结果只能冻结为 **search-route improvement only**，不得升级成 **packet-contract superiority / manipulation-ready handoff**。
+- **核心价值**：这一步把 D06 从“知道 WildOS 不能直接当 aerial VLN 成功证据”推进到“知道 WildOS-family 还必须在实验日志里被显式减掉”。也就是说，D06 现在不仅有 family-matched comparator 和 consume-time claim gate，还开始对 **户外开放词汇搜索型增益** 做专门的 negative-control subtraction，进一步防止把“更会找区域”误写成“更会保 packet 到 controller/use time”。
+- **下轮建议**：按轮换优先切 **D07_Isaac强化学习机械臂控制** 或 **D01_世界模型**；若继续回到 D06，优先把 `experiments.md` 正式补出与 `4.2.7/4.2.8` 对齐的最小日志模板和 sanity check，让 WildOS-family 先过 matched subtraction 再进入主结果表。
+
 # D06 experiments
 
-> 最后更新：2026-04-21 R867
+> 最后更新：2026-05-14 R891
+
+## R893 本轮推进结论：把 D06 从“claim gate 需要最小日志 tuple”继续压到“没有 referent/thread identity 保持，就禁止把晚期正结果升级成 full packet-contract”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `D06/README.md`、`PAPER.md`、`OWNER_NOTES.md`、`experiments.md` 与研究状态追踪近期 D06 轮次；本轮尝试补做近 30 天 L1/QMD 检索，但 cron 环境下外部命令继续受限或 allowlist 拦截，因此按“本地覆盖已足够、PAPER 写作优先”执行
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量仍不在继续扩论文清单，而在把晚期成功的 referent/thread 漂移风险也写成 claim gate
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.42 Identity-Preservation Freeze before Consume-Time Promotion**、**4.2.43 Current Evidence-Consistent Freeze after Identity-Aware Late-Window Audit**、**4.2.44 Minimal Identity-Aware Logging Fields for D06 Late-Window Audits**。核心新增是把 D06 的晚期结果升级条件从 `Λ_D06` 进一步收紧为 `Λ^+_{D06}`：除了 `A^{dir}/A^{ctx}/A^{shell}/A^{guard}` 与窗口/route 字段外，还必须补齐身份保持 tuple `α=(o^{obj}, a^{anchor}, c^{clause}, θ^{thread})`，用来审 target referent、context anchor、active clause、progress thread 是否还是同一个对象。
+- **核心价值**：这一步把 D06 从“知道 packet field 还活着”推进到“知道 packet 即便还活着，也可能已经悄悄换了对象、换了锚点、换了子句或换了线程”。也就是说，D06 现在不仅审 consume-time contract，还开始审 **same referent / same thread**，进一步防止把 late-stage bounded rescue 或 latent execution sufficiency 误写成 full packet-contract / NtM-handoff superiority。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，优先把 `experiments.md` 里的最小日志模板正式升级为 `Λ^+_{D06}`，补成 `obj/anchor/clause/thread` 四个字段的真实记录协议，再去放行任何新的晚期主结果叙事。
+
+## R892 本轮推进结论：把 D01 从“bind/consume 分离已成立”继续压到“没有身份保持日志就禁止把晚期正结果升级成完整 handoff gain”
+- **本轮方向**：D01 世界模型
+- **本地依据**：复核 `D01/README.md`、`PAPER.md`、`REPORT.md` 与研究状态追踪近几轮 D01 记录；本轮尝试补做 QMD/L1 外查，但当前 cron 环境命令受限，因此按“本地知识已足够、PAPER 写作优先”执行
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量不在继续扩论文，而在把 delayed-consumption 晚期证据进一步压成 identity-aware claim gate
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.33 Identity-Preservation Gate before Consume-Time Promotion** 与 **4.2.34 Current Evidence-Consistent Freeze after Identity-Aware Delayed-Consumption Audit**。核心新增是把晚期正结果的升级条件从“bind-honest + consume-honest”继续收紧为“还必须补齐地址保持日志 `α=(obj, anchor, clause, thread)` 及 use-time audit `ψ=(clause, remain, stage, contact)`”；若缺少这些字段，结果最多只能冻结为 **address-drifted bind gain**、**freshness-accountable invalidation** 或 **phase-bounded recovery**，不得直接升格为 full deployment-time handoff-value gain。
+- **核心价值**：这一步把 D01 从“知道 bind 和 consume 不是一回事”推进到“知道即便 consume 成功，也可能只是 referent 漂移后的假阳性”。也就是说，D01 现在不仅审 freshness / thread / consume，还把 **object-anchor-clause-thread identity preservation** 真正变成了 narrative promotion gate。
+- **下轮建议**：按轮换优先切 **D04_跨载体泛化** 或 **D06_空中视觉语言导航**；若继续回到 D01，优先把 `experiments.md` 或真实日志模板补成 `α / ψ / CTTPR / BCIR / Δplan` 的统一记录协议，让 identity-aware delayed-consumption audit 可直接落表。
+
+## R891 本轮推进结论：把 D06 从“主表是 claim gate”继续压到“每条结果没有最小日志 tuple 就禁止 narrative promotion”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `D06/README.md`、`PAPER.md`、`REPORT.md`、`experiments.md` 与研究状态追踪近期 D06 轮次；本轮尝试补做 L1/QMD 外查，但 cron 环境命令受限或回流既有家族，因此继续按“本地知识已足够、写作推进优先”执行
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量不在继续扩论文清单，而在把 claim gate 真正写成论文级记录协议
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.40 Minimal Logging Template aligned to the D06 Claim Gate** 与 **4.2.41 Non-Promotion Rule for Incomplete Claim Tuples**。核心新增是把 `experiments.md` 里的最小记录模板与正文 claim gate 显式对齐：每条 D06 结果都必须先补齐 `Λ_D06=(w+, w†bind, w†consume, A^{dir}, A^{ctx}, A^{shell}, A^{guard}, ρdc(δ), τroute, τclaim)` 的字段化日志，再允许 prose 升级。若 tuple 缺字段、窗口不闭合、或 `τroute/τclaim` 对不上，则结果最多只能冻结为 **planner-time gain / runtime continuity gain / latent execution sufficiency / bounded rescue** 之一，不得写成 full packet-contract 或 NtM-handoff claim。
+- **核心价值**：这一步把 D06 从“知道主表该有哪些列”继续推进到“知道实验记录和结果段之间必须一一对表，缺哪项就不能越级写”。也就是说，D06 现在不仅把 unified reasoning、latent execution、runtime continuity、packet-contract 区分开了，还把这些路线真正压成了可执行的日志门禁。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，优先把 `experiments.md` 中现有 sanity check 的输出字段统一映射到 `Λ_D06`，补成 submission-ready 的最小结果表头。
+
+## R891 本轮推进结论：把 D06 从“主表是 claim gate”继续压到“每条结果没有最小日志 tuple 就禁止 narrative promotion”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：复核 `D06/README.md`、`PAPER.md`、`REPORT.md`、`experiments.md` 与研究状态追踪近期 D06 轮次；本轮尝试补做 L1/QMD 外查，但 cron 环境命令受限或回流既有家族，因此继续按“本地知识已足够、写作推进优先”执行
+- **扫描结论**：高价值新增论文 **0 篇**，新增正式入库 **0 篇**；当前最有价值增量不在继续扩论文清单，而在把 claim gate 真正写成论文级记录协议
+- **PAPER.md 推进**：在 `Section 4.2 Main Results` 新增 **4.2.38 Claim-Gated Logging Contract for Consume-Time Packet Evidence** 与 **4.2.39 Weakest-Honest-Claim Readout before Narrative Promotion**。核心新增是把每条 D06 结果强制绑定到最小日志 tuple `Λ_D06=(w+, w†bind, w†consume, A^{dir}, A^{ctx}, A^{shell}, A^{guard}, ρdc(δ), τroute, τclaim)`；只要 tuple 不完整，就不允许 prose 升级成 full packet-contract / NtM-handoff claim。同步写死 reviewer-facing 读法顺序：**first positive window → last honest consume-time window → packet-field survival → freshness regime → dominant route → weakest honest claim**。
+- **核心价值**：这一步把 D06 从“知道主表该有哪些列”推进到“知道没有哪几项日志时，连结果段该怎么写都不能乱升格”。也就是说，D06 现在不仅把 unified reasoning / latent execution / runtime continuity / packet-contract 区分开了，还把它们真正变成了 narrative promotion gate。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，优先把 `experiments.md` 中的最小记录模板显式对齐到 `Λ_D06` 的每个字段，补成可直接落表的日志 schema。
 
 ## R890 本轮推进结论：把 D06 从“合同字段主表已统一”继续压到“本地文献已足够，下一步重心应转向 claim gate 与实验日志对齐”
 - **本轮方向**：D06 空中视觉语言导航

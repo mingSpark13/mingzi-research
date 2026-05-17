@@ -1,5 +1,5 @@
 ---
-title: HandelBot: Real-World Piano Playing via Fast Adaptation of Dexterous Robot Policies
+title: "HandelBot: Real-World Piano Playing via Fast Adaptation of Dexterous Robot Policies"
 authors: Amber Xie, Haozhi Qi, Dorsa Sadigh
 arxiv: 2603.12243
 date: 2026-03-12

@@ -7,6 +7,7 @@ institution: 科研机构
 conf: arXiv
 keywords: [VGGT, 3D reconstruction, long video, temporal modeling, feedforward]
 tags: [3D重建, 感知与3D视觉, 深度估计]
+summary: "InfiniteVGGT 用滑动窗口把 VGGT 扩展到无限长视频流，在保持几何精度的同时提升长时序 3D 重建稳定性。"
 domain: 3D视觉
 pdf_path: "../../01_论文库/3D视觉/2601.02281_InfiniteVGGT.pdf"
 reading_date: 2026-04-18

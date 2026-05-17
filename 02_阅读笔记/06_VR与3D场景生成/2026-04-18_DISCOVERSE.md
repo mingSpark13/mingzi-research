@@ -7,6 +7,7 @@ institution: ""
 conf: "arXiv"
 keywords: ["3DGS", "Robot Simulation", "Real2Sim2Real"]
 tags: ["仿真平台", "3D高斯溅射", "具身智能", "Sim2Real"]
+summary: "现有机器人仿真器在复杂真实场景的高保真建模方面存在显著差距，导致 sim-to-real 迁移效果不佳。"
 domain: "具身智能"
 pdf_path: "../../01_论文库/具身智能/2507.21981_DISCOVERSE.pdf"
 reading_date: "2026-04-18"

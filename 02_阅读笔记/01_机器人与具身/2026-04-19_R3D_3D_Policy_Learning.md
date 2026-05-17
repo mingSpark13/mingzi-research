@@ -48,3 +48,8 @@ R3D: Revisiting 3D Policy Learning
 
 - [[2024-09-24_ReKep]] - ReKep探索了关系关键点约束，与3D表示学习互补
 - [[2026-04-19_HiST-AT]] - HiST-AT探索了动作tokenizer层次化表示，与R3D的表示学习思想相关
+
+## 📌 待探索问题
+
+- R3D 对 Batch Normalization 的负面结论是否依赖具体数据规模与传感器模态，迁到空中平台后会不会变化？
+- 3D encoder + diffusion decoder 的组合在低纹理、稀疏深度或强视角变化场景下，泛化收益是否仍显著？

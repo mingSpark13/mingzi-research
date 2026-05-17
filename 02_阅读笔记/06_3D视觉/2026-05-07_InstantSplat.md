@@ -1,17 +1,34 @@
 ---
-title: "InstantSplat: Sparse-view Gaussian Splatting in Seconds"
-authors: Zhiwen Fan, Wenyan Cong, Kairun Wen, Kevin Wang, Jian Zhang, Xinghao Ding, Danfei Xu, Boris Ivanovic, Marco Pavone, Georgios Pavlakos, Zhangyang Wang, Yue Wang
+title: 'InstantSplat: Sparse-view Gaussian Splatting in Seconds'
+authors: Zhiwen Fan, Wenyan Cong, Kairun Wen, Kevin Wang, Jian Zhang, Xinghao Ding,
+  Danfei Xu, Boris Ivanovic, Marco Pavone, Georgios Pavlakos, Zhangyang Wang, Yue
+  Wang
 arxiv: 2403.20309
 date: 2024-03-28
-institution: UT Austin · NVIDIA Research · Xiamen University · Georgia Tech · Stanford · USC
+institution: UT Austin · NVIDIA Research · Xiamen University · Georgia Tech · Stanford
+  · USC
 conf: arXiv preprint
-keywords: ["sparse-view 3DGS", "SfM-free", "Gaussian Bundle Adjustment", "self-supervised", "fast reconstruction"]
-tags: ["3D高斯溅射", "3D重建", "深度估计", "SLAM"]
+keywords:
+- sparse-view 3DGS
+- SfM-free
+- Gaussian Bundle Adjustment
+- self-supervised
+- fast reconstruction
+tags:
+- 3D高斯溅射
+- 3D重建
+- 深度估计
+- SLAM
 domain: 3D视觉
-pdf_path: "../../01_论文库/3D视觉/2403.20309_InstantSplat.pdf"
+pdf_path: ../../01_论文库/3D视觉/2403.20309_InstantSplat.pdf
 reading_date: 2026-05-07
 reading_status: 已读
-related_concepts: ["3D高斯溅射", "3D重建", "深度估计", "SLAM"]
+related_concepts:
+- 3D高斯溅射
+- 3D重建
+- 深度估计
+- SLAM
+summary: InstantSplat 用 GauBA 联合优化相机位姿与 3D Gaussians，在极少视角下实现秒级 SfM-free 高质量重建。
 ---
 
 # 📖 花火格式笔记

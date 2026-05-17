@@ -1,16 +1,17 @@
 ---
-title: 📖 PoseFormerV2 — 频域高效鲁棒 3D 姿态估计
+title: "PoseFormerV2: Exploring Frequency Domain for Efficient and Robust 3D Human Pose Estimation"
 authors: 待补充
-arxiv: 待补充
-date: 待补充
-institution: 待补充
-conf: 待补充
-keywords: 待补充
-tags: []
+arxiv: "2303.07425"
+date: "2023-03-13"
+institution: "待补充"
+conf: "CVPR 2023"
+keywords: ["3D姿态估计", "频域建模", "鲁棒时序建模"]
+tags: ["6D位姿估计", "感知与3D视觉", "空中操作"]
 domain: 运动控制
-pdf_path: 
+pdf_path: ""
 reading_date: 2026-04-07
 reading_status: 已读
+summary: "PoseFormerV2 通过频域表示压缩长序列时序建模成本，在 3D 人体姿态估计上兼顾效率、鲁棒性与真实场景部署价值。"
 related_concepts: ["6D位姿估计", "空中操作"]
 ---
 

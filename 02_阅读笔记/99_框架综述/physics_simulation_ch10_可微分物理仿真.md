@@ -1,17 +1,23 @@
 ---
-title: "第10章：可微分物理仿真 (Differentiable Physics Simulation)"
+title: 第10章：可微分物理仿真 (Differentiable Physics Simulation)
 authors: []
 arxiv: 待补充
 date: 待补充
 institution: 待补充
 conf: 待补充
 keywords: 待补充
-tags: []
+tags:
+- 强化学习
+- MPC
+- 物理一致性
 domain: 通用操作
-pdf_path: ""
+pdf_path: ''
 reading_date: 待补充
 reading_status: 已读
-related_concepts: ["强化学习", "MPC"]
+related_concepts:
+- 强化学习
+- MPC
+summary: 本章系统梳理可微分物理仿真的梯度通路、损失设计与机器人控制应用，是把物理先验接入学习型控制的重要理论底座。
 ---
 
 ## 🎯 题目

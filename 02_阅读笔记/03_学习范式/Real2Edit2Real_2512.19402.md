@@ -7,6 +7,7 @@ institution: 待补充
 conf: 待补充
 keywords: 待补充
 tags: []
+summary: "通过3D重建-编辑-视频合成链路，把少量真机演示扩增为高质量机器人示教数据。"
 domain: 强化学习
 pdf_path: "Notebook/30_论文研究/01_论文库/Real2Edit2Real_2512.19402.pdf"
 reading_date: 待补充

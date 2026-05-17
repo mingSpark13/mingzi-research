@@ -7,6 +7,7 @@ institution: Mila / NYU / Samsung SAIL / Brown University
 conf: arXiv preprint
 keywords: [JEPA, world model, representation collapse, SIGReg, embodied intelligence]
 tags: [世界模型, 具身智能, 强化学习]
+summary: "LeWorldModel 用预测损失 + SIGReg 稳定端到端 JEPA 世界模型训练，在保持物理结构表达的同时显著提升规划速度。"
 domain: 世界模型
 pdf_path: "../../01_论文库/世界模型/2603.19312_LeWorldModel.pdf"
 reading_date: 2026-04-23

@@ -8,6 +8,7 @@ conf: "arXiv"
 pdf_path: "../../01_论文库/3D视觉/2508.14891_GaussianArt.pdf"
 reading_date: 2026-04-18
 reading_status: "已读"
+summary: "GaussianArt 用 3DGS 统一建模铰接物体的几何与关节运动，实现可泛化的 motion-aware 3D 重建。"
 tags:
   - "3D高斯溅射"
   - "3D重建"

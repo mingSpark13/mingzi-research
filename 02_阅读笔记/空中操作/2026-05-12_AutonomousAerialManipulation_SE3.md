@@ -10,7 +10,7 @@ tags: [空中操作, 灵巧操作, 全身协调运动, 任务与运动规划]
 domain: 空中操作
 pdf_path: "../../01_论文库/空中操作/2508.19608_AerialManipulation_SE3.pdf"
 reading_date: 2026-05-12
-reading_status: 在读
+reading_status: 已读
 related_concepts: ["空中操作", "灵巧操作", "全身协调运动", "任务与运动规划"]
 ---
 

@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/05_语义导航/2024_SG-Nav_Scene_Graph_Navigation", "02_阅读笔记/05_语义导航/2024_SG-Nav_Scene_Graph_Navigation"]
+origins: ["02_阅读笔记/05_语义导航/2024_SG-Nav_Scene_Graph_Navigation"]
 updated: "2026-04-17"
 ---
 
@@ -11,5 +11,4 @@ updated: "2026-04-17"
 **核心价值**: **原始资料**:
 
 **原始资料**:
-- [[../../02_阅读笔记/05_语义导航/2024_SG-Nav_Scene_Graph_Navigation]]
 - [[02_阅读笔记/05_语义导航/2024_SG-Nav_Scene_Graph_Navigation]]

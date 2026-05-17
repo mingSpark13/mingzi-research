@@ -47,3 +47,8 @@ Dual Pose-Graph Semantic Localization for Vision-Based Autonomous Drone Racing
 ## 🔗 相关链接
 
 - [[2025-12-22_IndoorUAV]] - IndoorUAV的定位方法与本文可对比
+
+## 📌 待探索问题
+
+- 双 pose-graph 结构在高速长航时任务下的图维护成本是否会重新抬高，影响机载部署稳定性？
+- 语义门检测若在光照/遮挡剧烈变化下失效，整体定位鲁棒性会退化到什么程度？

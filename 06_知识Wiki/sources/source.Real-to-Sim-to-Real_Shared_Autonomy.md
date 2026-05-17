@@ -2,7 +2,7 @@
 type: "source"
 tags: ["遥操作", "Sim2Real", "强化学习"]
 summary: "kNN human surrogate从<5min真实遥操作数据建模操作者行为，在sim中训练residual copilot RL，为空中机械臂双层协议提供参考配方"
-origins: ["../../02_阅读笔记/01_机器人与具身/Real-to-Sim-to-Real_Shared_Autonomy"]
+origins: ["02_阅读笔记/01_机器人与具身/Real-to-Sim-to-Real_Shared_Autonomy"]
 updated: "2026-05-10"
 ---
 
@@ -11,4 +11,4 @@ updated: "2026-05-10"
 **核心价值**: kNN human surrogate从<5min真实遥操作数据建模操作者行为，在sim中训练residual copilot RL，为空中机械臂双层协议提供参考配方
 
 **原始资料**:
-- [[../../02_阅读笔记/01_机器人与具身/Real-to-Sim-to-Real_Shared_Autonomy]]
+- [[02_阅读笔记/01_机器人与具身/Real-to-Sim-to-Real_Shared_Autonomy]]

@@ -7,6 +7,7 @@ institution: TU Darmstadt / MPI-IS
 conf: arXiv
 keywords: [legged robot, embodiment identification, reinforcement learning, morphology, active sensing]
 tags: [强化学习, 主动感知, 腿足机器人, 跨载体泛化]
+summary: "Active Embodiment Identification 用主动试探式强化学习识别腿足机器人的当前机体参数，为跨形态部署前自校准提供路径。"
 domain: 腿足机器人
 pdf_path: "../../01_论文库/腿足机器人/2605.08020_Active_Embodiment_Identification.pdf"
 reading_date: 2026-05-11

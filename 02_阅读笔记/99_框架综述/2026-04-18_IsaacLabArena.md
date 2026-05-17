@@ -7,6 +7,7 @@ institution: "NVIDIA"
 conf: "GitHub Open Source"
 keywords: [IsaacLab, simulation, robotics, composable environment]
 tags: [仿真平台, Sim2Real, 具身智能]
+summary: "IsaacLab-Arena 为 Isaac Lab 提供可组合的场景/任务模块化扩展，是批量评测与 Sim2Real 实验组织的实用仿真底座。"
 domain: 框架综述
 pdf_path: ""
 reading_date: 2026-04-18

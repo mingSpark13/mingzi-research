@@ -23,7 +23,7 @@
 | 论文 | arXiv | 核心贡献 | 状态 |
 |------|-------|---------|------|
 | **Isaac Lab** | 2511.04831 | Isaac Gym的GPU加速继承者，支持RL+IL，GPU原生并行物理+渲染，模块化架构 | ✅ 摘要级深挖-R543 |
-| **Zero-Shot Sim2Real RL for Occlusion-Aware Plant Manipulation** | 2505.16547 | Isaac Lab零样本sim-to-real RL，遮挡感知植物操作，植物/遮挡/光照零样本泛化 | 🆕 候选-R765 |
+| **Find the Fruit: Zero-Shot Sim2Real RL for Occlusion-Aware Plant Manipulation** | 2505.16547 | Isaac Lab零样本sim-to-real RL，遮挡感知植物操作，植物/遮挡/光照零样本泛化 | ✅ 已入库-R20260516A |
 | **Robot Tactile Olympiad (RoTO)** | 2510.21609 | Isaac Lab触觉RL基准（Find/Bounce/Baoding三任务），基于触觉的RL for robotic control | 🆕 候选-R765 |
 | **TIAGo + Isaac Sim/Gym** | 2403.07091 | sim-to-real gap分析，比较 Isaac Gym 与 Isaac Sim 在移动机械臂操控中的误差与无碰控制表现 | ✅ 摘要级深挖-R539 |
 | **WheelArm-Sim** | 2601.21129 | Isaac Sim中的轮椅+机械臂一体化合成数据平台，覆盖导航+操作联合控制 | ✅ 已摘要级深挖-R665 |

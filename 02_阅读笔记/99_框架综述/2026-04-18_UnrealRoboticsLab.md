@@ -5,6 +5,7 @@ date: 2025-04
 arXiv: "2504.14135"
 institution: "UCL"
 conf: "arXiv 2025"
+summary: "Unreal Robotics Lab 将 Unreal 渲染与 MuJoCo 物理深度集成，提供兼顾光真实感与物理精度的高保真机器人仿真框架。"
 domain: "具身智能"
 type: "paper"
 direction: "具身智能"

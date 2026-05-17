@@ -1,5 +1,5 @@
 ---
-title: FineCog-Nav: Integrating Fine-grained Cognitive Modules for Zero-shot Multimodal UAV Navigation
+title: "FineCog-Nav: Integrating Fine-grained Cognitive Modules for Zero-shot Multimodal UAV Navigation"
 authors: Dian Shao, Zhengzheng Xu, Peiyang Wang, Like Liu, Yule Wang, Jieqi Shi, Jing Huo
 arxiv: 2604.16298
 date: 2026-04-17
@@ -7,6 +7,7 @@ institution: SmartDianLab
 conf: CVPR 2026 Findings
 keywords: [Aerial VLN, UAV navigation, zero-shot navigation, multimodal reasoning, cognitive modules]
 tags: [空中VLN, 零样本泛化, 长程任务规划, 多模态统一架构, 语义导航]
+summary: "空中 VLN 在长时程、多步骤语言指令下容易被单体大模型的提示脆弱性和模块协作松散拖垮，零样本泛化尤其不稳。"
 domain: 空中视觉语言导航
 pdf_path: "../../01_论文库/空中视觉语言导航/2604.16298_FineCog-Nav.pdf"
 reading_date: 2026-04-20

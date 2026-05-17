@@ -44,12 +44,14 @@ Human2Nav: Learning Crowd Navigation from Human Videos across Robots via Feasibi
 ## 🔗 知识图谱
 
 - [[流匹配]] - 本文生成模型基础，conditional flow matching for trajectory generation
-- [[人群导航]] - 本文核心任务，crowd navigation in dynamic environments
-- [[跨机器人迁移]] - 本文解决的核心问题，embodiment gap across robot platforms
-- [[人类视频模仿学习]] - 本文数据来源，learning from human videos
-- [[可行性引导]] - 本文核心创新点，test-time feasibility guidance without retraining
-- [[BEV表示]] - 本文观察空间对齐方式，bird's-eye-view representation
+- [[跨载体泛化]] - 本文解决的核心问题，embodiment gap across robot platforms
 
-## 🏷️ 标签
+## 🔗 相关链接
 
-#语义导航 #跨载体泛化 #流匹配 #人群导航
+- [[2026-05-15_WildOS]] - 都关注开放环境导航，但 WildOS 偏开放词汇语义搜索，Human2Nav 偏人群导航与跨机器人迁移
+- [[2026-04-18_HUGSIM]] - 可借其逼真闭环仿真思路，扩展 Human2Nav 的评测环境与可行性分析
+
+## 📌 待探索问题
+
+- test-time feasibility guidance 在高动态避障场景下是否会与 flow matching 生成轨迹产生冲突，导致局部震荡？
+- 仅靠人类视频学习的人群行为先验，迁到空中或非完整约束平台时会不会出现系统性偏差？

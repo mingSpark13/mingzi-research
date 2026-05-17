@@ -1,6 +1,6 @@
 # Concepts Index
-> Auto-generated concepts index. Total: 65 concepts.
-> Last updated: 2026-05-13 02:30
+> Auto-generated concepts index. Total: 67 concepts.
+> Last updated: 2026-05-15 08:02
 
 
 ## 3D视觉
@@ -51,6 +51,10 @@
 
 - [[concepts/VLA架构|VLA架构]]
 - [[concepts/动作分层|动作分层]]
+
+## 具身智能
+
+- [[concepts/具身智能|具身智能]]
 
 ## 主动感知
 
@@ -117,6 +121,10 @@
 ## 扩散策略
 
 - [[concepts/扩散策略|扩散策略]]
+
+## 生成式策略
+
+- [[concepts/生成式策略_概念笔记|生成式策略_概念笔记]]
 
 ## 抓取检测
 

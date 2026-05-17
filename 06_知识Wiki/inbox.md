@@ -1,2 +1,3 @@
 - [02_阅读笔记/2026-05-12_ActiveVLA_Injecting_Active_Perception_into_Vision-Language-Action_Models_for_Precise_3D_Robotic_Manipulation.md] 候选概念：主动视角选择（频次：首次出现）
 - [02_阅读笔记/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control.md] 候选概念：接触感知VIO（频次：首次出现）
+- [02_阅读笔记/2026-05-16_AirCopBench.md] 候选概念：感知退化（频次：首次出现）—— 真实世界场景中的视觉退化（遮挡、阴影、运动模糊、噪声、数据丢失、远距离检测等），AirCopBench核心评估维度

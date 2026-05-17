@@ -6,11 +6,13 @@ date: 2026-04
 institution: Peking University / Penn State University
 conf: arXiv preprint
 keywords: [Kolmogorov turbulence, 5/3 scaling law, LLM, contextual embeddings, spectral analysis]
-tags: [多模态学习]
+tags: ["多模态统一架构"]
 domain: 多模态学习
 pdf_path: "../../01_论文库/多模态学习/2604.05536_TurbulenceLLM.pdf"
 reading_date: 2026-04-23
 reading_status: 已读
+summary: "该工作发现 Transformer contextual representation 的谱密度稳定呈现类似湍流的 5/3 标度律，可作为语言表征质量与复杂系统结构的分析线索。"
+related_concepts: ["多模态统一架构"]
 ---
 
 # 📖 大模型中的湍流 5/3 标度律

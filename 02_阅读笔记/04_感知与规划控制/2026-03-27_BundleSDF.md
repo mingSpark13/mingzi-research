@@ -1,17 +1,20 @@
 ---
-title: "BundleSDF: 6D Object Tracking and Neural Reconstruction"
+title: 'BundleSDF: 6D Object Tracking and Neural Reconstruction'
 authors: NVIDIA Team
-arxiv: ""
+arxiv: ''
 date: 2024
 institution: NVIDIA
-conf: ""
+conf: ''
 keywords: 6D tracking, unknown object, RGB-D, neural reconstruction, manipulation
-tags: ["灵巧操作"]
+tags:
+- 灵巧操作
 domain: 视觉感知
-pdf_path: ""
+pdf_path: ''
 reading_date: 2026-03-27
 reading_status: 已读
-related_concepts: ["灵巧操作"]
+related_concepts:
+- 灵巧操作
+summary: BundleSDF 通过 RGB-D 输入同时完成未知刚体 6DoF 跟踪与神经重建，是高精度感知-重建一体化操作管线的代表方案。
 ---
 
 ## 🎯 题目

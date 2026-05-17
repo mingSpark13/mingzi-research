@@ -9,6 +9,7 @@ tags:
   - "视频生成"
   - "3D高斯溅射"
   - "物理一致性"
+summary: "纯视觉 ReCamDriving 用 3DGS 几何引导实现可控新轨迹驾驶视频生成，绕开 LiDAR 依赖，适合 UE 仿真多轨迹数据扩增。"
 domain: "世界模型"
 pdf_path: "../../01_论文库/世界模型/2512.03621_ReCamDriving.pdf"
 reading_date: "2026-04-18"

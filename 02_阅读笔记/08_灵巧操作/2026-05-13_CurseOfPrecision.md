@@ -11,6 +11,7 @@ domain: 具身智能
 pdf_path: "../../01_论文库/具身智能/2410_CurseOfPrecision.pdf"
 reading_date: 2026-05-13
 reading_status: 在读
+summary: "本文揭示高精度机器人操作中达到目标精度所需示范数据会随精度要求呈超指数增长，并提出极限精度 c 是整个 agent 系统的涌现属性。"
 related_concepts: ["灵巧操作", "模仿学习"]
 ---
 
