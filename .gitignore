@@ -8,6 +8,10 @@
 .obsidian/*.log
 .obsidian/graph.json
 
+.obsidian
+.claudian
+.claude
+
 # 排除插件日志
 .obsidian/plugins/**/*.log
 .obsidian/plugins/**/*.mdb
@@ -21,3 +25,5 @@ desktop.ini
 *.bak
 *.tmp
 *~
+
+*.canvas
