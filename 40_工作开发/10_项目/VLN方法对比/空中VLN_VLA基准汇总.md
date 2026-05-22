@@ -28,6 +28,7 @@
 | **MM-UAVBench**      | MLLM 评测              | 多场景        | —                                 | —            | 19 类任务              | Real+Syn    | ✅ 公开    | arXiv 2512.23219 |
 | **UAVReason**        | 空中推理                 | —          | —                                 | —            | 22 类推理              | Synthetic   | ✅ 公开    | arXiv 2604.05377 |
 | **CognitiveDrone-B** | 认知推理                 | —          | —                                 | 实时 4D        | 任务成功率               | Synthetic   | ✅ 公开    | arXiv 2503.01378 |
+| **OpenFly**          | Route VLN / 预训练平台    | 18 场景（多引擎） | 100K 轨迹，多引擎（UE/GTA V/Google Earth/3DGS） | 连续           | SR / SPL            | Syn+Real    | ✅ 公开    | ICLR 2026        |
 
 ---
 
@@ -349,6 +350,51 @@
 
 ---
 
+### 2.16 OpenFly
+**定位**：大规模自动化 UAV VLN 数据生产平台 + 预训练基准，ICLR 2026。
+
+| 属性 | 内容 |
+|---|---|
+| 论文 | OpenFly: A Versatile Toolchain and Large-scale Benchmark for Aerial Vision-Language Navigation |
+| 会议 | ICLR 2026 |
+| 仿真平台 | UE / GTA V / Google Earth / 3DGS（多引擎） |
+| 场景 | 18 个场景，覆盖城市/郊区/室内/自然 |
+| 数据规模 | 100K 条轨迹（自动化工具链生成） |
+| 动作空间 | 连续 |
+| 观测模态 | RGB + 语言指令 |
+| 评测指标 | SR / SPL（Seen / Unseen） |
+| 现实性 | Syn+Real（多引擎混合） |
+| 代码/数据 | 公开 |
+| 方法 | OpenFly-Agent（keyframe-aware，100K 预训练） |
+
+**特点与局限**
+- 自动化工具链：场景→轨迹→指令全流程自动生成，100K 规模远超同类
+- 多引擎混合（UE/GTA V/Google Earth/3DGS），场景多样性强
+- keyframe-aware agent 在 TravelUAV 上取得 SOTA
+- 主要覆盖路线跟随 VLN，无接触操作
+- 工具链本身（数据生产方式）对 AirSpark 有直接参考价值
+
+**对 AirSpark 的启发**：OpenFly 的自动化工具链思路与 AirSpark P3 SceneSpec 方向高度一致，可参考其场景多样化策略和指令自动生成 pipeline。
+
+---
+
+## 三（附）、室外非 UAV 参考基准
+
+> 以下基准为地面/街景 VLN 或自动驾驶仿真，不直接适用于 UAV 评测，但作为领域背景参考收录。
+
+| 基准 | 任务类型 | 场景 | 动作空间 | 来源 | 备注 |
+|---|---|---|---|---|---|
+| **Touchdown** | Street View VLN | 纽约街景（Google Street View） | 离散（全景图节点） | CVPR 2019 | 首个真实街景 VLN，语言→全景导航 |
+| **StreetLearn** | 城市导航 | Google Street View（纽约/匹兹堡） | 离散全景 | NeurIPS 2019 | 大规模街景图导航，无语言指令 |
+| **CARLA** | 自动驾驶仿真 | 城市道路 | 连续车辆控制 | ICCV 2017 | 开源自动驾驶仿真平台，非 VLN 基准 |
+
+**与 UAV VLN 的关系**
+- Touchdown / StreetLearn：地面视角，全景图节点跳转，与 UAV 连续 6-DoF 控制差异大；但语言指令设计和泛化评测方法有参考价值
+- CARLA：自动驾驶仿真，与 AirSpark 的 UE+AirSim 架构有相似之处（仿真平台设计），但任务类型完全不同
+- 这三个基准均不建议作为 UAV VLN 方法的直接对比基准
+
+---
+
 ## 三、基准选型建议
 
 ### 3.1 按研究目标选基准
@@ -400,3 +446,4 @@
 | 日期 | 更新内容 |
 |---|---|
 | 2026-05-22 | 创建文档，汇总 17 个主要基准，完成速查总表、详细介绍、选型建议、指标对照 |
+| 2026-05-22 | 补充 OpenFly（§2.16，ICLR 2026，100K 轨迹多引擎平台）；新增"室外非 UAV 参考基准"节（Touchdown / StreetLearn / CARLA） |
