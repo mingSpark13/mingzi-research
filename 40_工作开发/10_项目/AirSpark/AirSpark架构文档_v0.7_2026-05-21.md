@@ -62,7 +62,7 @@ AirManip-Bench 是一个面向城市低空场景的多模态 Navigate-then-Manip
 
 4. **Hybrid Synthetic–Real Data Flywheel**
    UE 程序化场景 + 真实重建/3DGS-Mesh + 少量遥操作 seed + 自动轨迹优化（参考 CosFly-Track MuCO）+ Sim2Real paired validation。
-
+	
 5. **Modular Infrastructure for Scalable Collection**
    RPC 控制面、独立高带宽数据面、MuJoCo/UE/建图/规划/VLA 模块按需启停，支持 benchmark、baseline、主动采样和后续 world model 训练。
 
@@ -210,6 +210,7 @@ AirSpark/
 | Diagnostics   | 诊断与健康检查                                    | 🔄 基础可用                         |
 | SceneDebug    | 场景调试可视化                                    | 🔄 基础可用（~974 行，待拆分）             |
 | Physics       | MuJoCo/Kinematic 后端抽象                      | ✅ 已完成                           |
+
 
 
 ### 5.3 数据流向（概念层）
@@ -488,6 +489,67 @@ P3 前置收口（优先级高）：
 
 ---
 
+## 十一·五、BatchSpec 入口治理（v0.8 新增 / 2026-05-26）
+
+### 背景
+P2 阶段 BatchController 设计目标是"一个状态机吃 BatchSpec"，但实际仓库长出了 4 条入口（HTTP / Console / JSON file / Python runner），各入口独立维护参数 schema，导致：
+- 前端加 `planner_cell_cm` 后，Console 命令读的 JSON spec parser 不认识
+- 用户在前端调 cell=50cm 看到精细地图，规划器实际仍按硬编码 cell=100cm 算路径，**预览与采集不一致**
+- 将来加 `max_retries` 之类字段需在四处修改
+
+### 治理原则（自 2026-05-26 落地）
+**一个 Spec 模型，多个入口转换**。所有入口都产出 `FAirSparkBatchEpisodeSpec` 并通过 `BatchController::SubmitSpec(spec)` 进入状态机。
+
+```
+[FAirSparkBatchSpec — 唯一 schema]
+        ↑
+  ┌──────┴────┬────────────┬──────────┐
+  │            │           │          │
+入口A: HTTP    入口B: Console  入口C:   入口D:
+Monitor       airspark.batch.  JSON    Python
+前端          submit <json>    File     Runner
+              ↓                ↓         (gen→A/B)
+SubmitTargetCoverage()   LoadSpec→Submit
+              ↓                ↓
+       BatchController::SubmitSpec(spec)    ← 唯一汇聚点
+              ↓
+       状态机 + Manifest Writer
+```
+
+### 入口定位（明确）
+| 入口 | 状态 | 用途 |
+|---|---|---|
+| **A. Monitor 前端** (`/debug/batch/start`) | ✅ 生产首选 | 交互式调试、单次批次、参数前端可视化、预览模式 |
+| **B. Console + JSON Spec** (`airspark.batch.submit`) | ✅ 保留 | CI 回归、固定 spec 复现、shell 脚本触发 |
+| **C. JSON Spec File 本身** (`configs/airsim/*.json`) | ✅ 保留 living example | `batch_spec.smoke_school.json` 是字段示例 + smoke 模板 |
+| **D. Python Runner** (`tools/airspark_batch_runner`) | ⏸ 暂停（保留代码） | 当前入口 A 已覆盖；将来作为"跨场景批量调度器"基座（详见下方中期路线） |
+
+### 参数源头单一化
+`FAirSparkRuntimeProfileSettings` 是规划器和导航地图可视化的**唯一参数源**：
+- `PlannerCellSizeCm` / `PlannerMaxHorizontalCells` / `PlannerZMinM` / `PlannerZMaxM` / `PlannerClearanceCm`
+- 所有入口的 5 个 planner 字段都注入到此结构，被 `TryGridSearchPath`、`PreviewPaths`、Monitor 导航地图共同读取
+- 默认值（cell=100cm、clearance=40cm、Z=-1~4m）匹配规划器历史硬编码值，向后兼容
+
+### 中期路线（P3 期间执行）
+1. **拆 `MonitorServer.cpp`**（已 1300+ 行）：路由分文件
+   - `MonitorServer.Routes.Telemetry.cpp`（飞行/状态查询）
+   - `MonitorServer.Routes.Batch.cpp`（批采集）
+   - `MonitorServer.Routes.NavDebug.cpp`（occupancy / preview 可视化）
+2. **`RuntimeProfile` 拆两层语义**
+   - `FAirSparkRuntimeContext`：全局只读（RpcPort、Profile、CollectionRoot）
+   - `FAirSparkEpisodeContext`：per-episode 可覆盖（Seed、Target、Planner*）
+   消除"为什么 Override 只透传部分字段"的歧义
+3. **`tools/airspark_batch_runner` 复活成"跨场景批量调度器"**
+   - 输入：`matrix.yaml`（场景列表 × 任务列表 × seeds）
+   - 输出：每场景一份 BatchSpec JSON
+   - 调度：每次启动 UE → 跑一个 BatchSpec → 收尾 → 切下一个场景
+   - 这才是 §3.1 "RPC 控制面 + Python 调度面"的正确定位
+
+### 长期路线（P3 SceneOps）
+SceneSpec 包含 BatchSpec：完整 episode 描述 = "场景版本 + 资产 + 任务 + 随机化 + **批次参数**"。BatchSpec 是 SceneSpec 的一个 section。
+
+---
+
 ## 十二、关键技术决策
 ### 12.1 RPC 不是数据面
 决策：RPC 保留为控制面，不作为高带宽采集/建图/规划主通路。
@@ -561,4 +623,6 @@ P3 的核心任务是收口这些问题，同时建立 SceneSpec 平台化能力
 **v0.7 完整变更（2026-05-21）**：基于 D:\AirSpark 实际仓库调研（ROADMAP v9.0，2026-05-15），全面更新开发进度（P0/P1/P2 已完成，P3 SceneOps 启动）；更新代码架构快照（12 子模块实际状态）；精简技术实现细节，强化顶层架构指引；将 Phase A-G 路线图替换为 P3/P4/P5 实际路线图；更新近期执行清单（P3 任务）；新增 P2 遗留缺口表；保留 v0.6 全部定位、竞品矩阵、任务体系、评测指标、架构原则内容。
 
 **v0.7 修订（2026-05-22）**：修正 §十一 / §十三 / §十五 中关于 URLab 子模块的错误描述（URLab 已初始化，heads/main，P2 已完成）；删除"本周必须收口（P2 遗留）"节，替换为准确的 P3 前置收口清单；更新风险表，移除已消除的 URLab 风险项。
+
+**v0.8 修订（2026-05-26）**：新增 §十一·五"BatchSpec 入口治理"（明确 4 条入口的定位、参数源头单一化原则、SubmitSpec 统一入口、中期/长期路线）；记录 `feat/data-collection-9.0` 分支已完成工作（规划器参数从 RuntimeProfile 读取、前端 nav-map 与规划器参数同源、JSON spec parser 补齐 5 个 planner 字段、`BatchController::SubmitSpec(spec)` 统一入口）；P3 期间需要继续执行的中期路线（MonitorServer 拆分、RuntimeProfile 双语义层、Python runner 复活成跨场景调度器）。
 
