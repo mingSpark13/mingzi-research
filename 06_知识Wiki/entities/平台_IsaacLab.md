@@ -75,7 +75,7 @@ pageType: "entity"
 
 ## 相关概念
 
-- [[concepts/概念_世界模型_Latent]] — Isaac Lab 可用于训练 Latent 世界模型
+- [[concepts/隐空间世界模型]] — Isaac Lab 可用于训练 Latent 世界模型
 - [[overview/方向_世界模型_技术路线图]] — Isaac Lab 在世界模型仿真环境中的位置
 - [[overview/方向_跨载体泛化_技术路线图]] — Isaac Lab 作为跨载体策略迁移的仿真验证平台
 
@@ -84,6 +84,7 @@ pageType: "entity"
 - D07 方向计划基于 `IsaacLab-Gripper-Drone-Pickplace` (uiseoklee/GitHub) 搭建基线环境
 - 主人服务器需验证 Isaac Lab 部署（RTX 3090 + Ubuntu 20.04 兼容性）
 - 未来可探索 Isaac Lab + VLA 联合训练路线（参考 Beyond Imitation 工作）
+- 目录入口：[[entities/index]]
 
 ## Related
 <!-- openclaw:wiki:related:start -->

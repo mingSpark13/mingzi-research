@@ -5,7 +5,7 @@ level: "secondary"
 parent: "VLA"
 tags: ["VLA架构"]
 summary: "视觉 + 语言 + 动作统一端到端模型的核心架构（含微调策略）"
-updated: "2026-04-17"
+updated: "2026-05-20"
 id: "concept.VLA架构"
 pageType: "concept"
 ---
@@ -56,6 +56,7 @@ VLA 是一种将**视觉感知（Vision）**、**语言理解（Language）**和
 - OpenVLA (Stanford, 2024) — 开源 VLA 基线
 - π₀ (Physical Intelligence, 2025) — Flow Matching VLA
 - StarVLA-α (HKUST, 2026) — 简化 VLA，MLP head 即可达到 SOTA
+- [[sources/source.2605.18556_Key-Gram|Key-Gram (2605.18556)]] — 外置语言记忆经 key-gram 检索注入隐藏层，提供“不改 backbone 扩知识”的轻量路线
 
 ## Related
 <!-- openclaw:wiki:related:start -->

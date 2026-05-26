@@ -23,17 +23,18 @@
 | 论文 | arXiv | 核心贡献 | 状态 |
 |------|-------|---------|------|
 | **Isaac Lab** | 2511.04831 | Isaac Gym的GPU加速继承者，支持RL+IL，GPU原生并行物理+渲染，模块化架构 | ✅ 摘要级深挖-R543 |
-| **Zero-Shot Sim2Real RL for Occlusion-Aware Plant Manipulation** | 2505.16547 | Isaac Lab零样本sim-to-real RL，遮挡感知植物操作，植物/遮挡/光照零样本泛化 | 🆕 候选-R765 |
+| **Find the Fruit: Zero-Shot Sim2Real RL for Occlusion-Aware Plant Manipulation** | 2505.16547 | Isaac Lab零样本sim-to-real RL，遮挡感知植物操作，植物/遮挡/光照零样本泛化 | ✅ 已入库-R20260516A |
 | **Robot Tactile Olympiad (RoTO)** | 2510.21609 | Isaac Lab触觉RL基准（Find/Bounce/Baoding三任务），基于触觉的RL for robotic control | 🆕 候选-R765 |
 | **TIAGo + Isaac Sim/Gym** | 2403.07091 | sim-to-real gap分析，比较 Isaac Gym 与 Isaac Sim 在移动机械臂操控中的误差与无碰控制表现 | ✅ 摘要级深挖-R539 |
 | **WheelArm-Sim** | 2601.21129 | Isaac Sim中的轮椅+机械臂一体化合成数据平台，覆盖导航+操作联合控制 | ✅ 已摘要级深挖-R665 |
-| **MobileManiBench** | 2602.05233 | 基于 Isaac Sim + RL 的移动操作数据与验证基准，自动生成多视角RGB-D-分割、机器人状态与语言指令 | 🆕 候选-R548 |
+| **MobileManiBench** | 2602.05233 | 基于 Isaac Sim + RL 的移动操作数据与验证基准，自动生成多视角RGB-D-分割、机器人状态与语言指令 | ✅ 已入库-R20260525-1603 |
 | **WHOLE-MoMa** | 2604.12509 | WBC状态机采集 + 离线RL，两阶段把 whole-body mobile manipulation 从控制先验推进到可学习策略 | ✅ 已摘要级补记-R752 |
 | **A Comparison of Reinforcement Learning and Optimal Control for Aerial Manipulators** | 2604.12628 | 直接对比 DDPG 与 pseudo-spectral optimal control，提醒 D07 不该只在 RL 训练器里内卷，还应单列“RL vs 最优控制/混合控制”对照轴 | 🆕 候选-R793 |
 | **AGILE** | 2603.20147 | Isaac Lab 上层工作流，补训练前验证、确定性场景测试、统一评测与部署链 | 🆕 候选-R787 |
 | **Meta-Adaptive Beam Search Planning for Transformer-Based Reinforcement Learning Control of UAVs with Overhead Manipulators under Flight Disturbances** | 2603.26612 | Transformer-DDQN + adaptive beam search，在预定义飞行轨迹上专注 manipulator torque planning 与扰动补偿，适合作为“只学操作臂、不学飞行底座”的中间强基线 | 🆕 候选-R796 |
 | **Synthesis of Model Predictive Control and Reinforcement Learning: Survey and Classification** | 2502.02133 | 系统整理 MPC+RL 混合范式，提醒 D07 的 hybrid 不该只写成“RL+内环控制器”，还应区分 teacher-student、safety shield、policy warm-start、optimizer-on-top-of-policy 等不同接口形态 | 🆕 候选-R800 |
 | **Global End-Effector Pose Control of an Underactuated Aerial Manipulator via Reinforcement Learning (DSAM)** | 2512.21085 | PPO 外环 + INDI/PID 内环在真实空中机械臂上实现厘米级末端精度，并在 16% 载荷扰动、68% 推物体质量下保持稳健，说明 hybrid inner-loop 不只是工程补丁，而是 D07 的正式强基线 | 🆕 候选-R804 |
+| **Enhancing Graph-Based SLAM in GNSS-Denied environments by leveraging leg odometry** | 2605.20484 | 在 GNSS 拒止场景把腿里程计作为图优化垂向锚点，高程漂移从 30m+ 压到 30cm 内；适合作为复杂户外腿足/导航平台的低成本稳定位姿基线 | ✅ 已入库-R76586 |
 | **SO-ARM101 + Isaac Lab** | GitHub | 特定机械臂在Isaac Lab中训练RL策略的具体实践，含cube lifting等任务 | 🆕 R536新增候选 |
 
 ### Sim-to-Real RL 机械臂
@@ -165,6 +166,8 @@
 - 2026-04-09 R543: 补入 **Isaac Lab** (2511.04831) 摘要级速记，确认它不只是“新模拟器”，而是把 GPU 并行物理、照片级渲染、RL/IL/遥操作统一到一个模块化框架里，适合作为 D07 的训练底座；同时新增 **Dexterous Sim-to-Real** (2502.20396) 为重点候选，提示后续应尽早把视觉输入与接触丰富任务纳入路线图
 - 2026-04-09 R539: 补入 **TIAGo + Isaac Sim/Gym** (2403.07091) 摘要级深挖，确认 D07 后续做 sim-to-real 时必须把“控制架构 + 关节误差 + 无碰约束”一起纳入验收，不是只看仿真成功率
 - 2026-04-08 R536: 新增 SO-ARM101+Isaac Lab 具体实践案例；Isaac Lab 文档确认 RL 训练 API 完整；D07 基础设施层（Isaac Lab）已明确，下一步聚焦具体 RL 算法文档扫描
+
+- 2026-05-25 R20260525-1603: 本轮按优先级主扫 **D06 空中视觉语言导航** 与 **D07 Isaac 强化学习机械臂控制**。本地调度状态显示两方向近期都以本地锚点消化为主，因此外扩只做轻量补扫。arXiv Export API 两次请求均被 `Rate exceeded` 限流；web_search 侧 D06 回流主要是已在库的 **AutoFly / AerialVLN Survey**，未形成新增；D07 命中 **MobileManiBench (2602.05233)**，复核发现本地仅停留在候选位。已完成入库：下载 PDF 至 `01_论文库/强化学习/2602.05233_MobileManiBench.pdf`，并新建阅读笔记 `02_阅读笔记/D07_Isaac强化学习机械臂控制/2026-05-25_2602.05233_MobileManiBench.md`。当前判断：它的核心价值在 **自动数据生成 + 分阶段验证基准**，适合作为 D07 的 shared evaluation shell，而不是新的主控方法叙事。D06 本轮新增 0 篇；D07 本轮新增 1 篇。补登记调度库时，`paper_scheduler report --arxiv 2602.05233` 失败，原因是该论文尚未在 scheduler 数据库注册，后续需先 import/注册再 report。
 
 ## 五、待扫描关键词
 

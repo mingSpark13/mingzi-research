@@ -2,7 +2,7 @@
 type: "source"
 tags: ["Sim2Real", "状态抽象", "强化学习"]
 summary: "Abstract Sim2Real形式化了‘抽象模拟器也能迁移’的问题，给不完美仿真环境中的策略训练建立状态抽象理论基础。"
-origins: ["../../02_阅读笔记/01_机器人与具身/2026-04-19_Abstract_Sim2Real", "02_阅读笔记/01_机器人与具身/2026-04-19_Abstract_Sim2Real"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-19_Abstract_Sim2Real", "02_阅读笔记/D02_VLA/2026-04-19_Abstract_Sim2Real"]
 updated: "2026-05-10"
 ---
 
@@ -11,5 +11,5 @@ updated: "2026-05-10"
 **核心价值**: Abstract Sim2Real形式化了‘抽象模拟器也能迁移’的问题，给不完美仿真环境中的策略训练建立状态抽象理论基础。
 
 **原始资料**:
-- [[../../02_阅读笔记/01_机器人与具身/2026-04-19_Abstract_Sim2Real]]
-- [[02_阅读笔记/01_机器人与具身/2026-04-19_Abstract_Sim2Real]]
+- [[../../02_阅读笔记/D02_VLA/2026-04-19_Abstract_Sim2Real]]
+- [[02_阅读笔记/D02_VLA/2026-04-19_Abstract_Sim2Real]]

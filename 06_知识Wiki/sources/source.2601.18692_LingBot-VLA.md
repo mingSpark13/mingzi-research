@@ -3,7 +3,7 @@ type: "source"
 tags: ["VLA架构", "数据合成", "跨载体泛化", "多模态统一架构"]
 summary: "2万小时真实双臂数据训练统一VLA基模，GM-100评测基准，8卡吞吐261 samples/s，工程与学术并重的务实路线"
 origins: ["../../02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA", "02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA"]
-updated: "2026-05-10"
+updated: "2026-04-17"
 ---
 
 # LingBot-VLA: A Pragmatic VLA Foundation Model

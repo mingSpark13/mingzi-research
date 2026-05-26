@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: ""
-origins: ["02_阅读笔记/02_世界模型与生成/2025-02-25_InSpatioWorld"]
+origins: ["02_阅读笔记/D01_世界模型/2025-02-25_InSpatioWorld"]
 updated: "2026-04-17"
 ---
 
@@ -11,4 +11,4 @@ updated: "2026-04-17"
 **核心价值**: 
 
 **原始资料**:
-- [[02_阅读笔记/02_世界模型与生成/2025-02-25_InSpatioWorld]]
+- [[02_阅读笔记/D01_世界模型/2025-02-25_InSpatioWorld]]

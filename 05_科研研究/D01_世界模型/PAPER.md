@@ -1,7 +1,7 @@
 # A World Model-Based Deployment-Time Supervisor for Aerial Manipulation
 
 > 方向：D01 世界模型 | 目标会议：ICRA 2027 | 状态：🔴 草稿
-> 最后更新：2026-05-12
+> 最后更新：2026-05-14
 
 ---
 
@@ -47,10 +47,11 @@ ABot-PhysWorld [REF: 2603.23376] addresses physically implausible world model ou
 
 ### 2.4 Failure Classification, Feasibility Screening, and Recovery
 
-Dream2Fix [REF: 2603.13528] synthesizes counterfactual failure rollouts by perturbing successful demonstrations within a generative world model, producing failure→correction paired data for training recovery policies. World Model Failure Classification [REF: 2602.16182] proposes distinguishing known failures from anomalies for autonomous inspection, motivating our F1/F2 triage protocol. Recent work on explicit physical feasibility in VLA learning [REF: 2604.17896] further suggests that execution-time supervision should separate semantic correctness from physical feasibility, rather than treating them as a single score. Hi-WM [REF: 2604.21741] pushes world models one step closer to deployment-time corrective infrastructure by showing that failure states inside the learned model can be reused, rolled back, and branched for human corrective supervision, effectively turning the world model into a reusable substrate for failure-targeted post-training rather than only for passive evaluation. Very recent long-horizon VLA evidence also strengthens this decomposition from the planning side: LoHo-Manip [REF: 2604.21924] shows that progress-aware remaining-plan prediction and compact visual traces can implicitly absorb execution errors by repeatedly reissuing local goals instead of relying on brittle monolithic history buffers. Although LoHo-Manip is not a world-model supervisor, it reinforces a design principle highly relevant to D01: recovery and replanning become much more reliable when progress state, remaining intent, and local execution hints are packetized into an explicit intermediate representation. Persistent Robot World Models [REF: 2603.25685] adds a complementary world-model-side signal: stabilizing multi-step rollout trajectories through reinforcement learning can convert failure-prone imagined futures into more reusable supervisory evidence, which matters when cached branches are later reused for packet repair or human correction. Together, these works motivate our decomposition of pre-execution supervision into ranking, feasibility screening, triage, bounded recovery, branchable corrective memory, and explicit remaining-plan preservation.
+Dream2Fix [REF: 2603.13528] synthesizes counterfactual failure rollouts by perturbing successful demonstrations within a generative world model, producing failure→correction paired data for training recovery policies. World Model Failure Classification [REF: 2602.16182] proposes distinguishing known failures from anomalies for autonomous inspection, motivating our F1/F2 triage protocol. Recent work on explicit physical feasibility in VLA learning [REF: 2604.17896] further suggests that execution-time supervision should separate semantic correctness from physical feasibility, rather than treating them as a single score. Hi-WM [REF: 2604.21741] pushes world models one step closer to deployment-time corrective infrastructure by showing that failure states inside the learned model can be reused, rolled back, and branched for human corrective supervision, effectively turning the world model into a reusable substrate for failure-targeted post-training rather than only for passive evaluation. Very recent long-horizon VLA evidence also strengthens this decomposition from the planning side: LoHo-Manip [REF: 2604.21924] shows that progress-aware remaining-plan prediction and compact visual traces can implicitly absorb execution errors by repeatedly reissuing local goals instead of relying on brittle monolithic history buffers. Although LoHo-Manip is not a world-model supervisor, it reinforces a design principle highly relevant to D01: recovery and replanning become much more reliable when progress state, remaining intent, and local execution hints are packetized into an explicit intermediate representation. Persistent Robot World Models [REF: 2603.25685] adds a complementary world-model-side signal: stabilizing multi-step rollout trajectories through reinforcement learning can convert failure-prone imagined futures into more reusable supervisory evidence, which matters when cached branches are later reused for packet repair or human correction. OA-WAM [REF: 2605.06481] adds a new identity-preservation perspective by separating persistent object/action addresses from time-varying content, suggesting that delayed-consumption failure is not only about stale timing but also about whether the packet still points to the same executable referent when the downstream stack finally consumes it. Together, these works motivate our decomposition of pre-execution supervision into ranking, feasibility screening, triage, bounded recovery, branchable corrective memory, identity-preserving packet addressing, and explicit remaining-plan preservation.
 
 A further design pressure emerges from recent object-addressable world-action modeling. OA-WAM [REF: 2605.06481] decomposes world prediction into persistent robot/object slots with address vectors separated from time-varying content, allowing action decoding to preserve object identity under scene perturbation. While OA-WAM is proposed for robust manipulation rather than deployment-time supervision, its slot-address separation sharpens an important D01 concern: delayed-consumption failure is often not just a timing problem but an **identity-preservation problem**. A packet can remain geometrically feasible and even controller-bindable while silently drifting to a nearby but different object anchor or clause target. This strengthens our decision to make remaining-plan preservation, clause identity, and downstream consume-honesty first-class supervisory variables instead of treating packet validity as a single scalar confidence.
 
+Recent interface-focused evidence also suggests that the boundary between imagined future quality and executable control quality is still under-specified. MoLA [REF: 2605.12167] proposes a mixture-of-latent-actions interface that inverts imagined multimodal futures into control-oriented latent actions through multiple inverse-dynamics experts, explicitly targeting the gap between perceptually plausible rollout and executable robot behavior. For D01, MoLA reinforces a concrete design pressure: even if packet ranking, expiry handling, and thread preservation are modeled well, the supervisory contract is still vulnerable if the imagined future is decoded through a weak action interface. We therefore treat latent-action mixture quality as complementary evidence for whether a refreshed packet remains not only semantically and temporally valid, but also **decode-honest** with respect to downstream control.
 
 ### 2.5 Evaluation Beyond Visual Fidelity
 
@@ -59,6 +60,8 @@ WorldArena [REF: 2602.08971] demonstrates a persistent perception-functionality 
 Very recent industrial evidence further pushes this argument from benchmark diagnostics toward deployment reliability. Cortex 2.0 [REF: 2604.20246] reports that real-world long-horizon manipulation benefits from explicitly generating and scoring candidate futures before commitment, rather than acting reactively one step at a time. Dream-MPC [REF: 2605.04568] strengthens the planner-side version of this story by showing that latent imagined trajectories can be iteratively optimized rather than passively sampled, while Semantic Latent Space World Models [REF: 2605.06388] suggest that semantically organized latent states can improve what futures are screened as promising in the first place. Yet these newer results also sharpen a caution central to D01: better future scoring and better semantic latent organization are still not equivalent to better delayed-consumption supervision. They may improve candidate quality at proposal time without guaranteeing that the released packet remains fresh, clause-consistent, and consume-honest when finally used downstream. Accordingly, we treat them as evidence that **representation-side screening** and **planner-side refinement** matter, but not as proof that packet-contract failure has been solved.
 
 Although Cortex 2.0 is not designed as a pre-execution safety supervisor, it reinforces a key thesis of this paper: deployment utility emerges when world models are judged by whether their imagined futures help select *reliable executable behavior* under clutter, occlusion, and contact-rich uncertainty, not by whether the generated video merely looks convincing.
+
+A further practical lesson comes from lightweight JEPA-style latent prediction. LeWorldModel [REF: 2603.19312] shows that compact end-to-end joint-embedding predictors can deliver dramatically faster planning loops and physically probeable latent structure with minimal training machinery. For D01, this is useful not because it automatically solves handoff accountability, but because it creates a cleaner experimental separation between **refresh-budget availability** and **refresh-value honesty**. In other words, faster latent refresh makes it easier to test whether more frequent packet regeneration truly improves delayed-consumption survival, rather than merely improving planner-time ranking density.
 
 ### 2.6 Limitations of Existing Work
 
@@ -83,6 +86,17 @@ Existing world model approaches share several critical gaps for aerial manipulat
 (18) More fundamentally, current deployment-facing evaluation rarely measures whether a packet keeps the **same clause identity and remaining-plan compatibility across bind and consume**. As a result, a system can report stronger planner release, verifier acceptance, or controller bind rates while still losing the packet's executable meaning at the final local-interaction consume step.
 (19) Existing deployment-time world-model studies also rarely separate **bind-honest** gains from **consume-honest** gains inside the same downstream stage. Without this distinction, local attach success can be misreported as full deployment-time supervisory value, even when the packet only survives long enough to bind but not long enough to preserve executable semantics through actual interaction consumption.
 (20) Even when progress fields are retained, current systems seldom preserve an explicit **addressable identity channel** for objects, anchors, or clause targets across refresh and handoff; as a result, delayed-consumption packets can silently drift to a nearby but different referent while still looking feasible under geometric or controller-local checks.
+(21) Recent object-addressable world-action models such as OA-WAM [REF: 2605.06481] strengthen identity robustness under manipulation perturbation, but they still do not elevate **consume-time clause/object/address preservation** into a first-class deployment-time supervisory contract with explicit bind-versus-consume honesty separation.
+(22) Lightweight JEPA-style latent predictors such as LeWorldModel [REF: 2603.19312] suggest that compact physically probeable latent dynamics may be enough for fast packet scoring, yet existing work still does not show whether higher refresh frequency actually preserves **remaining-plan identity and delayed-consumption honesty** rather than merely planner-side ranking quality.
+(23) Recent object-slot world-action modeling further hints that identity disentanglement should be treated not only as a representation robustness issue but also as a **packet-accountability issue**: if slot identity, target clause, and downstream consume address are not explicitly logged together, a refreshed packet can appear safer while actually switching executable referents under the hood.
+(24) Lightweight JEPA-style world models also leave unresolved a deployment-facing calibration question: even when compact latent predictors enable faster refresh cycles, current work rarely distinguishes whether the extra refresh budget improves **planner-side proposal quality** or actually improves **bind-honest / consume-honest packet survival** under delayed downstream uptake.
+(25) Latent-action interface advances such as mixture-based inverse-dynamics decoding reinforce that identity preservation alone is insufficient; a packet can remain clause-consistent and address-stable while still losing executable meaning if refreshed futures are decoded through a control-weak latent action interface at consume time.
+(26) Compact end-to-end latent predictors such as LeWorldModel [REF: 2603.19312] may substantially increase refresh frequency and screening throughput, but existing work still does not report whether this speedup changes **delayed-consumption honesty** or only densifies planner-time rescoring.
+(27) Semantics-oriented latent-space selection can improve planner-side screening and policy-relevant prediction, but current work still under-specifies whether a more semantic latent actually preserves **slot identity, clause continuity, and decode-honest packet meaning** through delayed downstream consume.
+(28) Asynchronous or speculative refresh pipelines such as DexWorldModel [REF: 2604.16484] further blur a critical boundary: more frequent packet regeneration may improve release-time ranking and controller bind honesty while leaving true consume-time packet survival unchanged, yet current reporting rarely separates these refresh-window regimes into proposal gain, bind gain, and real downstream handoff gain.
+(26) Compact end-to-end latent predictors such as LeWorldModel [REF: 2603.19312] may substantially increase refresh frequency and screening throughput, but existing work still does not report whether this speedup changes **delayed-consumption honesty** or only densifies planner-time rescoring.
+(27) Semantics-oriented latent-space selection can improve planner-side screening and policy-relevant prediction, but current work still under-specifies whether a more semantic latent actually preserves **slot identity, clause continuity, and decode-honest packet meaning** through delayed downstream consume.
+(28) Asynchronous or speculative refresh pipelines such as DexWorldModel [REF: 2604.16484] further blur a critical boundary: more frequent packet regeneration may improve release-time ranking and controller bind honesty while leaving true consume-time packet survival unchanged, yet current reporting rarely separates these refresh-window regimes into proposal gain, bind gain, and real downstream handoff gain.
 
 ## 3.24 Bind-Honest versus Consume-Honest Accountability Matrix
 
@@ -108,7 +122,7 @@ Delayed-consumption supervision is not only about whether a packet stays fresh l
 
 where `obj` denotes the manipulated object slot, `anchor` denotes the local spatial/relational anchor, `clause` denotes the next executable subgoal clause, and `thread` denotes the running progress thread expected by the downstream consumer. The supervisor is allowed to refresh timing margins, feasibility scores, or local geometric corrections only if the address tuple remains stable or the change is explicitly reported as a controlled reroute.
 
-This design is inspired by OA-WAM [REF: 2605.06481], which preserves robot/object identity through address vectors separated from mutable slot content. Our use is different: we do not adopt object-addressable slots merely to improve manipulation robustness, but to prevent a more subtle deployment error in aerial supervision. A packet may remain rank-positive, feasibility-positive, and even bind-honest while quietly shifting from one nearby object or clause target to another. In that case, the failure is neither pure freshness loss nor pure controller failure; it is an **identity drift under delayed consumption**.
+This design is inspired by OA-WAM [REF: 2605.06481], which preserves robot/object identity through address vectors separated from mutable slot content. Our use is different: we do not adopt object-addressable slots merely to improve manipulation robustness, but to prevent a more subtle deployment error in aerial supervision. A packet may remain rank-positive, feasibility-positive, and even bind-honest while quietly shifting from one nearby object or clause target to another. In that case, the failure is neither pure freshness loss nor pure controller failure; it is an **identity drift under delayed consumption**. MoLA [REF: 2605.12167] adds a complementary constraint on the action side: even when object/clause identity is preserved, downstream execution can still fail if the imagined future is decoded into a semantically correct but control-weak latent action. We therefore treat identity preservation and latent-action decode honesty as two coupled conditions for trustworthy packet reuse.
 
 We therefore define an identity-preservation predicate
 
@@ -117,6 +131,75 @@ We therefore define an identity-preservation predicate
 \]
 
 where \(\alpha_t^{\downarrow}\) is the downstream consumer's expected address tuple and \(d\) compares object identity, anchor relation, clause continuity, and thread continuity. A packet can only be counted as truly consume-honest if both clause-compatibility and identity preservation remain positive at consume time. If identity fails but feasibility remains positive, the event is frozen as **address-drifted bind gain** rather than full handoff gain. This gives D01 a stricter route for honest reporting: surviving delayed consumption now requires not just executable timing validity, but also stable object/anchor/clause reference across refresh, bind, and consume.
+
+### 3.26 Refresh-Budget Attribution: Proposal Gain versus Handoff Gain
+
+Fast latent predictors are attractive for D01 because they can increase how often the supervisor refreshes packet validity before downstream execution. However, a higher refresh rate is not automatically equivalent to stronger deployment-time supervision. We therefore introduce an attribution rule that separates **proposal-side refresh gain** from **true downstream handoff gain**. Let a refresh sequence produce packets \(\mathcal{P}_{t}^{(0)}, \mathcal{P}_{t}^{(1)}, \dots, \mathcal{P}_{t}^{(K)}\) before final controller use. For each refresh index \(k\), we separately record whether the update improved (i) planner-side ranking and feasibility discrimination, (ii) controller-side bind honesty, and (iii) local consume-time honesty:
+
+\[
+\Delta^{(k)} = (\Delta r^{\text{rank}}_k,\; \Delta h^{\text{bind}}_k,\; \Delta h^{\text{consume}}_k).
+\]
+
+This decomposition matters because lightweight JEPA-style predictors such as LeWorldModel [REF: 2603.19312] mainly promise **faster latent refresh and cheaper planning throughput**, whereas latent-action mixture interfaces such as MoLA [REF: 2605.12167] mainly promise **more executable decoding of imagined futures**. In D01, neither improvement is allowed to directly upgrade the paper's main claim unless it survives delayed downstream use. A refresh loop that repeatedly raises ranking quality but leaves \(\Delta h^{\text{consume}}_k \approx 0\) is credited only as **proposal-side semantic gain**; a loop that improves bind honesty but not consume honesty is frozen as **controller-attachment gain**. Only refresh updates that measurably increase consume-honest packet survival while preserving clause identity, thread continuity, and remaining-plan compatibility may be counted as **refresh-enabled handoff gain**.
+
+Operationally, this lets D01 use fast world-model refresh as a controlled experimental variable rather than a vague systems advantage. We can now ask whether more frequent packet regeneration truly rescues delayed consumption, or merely makes the supervisor look sharper at release time.
+
+### 3.27 Slot-to-Consume Identity Audit and Decode-Honesty Coupling
+
+Recent local evidence from OA-WAM [REF: 2605.06481] and LeWorldModel [REF: 2603.19312] sharpens a deployment-time distinction that D01 should make explicit. OA-WAM shows that persistent object-address vectors can stabilize **which entity** a manipulation model is acting on under perturbation, while LeWorldModel shows that compact JEPA-style latent dynamics can make packet refresh dramatically cheaper and more frequent. Put together, these results imply a subtle but important supervisory risk: faster refresh may regenerate packets more often, and object-addressable slots may preserve representation-level identity better, yet the downstream stack can still lose the packet's executable meaning if **emitted slot identity**, **refreshed slot identity**, **bound slot identity**, and **consumed slot identity** are not audited under the same clause and decode interface.
+
+We therefore extend the D01 packet contract with a slot-to-consume identity audit tuple
+
+\[
+\eta_t = (s_t^{\text{emit}},\; s_t^{\text{refresh}},\; s_t^{\text{bind}},\; s_t^{\text{consume}},\; q_t^{\text{decode}}),
+\]
+
+where the first four fields denote the object-addressable slot selected at packet release, after refresh, at downstream bind, and at final local consume, respectively, and \(q_t^{\text{decode}}\) denotes a decode-honesty score measuring whether the latent action interface still maps the refreshed packet to the same executable operational meaning. The first four terms audit *referent preservation*; the fifth audits whether the action-side interface silently weakens or shifts the packet even when the referent remains stable.
+
+This audit gives D01 a more honest interpretation boundary for fast-refresh world models. A LeWorldModel-style predictor may improve refresh density and planner-time rescoring, and an OA-WAM-style address space may reduce slot drift under perturbation, but neither should be credited as delayed-consumption progress unless the slot lineage remains aligned through consume and the latent action interface remains decode-honest at use time. Accordingly, if slot lineage is preserved through bind but breaks at consume, we freeze the gain as **address-stable bind support**. If slot lineage remains stable but decode honesty collapses, we freeze the gain as **identity-preserved decode-fragile support**. Only when both slot lineage and decode honesty survive consume do we allow the evidence to promote a stronger **consume-honest identity-preserving handoff** claim.
+
+### 3.28 Semantics-Aware Slot Screening versus Consume-Time Preservation
+
+Recent evidence on robotic latent-space selection suggests that semantically useful representations can substantially improve world-model utility even when they do not maximize pixel reconstruction fidelity. Semantic Latent Space World Models [REF: 2605.06388] shows that semantically oriented encoders such as V-JEPA-style or DINO-style representations can outperform reconstruction-heavy latents on policy-relevant evaluation, which is highly relevant for D01 because our supervisor must rank and screen packets according to executable downstream value rather than visual realism alone. However, this gain should be interpreted carefully: a more semantic latent can improve planner-side discrimination, retrieval of the correct action-relevant object manifold, and stage-local scoring, while still failing to preserve the same packet meaning at delayed downstream consume.
+
+We therefore introduce a semantics-aware screening tuple
+
+\[
+\sigma_t = (q_t^{\text{sem-rank}},\; q_t^{\text{slot-match}},\; q_t^{\text{clause-link}},\; q_t^{\text{decode-honest}},\; q_t^{\text{consume-honest}}),
+\]
+
+where `sem-rank` measures whether the latent supports better policy-relevant ranking, `slot-match` measures whether the semantic latent still points to the intended object/anchor slot, `clause-link` measures whether the selected latent state preserves the same executable subgoal clause, `decode-honest` measures whether the downstream action interface still maps the latent packet to the intended control semantics, and `consume-honest` measures whether all of the above survive actual local consume. This tuple lets D01 separate **semantic screening gain** from **semantic consume-time preservation**. A stronger semantic latent may correctly re-rank futures and improve early-stage filtering, yet if `slot-match` or `clause-link` breaks after refresh, or if the downstream action interface weakens at consume time, the gain must remain frozen below full handoff credit.
+
+This section sharpens the paper's core argument in a way that is especially useful for aerial manipulation. The real question is not whether semantic latent spaces are better in general, but whether they help the supervisor preserve the same executable packet across refresh, bind, and consume under time pressure. Accordingly, D01 only upgrades semantic-latent improvements to packet-contract evidence when they jointly improve ranking, slot stability, clause continuity, and delayed-consumption honesty. Otherwise, they are reported conservatively as **planner-side semantic screening gain** or **identity-helpful but consume-fragile support**, rather than being overstated as full deployment-time supervisory progress.
+
+### 3.29 Consume-Time Semantics Audit under Delayed Semantic-Control Interfaces
+### 3.29 Consume-Time Semantics Audit under Delayed Semantic-Control Interfaces
+
+The latest local retrieval signal also suggests a concrete cross-direction caution for D01. QMD recall for `world model semantic latent consume honest packet delayed consumption` primarily returns **TIC-VLA** and other delayed semantic-control interface evidence instead of a clean D01-only world-model family, reinforcing that semantically stronger latent states are easy to confuse with merely better *late semantic routing*. For D01, this means a semantic latent should not be credited just because it improves planner-side matching, route selection, or stage-local action plausibility under a delayed-control stack. It must still survive the same delayed downstream consume boundary that TIC-VLA-style interface work explicitly warns about.
+
+We therefore add a consume-time semantics audit tuple
+
+\[
+\zeta_t = (q_t^{\text{sem-rank}},\; q_t^{\text{route-stale}},\; q_t^{\text{slot-stable}},\; q_t^{\text{decode-honest}},\; q_t^{\text{consume-honest}}),
+\]
+
+where `route-stale` measures whether a semantic latent's apparent gain can already be explained by a delayed semantic-control interface that exposes stale-but-still-useful routing information, rather than by a genuinely stronger packet contract. The reporting rule is deliberately conservative. If a semantic latent only improves `sem-rank` while leaving `route-stale` high, the gain is frozen as **planner-side semantic routing support**. If `slot-stable` and `decode-honest` improve but `consume-honest` still collapses under delayed uptake, the result is frozen as **address-stable semantic support** rather than full handoff progress. Only when the semantic latent simultaneously reduces stale-route dependence and improves true consume-time honesty may D01 promote it to **packet-contract evidence**.
+
+This addition matters because D01 increasingly sits next to D02-style latency-aware semantic-control interfaces in the local knowledge base. By explicitly auditing `route-stale` against consume-time honesty, we keep the paper honest about a subtle but important boundary: **better semantic latents may help choose a packet, but they do not automatically prove that the packet remains executable when the downstream controller finally consumes it**.
+
+### 3.30 Refresh-Window Separation: Proposal Improvement versus True Downstream Survival
+
+The newest local D01 evidence also sharpens a second ambiguity around fast-refresh world models. LeWorldModel-style compact latent predictors [REF: 2603.19312] and DexWorldModel-style speculative asynchronous inference [REF: 2604.16484] both suggest that the supervisor can regenerate candidate packets more frequently and with less wall-clock blockage. This is valuable, but it does not by itself show that delayed downstream consumption has become safer. In practice, more frequent refresh can improve three very different things: it can improve **proposal quality before release**, it can improve **bind-time freshness at controller attachment**, or it can improve **true consume-time survival once the local interaction stack actually uses the packet**. Existing deployment-time reporting rarely separates these regimes clearly enough.
+
+We therefore define a refresh-window attribution tuple
+
+\[
+\omega_t = (\Delta r_t^{\text{proposal}},\; \Delta h_t^{\text{bind}},\; \Delta h_t^{\text{consume}},\; \Delta \iota_t^{\text{addr}},\; \Delta q_t^{\text{decode}}),
+\]
+
+where `proposal` measures planner-side ranking/refinement gain after extra refresh, `bind` measures whether the refreshed packet survives controller attachment more honestly, `consume` measures whether it survives actual downstream use, `addr` measures whether object/anchor/clause identity is still preserved across the refresh lineage, and `decode` measures whether the latent action interface still maps the refreshed packet to the same executable control meaning. Under this audit, a faster refresh cycle is only credited as **refresh-enabled handoff gain** when `\Delta h_t^{\text{consume}}`, `\Delta \iota_t^{\text{addr}}`, and `\Delta q_t^{\text{decode}}` improve together. If the gain is concentrated only in `\Delta r_t^{\text{proposal}}`, the result is frozen as **proposal-density support**; if it improves bind but not consume, it remains **bind-honest refresh support**.
+
+This separation is especially important after the local re-read of Cortex 2.0 and DexWorldModel. Both reinforce that frequent rescoring, asynchronous imagination, and lower blocking latency can make world-model deployment look substantially stronger at release time. But D01's main claim is stricter: the paper is not about refreshing packets more often in the abstract, but about whether refreshed packets remain identity-preserving, decode-honest, and consume-honest when the downstream stack finally uses them. By forcing all refresh gains through `\omega_t`, we prevent planner-time sharpness from being overstated as true delayed-consumption supervisory progress.
 
 ## 4. Experiments
 
@@ -132,11 +215,13 @@ We treat aerial manipulation as a **coupled dual-dynamics prediction problem** r
 \mathbf{z}_t = [\mathbf{z}^{\text{scene}}_t,\; \mathbf{z}^{\text{flight}}_t,\; \mathbf{z}^{\text{ee}}_t,\; \mathbf{z}^{\text{contact}}_t,\; \mathbf{z}^{\text{intent}}_t],
 \]
 
-where scene, flight, end-effector, contact, and intent are explicitly factorized. The transition model receives packet actions and stage tags, and predicts latent evolution with dynamics, progress, and feasibility heads. Training combines forward prediction, inverse consistency, progress consistency, and executability-aware feasibility losses.
+where scene, flight, end-effector, contact, and intent are explicitly factorized. The transition model receives packet actions and stage tags, and predicts latent evolution with dynamics, progress, feasibility, and reachability heads. Training combines forward prediction, inverse consistency, progress consistency, executability-aware feasibility losses, and a horizon-matched reachability objective that teaches the model to distinguish futures that merely end near the target in latent space from futures that are actually reachable under the allotted execution horizon.
 
-Recent evidence from semantic-latent world modeling and latent-model-predictive control sharpens an important boundary for D01. Semantic Latent Space World Models [REF: 2605.06388] suggest that higher-level semantic latent structure can improve screening and imagined future discrimination under partial observability, while Dream-MPC [REF: 2605.04568] shows that gradient-based latent planning can refine candidate action sequences more effectively than simpler proposal mechanisms. However, neither stronger semantic representation nor stronger latent planning should be counted as deployment-time packet-contract progress by default. In D01, both are treated as **upstream evidence generators** whose gains must still survive packet expiry, remaining-plan preservation, delayed downstream bind, and local consume-time honesty before they can be credited as true supervisory value.
+Recent evidence from semantic-latent world modeling and latent-model-predictive control sharpens an important boundary for D01. Semantic Latent Space World Models [REF: 2605.06388] suggest that higher-level semantic latent structure can improve screening and imagined future discrimination under partial observability, while Dream-MPC [REF: 2605.04568] shows that gradient-based latent planning can refine candidate action sequences more effectively than simpler proposal mechanisms. TRM [REF: 2605.22164] adds an equally important planner-interface lesson: even with a usable latent dynamics model, the deployment stack can still fail if terminal ranking is based on Euclidean latent proximity rather than horizon-conditioned reachability. For D01, this means candidate scoring must be treated as its own contract surface rather than as a transparent readout of latent quality. However, neither stronger semantic representation, stronger latent planning, nor stronger reachability-aware reranking should be counted as deployment-time packet-contract progress by default. In D01, all three are treated as **upstream evidence generators** whose gains must still survive packet expiry, remaining-plan preservation, delayed downstream bind, and local consume-time honesty before they can be credited as true supervisory value.
 
-Concretely, we separate three sources of improvement already at the model level: **representation gain** (better latent state organization and semantic screening), **planner gain** (better candidate optimization in imagination), and **packet-contract gain** (better preservation of executable meaning through release, refresh, bind, and consume). This separation is central to our aerial setting because a system can become much better at ranking futures or proposing recoverable trajectories while still failing to preserve the same clause identity once the downstream controller actually consumes the packet.
+Concretely, we separate four sources of improvement already at the model level: **representation gain** (better latent state organization and semantic screening), **planner gain** (better candidate optimization in imagination), **ranking-interface gain** (better horizon-matched future selection), and **packet-contract gain** (better preservation of executable meaning through release, refresh, bind, and consume). This separation is central to our aerial setting because a system can become much better at ranking futures or proposing recoverable trajectories while still failing to preserve the same clause identity once the downstream controller actually consumes the packet.
+
+We intentionally keep the planner-side interpretation narrow. Dream-MPC [REF: 2605.04568] is therefore used in D01 as evidence for **proposal refinement under fixed packet semantics**, not as evidence that packet handoff itself has improved. Likewise, TRM [REF: 2605.22164] is used as evidence for **ranking-interface repair under fixed latent dynamics**, not as proof that better endpoint selection alone solves delayed-consumption supervision. A planner that optimizes latent trajectories more effectively, or a reachability head that reorders terminal futures more honestly, may reduce obviously bad proposals and increase rank quality; but unless the resulting packet also survives stage-scoped expiry, slot identity audit, and consume-time decode honesty, the gain remains frozen at planner-side or ranking-interface support.
 
 ### 3.3 Two-Stage Post-Training (C2)
 
@@ -270,7 +355,35 @@ Formally, for every packet event we assign a route-window label
 
 and report packet outcomes separately by window. In particular, the key packet metrics—Safety Release Yield (SRY), Refresh-to-Post-Plan Retention (RPPR), Packet Handoff Continuity (PHC), and thread-preserving Effective Aerial Handoff Rate (EAHR)—must be stratified by \(\zeta_t\). This makes it impossible to hide a weak W2 handoff story behind a strong W1 recovery story.
 
-### 3.18 Route-Freezing Rule for Deployment Claims
+### 3.18 Latency-Exposed Semantic Staleness Tokens
+
+Recent latency-aware VLA evidence suggests that delayed control failure is not only a world-model freshness problem but also an interface problem between slow semantic reasoning and fast execution. TIC-VLA [REF: 2602.02459] explicitly models the delayed semantic-control interface and shows that high-level semantic outputs should expose their latency to downstream control rather than pretending to be instantaneous. We adopt this lesson in D01 by attaching a compact **semantic staleness token** to every safety packet.
+
+Concretely, besides rank, feasibility, and expiry fields, the packet carries
+
+\[
+\sigma_t = (\delta_t^{\text{sem}},\; \delta_t^{\text{bind}},\; \delta_t^{\text{consume}},\; \phi_t^{\text{stage}}),
+\]
+
+where \(\delta_t^{\text{sem}}\) is the elapsed semantic age since the packet's clause-level reasoning was produced, \(\delta_t^{\text{bind}}\) and \(\delta_t^{\text{consume}}\) are expected lag budgets up to downstream bind and final local consume, and \(\phi_t^{\text{stage}}\) encodes whether the current stage tolerates stale semantics or requires forced refresh. The purpose is not to turn D01 into a semantic planner, but to make semantic staleness visible to the same deployment-time contract that already tracks expiry and thread preservation.
+
+This extension gives D01 a cleaner bridge to future D02 and D06 handoff experiments. A packet may remain dynamically feasible while its clause interpretation has become stale because the downstream controller will only consume it after an additional delay. In that case, the correct explanation is neither pure anomaly nor pure route failure: it is **latency-exposed semantic staleness**. We therefore treat positive gains from stale-semantic exposure as support for **freshness-accountable invalidation** or **latency-aware reroute discipline** unless they also survive \(W2\) post-refresh consume. In other words, exposing semantic age can justify earlier invalidation or safer reroute, but by itself it is still not evidence of full delayed-consumption handoff preservation.
+
+### 3.30 Interface-Staleness-Corrected Semantic Promotion Rule
+
+The previous sections separate semantic screening gain, identity preservation, and delayed-consumption honesty, but one more reviewer-facing rule is needed: **how should D01 decide whether a semantic-latent improvement is a world-model gain or merely a delayed-interface gain in disguise?** The local retrieval pattern is informative here. When our D01-targeted query repeatedly recalls TIC-VLA-style delayed semantic-control interface material before new D01 world-model evidence, the burden of proof should shift: any semantic gain must first defeat the weaker explanation that the system simply exposed stale semantic routing information more gracefully.
+
+We therefore define an interface-staleness-corrected promotion tuple
+
+\[
+\kappa_t = (q_t^{\text{sem-rank}},\; q_t^{\text{route-stale}},\; q_t^{\text{bind-honest}},\; q_t^{\text{consume-honest}},\; q_t^{\text{promotion-gap}}),
+\]
+
+where `promotion-gap` measures how much semantic-latent improvement remains after subtracting the best delayed-interface explanation. Concretely, D01 may only upgrade a semantic-latent result above **planner-side semantic routing support** if two conditions hold simultaneously: (i) `route-stale` decreases relative to an interface-only control, and (ii) the remaining gain still survives at both bind and consume time. If either condition fails, the result must be frozen below full packet-contract credit even when planner-side routing, ranking, or early-stage feasibility improves.
+
+This rule gives D01 a more honest promotion ladder. A semantic latent that helps the system pick cleaner packets but still depends on stale delayed-interface exposure is reported as **semantic-routing support**. A semantic latent that survives delayed bind but not consume is reported as **bind-honest semantic support**. Only a latent that reduces interface staleness dependence *and* improves consume-honest packet survival is allowed to support a stronger **deployment-time packet-contract** claim. In short, D01 should not claim that semantic latents solved delayed-consumption supervision until they outperform the best stale-interface explanation under the same downstream consume boundary.
+
+### 3.19 Route-Freezing Rule for Deployment Claims
 
 We finally impose a **route-freezing rule** on the paper's top-level claim. D01 is only allowed to claim a **progress-preserving supervisory contract** if gains remain positive under delayed consumption specifically in the **W2 post-refresh downstream consumption** window and those gains are attributable to **thread-preserving** commits rather than merely executable refreshes.
 
@@ -308,7 +421,21 @@ We operationalize this through an identity-preservation predicate
 
 where \(\alpha_t^{\downarrow}\) is the controller-side expected address state at bind or consume time, and \(d\) compares object identity, anchor relation, clause continuity, and thread continuity. A refreshed packet may only count as **consume-honest** if both thread consistency and identity preservation remain above threshold. If identity fails but feasibility remains positive, the event must be frozen as **address-drifted bind gain** rather than full handoff gain. This prevents a common failure mode in aerial manipulation handoff: a packet appears feasible, fresh, and locally smooth, yet its executable meaning has drifted because the target referent silently changed under viewpoint shift, contact evolution, or hover-window replanning.
 
+We further add an explicit **slot-to-consume audit** for object-slot style world models. For each packet we log whether the emitted slot identity, refreshed slot identity, and consumed slot identity remain aligned under the same clause and anchor relation. This matters because recent object-slot world-action modeling suggests that identity disentanglement can stay stable in representation space while still drifting at the packet-consumption interface. We therefore treat slot alignment as a first-class packet audit signal rather than assuming representational disentanglement automatically implies downstream consume honesty.
+
 We therefore derive a **Consumption-Time Thread Preservation Rate (CTTPR)** that fully credits `same-thread consume`, partially credits `controlled reroute consume`, and penalizes silent shifts or post-refresh rejects. CTTPR is reported jointly with RPPR and PHC so that D01 distinguishes a packet that merely survives until consumption from a packet that preserves the intended executable thread *and referent* through consumption.
+
+### 3.26 Refresh-Budget Attribution: Proposal Gain versus Handoff Gain
+
+Fast latent predictors are attractive for D01 because they can increase how often the supervisor refreshes packet validity before downstream execution. However, a higher refresh rate is not automatically equivalent to stronger deployment-time supervision. We therefore introduce an attribution rule that separates **proposal-side refresh gain** from **true downstream handoff gain**. Let a refresh sequence produce packets \(\mathcal{P}_{t}^{(0)}, \mathcal{P}_{t}^{(1)}, \dots, \mathcal{P}_{t}^{(K)}\) before final controller use. For each refresh index \(k\), we separately record whether the update improved (i) planner-side ranking and feasibility discrimination, (ii) controller-side bind honesty, and (iii) local consume-time honesty:
+
+\[
+\Delta^{(k)} = (\Delta r^{\text{rank}}_k,\; \Delta h^{\text{bind}}_k,\; \Delta h^{\text{consume}}_k).
+\]
+
+This decomposition matters because lightweight JEPA-style predictors such as LeWorldModel [REF: 2603.19312] mainly promise **faster latent refresh and cheaper planning throughput**, whereas latent-action mixture interfaces such as MoLA [REF: 2605.12167] mainly promise **more executable decoding of imagined futures**. In D01, neither improvement is allowed to directly upgrade the paper's main claim unless it survives delayed downstream use. A refresh loop that repeatedly raises ranking quality but leaves \(\Delta h^{\text{consume}}_k \approx 0\) is credited only as **proposal-side semantic gain**; a loop that improves bind honesty but not consume honesty is frozen as **controller-attachment gain**. Only refresh updates that measurably increase consume-honest packet survival while preserving clause identity, thread continuity, and remaining-plan compatibility may be counted as **refresh-enabled handoff gain**.
+
+Operationally, this lets D01 use fast world-model refresh as a controlled experimental variable rather than a vague systems advantage. We can now ask whether more frequent packet regeneration truly rescues delayed consumption, or merely makes the supervisor look sharper at release time.
 
 ### 3.20 Retention-Aware Packet Refresh Scheduling
 
@@ -414,6 +541,52 @@ This rule is intentionally stricter than controller-accountability alone. Its pu
 
 ## 4. Experiments
 
+### 3.17 Address-Preserving Consume-Time Handoff Gate
+
+Freshness and thread consistency are still insufficient to certify a packet for downstream use if the packet no longer points to the same executable referent at consume time. In aerial manipulation, the downstream stack may receive a packet that is still geometrically feasible and still locally bindable, yet the object anchor, clause target, or latent action interpretation has already drifted. We therefore extend the deployment-time contract from **freshness + thread consistency** to **freshness + thread consistency + address preservation + decode honesty**.
+
+Let the consume-time handoff tuple be
+
+\[
+\zeta_t = (f_t,\; h_t,\; a_t,\; d_t),
+\]
+
+where \(f_t\) denotes freshness validity, \(h_t\) denotes thread compatibility, \(a_t\) denotes address preservation, and \(d_t\) denotes decode honesty. Here, **address preservation** asks whether the packet still refers to the same target object / waypoint anchor / instruction clause that justified its release, while **decode honesty** asks whether the packet can still be decoded into a downstream action interface without silently changing its effective operational meaning.
+
+Concretely, we define an address-preservation score
+
+\[
+\alpha_t = \mathrm{sim}(\eta_t^{\text{emit}}, \eta_t^{\text{consume}}),
+\]
+
+where \(\eta_t\) is an address signature that includes target identity, local anchor relation, clause pointer, and stage-scoped subgoal token. A packet is address-preserving only if \(\alpha_t > \delta_a\). This design is motivated by object-addressable world action modeling: a packet can remain executable after refresh while silently drifting to a nearby but different referent, which should count as a supervisory failure rather than a successful bounded repair.
+
+We also define a decode-honesty score
+
+\[
+\beta_t = \mathrm{compat}(u_t^{\text{latent}}, u_t^{\downarrow}),
+\]
+
+where \(u_t^{\text{latent}}\) is the latent action or packet content intended by the supervisor and \(u_t^{\downarrow}\) is the control-facing action interpretation induced at consume time. If \(\beta_t \leq \delta_d\), the packet may still be locally executable but no longer honestly supports the original semantic or control claim. This failure mode is especially important when a refreshed packet only preserves low-level continuation while losing clause-level or manipulation-ready meaning.
+
+The final consume-time release gate is therefore
+
+\[
+\kappa_t^{+} = \mathbb{I}[f_t = 1] \cdot \mathbb{I}[h_t = 1] \cdot \mathbb{I}[\alpha_t > \delta_a] \cdot \mathbb{I}[\beta_t > \delta_d].
+\]
+
+Only packets satisfying \(\kappa_t^{+}=1\) are allowed to support the strongest reviewer-facing claim of **progress-preserving, address-stable, consume-honest handoff**. If freshness and thread consistency hold but address preservation fails, the result must be frozen to a weaker **freshness-accountable reroute** or **bindable-but-drifted packet** interpretation. If address preservation holds but decode honesty fails, the packet can support at most a **decode-fragile bind support** claim. This rule prevents D01 from overstating hover-window recovery or packet refresh gains as full downstream handoff preservation when the packet has already lost referential or interface honesty.
+
+### 3.18 Minimal Logging Contract for Consume-Time Address and Decode Audits
+
+To make the above gate experimentally auditable, we attach two additional log fields to the existing delayed-consumption protocol: `addr_match` and `decode_match`. The first records whether the emitted packet and consumed packet still share the same object / waypoint / clause address signature; the second records whether the latent packet content and downstream interpreted action remain compatible under the same local execution thread. Together with the existing freshness and thread fields, D01 now logs a minimal consume-time contract
+
+\[
+\Lambda_{D01}^{+} = (\texttt{fresh},\; \texttt{thread},\; \texttt{consume},\; \texttt{addr\_match},\; \texttt{decode\_match}).
+\]
+
+This compact tuple is intentionally reviewer-facing. It forces every late-window gain to declare whether it survives only as freshness recovery, as thread-preserving bounded repair, or as the stronger address-stable and decode-honest downstream handoff. In this way, the method section and the experiment section share the same boundary language, reducing the risk that a packet is counted as successful merely because it remained executable after refresh.
+
 ### 4.1 Experimental Setup
 
 **Environments**:
@@ -451,21 +624,26 @@ This rule is intentionally stricter than controller-accountability alone. Its pu
 - `thread-preserving EAHR`
 - `Consumption-Time Thread Preservation Rate (CTTPR)`
 - `Bind-to-Consume Integrity Rate (BCIR)`
+- `Address Preservation Rate at Consume (APR-C)`
+- `Address-Drifted Bind Rate (ADBR)`
 - `Remaining-Plan Drift at Use Time (Δplan)`
 - `Physical Plausibility Preservation Rate (PPPR)`
 - `Executable Packet Validity Rate (EPVR)`
+- `Decode-Honest Latent Action Rate (DHLR)`
 - `window-conditioned delayed-consumption matrix` over `W0/W1/W2 × B0/B1/B2`
 
 **Physics-accountable interpretation rule**:
 - `PPPR` reports whether a released or repaired packet remains free of penetration, unsupported contact, anti-gravity transition, and flight-envelope inconsistency after post-training.
 - `EPVR` reports whether a physically plausible packet is still reachable, smooth, and controller-consumable under the current dynamics budget.
+- `DHLR` reports whether the packet's imagined future can still be decoded into a control-oriented latent action without silent loss of clause identity, temporal consistency, or downstream inverse-dynamics support; this metric is motivated by MoLA-style multi-expert latent-action decoding.
 - A result that improves only `PPPR` should be read as stronger physical sanitization; a result that improves only `EPVR` should be read as stronger controller-facing executability; only joint gains may support stronger deployment-time supervision claims.
+- A result that improves `EPVR` but not `DHLR` should be interpreted as controller-bindable yet decode-fragile packet quality, not full consume-honest action-interface improvement.
 
 ### 4.2 Main Results
 
 We evaluate the proposed supervisor in a staged aerial-manipulation benchmark that couples language-conditioned navigation with short-horizon manipulation packets. Each trial is decomposed into stage tags \(\{\text{search}, \text{hover}, \text{re-anchor}, \text{approach}, \text{inspect}\}\), and candidate packets are produced by an upstream planner or aerial VLN stack before being screened by D01. The world model is trained on a mixture of action-conditioned rollouts, failure-tagged execution traces, and synthetic counterfactual perturbations for F1 recovery. [TODO: 补充具体数据来源、仿真平台和真实平台配置]
 
-We compare four deployment settings corresponding to the proposed ladder: **Rank-Only**, **Reject-Only**, **Stage-Aware Routing**, and **Bounded Packet Repair**. The baseline set includes (i) direct planner execution without supervision, (ii) a rollout-ranking-only evaluator in the style of WorldEval, (iii) a verifier-style reachability check without stage-aware packet routing, and (iv) an ablated version of our method without F1/F2 triage. This setup allows us to isolate whether gains come from ranking, feasibility screening, routing, or bounded repair.
+We compare four deployment settings corresponding to the proposed ladder: **Rank-Only**, **Reject-Only**, **Stage-Aware Routing**, and **Bounded Packet Repair**. The baseline set includes (i) direct planner execution without supervision, (ii) a rollout-ranking-only evaluator in the style of WorldEval, (iii) a verifier-style reachability check without stage-aware packet routing, and (iv) an ablated version of our method without F1/F2 triage. We additionally reserve a MoLA-style latent-action decoding ablation that replaces the packet's default action interface with a multi-expert inverse-dynamics latent-action mixture, allowing us to test whether stronger decode-honesty survives delayed consumption better than direct future-to-action decoding. This setup allows us to isolate whether gains come from ranking, feasibility screening, routing, bounded repair, or control-oriented action-interface design.
 
 #### 4.2.1 Primary Readout and Submission-Ready Table Contract
 
@@ -488,15 +666,17 @@ We explicitly separate three visually similar but scientifically different hando
 - **Expired-packet reuse**
 - **Downstream consumption mismatch**
 
-This separation is directly motivated by the local literature sweep. Cortex 2.0 suggests that imagined futures help only when they remain grounded at commitment time; Hi-WM suggests that failure-local branches are useful only when their anchors remain valid; LoHo-Manip suggests that preserving the remaining local thread matters as much as immediate feasibility.
+This separation is directly motivated by the local literature sweep. Cortex 2.0 suggests that imagined futures help only when they remain grounded at commitment time; Hi-WM suggests that failure-local branches are useful only when their anchors remain valid; LoHo-Manip suggests that preserving the remaining local thread matters as much as immediate feasibility. LeWorldModel [REF: 2603.19312] further sharpens the deployment boundary from the systems side: a lightweight latent predictor may make packet rescoring cheaper and more frequent, but higher refresh cadence alone still does not prove that the released packet remains clause-consistent when the downstream controller finally consumes it. OA-WAM [REF: 2605.06481] adds a complementary warning that delayed-consumption failure is often an address drift problem rather than a pure freshness problem; a packet can remain geometrically feasible while silently reattaching to a nearby but different object, anchor, or executable clause. MoLA [REF: 2605.12167] then exposes the last interface gap: even when freshness and identity look preserved, the imagined future may still decode into a control-weak latent action, so bind-time executability can overstate true consume-time honesty.
 
 To make this separation operational rather than rhetorical, every failed handoff is assigned a minimal diagnostic tuple
 
 \[
-\upsilon_t = (e_t^{\text{fresh}},\; c_t^{\text{thread}},\; u_t^{\text{consume}}),
+\upsilon_t = (e_t^{\text{fresh}},\; c_t^{\text{thread}},\; u_t^{\text{consume}},\; a_t^{\text{addr}},\; d_t^{\text{decode}}),
 \]
 
-where `fresh` indicates whether the packet remained within its expiry envelope at the instant of downstream use, `thread` measures whether the packet still matches the current remaining-plan thread, and `consume` records whether the downstream controller interpreted the packet consistently with its released stage/action semantics. In particular, a packet can fail after release in three distinct ways: it may be wrong **before** release (`bad initial judgment`), become wrong **between** release and use (`expired-packet reuse`), or remain fresh but be consumed against a shifted local thread (`downstream consumption mismatch`). We therefore require all delayed-consumption experiments to log packet age, envelope drift, and thread-compatibility at the actual consumption timestamp rather than only at release.
+where `fresh` indicates whether the packet remained within its expiry envelope at the instant of downstream use, `thread` measures whether the packet still matches the current remaining-plan thread, `consume` records whether the downstream controller interpreted the packet consistently with its released stage/action semantics, `addr` records whether object-anchor-clause identity still matches the controller-side expected address tuple, and `decode` records whether the refreshed future still maps to a consume-honest latent action interface. In particular, a packet can fail after release in at least five distinct ways: it may be wrong **before** release (`bad initial judgment`), become wrong **between** release and use (`expired-packet reuse`), remain fresh but be consumed against a shifted local thread (`downstream consumption mismatch`), stay executable while drifting to a different addressable referent (`address drift under delayed consumption`), or stay bindable while losing decode-honest action support (`latent-action decode mismatch`). We therefore require all delayed-consumption experiments to log packet age, envelope drift, thread-compatibility, address preservation, and decode-honesty at the actual consumption timestamp rather than only at release.
+
+This extended tuple also determines the strongest honest explanation class. If only `e_t^{\text{fresh}}` improves, the gain is frozen as freshness-accountable invalidation. If freshness and executability improve but `a_t^{\text{addr}}` or `d_t^{\text{decode}}` collapse, the gain is frozen as address-stable reroute support or decode-fragile bind support rather than full delayed-consumption handoff preservation. Only joint gains across freshness, thread, address, and decode-honesty are allowed to support the stronger `progress-preserving supervisory contract` reading.
 
 #### 4.2.3 Refresh-Thread Attribution and Honest Route Freezing
 
@@ -554,7 +734,34 @@ This leads to an explicit **honest route-freezing rule**. If the dominant improv
 
 To prevent local recovery gains from being merged into a single flattering headline, the main table should be **window-stratified**. Each method is reported not only by global averages, but also by route window `W0/W1/W2` and lag bin `B0/B1/B2`. A minimal submission-ready table therefore has the form
 
-| Method | W0: PHFR↓ | W0: EPRR↓ | W1: SRY↑ | W1: RPPR↑ | W2: PHC↑ | W2: thread-preserving EAHR↑ | B0 PHFR↓ | B1 PHFR↓ | B2 PHFR↓ |
+| Method | W0: PHFR↓ | W0: EPRR↓ | W1: SRY↑ | W1: RPPR↑ | W2: PHC↑ | W2: thread-preserving EAHR↑ | B0 PHFR↓ | B1 PHC↑ | B2 CTTPR↑ | Weakest Honest Claim |
+|--------|-----------|-----------|----------|-----------|----------|------------------------------|----------|----------|------------|----------------------|
+| Ours | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| w/o expiry gate | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| w/o thread check | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| recovery-only | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... |
+
+The last column is deliberately semantic rather than numeric. It records the **strongest claim the evidence is honestly allowed to support** after window and lag stratification. This forces every apparent gain to route to one of three scientifically distinct readings: freshness-accountable invalidation, phase-bounded recovery, or progress-preserving handoff. The table is therefore not merely a presentation convenience; it is the mechanism that keeps D01 from over-claiming bounded-recovery improvements as general deployment-time supervision.
+
+### 4.2.10 JEPA-Style Representation Gain versus Packet-Contract Gain
+
+Recent lightweight world models such as LeWorldModel [REF: 2603.19312] show that stable compact latent prediction can dramatically improve planning throughput and preserve physically meaningful state structure even without complex generative objectives. This is highly relevant to D01 because a lighter latent model can reduce planner-side latency and make packet refresh more frequent. However, faster or cleaner latent prediction should not be confused with better deployment-time supervision. A JEPA-style gain may improve `rank_score`, branch reuse efficiency, or refresh latency while still failing to preserve clause identity, packet freshness, or thread-consistent downstream consumption.
+
+We therefore treat LeWorldModel-style advances as **representation-side throughput gain** unless they survive the same delayed-consumption accounting as our supervisory contract. In practice, a compact end-to-end latent model may help in three places: (i) more frequent re-ranking before release, (ii) lower-latency expiry-aware regeneration, and (iii) more stable branch retrieval for bounded repair. But unless these gains remain visible in `W2` and the long-lag bins while preserving `PHC`, `CTTPR`, and identity-consistent consume honesty, the paper freezes them to **refresh-efficiency gain** rather than promoting them to handoff-value gain. This distinction matters because D01 aims to argue for a deployment-time contract, not merely a faster world model.
+
+TRM [REF: 2605.22164] adds a second interpretation axis that is especially important for D01: some improvements may come from **repairing the planner-facing ranking interface** rather than from improving the latent world model or the packet contract itself. We therefore include a reachability-aware reranking variant that replaces terminal Euclidean latent distance with a horizon-matched trajectory reachability head under the same frozen dynamics model. If this change mainly improves `W0` reroute quality, early danger-action suppression, or terminal-score calibration while leaving `PHC`, `CTTPR`, and delayed `W2/B1-B2` consume honesty largely unchanged, the gain must be reported as **ranking-interface gain** rather than packet-contract gain. Only if reachability-aware reranking also survives downstream bind and consume, while preserving remaining-plan and address consistency, may it support a stronger D01 supervisory interpretation.
+
+### 4.2.11 Identity-Drift Audit under Delayed Consumption
+
+OA-WAM [REF: 2605.06481] suggests that robust action generation benefits from preserving explicit object-address separation. For D01, the analogous deployment-time question is whether a packet still refers to the **same object, anchor, and executable clause** when the downstream stack finally consumes it. We therefore add an identity-drift audit that reports three complementary failure rates: object-slot drift, anchor drift, and clause drift after refresh. These are measured both at controller bind and at true local consume time.
+
+This audit serves two purposes. First, it prevents a packet from being counted as a success merely because it remained geometrically feasible while silently changing referent. Second, it makes delayed-consumption errors scientifically legible: a packet can fail due to expiry, due to off-thread commit, or due to identity drift despite otherwise positive feasibility signals. In the submission-ready narrative, any method whose gains disappear after identity-drift filtering is frozen to **address-preserving bind gain** at best, not full supervisory handoff gain. This gives D01 a stricter and more honest reading rule for late-stage packet success.
+
+### 4.2.12 Window-Conditioned Delayed-Consumption Summary Table
+
+To make the paper easier to read without sacrificing diagnostic sharpness, we summarize the full result contract with a compact **window-conditioned delayed-consumption table** that aggregates the most decision-relevant cells. Instead of showing only one overall average, the summary table reports three route windows (`W0` pre-release reroute, `W1` hover-window bounded recovery, `W2` post-refresh downstream consumption) crossed with three lag bins (`B0` immediate use, `B1` bounded delay, `B2` stale use). The minimal per-cell readout is `PHFR`, `EPRR`, `PHC`, thread-preserving `EAHR`, and `Δplan` at use time. Recovery-focused cells in `W1` additionally report `SRY` and `RPPR`.
+
+| Method | W0: PHFR↓ | W0: EPRR↓ | W1: SRY↑ | W1: RPPR↑ | W2: PHC↑ | W2: thread-preserving EAHR↑ | B0 PHFR↓ | B1 PHC↑ | B2 CTTPR↑ |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | Rank-Only |  |  |  |  |  |  |  |  |  |
 | Reject-Only |  |  |  |  |  |  |  |  |  |
@@ -623,9 +830,57 @@ Given the expanded late-stage accounting, the first-pass summary paragraph for D
 
 This template matters because D01 is especially prone to flattering late-stage summaries. By freezing the reading path up front, we force the paper to distinguish release-time, bind-time, and consume-time evidence before any broad deployment conclusion is written.
 
+### 4.2.23 Identity-Preservation Gate before Consume-Time Promotion
+
+Bind-honest and consume-honest evidence still leave one final loophole: a packet may survive delayed consume while no longer pointing to the same executable referent. We therefore add an **identity-preservation gate** before any late-stage positive result is promoted to a full deployment-time handoff claim. Concretely, every `W2/B1-B2` positive event must log the address tuple
+
+\[
+\alpha_t = (a_t^{\text{obj}},\; a_t^{\text{anchor}},\; a_t^{\text{clause}},\; a_t^{\text{thread}}),
+\]
+
+and the use-time audit tuple
+
+\[
+\psi_t = (\iota_t^{\text{clause}},\; \rho_t^{\text{remain}},\; \sigma_t^{\text{stage}},\; \kappa_t^{\text{contact}}).
+\]
+
+A packet is only allowed to support a **full deployment-time handoff-value gain** if it is simultaneously freshness-positive, bind-honest, consume-honest, and identity-preserving at use time. If freshness and controller attachment remain positive but object/anchor/clause identity drifts, the event must be frozen as **address-drifted bind gain** rather than being promoted to a genuine handoff win. This rule prevents a particularly dangerous overclaim in aerial manipulation supervision: a refreshed packet looks executable, remains locally smooth, and even gets consumed, yet the executable meaning has silently shifted to a nearby referent or a different local clause.
+
+Operationally, the reviewer-facing reading order now becomes: `window/lag cell → bind-honest vs consume-honest → address preservation α → use-time audit ψ → weakest honest claim`. Any result missing `α` or `ψ` logging is not allowed to upgrade beyond **freshness-accountable invalidation**, **phase-bounded recovery**, or **controller-bind continuity**, regardless of aggregate success.
+
+### 4.2.24 Current Evidence-Consistent Freeze after Identity-Aware Delayed-Consumption Audit
+
+Given the current D01 evidence chain, the most defensible near-term expectation is still that the method will first become reliably strong in `W0/W1`, partially stabilize `W2/B1`, and remain fragile in `W2/B2` once identity-preservation and use-time audit constraints are enforced. We therefore explicitly freeze the manuscript's strongest default interpretation as follows.
+
+If gains live mainly in stale suppression or release-time filtering, D01 should be described as a **freshness-accountable invalidation and rerouting layer**. If gains extend into hover/re-anchor repair but weaken once `\alpha` or `\psi` is checked at downstream use time, D01 should be described as a **phase-bounded recovery interface with identity-aware delayed-consumption auditing**. If gains survive controller bind but not identity-preserving consume, the strongest valid interpretation is **address-aware controller-bind continuity**. Only if `W2/B1-B2` remains positive in `PHC`, `CTTPR`, bounded `\Delta^{plan}`, and identity-preserving `\alpha/\psi` audit may the manuscript escalate to a **full progress-preserving deployment-time supervisory contract**.
+
+This freeze matters because the new address layer makes D01 more honest about what late-stage success actually means. A method that improves packet age, suppresses stale reuse, and even raises consume counts can still fail the harder deployment test if those packets no longer preserve the same object/anchor/clause/thread semantics when finally used. D01 should therefore win first by knowing when **not** to over-promote late positive events.
+
 ### 4.2.18 Expected Qualitative Trend
 
 **Reject-Only** should already reduce `DAR` and `AER` relative to direct execution. **Stage-Aware Routing** should reduce `MR` and `PHFR`. **Bounded Packet Repair** should improve `SRY`, `RPPR`, and `PHC` specifically inside hover and re-anchor windows, but only if expiry handling suppresses stale-packet reuse and corrective memory remains stage-compatible. Under explicit delayed-consumption bins, we expect naive ranking-only baselines to degrade sharply as packet age increases, while D01 should preserve a larger fraction of its benefit in the `1-3 step` regime by coupling expiry invalidation with thread-consistent handoff guards.
+
+### 4.2.19 Identity-Preserving Address Audit for Delayed-Consumption Packets
+
+Recent local evidence from OA-WAM [REF: 2605.06481] suggests that address-content separation is not only useful for robust manipulation, but also clarifies a hidden D01 failure mode: a packet may remain executable while silently drifting to a nearby but different object, anchor, or clause target. We therefore extend the delayed-consumption evaluation with an identity-preservation audit. For every packet that reaches bind or consume, we log whether the released object slot, anchor relation, clause identity, and progress-thread address remain aligned with the downstream expectation.
+
+Concretely, we report an address audit tuple
+\[
+\mathcal{A}_t = (A_t^{\text{obj}},\; A_t^{\text{anchor}},\; A_t^{\text{clause}},\; A_t^{\text{thread}}),
+\]
+where each field measures preservation at the actual downstream checkpoint rather than at planner release time. A packet is only counted as identity-honest if all four remain positive through the claimed window. If a packet survives delayed consume but loses object or clause address, the event is frozen as **address-drifted bind/consume gain** rather than being promoted to a true progress-preserving handoff gain. This prevents D01 from mistaking local executability for preserved executable meaning.
+
+### 4.2.20 Lightweight-Latent Refresh Efficiency versus Contract Preservation
+
+LeWorldModel [REF: 2603.19312] motivates a second ablation axis: some improvements may come from **faster latent refresh and rescoring**, not from a stronger packet contract. To separate these effects, we compare a compact JEPA-style scorer against the full supervisor under matched delayed-consumption bins. The compact scorer is expected to improve refresh cadence and ranking throughput, but unless its gains also survive `W2/B1-B2` with positive `PHC`, `CTTPR`, bounded `Δplan`, and positive address audit tuple `\mathcal{A}_t`, the result should be interpreted only as **refresh-efficiency gain**.
+
+This ablation is important because D01's thesis is about deployment-time supervisory contracts, not merely about making world-model scoring cheaper. If the lightweight latent scorer only improves release-time screening or short-horizon freshness, the paper should explicitly freeze that result to a weaker route label rather than borrowing the full packet-contract narrative.
+
+### 4.2.21 Current Evidence-Consistent Freeze after Address Audit
+
+Given the current local evidence chain, the most defensible near-term expectation remains that D01 will first be strongest in `W0/W1`, partially stabilize `W2/B1`, and still be fragile in `W2/B2` after identity-preserving address audit is enforced. We therefore pre-freeze the strongest default interpretation as follows.
+
+If gains mainly appear in stale suppression or pre-release filtering, D01 should be described as a **freshness-accountable invalidation and rerouting layer**. If gains extend into hover/re-anchor correction but weaken after bind-versus-consume or address audit, D01 should be described as a **phase-bounded recovery interface with delayed-consumption auditing**. If gains survive bind but fail address-preserving consume, the strongest honest interpretation is **address-aware controller-bind continuity**. Only when `W2/B1-B2` remains positive in `PHC`, `CTTPR`, bounded `Δplan`, and full address audit may the paper escalate to a **progress-preserving deployment-time supervisory contract**.
 
 ### 4.2.16 Consumer-Side Uptake Table and NtM-Style Boundary Readout
 
@@ -633,11 +888,11 @@ A remaining weakness in the current evaluation story is that most metrics are st
 
 This readout matters especially for the D01→D06 boundary. D01 is no longer only trying to predict whether a packet is locally executable; it is trying to preserve a usable packet at the navigation-to-manipulation boundary where hover, re-anchor, approach, and inspect stages become tightly coupled. We therefore require a compact **NtM-style boundary summary** over four event types: `(i)` boundary-correct handoff, `(ii)` freshness-correct but thread-wrong handoff, `(iii)` recovery-correct inside hover shell but not reusable downstream, and `(iv)` stale packet correctly invalidated before downstream use. If the full D01 supervisor mainly improves `(iv)` and partially improves `(iii)` but remains weak on `(i)`, then the honest manuscript framing remains “freshness-accountable invalidation + phase-bounded recovery.” If `(i)` also rises with bounded `Δplan` and positive `CTTPR`, the paper earns a stronger D01→D06 interface claim.
 
-### 4.2.17 Physics-Native Versus Failure-Aware World-Model Interpretation
+### 4.2.17 Representation-Side Gain versus Packet-Contract Gain
 
-The latest local D01 sweep adds three nearby anchors that sharpen how this paper should interpret its own gains. **LeWorldModel** shows that a remarkably small JEPA-style world model can be trained stably from pixels with only a predictive loss plus SIGReg regularization, while still exposing latent variables that are linearly probed by physical state. This suggests that D01 should not over-attribute deployment gains to architectural bulk; part of the supervision benefit may instead come from learning a stable latent space whose geometry already preserves physically meaningful variation. **Physically Native World Models** pushes this idea further by arguing that world models should be judged as control-facing dynamical systems rather than as visually pleasing predictors, reinforcing our decision to separate `PPPR` from `EPVR` and to freeze claims around physical accountability before talking about general policy improvement. **Failure Detection World Model** adds the complementary safety-side interpretation: if uncertainty-aware future prediction can already surface imminent failure in manipulation, then D01's extra value is not simply “detecting bad futures,” but packaging those futures into a stage-scoped packet contract that decides whether to invalidate, reroute, repair, or escalate.
+The latest local D01 sweep adds four nearby anchors that sharpen how this paper should interpret its own gains. **LeWorldModel** shows that a compact JEPA-style world model can be trained stably from pixels with only a next-embedding objective plus SIGReg regularization while still exposing latent structure that remains linearly probeable by physical state. **Physically Native World Models** further argues that world models should be judged as control-facing dynamical systems rather than as visually pleasing predictors, reinforcing our decision to keep `PPPR` and `EPVR` separate. **Failure Detection World Model** adds a complementary safety-side lesson: uncertainty-aware future prediction can already detect imminent manipulation failure, so D01's extra value is not merely failure anticipation but converting those predicted failures into a stage-scoped contract that decides whether to invalidate, reroute, repair, or escalate. Finally, **HarmoWAM** [REF: 2605.10942] provides a fresh 2026 anchor from the WAM side: its adaptive coordination between predictive and reactive experts suggests that some world-model gains are fundamentally about *where* predictive control should hand over to reactive control, not about delayed-consumption packet honesty itself.
 
-Together, these three anchors tighten the paper's narrative. LeWorldModel supports the feasibility of lightweight, physically structured latent prediction; Physically Native World Models supports the thesis that the correct evaluation axis is control- and physics-facing rather than perceptual; and Failure Detection World Model supports deployment-time uncertainty as a first-class safety signal. What D01 must therefore prove beyond them is narrower and clearer: not merely that a world model can be stable, physically meaningful, or failure-aware, but that these properties can be converted into a **consumption-time-valid packet interface** whose value survives delayed downstream use. This is exactly why the result section now privileges `W2/B1-B2`, `CTTPR`, `PHC`, and bounded `Δplan` over aggregate success alone.
+Together, these anchors tighten the paper's interpretation boundary. LeWorldModel supports the feasibility of lightweight, physically structured latent prediction; Physically Native World Models supports a control- and physics-facing evaluation axis; Failure Detection World Model supports deployment-time uncertainty as a first-class safety signal; and HarmoWAM supports the usefulness of process-adaptive predictive/reactive switching for combining generalizable transit with precise interaction. However, none of them alone justifies a blanket claim that delayed downstream consumption is solved. For D01, these advances must therefore be read as **representation-side gain**, **physics-accountable gain**, **uncertainty-aware gain**, or **process-adaptive control gain** unless they survive the stricter packet-contract readout in `W2/B1-B2` with positive `PHC`, `CTTPR`, bounded `Δplan`, and identity-preserving use-time honesty. What D01 must prove beyond them is narrower and clearer: not merely that a world model can be stable, physically meaningful, failure-aware, or adaptively predictive/reactive, but that these properties can be converted into a **consumption-time-valid packet interface** whose value survives delayed downstream use.
 
 ### 4.2.18 Chain-of-World as a Latent-Motion Compression Counterpoint
 
@@ -767,6 +1022,8 @@ For each primary cell, the mandatory readout is `(PHFR, EPRR, PHC, thread-preser
 We further pre-register a falsification-oriented reading of the experiment matrix. D01 is **not** considered to have established a progress-preserving supervisory contract if any of the following holds: `(i)` `W2/B1` remains below the Stage-Aware Routing baseline on `PHC`, `(ii)` `W2/B2` shows positive freshness but negative `CTTPR`, indicating that refreshed packets are still consumed off-thread, or `(iii)` `Δplan` grows monotonically with lag while thread-preserving `EAHR` remains flat. Any of these outcomes means the supervisor helps locally but does not yet preserve downstream executable intent under delayed use.
 
 By contrast, a stronger claim becomes acceptable only when `W2/B1` and at least one hard stress cell in `W2/B2` remain positive relative to all lighter baselines on `PHC`, `CTTPR`, and bounded `Δplan`, while A5/A6 materially hurt the same cells. This criterion gives the paper a reviewer-resistant promotion rule: the manuscript may only move from **freshness-accountable invalidation** or **phase-bounded recovery** to **progress-preserving delayed-consumption supervision** when the exact cells most likely to reveal semantic thread breakage remain positive under ablation.
+
+A dedicated falsification branch also targets the TRM-style ranking-interface hypothesis [REF: 2605.22164]. If a horizon-matched reachability head substantially improves candidate ordering, terminal-score calibration, or `W0/W1` route choice while leaving `PHC`, `CTTPR`, and use-time clause preservation unchanged in `W2/B1-B2`, then D01 must explicitly report that the improvement is **planner-facing ranking repair** rather than packet-contract progress. This guard is important because it prevents us from confusing better latent future selection with better delayed-consumption supervision.
 
 ### 4.4 Cross-Direction Interface Validation
 

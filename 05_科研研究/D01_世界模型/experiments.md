@@ -75,7 +75,46 @@
 - 若 C2/C3 的 `AER` 高于 C1，哪怕恢复率更高，也降级为候选
 - 若 `HHB` 明显升高，则说明系统只是把复杂度转移给人工，不算主线收益
 
+## E15. Refresh-Window Honesty Attribution Smoke Test（R20260522 新增）
+
+### 目标
+把 D01 最近几轮已经反复强调的 **refresh 变快 ≠ delayed-consumption 更诚实** 真正压成一组最小烟测，不再只在正文里做概念区分。这个实验只回答一个更硬的问题：**额外 refresh 预算带来的收益，到底主要落在 proposal 端、bind 端，还是 consume 端？**
+
+### 对照组
+1. **F0 single-release**：只在初次 release 时打一次分，不做 refresh
+2. **F1 periodic refresh**：固定周期 refresh 后再下发 packet
+3. **F2 event-triggered refresh**：只有遇到 stage drift / envelope drift / anchor drift 才 refresh
+4. **F3 speculative async refresh**：参考 DexWorldModel/LeWorldModel 风格，把部分 refresh 计算前移并与执行重叠
+
+### 最小日志 tuple
+- `Δproposal`：refresh 后 planner-side ranking / screening 是否提升
+- `Δbind`：refresh 后 controller bind honesty 是否提升
+- `Δconsume`：refresh 后 true consume-time honesty 是否提升
+- `Δaddr`：refresh 后 object/anchor/clause/thread identity 是否更稳
+- `Δdecode`：refresh 后 latent-action decode honesty 是否更稳
+
+可统一记为：
+`ω_t = (Δproposal, Δbind, Δconsume, Δaddr, Δdecode)`
+
+### 核心指标
+- **PDS**（Proposal Density Support）：仅 proposal 侧受益的比例
+- **BHR**（Bind-Honest Refresh gain）：仅 bind 侧受益的比例
+- **CHR**（Consume-Honest Refresh gain）：真正落到 consume-time honesty 的净收益
+- **ADR**（Address Drift after Refresh）：refresh 后仍发生 referent drift 的比例
+- **DHLR**（Decode-Honesty Loss after Refresh）：refresh 后 decode-honest 崩掉的比例
+- **RCL**（Refresh Compute Latency）：refresh 额外带来的时延开销
+
+### 判线规则
+- 若某 refresh 策略主要提升 `Δproposal`，但 `Δconsume ≈ 0`，则只能记为 **proposal-density support**，不得写成 handoff gain。
+- 若 `Δbind > 0` 但 `Δconsume ≤ 0`，则冻结为 **bind-honest refresh support**。
+- 只有当 `Δconsume / Δaddr / Δdecode` 同时改善时，才允许升级成 **refresh-enabled handoff gain**。
+- 若 F3 虽降低 `RCL`，却恶化 `ADR` 或 `DHLR`，则 speculative refresh 只能作为系统技巧，不升主线。
+
+### 当前预期结论
+首轮更可能成立的是：**event-triggered refresh** 比固定周期 refresh 更诚实；而 **speculative async refresh** 更像 proposal/bind 侧增益，需要先证明自己没有把 delayed-consumption 问题藏起来，才配进入主标题。
+
 ## E13. 首轮主叙事冻结烟测（R862 新增）
+
 
 ### 目标
 把 D01 现阶段已经出现的五种主叙事候选——`evaluator-first / triage-first / route-first / hover-recovery-first / interface-first`——放进同一张首轮判线表，不再靠直觉决定论文标题谁做主线。换句话说，本实验不再问“哪个模块看起来更酷”，而是直接问：**哪条叙事在首轮预算内带来最独占、最可部署、最能跨方向复用的净收益**。

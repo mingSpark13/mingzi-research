@@ -18,6 +18,8 @@
 
 - `2026-03-27_OnFly.md` - 无人机VLA导航
 - `2026-03-28_UniDex.md` - 灵巧手迁移
+- `2026-05-22_2605.21414_PointACT.md` - 3D点云驱动的VLA动作解码
+- `2026-05-22_2605.20752_GaussianDream.md` - 训练期3DGS世界模型监督 manipulation policy
 
 ## 花火研究笔记
 
