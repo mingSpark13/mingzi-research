@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "- **Training-free agent system**: 不重新训练整套导航模型，而是把 foundation model 与低层控制网络编排成可执行系统。"
-origins: ["02_阅读笔记/05_语义导航/2026-04-09_QuadAgent"]
+origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-09_QuadAgent", "02_阅读笔记/D06_空中VLN/2026-04-09_QuadAgent"]
 updated: "2026-04-17"
 ---
 
@@ -19,4 +19,5 @@ updated: "2026-04-17"
 - 3. **系统工程价值大于新 backbone 价值**：对主人现在的 GoalSearch，更像运行时编排参考，而不是替换 APEX/AirNav 主线的论文骨架。
 
 **原始资料**:
-- [[02_阅读笔记/05_语义导航/2026-04-09_QuadAgent]]
+- [[../../02_阅读笔记/D06_空中VLN/2026-04-09_QuadAgent]]
+- [[02_阅读笔记/D06_空中VLN/2026-04-09_QuadAgent]]

@@ -1,0 +1,14 @@
+---
+type: "source"
+tags: []
+summary: ""
+origins: ["../../02_阅读笔记/D03_空地迁移/2026-05-05_2603.27181_EventDepth_Flight_Control"]
+updated: "2026-04-17"
+---
+
+# LightVLA (2509.12594)
+
+**核心价值**: 
+
+**原始资料**:
+- [[../../02_阅读笔记/D03_空地迁移/2026-05-05_2603.27181_EventDepth_Flight_Control]]

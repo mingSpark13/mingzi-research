@@ -3,6 +3,13 @@
 > 最后更新：2026-04-18 | 成熟度：🟡 有方向（R793补入 RL vs optimal control vs hybrid 控制范式对照轴）
 > 状态：🟡 推进中
 
+## 0. 本轮推进记录（2026-05-24 01:37）
+
+- 本轮按轮换主推进 **D07_Isaac强化学习机械臂控制**，满足“D07 每 3-4 轮覆盖一次”，且避免与上一轮主推进 **D06** 连续重复。
+- 严格先做本地优先：复核 `README.md / PAPER.md / OWNER_NOTES.md / REPORT.md / experiments.md`，并回扫近 30 天本地 L1 锚点 **DiSCo / Reactive Dexterous Grasping / Hand-in-the-Loop / Find the Fruit / Q2RL**；补跑 QMD `Isaac Sim reinforcement learning moving-base end-effector guidance --no-rerank` 后，结果仍主要回流 **Isaac Lab / Squint / D07 本地方向文档**，没有形成需要完整入库的新高价值论文，因此本轮 **高价值新增论文 0 篇，正式入库 0 篇**，未触发 arXiv / Tavily 外扩。
+- Phase 2 核心继续直接推进 **PAPER.md** 与 **experiments.md**：在 `PAPER.md` 新增 **4.18 Guidance-Core Metric Attribution from the Current Local Anchor Set**，把 **copilot / retention / analytic projection / decomposition** 四类 support family 分别冻结到其默认应先解释的 guidance metric（`ΔBDEE / ΔCET / ΔPCST / ΔPGFR`）；同时在 `experiments.md` 新增 **9.8 guidance-family metric-first routing freeze**，把这套“family 必须先赢下自己最自然但仍最弱的 guidance metric，才允许再谈标题升级”的规则显式映射进实验路由。
+- 当前最重要的新收束是：D07 现在不只要求所有路线先服从 guidance-first 主表字段，还进一步要求**每类路线先在自己最该赢的那一格里赢得诚实**，否则连 support-side 升格都不能谈；下轮最值钱动作应转向把这些 family→metric 约束继续映射成真实日志聚合脚本与 gate 检查项。
+
 ## 0. 本轮推进记录（2026-05-14 18:27）
 
 - 本轮按轮换主推进 **D07_Isaac强化学习机械臂控制**，满足“D07 每 3-4 轮覆盖一次”，且避免与上一轮主推进 **D04** 连续重复。

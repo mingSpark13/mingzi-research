@@ -26,6 +26,7 @@
 - `2026-03-28_ManualVLA.md` — MoT+ManualCoT多模态手册生成（与Paper A高度相关）
 - `2026-03-28_Real2Edit2Real.md` — 3D控制接口数据生成，仅1-5条真机→10-50x数据效率（CVPR 2026）
 - `2026-04-24_2604.20472_TD_Calibration_VLA.md` — 用 TD value estimation 做顺序任务中的 VLA 置信度校准，适合作为部署安全护栏/接管触发信号
+- `2026-05-17_2605.14950_Evo_Depth.md` — 轻量隐式深度增强 VLA，用多视角 RGB 补空间感知而不显著增加部署负担
 
 ## 花火研究笔记
 

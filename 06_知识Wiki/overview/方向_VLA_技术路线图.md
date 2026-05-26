@@ -4,7 +4,7 @@ id: "overview.方向_VLA_技术路线图"
 pageType: "overview"
 tags: ["VLA架构", "模仿学习", "数据飞轮", "跨载体泛化", "空中VLN"]
 summary: "VLA技术路线三条主线：端到端原生VLA（高通用性/低可控性）vs 模块化层次化VLA（低通用性/高可控性） vs 扩散式统一架构（平衡点），主人研究聚焦空中VLN+精细操作的层次化解耦"
-updated: "2026-05-16"
+updated: "2026-05-20"
 ---
 
 # 方向：VLA 技术路线图
@@ -78,6 +78,7 @@ updated: "2026-05-16"
 **中期（3-6个月）**：
 1. 引入 [[concepts/流匹配]] 替换 ACT 应对更高控制频率
 2. 结合 [[sources/source.2605.13403_RotVLA|RotVLA]] 的 SO(n) 旋转建模处理空中姿态
+3. 参考 [[sources/source.2605.06481_OA-WAM|OA-WAM]] 的对象可寻址 world-action 表征，评估结构化对象槽位是否优于纯 token 堆叠
 3. 探索 [[sources/source.2605.10925_PriorVLA|PriorVLA]] 的双专家适配防止灾难性遗忘
 
 **长期（6-12个月）**：
@@ -90,11 +91,14 @@ updated: "2026-05-16"
 - 端到端VLA基线：[[sources/source.2605.06175_VLA_GSE|VLA-GSE]] / [[sources/source.2605.10925_PriorVLA|PriorVLA]]
 - 层次化代表：[[sources/source.2605.12167_MoLA|MoLA]] / [[sources/source.2026-03-27_ACT|ACT]]
 - 扩散统一架构：[[sources/source.2603.14363_AerialVLA|AerialVLA]] / [[sources/dVLA_2509.25681|dVLA]]
+- 外置知识记忆：[[sources/source.2605.18556_Key-Gram|Key-Gram]]，验证“不改主干、外接语言知识”对组合泛化和真实操作的增益
 - 跨载体泛化：[[sources/source.2605.13403_RotVLA|RotVLA]] / [[sources/source.2603.14522_OPFA|OPFA]]
 
 ## Related
 
 - [[concepts/VLA架构]]
+- [[concepts/机器人策略分类_总览]]
+- [[concepts/生成式策略_概念笔记]]
 - [[comparisons/ACT动作分块_vs_扩散策略_vs_流匹配]]
 - [[overview/方向_空中VLN_技术路线图]]
 - [[overview/方向_跨载体泛化_技术路线图]]

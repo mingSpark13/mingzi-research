@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**原始资料**:"
-origins: ["02_阅读笔记/05_语义导航/2026_GoalSwarm_Multi-UAV_Semantic_Search"]
+origins: ["../../02_阅读笔记/D06_空中VLN/2026_GoalSwarm_Multi-UAV_Semantic_Search"]
 updated: "2026-04-17"
 ---
 
@@ -11,4 +11,4 @@ updated: "2026-04-17"
 **核心价值**: **原始资料**:
 
 **原始资料**:
-- [[02_阅读笔记/05_语义导航/2026_GoalSwarm_Multi-UAV_Semantic_Search]]
+- [[../../02_阅读笔记/D06_空中VLN/2026_GoalSwarm_Multi-UAV_Semantic_Search]]

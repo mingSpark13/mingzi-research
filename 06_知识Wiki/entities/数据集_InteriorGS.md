@@ -14,7 +14,7 @@ updated: "2026-05-15"
 **发布时间**: 2025
 **数据地址**: https://huggingface.co/datasets/spatialverse/InteriorGS
 **GitHub**: https://github.com/manycore-research/InteriorGS
-**关联论文**: [[02_阅读笔记/06_VR与3D场景生成/2026-04-18_SAGE-3D]] (arXiv 2510.21307)
+**关联论文**: [[02_阅读笔记/D09_感知与3D视觉/2026-04-18_SAGE-3D]] (arXiv 2510.21307)
 
 ## 核心内容
 
