@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ## 导航
 
 - [[concepts/index|概念总索引]]
@@ -21,6 +22,10 @@
 ### 最新添加（2026-05-26 15:13）
 - [[sources/source.2603.17670_AgentVLN|AgentVLN (2603.17670)]] — VLM-as-Brain 范式将 VLN 语义推理与几何感知解耦，3B 超越 8.3B 大模型，支撑 Unitree Go2 + Jetson 边缘端实时导航，D06 空中VLN/VLA架构/跨载体泛化
 
+=======
+## sources/
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ### 最新添加（2026-05-26 12:40）
 - [[sources/source.2026-05-11_OA_WAM|OA-WAM (2026-05-11 入库)]] — 对象可寻址 slot 分离 addr/content 向量解决 WAM 目标绑定难题，LIBERO 97.8%，VLA架构/隐空间世界模型
 - [[sources/source.2508.08328_DQ-Net|DQ-Net (2508.08328)]] — Grasp Fusion Module 记忆库+注意力匹配6D位姿，KD训练双视角轻量策略，RA-L 2026，腿足机器人/全身协调运动
@@ -152,7 +157,11 @@
 
 ---
 type: index
+<<<<<<< HEAD
 updated: "2026-05-27 04:08"
+=======
+updated: "2026-05-26 14:13"
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ---
 
 ### 来源页 (sources/) - 最新添加（2026-05-24 00:13）

@@ -88,6 +88,7 @@
 
 # D06 experiments
 
+<<<<<<< HEAD
 ## R908 本轮推进结论：把 D06 从“world-prior / semantic-completion 只是 upstream support”继续压到“WorldVLN 这类 world-action family 也必须先减掉，否则任何短时 rollout 变强都不得升级成 packet-contract claim”
 - **本轮方向**：D06 空中视觉语言导航
 - **本地依据**：复核 `README.md / PAPER.md / OWNER_NOTES.md / experiments.md / 研究状态追踪`，确认 `OWNER_NOTES.md` 仍无未响应批注；回扫近 30 天本地 L1 与本地方向文档，已覆盖 **LMPath / StereoNav / WildOS / AgentVLN / AwareVLN / Fly0 / KIO-planner / FlyMirage / SAGE / PLMD**。在本地覆盖充分后，按流程补做 arXiv API 外扩，最新高价值命中 **WorldVLN (2605.15964)**，且本地尚未形成对应 D06 吸收段落，因此本轮将其作为新增 planner-family 锚点吸收进 PAPER，而不做完整 L1 入库。
@@ -96,6 +97,8 @@
 - **核心价值**：这一步把 D06 从“知道 planner modularity、search prior、active perception、world prior、semantic completion、local shell、runtime continuity 都要先减掉”继续推进到“连最贴脸的 **world-action model** 解释也必须先减掉”。也就是说，D06 现在不仅防止把 **更会拆指令 / 更会缩搜索区域 / 更会一眼消歧 / 上游先验更强 / 本地壳更稳 / runtime continuity 更好** 混写成 packet 胜利，也开始防止把 **短时 rollout 更准、后果预测更好、局部 waypoint 序列更合理** 误写成 packet 自己更诚实地活到了 consume time。
 - **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，下一步应把 `experiments.md` 的真实 sanity check 输出重写成带 `Q^{wam}_{plan}` 的 submission-ready 最小 schema，并与现有 `Q^{reason}_{route} / Q^{lang}_{narrow} / Q^{geo}_{narrow} / Q^{unc}_{plan} / Q^{world}_{prior} / Q^{comp}_{sem}` 合并到同一张主表里。
 
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 > 最后更新：2026-05-25 R906
 
 ## R907 本轮推进结论：把 D06 从“PAPER 里已把 AwareVLN / Fly0 写成中层 family”继续压到“experiments 也必须和 KIO-planner / FlyMirage 一起形成完整 mid-level + shell/data subtraction schema，否则任何阶段升级或解耦执行增益都不得升级成 packet-contract claim”

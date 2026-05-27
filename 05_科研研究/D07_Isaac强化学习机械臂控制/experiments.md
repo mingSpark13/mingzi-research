@@ -206,6 +206,7 @@
 - **RL-Based Sim-Real Co-Training family**：默认先解释更稳的 sim-real anchoring / curriculum continuity；若 gain 主要停在早期 `ΔBDEE/ΔCET`，只能算 **protocol support**。
 - **MobileManiBench / verification family**：默认先解释 task coverage、failure surfacing、slice completeness；若只是让问题“更容易被看见”，不能占据 MEGA guidance-bearing 叙事。
 
+<<<<<<< HEAD
 ### 9.10.3 本轮 D07 冻结结论（2026-05-27）
 - 本轮高价值扫描命中 **3 个本地锚点**：`MobileManiBench (2602.05233)`、`Hand-in-the-Loop (2605.15157)`、`DiSCo (2603.22787)`。
 - **新增正式入库 0 篇**：本地覆盖已足够，不触发 arXiv / Tavily 外扩。
@@ -236,6 +237,8 @@
 - **DiSCo**：默认先解释 sequence-level bounded assistance 与 intent-preserving correction；若收益主要停在 `ΔBDEE/ΔCET` 或用户可控性上，不能升级成 late-window MEGA evidence。
 - **MobileManiBench**：默认先解释任务覆盖、失败暴露、验证壳更完整；若只是更容易发现问题，而不是 guidance residual 变强，不能占据控制主叙事。
 
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ### 9.10.3 本轮 D07 冻结结论（2026-05-26）
 - 本轮高价值扫描命中 **3 个本地锚点**：`Isaac Lab (2511.04831)`、`RL-Based Sim-Real Co-Training (2602.12628)`、`MobileManiBench (2602.05233)`。
 - **新增正式入库 0 篇**：本地覆盖已足够，不触发 arXiv / Tavily 外扩。
@@ -304,6 +307,7 @@
 - `mega.route.verification_support_flag`
 - `mega.route.verification_subtracted_ceiling`
 
+<<<<<<< HEAD
 ### 9.11.5 guidance tuple + verification tuple 联合日志模板（2026-05-26 补充）
 
 后续四行 bundle 的训练日志和 submission-ready 主表都必须同时输出两组字段：
@@ -345,3 +349,5 @@
 - 本轮高价值扫描命中本地锚点：**MobileManiBench / Find the Fruit / Q2RL / Reactive Dexterous Grasping**
 - 正式新增入库：**0 篇**
 - D07 下一步不该扩 paper list，而应优先把 `guidance tuple + verification tuple` 真正映射进首轮 bundle 的训练脚本与主表导出逻辑
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a

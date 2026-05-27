@@ -3,14 +3,24 @@ type: "overview"
 id: "overview.方向_空中VLN_技术路线图"
 pageType: "overview"
 tags: ["空中视觉语言导航", "VLA", "3D感知", "D06"]
+<<<<<<< HEAD
 summary: "D06 已从 packet-first + verifier-first 继续推进到 live-refresh-stable packet 与 stage-bounded recovery：不是谁更会搜，而是谁能在反复刷新和延迟消费后仍保住 packet 合同。"
 origins: ["../../05_科研研究/D06_空中视觉语言导航/REPORT.md"]
 updated: "2026-05-27"
+=======
+summary: "D06 已把主线进一步压成 packet-first + verifier-first + search-bounded recovery，并开始用 first-reject routing 与阶段化判线表限制恢复机制的适用边界。"
+origins: ["../../05_科研研究/D06_空中视觉语言导航/REPORT.md"]
+updated: "2026-05-20"
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ---
 
 # 方向_空中VLN_技术路线图
 
+<<<<<<< HEAD
 **一句话结论**: D06 当前最稳的骨架仍是 **packet-first + verifier-first + live-refresh-stable packet + stage-bounded recovery**，而 recovery 是否值得进入 `approach / inspect / manipulate-ready` 已被收紧成明确判线问题，不再当成默认全阶段能力。
+=======
+**一句话结论**: D06 当前最稳的骨架仍是 **packet-first + verifier-first + search-bounded recovery**，而 recovery 是否值得进入 `approach / inspect / manipulate-ready` 已被收紧成明确判线问题，不再当成默认全阶段能力。
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 ## 技术格局：四条路线
 
@@ -27,14 +37,20 @@ updated: "2026-05-27"
 2. **late-stage recovery 容易越界**：search 阶段可能有效，但 approach/inspect/manipulate-ready 往往更像 handoff 或 tracking shell 的问题。
 3. **模块化 planner 的净收益尚未证实**：FineCog-Nav 只有同时改善 `instruction adherence + memory-hit-to-waypoint conversion + pre-verifier semantic mismatch` 时，才允许升格。
 4. **恢复动作若无判线表会变成慢性误修**：仅凭“reject 后还能继续试”不够，必须分清语义错配、几何不可飞、预算超限和重复拒绝的首轮路由。
+<<<<<<< HEAD
 5. **search 赢不等于 packet 过关**：近几轮 PAPER 已把 live refresh、consume-time drift 与 handoff shell 拆成单独验收口，后续不允许再把“搜到了”直接上升成“可安全交控制器执行”。
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 ## 我们的切入点
 
 - **主执行链**：`planner -> verifier -> controller`，统一通过 `Semantic Waypoint Packet` 交接。
 - **恢复边界**：默认只保留 `search-bounded` 在线恢复，晚期阶段优先 recommendation-only、packet repair 或 hard-stop。
 - **最新推进（2026-05-18）**：主链已补上 `First-Reject Routing` 与阶段化判线表，明确 search 阶段保留完整 `retry / repair / replan / escalate`，而后期阶段优先 recommendation-only、packet repair 或 hard-stop，避免把恢复线误写成通用解法。
+<<<<<<< HEAD
 - **最新推进（2026-05-27）**：PAPER 已把 live refresh -> consume-time preservation -> NtM shell 压成连续证据路线。今后 planner-side 主动感知、world prior、semantic completion 这些上游收益，都必须先经过 refresh-stable packet 再谈 controller handoff，不能直接越级宣传。
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 ## 关键技术装置
 

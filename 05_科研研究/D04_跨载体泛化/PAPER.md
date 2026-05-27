@@ -443,6 +443,7 @@ To make this distinction executable, we add one cheap supervision-side sanity to
 ### 4.2.47 Family-Matched Representation-First Freeze after DexFormer Re-read
 
 A fresh local re-read of **DexFormer** [REF: 2502.11147] sharpens a boundary that D04 still risks blurring. DexFormer is clearly useful: a history-conditioned transformer can infer embodiment-dependent kinematics and dynamics online, and zero-shot gains across unseen dexterous hands suggest that some residual transfer burden is indeed temporal rather than purely static. But under the current D04 attribution discipline, this evidence should not be promoted too early to broad embodiment-structure claims. Before a history-conditioned route is allowed to headline remaining embodiment structure, it must first defeat a weaker and still plausible explanation: that the observed gain mainly reflects **better rollout-time descriptor consumption** after shared geometry, latent packet formation, and contact-capable embodiment exposure are already in place.
+<<<<<<< HEAD
 
 We therefore freeze a stricter default route for DexFormer-like evidence:
 `shared geometry / latent packet readiness → contact-capable descriptor exposure → history-conditioned descriptor consumption → remaining embodiment structure`.
@@ -452,6 +453,17 @@ Reviewer-facing, the key question is not whether history helps, but **when and w
 
 Given the present D04 anchor set, the cleanest near-term integration of DexFormer is conservative and useful. **RIO** still freezes at `representation/infrastructure exposure`; **HandCDO** still freezes at `contact-capable descriptor exposure`; **D-CLING** still freezes at `prior-preserving bounded assistance`; **GA3T** still freezes at `terrain-state completion`; and **DexFormer** should now freeze at `history-conditioned descriptor consumption / temporal embodiment residual recovery` unless it defeats those weaker families at the same decisive consumption window. This matters because DexFormer is exactly the kind of strong result that can tempt an over-upgrade from "history helps online" to "shared latent plus online embodiment inference solves cross-embodiment transfer." The current evidence does not yet license that jump.
 
+=======
+
+We therefore freeze a stricter default route for DexFormer-like evidence:
+`shared geometry / latent packet readiness → contact-capable descriptor exposure → history-conditioned descriptor consumption → remaining embodiment structure`.
+Reviewer-facing, the key question is not whether history helps, but **when and where that history is first honestly consumed**. If the gain mainly appears after contact onset, delayed stabilization, or manipulation-phase rollout accumulation, then the first honest tag should stop at **history-conditioned descriptor consumption** or **temporal embodiment residual recovery**, not jump directly to a stronger claim that D04 has uncovered a universally better cross-embodiment controller interface. Only if the same gain survives matched controls against stronger static descriptor baselines, richer contact-capable embodiment parameterization, and prior-preserving bounded adaptation in the same decisive window may it be promoted to remaining embodiment-structure evidence.
+
+### 4.2.48 Current Evidence-Consistent Freeze after DexFormer Integration
+
+Given the present D04 anchor set, the cleanest near-term integration of DexFormer is conservative and useful. **RIO** still freezes at `representation/infrastructure exposure`; **HandCDO** still freezes at `contact-capable descriptor exposure`; **D-CLING** still freezes at `prior-preserving bounded assistance`; **GA3T** still freezes at `terrain-state completion`; and **DexFormer** should now freeze at `history-conditioned descriptor consumption / temporal embodiment residual recovery` unless it defeats those weaker families at the same decisive consumption window. This matters because DexFormer is exactly the kind of strong result that can tempt an over-upgrade from "history helps online" to "shared latent plus online embodiment inference solves cross-embodiment transfer." The current evidence does not yet license that jump.
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 The practical D04 stop rule therefore becomes sharper: **better prepared packet, better exposed contact structure, better preserved prior, better seen terrain, and better consumed temporal descriptor** are five distinct explanation families, not five interchangeable forms of transfer success. Under this serialization, a DexFormer-style gain is scientifically valuable even before it becomes a headline claim, because it helps pin down whether the remaining bottleneck truly lives in online embodiment-conditioned consumption rather than in earlier packet formation, descriptor exposure, or scene-state completion. That is exactly the kind of disciplined contraction D04 needs before escalating toward stronger embodiment-structure language.
 
 ### 4.2.15 Attribution Priority after Terrain, Contact, and Coordination Completion
@@ -868,6 +880,7 @@ Operationally, every row built from the current anchor set must report at least 
 
 To make the rule stricter under the current local evidence, we additionally bind each family to its most defensible minimal explanation: **GA3T = terrain-state completion**, **RIO = packet hygiene / infrastructure exposure**, **HandCDO = descriptor readability before consumable contact transfer**, and **D-CLING = low-data prior-preserving bounded refinement**. The moment a result can still be fully explained by one of these weaker routes, the promotion ladder must stop there. This prevents D04 from silently merging scene completion, interface cleanup, descriptor enrichment, and lightweight adaptation into a single inflated transfer story.
 
+<<<<<<< HEAD
 ### 4.2.48 DexFormer as a Family-Matched Temporal-Inference Anchor rather than Immediate Embodiment Evidence
 
 A useful next anchor under the same serialization rule is **DexFormer** [REF: 2502.11147]. DexFormer is valuable because it does not merely add a static morphology token; it uses trajectory history to infer hand morphology and dynamics online. For D04, that makes DexFormer a clean representative of the `history-conditioned temporal inference` family. The key reviewer-facing question is therefore not whether DexFormer improves transfer in aggregate, but whether its gain appears only after weaker families such as representation exposure, descriptor readability, terrain-state completion, and bounded prior-preserving adaptation have already been exhausted. If not, then DexFormer should not be narrated as immediate evidence that a deeper embodiment-specific controller is necessary.
@@ -881,6 +894,9 @@ Under the current local anchor mix, the strongest honest sentence is still conse
 In practical writing terms, the next D04 result paragraph can now use a sharper serialization: *current evidence suggests that many gains still stop at terrain-state completion, representation/infrastructure cleanup, contact-capable descriptor exposure, or prior-preserving bounded adaptation; DexFormer-like history inference should be counted only as the surviving temporal residual beyond those audits, not as immediate proof that the shared latent interface is fundamentally insufficient.*
 
 ### 4.2.50 Active Embodiment Identification as a Deployment-Time Probe rather than Interface Sufficiency
+=======
+### 4.2.49 Active Embodiment Identification as a Deployment-Time Probe rather than Interface Sufficiency
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 A final boundary becomes useful once the literature moves from transfer *during training* to transfer *at deployment*. Active Embodiment Identification [REF: 2605.08020] suggests that a policy can recover part of the apparent cross-embodiment gap by first spending a short interaction budget to probe its own morphology, damaged joints, or hidden embodiment state before the downstream task begins. This is strategically relevant to D04 because such gains are easy to overclaim: a route may look more transferable not because the shared geometry packet or latent interface became stronger, but because the system inserted an **active embodiment-probe stage** that reveals the current body configuration before execution.
 

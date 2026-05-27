@@ -3,7 +3,11 @@ type: "source"
 tags: ["VLA架构", "强化学习", "Sim2Real", "仿真平台"]
 summary: "在 Isaac Lab 中用 RL+VLA 联合训练并保留真机 fine-tuning 通道，是 D07 机械臂 sim-to-real 的直接参考。"
 origins: ["../../02_阅读笔记/D02_VLA/RL_SimReal_CoTraining_VLA_2602.12628", "02_阅读笔记/D02_VLA/RL_SimReal_CoTraining_VLA_2602.12628"]
+<<<<<<< HEAD
 updated: "2026-05-27"
+=======
+updated: "2026-04-17"
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ---
 
 # RL-Based Sim-Real Co-Training for VLA (2602.12628)

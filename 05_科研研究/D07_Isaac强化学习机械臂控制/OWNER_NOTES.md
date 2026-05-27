@@ -21,6 +21,27 @@
 
 ## 📝 主人批注区
 
+<<<<<<< HEAD
+=======
+### [2026-05-26] 核心创新范式确立：机械臂作为高频稳定器
+**类型**: 方向调整 + 创新点  
+**优先级**: 🔴 立即执行
+
+本方向的根本创新是一条**第三路线**，不是更好的整身控制，也不是更好的分开控制：
+
+**核心主张**：无人机飞控只需保证系统在某一范围内稳定，机械臂凭借自身高频敏捷运动能力主动补偿无人机漂移，在不依赖动捕等外部精确定位的条件下，实现室外可部署的高精度末端跟踪。
+
+**为什么这条路能走通**：传统分开控制精度差，根本原因不是"分开控制"本身，而是没有充分利用机械臂的敏捷性。只要机械臂控制频率高于无人机晃动频率，无人机的低频漂移就可以被机械臂实时补偿掉。
+
+**当前已验证**：5轴机械臂 + 无人机yaw = 等效6轴机械臂，MuJoCo仿真已确认方案可行性。构型上无人机悬停在目标前下方，末端夹爪保持水平朝前，yaw参与联合解算。
+
+**核心挑战**：机械臂敏捷运动策略（优化解算→RL训练）、机械臂侧独立轻量定位、机械臂运动对无人机的反作用扰动控制。
+
+**对 PAPER.md 的引导**：当前论文框架过于通用，需要把"机械臂高频补偿无人机低频漂移"这一物理主张写成论文的核心假设和贡献，整身控制 / 传统分开控制 / 本方案的三路对比应成为 Introduction 的主线。实验核心验证指标应是：在不同无人机漂移幅度下，末端跟踪误差是否保持稳定（解耦曲线）。
+
+---
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ### [2026-05-18] 研究目标论文标题已切换后的章节收束
 **类型**: 写作风格  
 **优先级**: 🔴 立即执行
@@ -44,8 +65,11 @@
 
 | 日期 | 响应的批注 | 执行动作 |
 |------|-----------|---------|
+<<<<<<< HEAD
 | 2026-05-26 | [2026-05-18] 研究目标论文标题已切换后的章节收束 | 已继续按 **MEGA** 标题收束 D07 PAPER 与 experiments：在 PAPER 新增 **3.22 Verification-Shell and Benchmark-Coverage Subtraction Before Guidance Promotion** 与 **3.23 Metric-First Family Rights under the Current Local Anchor Set**，把 **MobileManiBench** 明确冻结为 `verification-support / benchmark-shell` family，并要求任何行先同时提交 guidance tuple `\mathcal{G}_{row}` 与 verification tuple `V_{row}`，再决定是否还能宣称 moving-base guidance 改进；同步在 experiments.md 扩充 **9.11 guidance tuple + verification tuple 联合日志模板**，把 `C_task / C_fail / C_slice / T_build / κ_verify` 映射到训练日志与 submission-ready 主表，进一步防止“只是验证壳更宽、更会暴露失败”被误写成 MEGA guidance-bearing 方法增益。 |
 | 2026-05-26 | 无新增批注 | 按默认轮换主推进 D07，严格先读 README / PAPER / OWNER_NOTES / experiments，并回扫近 30 天本地 L1 锚点 **MobileManiBench / Find the Fruit / Q2RL / Reactive Dexterous Grasping**；QMD 检索 `Isaac RL arm control sim-to-real manipulation policy --no-rerank` 仍主要回流 D07 README 与历史 round 记录，未形成需要完整入库的新高价值论文，因此本轮 **高价值扫描命中 4 篇本地锚点，正式新增入库 0 篇**。Phase 2 直接推进 PAPER/experiments 的 verification-first 减法审计，而不是继续扩论文名录。 |
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 | 2026-05-25 | 无新增批注 | 按默认轮换主推进 D07，严格先读 README / PAPER / OWNER_NOTES / REPORT / experiments，并回扫近 30 天本地 L1 锚点 **Bounded ES RL / RFS / Invariant Rewards**；QMD 检索 `Isaac Sim robotic arm reinforcement learning policy training --no-rerank` 仍主要回流 D07 本地方向文档与既有锚点，未形成需要完整入库的新高价值论文，因此本轮 **高价值新论文 0 篇，新增入库 0 篇**。Phase 2 继续直接推进 **PAPER.md** 与 **experiments.md**：在 PAPER 新增 **4.107-4.108**，把 `invariant reward` 与 `deployment-time residual steering` 明确冻结为 guidance-first 审计下的 `reward-generalization support / post-contact correction support` 两类解释家族；同时在 experiments.md 扩充 **9.8 guidance-family metric-first routing freeze**，补进这两类 family 的默认首要 guidance 指标与升级上限，进一步要求所有 OOD reward / test-time correction 路线先证明 moving-base guidance quality，不能借“更会纠偏”直接抢占 MEGA 标题叙事。 |
 | 2026-05-24 | 无新增批注 | 按默认轮换主推进 D07，严格先读 README / PAPER / OWNER_NOTES，并回扫本地 L1 锚点 **Isaac Lab / Aerial-Manipulator-RL(DSAM) / ViserDex**；补做 QMD 检索 `Isaac Sim manipulation reinforcement learning robot arm policy --no-rerank`，结果继续主要回流 D07 本地方向文档与既有锚点，未形成需要完整入库的新高价值论文，因此本轮 **高价值新论文 0 篇，新增入库 0 篇**。Phase 2 继续直接推进 **PAPER.md**：新增 **4.105 Guidance-Metric-First Family Freeze from the Current Local Anchor Set** 与 **4.106 Current Evidence-Consistent Next Step after the Isaac-Lab / ViserDex / DSAM Re-read**，把 `Isaac Lab → infrastructure-hygiene support`、`ViserDex → BDEE-first perception bridge`、`DSAM → PCST/PGFR-first hybrid stabilization` 的 metric-first explanatory rights 正式写进实验路由，进一步把 D07 收束到“先赢对应 guidance metric 上最弱但最自然的解释家族，再谈 MEGA 标题升级”的 reviewer-facing 纪律。 |
 | 2026-05-24 | 无新增批注 | 按默认轮换主推进 D07，严格先读 README / PAPER / OWNER_NOTES / experiments 与近 30 天本地 L1 锚点（DiSCo / Reactive Dexterous Grasping / Hand-in-the-Loop / Find the Fruit / Q2RL），并补做 QMD 检索 `Isaac Sim reinforcement learning moving-base end-effector guidance --no-rerank`；结果继续主要回流 D07 本地方向文档、IsaacLab 框架综述与既有 sim2real/RL 锚点，未形成需要完整入库的新高价值论文，因此本轮 **高价值新论文 0 篇，新增入库 0 篇**。Phase 2 继续直接推进 **PAPER.md** 与 **experiments.md**：在 PAPER 新增 **4.18 Guidance-Core Metric Attribution from the Current Local Anchor Set**，把 copilot / retention / analytic projection / decomposition 四类 support family 分别冻结到其默认应先解释的 guidance metric（`ΔBDEE / ΔCET / ΔPCST / ΔPGFR`）；同时在 experiments.md 新增 **9.8 guidance-family metric-first routing freeze**，把这套“family 必须先赢下自己最自然但仍最弱的 guidance metric，才允许再谈标题升级”的规则显式映射进实验路由。 |

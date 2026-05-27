@@ -96,6 +96,7 @@ Operationally, we treat WildOS-like systems as matched negative controls wheneve
 MINT [REF: 2603.07824] exposes another route that can look deceptively strong in aerial VLN: **interactive or active elicitation before execution**. By querying missing constraints or refining task intent before committing to a plan, such systems may substantially improve planner-side ambiguity resolution, region narrowing, and waypoint proposal cleanliness. For D06, this is useful because active elicitation can reduce pre-verifier semantic mismatch and make `Q^{reason}_{route}` or `Q^{lang}_{narrow}` look much stronger. But that gain still lives primarily on the route `task disambiguation → proposal cleanup → better narrowing / better planner-side packet proposal`; it does not by itself prove that the emitted packet survives refresh episodes or remains honest at controller consumption.
 
 We therefore treat MINT-style methods as an **active-elicitation support family**. Gains from this family are allowed to explain improvements in ambiguity resolution, query-efficient intent completion, and planner-side proposal quality, but they are not allowed to promote a row into packet-contract or NtM language unless the same row still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` after elicitation has already been subtracted. Only rows that additionally preserve `A^{shell}` may support manipulation-ready handoff claims. This matters because a system that asks better questions may still produce a packet that decays under streaming observations or loses shell validity before use time.
+<<<<<<< HEAD
 
 ### 2.10 Search-Side Complementarity improves Narrowing Quality but does not by itself Close Packet Accountability
 
@@ -129,6 +130,41 @@ However, FlyMirage-style gains still live primarily on the route `better data co
 
 ### 2.15 Planner-Side Self-Awareness and Semantic-Geometric Decoupling as Strong but Bounded Mid-Level Baselines
 
+=======
+
+### 2.10 Search-Side Complementarity improves Narrowing Quality but does not by itself Close Packet Accountability
+
+Recent local anchors make the search-side structure of D06 sharper. LMPath [REF: 2605.13782] improves **language-mediated region narrowing** by converting target-environment relations into aerial exploration priors before the target is directly seen. StereoNav [REF: 2605.13328] improves **geometry-grounded target anchoring** by using stereo cues and target-location priors to stabilize grounding once the target becomes partially observable. WildOS [REF: 2602.19308] strengthens **open-vocabulary outdoor search competence** through geometry-safe exploration and boundary-node semantic search. AgentVLN [REF: 2603.17670] adds a reasoning-side complement: modular VLM-as-Brain routing can improve clause decomposition, skill selection, and pre-verifier waypoint proposal quality without forcing a monolithic end-to-end controller. Taken together, these systems show that aerial navigation can become much stronger long before a packet is ever consumed by the low-level controller.
+
+For D06, this means search-side gains should be treated as **complementary narrowing families** rather than implicit packet wins. LMPath-like gains are allowed to explain earlier `Q^{lang}_{narrow}` improvements and lower wasted coverage. StereoNav-like gains are allowed to explain stronger `Q^{geo}_{narrow}` and lower cross-view anchor drift. WildOS-like gains are allowed to explain region-discovery stability and open-vocabulary target recall. AgentVLN-like gains are allowed to explain stronger `Q^{reason}_{route}` and cleaner pre-verifier waypoint proposals. But none of these routes, alone or combined, is sufficient evidence that the packet preserves `A^{dir}`, `A^{ctx}`, `A^{guard}`, or `A^{shell}` through repeated refresh episodes and delayed controller consumption. In other words, better search and planner-side reasoning are prerequisites for D06, not yet proofs of packet accountability.
+
+### 2.11 Route-Closure after Search-Side Complementarity
+
+We therefore formalize a stronger route-closure discipline for search-side complementarity. A row that improves because LMPath narrows the search region better, StereoNav grounds the target more stably, WildOS recovers the correct outdoor semantic zone more reliably, or AgentVLN routes reasoning and skills more cleanly may only be promoted along the route `search-route win → refresh-stable packet support → consume-time packet preservation → manipulation-ready shell preservation`. If the evidence closes only on the first hop, the row freezes as **search-prior support** or **reasoning-route support**. If it survives refresh but loses packet fields before `w^{\dagger}_{consume}`, it freezes as **refresh-stable packet support**. Only rows preserving `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` may be promoted to packet-contract language, and only rows that additionally preserve `A^{shell}` may support NtM handoff claims.
+
+This rule is especially important for D06 because recent local evidence now gives us four different search-side explanations with very different semantics: language prior quality, geometry-grounded anchoring quality, open-vocabulary outdoor search quality, and modular reasoning-route quality. Without an explicit route-closure protocol, those gains are too easy to merge into a single inflated story about packet survival. Our paper should instead force them to remain separate until delayed consumption evidence actually closes the loop.
+
+### 2.12 Search-Side Local-Execution Shells are Necessary but Not Sufficient for Packet Claims
+
+Recent low-level UAV planning work such as KIO-planner [REF: 2605.19703] shows that a strong **local execution shell** can materially improve geometric executability, minimum obstacle clearance, and inference latency in cluttered or narrow environments. This matters for D06 because any aerial VLN packet eventually has to pass through a local controller-facing execution layer, and poor near-field safety can destroy even a semantically correct packet. However, KIO-style gains still live primarily on the route `better local depth attention / safety shielding → stronger short-horizon geometric feasibility`, not on the route `direction-aware clause preservation → refresh-stable context retention → consume-time packet survival`.
+
+We therefore treat local execution-shell methods as a separate support family. Their gains are allowed to explain improvements in **Geometric Executability Gate** pass rate, minimum-clearance robustness, and near-field controller safety under matched latency. But they are not allowed to justify stronger `Q^{lang}_{narrow}`, `Q^{reason}_{route}`, or packet-contract promotion unless the same row also preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}`; `A^{shell}` remains the final gate for NtM handoff claims. This distinction is useful because a D06 variant may win by attaching a much better local shell to an otherwise unchanged planner, and that should be reported honestly as **execution-shell support** rather than as evidence that the packet interface itself has already become stronger.
+
+### 2.13 Local Execution-Shell Support and Data-Scaling Support require an Explicit Experiment-Side Freeze
+
+Recent local anchors sharpen two additional non-packet explanations that D06 must keep separate in both writing and experiments. **KIO-planner** [REF: 2605.19703] shows that a strong local execution shell can materially improve near-field geometric executability, obstacle clearance, and short-horizon safety under tight latency budgets. **FlyMirage** [REF: 2605.19600] shows that large gains may also come from upstream synthetic-data scaling, where generative world models improve data coverage, trajectory diversity, and pretraining priors before any consume-time packet field is ever tested. **LMPath** [REF: 2605.13782] and **StereoNav** [REF: 2605.13328] make the planner-side side of this story even sharper: language-mediated region priors and stereo-grounded target-location priors can both improve early narrowing and reduce wasted search effort before packet survival is ever stress-tested. All four routes are valuable for D06, but none should be allowed to silently inflate packet claims.
+
+We therefore freeze them as distinct support families with different ceilings. KIO-style methods are allowed to explain stronger **geometric executability**, **near-field safety compliance**, and **controller-side local robustness**. FlyMirage-style methods are allowed to explain stronger **data coverage**, **trajectory-diversity support**, and **pretraining-prior quality**. LMPath-style methods are allowed to explain stronger **language-mediated search narrowing**, while StereoNav-style methods are allowed to explain stronger **geometry-grounded target anchoring** and lower cross-view drift. But none of these routes, alone or combined, is allowed to justify stronger consume-time packet preservation unless the same row still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}`; `A^{shell}` remains the final gate for NtM handoff claims. In D06, all four families should therefore enter the evidential ladder only as subtraction routes: if a row's gain is exhausted by a better execution shell, better synthetic-data support, better language-side narrowing, or better geometry-side anchoring, it must freeze below packet-contract promotion.
+
+### 2.14 Data-Scaling Support and Route-Closure for Synthetic Aerial Corpora
+
+FlyMirage [REF: 2605.19600] strengthens an increasingly relevant upstream route for D06: **data scaling via generative world models**. By automatically synthesizing diverse UAV flight scenes, semantics-aligned trajectories, and dynamics-feasible long-horizon paths, it can materially improve data coverage and reduce the manual bottleneck of collecting aerial VLN supervision in the wild. For our paper, this matters because richer synthetic corpora may improve earlier `w^+`, lower planner-side search entropy, and stabilize proposal quality before deployment. In parallel, LMPath [REF: 2605.13782] and StereoNav [REF: 2605.13328] show that better planner-side priors can also shift `w^+` earlier: the former by turning language-mediated environment relations into search-region priors, the latter by using stereo-consistent target-location priors to stabilize geometric grounding after first target exposure.
+
+However, FlyMirage-style gains still live primarily on the route `better data coverage → stronger pretraining prior → cleaner planner-side proposal`, LMPath-style gains on the route `better language prior → earlier region narrowing → lower wasted coverage`, and StereoNav-style gains on the route `better geometry prior → lower anchor drift → stabler target attachment`. None of these routes by themselves establishes stronger `A^{dir}`, `A^{ctx}`, `A^{guard}`, or `A^{shell}` at delayed controller consumption. We therefore treat synthetic-data scaling, language-prior narrowing, and geometry-prior anchoring as separate **pre-consumption support families**: their gains are allowed to explain stronger coverage, more diverse long-range priors, lower data sparsity, earlier semantic narrowing, and stronger cross-view anchoring, but they are not allowed to promote a row into packet-contract or NtM language unless the same row still preserves the consume-time packet fields after refresh episodes. This keeps D06 from confusing "trained on better data," "searched in a better region," or "anchored the target more stably" with "proved a stronger deployable packet interface."
+
+### 2.15 Planner-Side Self-Awareness and Semantic-Geometric Decoupling as Strong but Bounded Mid-Level Baselines
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 AwareVLN [REF: 2605.22816] and Fly0 [REF: 2602.15875] sharpen a middle regime that sits between planner-side search priors and full packet-contract preservation. AwareVLN improves long-horizon navigation through **self-awareness and progress-structured reasoning**: it explicitly tracks agent state, task progress, and spatial relations, making the planner better at deciding *which stage it is in* and *whether the current evidence is sufficient to advance*. Fly0 instead decouples **semantic grounding** from **geometric planning**, showing that a UAV can obtain strong zero-shot navigation gains by first grounding a language-described target and then delegating motion realization to a geometry-driven planner. Both routes are highly relevant to D06 because they directly compete with our packet-centric framing at the level of mid-stage explanation: AwareVLN can explain better stage discipline and progress-consistent replanning, while Fly0 can explain cleaner semantic-to-geometric decomposition without requiring an explicit reusable packet.
 
 For D06, these baselines should be treated as strong but bounded **mid-level support families**. AwareVLN-like gains are allowed to explain stronger planner-side stage awareness, progress-consistent recovery, and lower wrong-escalation rates at the `search → approach` boundary. Fly0-like gains are allowed to explain stronger semantic-geometric role separation, lower controller oscillation, and better zero-shot execution stability when semantic grounding is already correct. But neither route, by itself, proves that the emitted interface remains honest through repeated packet refresh and delayed controller consumption. In our route-closure discipline, AwareVLN-family gains freeze at **progress-aware planner support** unless they still preserve `A^{ctx}` and `A^{guard}` through `w^{\dagger}_{consume}`; Fly0-family gains freeze at **semantic-geometric decoupling support** unless they additionally preserve `A^{dir}`, `A^{ctx}`, and `A^{guard}` after geometric execution has already been matched. Only rows that also preserve `A^{shell}` are allowed to support full NtM handoff claims.
@@ -145,6 +181,7 @@ We therefore extend the D06 route-closure discipline with three additional subtr
 
 Operationally, this means D06 should treat `Q^{unc}_{plan}`, `Q^{world}_{prior}`, and `Q^{comp}_{sem}` exactly like earlier reasoning- and search-family diagnostics: they are legitimate explanatory wins, but only at their own ceiling. A planner that simply knows when to spend one more sensing action is not yet a stronger packet interface. A model that searches better because an upstream sandbox taught stronger semantic priors is not yet a stronger packet interface. A route that becomes cleaner because unknown semantics were completed more helpfully is not yet a stronger packet interface. Only residual evidence that survives these matched explanations and still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through delayed consumption may support packet-contract language; only rows that additionally preserve `A^{shell}` may support NtM handoff claims.
 
+<<<<<<< HEAD
 ### 2.18 World-Action Modeling for Aerial VLN is a Strong Planning Family but does not by itself Close Consume-Time Packet Accountability
 
 WorldVLN [REF: 2605.15964] introduces the first explicit **autoregressive world-action model** for aerial VLN, converting instruction-conditioned short-horizon world evolution into executable waypoint actions and then re-encoding fresh observations back into the autoregressive context after each action segment. This is highly relevant to D06 because it occupies a route adjacent to our packet-centric framing: rather than emphasizing packet serialization first, it argues that better aerial VLN may arise from stronger latent world-transition anticipation, action-segment prediction, and rollout-aware policy improvement via Action-aware GRPO. In other words, WorldVLN can plausibly explain gains that come from **prediction-driven planning quality**, **closed-loop world-state anticipation**, and **better short-horizon waypoint consequence modeling** before delayed controller consumption is ever audited.
@@ -158,6 +195,9 @@ We therefore add one more route-closure rule specific to aerial world-action mod
 This matters because WorldVLN sits unusually close to D06's own narrative frontier: a strong autoregressive world-action model may make aerial navigation look much more coherent without yet proving that the emitted interface remains direction-honest, context-stable, guard-valid, and shell-preserving when finally consumed by the downstream controller or NtM stack. Our paper should therefore treat `Q^{wam}_{plan}` as another bounded diagnostic: it is evidence of stronger planning via latent world-transition reasoning, not yet evidence of stronger consume-time packet accountability.
 
 ### 2.20 Limitations of Existing Work
+=======
+### 2.18 Limitations of Existing Work
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 Existing aerial navigation and VLN approaches share critical gaps:
 (1) No existing method provides a complete aerial VLN framework with 3D semantic frontier exploration.
@@ -188,7 +228,10 @@ Existing aerial navigation and VLN approaches share critical gaps:
 (26) Synthetic aerial data pipelines can dramatically improve upstream diversity and long-horizon supervision, but current aerial VLN work still provides weak evidence on when those gains remain only *pretraining-support improvements* versus when they genuinely survive refresh episodes and delayed controller consumption as packet-contract evidence.
 (27) Self-aware progress-reasoning systems can substantially reduce stage confusion and wrong escalation during long-horizon navigation, but current aerial VLN work still offers weak evidence on when these gains survive repeated refresh episodes strongly enough to justify consume-time packet-contract promotion.
 (28) Semantic-geometric decoupling systems can markedly improve zero-shot navigation stability and reduce controller oscillation, but current aerial VLN work still provides weak guidance on when those gains remain only *decoupled execution support* versus when they genuinely preserve packet fields through delayed controller consumption and NtM handoff.
+<<<<<<< HEAD
 (29) Autoregressive world-action models may substantially improve short-horizon consequence prediction and waypoint selection quality, but current aerial VLN work still provides weak evidence on when these gains remain only *world-action planning support* versus when they genuinely survive refresh episodes and delayed controller consumption as packet-contract evidence.
+=======
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 ---
 
@@ -258,6 +301,7 @@ We further attach a reviewer-facing routing tuple
 \Gamma = (w^+,\; w^{\dagger},\; r^*,\; q^*)
 \]
 where `w+` is the earliest positive window, `w†` is the last honesty-preserving window, `r*` is the dominant evidence route, and `q*` is the weakest honest claim allowed by that route. This prevents D06 from merging planner-side clause gains, verifier-side continuity gains, and controller-side rescue gains into one inflated packet-first story.
+<<<<<<< HEAD
 
 ### 3.6 World-Action-Subtracted Packet Proposal Ranking
 
@@ -341,6 +385,79 @@ For each candidate packet `\mathcal{W}_i`, we define a ranking score
 \[
 S(\mathcal{W}_i)=S_{sem}+\lambda_{dir}S_{dir}+\lambda_{geo}Q^{geo}_{narrow}+\lambda_{lang}Q^{lang}_{narrow}+\lambda_{reason}Q^{reason}_{route}-\lambda_{risk}C_{dyn},
 \]
+=======
+
+### 3.6 Refresh-Stable Packet Gating after Outdoor Search Narrowing
+
+We extend the packet contract with a **refresh-stability gate** that activates after an outdoor-search module has already narrowed the candidate target zone. Intuitively, once the system believes it is searching in the right region, the key question is no longer only whether the next frontier is semantically promising, but whether repeated packet refreshes still preserve the same directional clause, context anchor, guarded execution prefix, and manipulation shell assumptions. We therefore define a refresh episode sequence `r_1, r_2, \dots, r_K` between `w^+` and `w^{\dagger}_{consume}` and require packet survival to be judged across the sequence rather than at one isolated window.
+
+For each refresh episode `r_k`, the planner emits an updated packet \(\mathcal{W}_t^{(k)}\) while inheriting the previous packet's active semantic thread unless explicit evidence forces thread switching. The verifier then checks not only geometric executability and budget legality, but also whether the refreshed packet still preserves (i) directional clause consistency, (ii) context-anchor identity, (iii) guarded-prefix continuity, and (iv) local handoff shell validity. This turns refresh from a purely reactive runtime trick into a controlled packet-accountability mechanism.
+
+We further distinguish two upstream narrowing priors before refresh is even invoked. A **geometry-grounded narrowing prior** uses multi-view depth or stereo-consistent target anchoring to stabilize where the packet should attach after the target first becomes partially observable. A **language-prior-guided narrowing prior** uses instruction-conditioned semantic search bias to stabilize which regions should be explored before direct target confirmation exists. These two priors improve different failure surfaces and therefore should remain separate in our method accounting: the former reduces cross-view anchor drift before packet update, while the latter reduces wasted search coverage before packet emission. Neither is allowed to count as consume-time packet superiority unless the resulting packet still passes the refresh-stability and handoff gates.
+
+Concretely, we attach two auxiliary diagnostics to the pre-refresh stage: `Q^{geo}_{narrow}` for geometry-grounded narrowing quality and `Q^{lang}_{narrow}` for language-prior-guided narrowing quality. These terms are used only to explain earlier improvement in `w+` or reduced search inefficiency; they do not enter the promotion contract unless the downstream packet fields remain stable through `w^{\dagger}_{consume}`. This preserves a clean boundary between *helping the system search in a better place* and *proving that the packet stayed valid until use time*.
+
+In parallel, we define a **latent-execution route tag** for compact end-to-end baselines such as AerialVLA. This tag is activated when the system improves trajectory stability or oracle-free autonomy through a direct observation-language-to-control mapping without explicitly exposing reusable packet fields. Such gains are allowed to raise the evidence ceiling from planner-time reasoning to **latent execution sufficiency**, but not to packet-contract preservation unless consume-time packet fields are still audited and preserved. This prevents D06 from misreading a strong minimalist VLA control baseline as if it had already validated a structured packet interface.
+
+Concretely, we define a **refresh-stable packet gate**
+\[
+G_{\text{refresh}} = \mathbb{1}\Big[ \prod_{k=1}^{K} A^{dir}_{(k)} A^{ctx}_{(k)} A^{guard}_{(k)} = 1 \Big]
+\]
+for packet-contract promotion, and a stricter handoff gate
+\[
+G_{\text{NtM}} = \mathbb{1}\Big[ \prod_{k=1}^{K} A^{dir}_{(k)} A^{ctx}_{(k)} A^{guard}_{(k)} A^{shell}_{(k)} = 1 \Big]
+\]
+for manipulation-ready claims. Under this design, a method may benefit from WildOS-style outdoor narrowing or LiveVLN-style runtime continuity, but it still cannot be promoted to packet-contract or NtM language unless the packet survives refresh episodes all the way to consume time.
+
+### 3.7 Reasoning-Route-Aware Packet Promotion Gate
+
+We add a dedicated **reasoning-route-aware promotion gate** to prevent planner-side modular intelligence from being over-promoted into consume-time packet claims. Recent modular VLM-as-Brain systems such as AgentVLN show that stronger instruction decomposition, cleaner skill routing, and lighter edge-side planning can already improve search-time waypoint quality without yet proving that the resulting packet survives refresh episodes or controller consumption more honestly. We therefore treat the reasoning route as a separate evidence ladder that must be exhausted before any packet-interface promotion is allowed.
+
+Concretely, after the planner emits a candidate packet, we log a reasoning-family diagnostic
+\[
+Q^{reason}_{route} = \Phi(\text{clause decomposition},\; \text{skill-routing fidelity},\; \text{pre-verifier semantic mismatch reduction})
+\]
+which measures how much of the gain is still attributable to modular reasoning before execution. This diagnostic may justify earlier `w+`, lower planner-side search entropy, or better pre-verifier waypoint proposals, but it does not by itself raise the claim ceiling beyond **planner-side modular reasoning gain**. Only after subtracting the reasoning-route explanation do we continue to the later gates for search-prior subtraction, compact-control subtraction, and consume-time packet survival.
+
+### 3.8 Progress-Aware Escalation Control, Semantic-Geometric Decoupling, and World-Prior Audits
+
+We further add two mid-level audits motivated by AwareVLN and Fly0, because both can create convincing improvements before full packet accountability is closed. The first audit is a **progress-aware escalation control** that tracks whether the planner promotes the agent from `search` to `approach` or from `approach` to `manipulate-ready` at the correct moment. Concretely, we maintain a stage-confidence vector
+\[
+\pi_t = (\pi_t^{search},\; \pi_t^{approach},\; \pi_t^{handoff})
+\]
+and define a wrong-escalation penalty when the active stage advances without sufficient support from packet fields, verifier evidence, and recent progress trend. This gives D06 a way to capture AwareVLN-style gains as **progress-consistent planning support** rather than letting them silently inflate packet-contract claims.
+
+The second audit is a **semantic-geometric decoupling check** that asks whether a method's gain is mainly due to better role separation between semantic grounding and geometric execution. After a target hypothesis is grounded, we split downstream gains into a semantic-side term for target interpretation and a geometric-side term for controller-feasible realization. This yields a decoupling diagnostic
+\[
+Q^{dec}_{sg} = \Psi(\text{target grounding stability},\; \text{trajectory oscillation reduction},\; \text{goal-to-path realization fidelity}),
+\]
+which is allowed to justify stronger zero-shot execution stability and lower control jitter. However, `Q^{dec}_{sg}` does not by itself raise the claim ceiling beyond **semantic-geometric decoupling support** unless the packet still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}`. In this way, D06 can absorb AwareVLN-style planner self-awareness and Fly0-style semantic-geometric separation without confusing either route with evidence that the reusable packet interface itself has already survived delayed use.
+
+We additionally introduce a **world-prior audit** for SAGE- and PLMD-like gains, because stronger upstream world abstractions or semantic map completion can make the planner look substantially better before any packet is truly consumed. We define two diagnostics. The first is a world-prior transfer term
+\[
+Q^{world}_{prior} = \Upsilon(\text{open-world transfer gain},\; \text{physics-grounded prior quality},\; \text{early-stage search-entropy reduction}),
+\]
+which captures how much of the improvement is still attributable to learning in a physics-grounded semantic sandbox rather than to a better packet interface. The second is a semantic-completion term
+\[
+Q^{comp}_{sem} = \Omega(\text{unknown-region semantic completion quality},\; \text{goal-map sharpening},\; \text{exploration-waste reduction}),
+\]
+which captures how much of the gain still comes from predicting useful unseen semantics before direct confirmation. These diagnostics are allowed to justify stronger world-prior transfer and semantic-completion support, but they do not by themselves raise the claim ceiling beyond pre-consumption support families unless the packet still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` after those upstream advantages have already been subtracted.
+
+Operationally, we insert the following gate before packet promotion:
+\[
+G_{reason} = \mathbb{1}[\text{residual gain remains after conditioning on } Q^{reason}_{route}, Q^{world}_{prior}, Q^{comp}_{sem}].
+\]
+If `G_{reason}=0`, the row freezes at **reasoning-route support**, **world-prior transfer support**, or **semantic-completion support**, depending on the dominant residual explanation. If `G_{reason}=1`, the row may proceed to search-prior subtraction, latent-execution matching, runtime continuity matching, and finally the packet-survival gates `A^{dir}`, `A^{ctx}`, `A^{guard}`, and `A^{shell}`. This ordering ensures that D06 only claims packet-contract superiority when the evidence cannot already be honestly exhausted by modular planner intelligence, upstream world priors, or semantic map completion alone.
+
+### 3.9 Search-Route-Subtracted Packet Proposal Ranking
+
+Our proposal layer explicitly ranks candidate packets under a **search-route-subtracted** objective so that earlier narrowing gains are not silently counted twice. We first parse the instruction into clause units, directional relations, and target-environment hints, then derive route-specific priors from three upstream families: language-mediated region narrowing (`Q^{lang}_{narrow}`), geometry-grounded target anchoring (`Q^{geo}_{narrow}`), and modular reasoning-route support (`Q^{reason}_{route}`). These priors are useful because they reduce wasted search coverage, pre-refresh drift, and pre-verifier mismatch, but they remain planner-side support signals rather than consume-time evidence.
+
+For each candidate packet `\mathcal{W}_i`, we define a ranking score
+\[
+S(\mathcal{W}_i)=S_{sem}+\lambda_{dir}S_{dir}+\lambda_{geo}Q^{geo}_{narrow}+\lambda_{lang}Q^{lang}_{narrow}+\lambda_{reason}Q^{reason}_{route}-\lambda_{risk}C_{dyn},
+\]
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 where `S_{sem}` is semantic relevance, `S_{dir}` is direction-conditioned adherence, and `C_{dyn}` is the dynamics-aware flight risk and budget cost. Crucially, the first three auxiliary route terms are only used to rank *which packet to test next*; they are not allowed to raise the final evidence ceiling unless the selected packet later survives refresh and controller consumption.
 
 We further add a **local-shell feasibility term** `Q^{shell}_{local}` to capture whether a KIO-style controller shell can safely realize the proposed packet under near-field obstacle geometry and onboard latency constraints. This term may improve packet ranking by filtering proposals that are semantically strong but geometrically brittle in cluttered spaces. However, `Q^{shell}_{local}` is still an execution-support signal rather than a consume-time packet-survival proof: it may justify stronger Geometric Executability Gate performance, but not by itself stronger `A^{dir}`, `A^{ctx}`, or `A^{guard}` preservation.
@@ -498,6 +615,7 @@ We further collapse the current family-specific caveats into one reviewer-facing
 Q^{reason}_{route} \rightarrow (Q^{lang}_{narrow}, Q^{geo}_{narrow}, \tau_{search}) \rightarrow \tau_{latent} \rightarrow \tau_{runtime} \rightarrow (A^{dir}, A^{ctx}, A^{guard}) \rightarrow A^{shell},
 \]
 where `\tau_{search}` denotes the strongest residual explanation still attributable to search-side complementarity, `\tau_{latent}` denotes the strongest residual explanation still attributable to compact end-to-end latent control, and `\tau_{runtime}` denotes the strongest residual explanation still attributable to guarded live-execution continuity. This makes explicit that **reasoning-family gains should be exhausted first**, because they can contaminate both narrowing quality and pre-verifier packet plausibility before any controller-facing evidence appears.
+<<<<<<< HEAD
 
 Operationally, this means every D06 row should name (i) the earliest family that can still honestly explain the gain, (ii) the last family it survives after subtraction, and (iii) the first late-window field that fails. If a row still collapses at the reasoning-family stage, it must not inherit stronger language from later packet fields. If it survives reasoning and search subtraction but is still matched by AerialVLA-style direct control, it freezes at **latent execution sufficiency**. If it further survives latent subtraction but wins only through guarded refresh and continuity, it freezes at **runtime continuity support**. Only the residual after all these stages may enter packet-contract language.
 
@@ -533,6 +651,43 @@ This matters because a system that chooses better moments to pause, orbit, rise,
 
 ### 4.2.21 Unified Promotion Ladder with Active-Perception Gates
 
+=======
+
+Operationally, this means every D06 row should name (i) the earliest family that can still honestly explain the gain, (ii) the last family it survives after subtraction, and (iii) the first late-window field that fails. If a row still collapses at the reasoning-family stage, it must not inherit stronger language from later packet fields. If it survives reasoning and search subtraction but is still matched by AerialVLA-style direct control, it freezes at **latent execution sufficiency**. If it further survives latent subtraction but wins only through guarded refresh and continuity, it freezes at **runtime continuity support**. Only the residual after all these stages may enter packet-contract language.
+
+### 4.2.17 Reasoning-Route Logging Contract aligned with Search-Prior and Packet Gates
+
+To make the above ladder executable, D06 needs a minimal logging contract for reasoning-family subtraction that is symmetric with the existing narrowing-family and compact-control contracts. We therefore require any row potentially explained by modular planner intelligence to record: `Planner-Modularity Family Match`, `Q^{reason}_{route}`, `Instruction-Decomposition Gain`, `Skill-Routing Gain`, `Pre-Verifier Mismatch Reduction`, `Planner-Only Explanation Remaining`, `Route-Closure Outcome`, and `Promotion Ceiling after Reasoning Subtraction`.
+
+These fields are not optional diagnostics. They answer a concrete reporting question: did the method genuinely preserve a better packet until use time, or did it simply produce a cleaner packet proposal before execution? If the latter explanation still exhausts the gain, the row must stay at **reasoning-route support** and may not borrow stronger language from consume-time packet fields. This logging contract is especially important now that AgentVLN-family evidence is strong enough locally to become a plausible rival explanation for many early D06 improvements.
+
+### 4.2.18 Experiment-Field Alignment for Reasoning/Search/Latent/Runtime Promotion Ladders
+
+The experiments section should expose the *same* evidential ladder that the method and related-work sections already assume. In practice, this means that any D06 row potentially explained by **AgentVLN-style modular reasoning**, **LMPath-style language-mediated narrowing**, **StereoNav-style geometry-grounded anchoring**, **WildOS-style outdoor search**, **AerialVLA-style compact latent control**, or **LiveVLN/OnFly-style runtime continuity** must declare where it first becomes positive, which family explanations have already been subtracted, and where the gain finally stalls before consume time.
+
+Concretely, we require every such row to log a minimal aligned schema:
+`Planner-Modularity Family Match | Q^{reason}_{route} | Search-Prior Family | Q^{lang}_{narrow} | Q^{geo}_{narrow} | Search Route Win | Refresh-Stable Until | AerialVLA-Matched Win | Runtime-Family Match | First Unrepaired Refresh Violation | Closure Level | Promotion Ceiling | Promotion Blocker | Weakest Honest Claim`.
+These fields are not reporting decoration. They determine whether the observed gain still lives at **reasoning-route support**, **search-prior support**, **latent execution sufficiency**, **runtime continuity support**, or whether a true packet-facing residual remains after subtraction. If the row omits any of these fields, the evidence is incomplete and must be frozen below packet-contract promotion.
+
+This alignment rule matters because D06 now has enough strong local anchors that several superficially positive rows can be over-explained in different ways. A row may decompose instructions better, narrow the target zone earlier, anchor the target more stably, refresh more smoothly, and execute compactly under low latency—all before proving anything about consume-time packet survival. Our experiments must therefore report the subtraction path itself, not only the final outcome.
+
+### 4.2.19 Current Evidence-Consistent Freeze after Field-Level Promotion Alignment
+
+Under the current D06 anchor set, the most honest freeze remains conservative. Rows whose gains are still exhausted by `Q^{reason}_{route}` remain **reasoning-route support**. Rows that beat planner modularity but are still exhausted by `Q^{lang}_{narrow}`, `Q^{geo}_{narrow}`, or WildOS-style outdoor-search subtraction remain **search-prior support**. Rows that survive those checks but are still matched by **AerialVLA-style compact latent control** remain **latent execution sufficiency**. Rows whose main residual advantage is only guarded refresh or execution continuity remain **runtime continuity support**. Only rows that survive all these matched explanations and still preserve `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` may be promoted to packet-contract language; only rows that additionally preserve `A^{shell}` may support NtM handoff claims.
+
+This freeze is intentionally strict. If a row looks good early because it both narrows search better and refreshes more gracefully, it may still be fully explainable by the combination of reasoning, search-prior, latent-control, and runtime families. Such a row does not yet earn a packet-first headline. The headline belongs only to the residual that remains visible at the consume-time boundary after the full aligned ladder has been honestly traversed.
+
+### 4.2.20 Planner-Uncertainty and Active-Perception Support must be Logged before Packet Promotion
+
+The current local anchor set also shows a quieter route that can easily inflate D06 claims: **planner-side uncertainty reduction through active perception**. LMPath improves search efficiency by injecting language-mediated region priors, StereoNav improves attachment stability through target-location priors, WildOS improves frontier choice through open-vocabulary search cues, and AgentVLN improves which sensing/planning skill should be called at the right moment. These gains often manifest not as a better late packet per se, but as a better decision about whether the system should spend one more observation step before committing the next packet.
+
+We therefore require every D06 row potentially helped by ambiguity-aware sensing to expose an additional alignment block: `Active-Perception Family Match | Q^{unc}_{plan} | One-More-Look Gain | Sensing-Cost Penalty | Active-Perception-Only Explanation Remaining | Packet-Promotion Eligibility after Uncertainty Matching`. Here `Q^{unc}_{plan}` summarizes the residual gain still attributable to better uncertainty reduction, safer short verification maneuvers, or cheaper ambiguity resolution before packet emission. If the gain is exhausted by this route, the row must freeze at **active-perception support** rather than packet-contract language.
+
+This matters because a system that chooses better moments to pause, orbit, rise, or re-observe may look substantially stronger in aggregate navigation success while still saying little about whether the eventual packet survives repeated refresh and delayed controller consumption. Our experiments should therefore distinguish **better ambiguity handling before commitment** from **better packet survival after commitment**.
+
+### 4.2.21 Unified Promotion Ladder with Active-Perception Gates
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 Under the updated D06 anchor set, the reviewer-facing default reading order should now be
 \[
 Q^{reason}_{route} \rightarrow (Q^{lang}_{narrow}, Q^{geo}_{narrow}, \tau_{search}) \rightarrow Q^{unc}_{plan} \rightarrow Q^{data}_{prior} \rightarrow \tau_{latent} \rightarrow Q^{shell}_{local} \rightarrow \tau_{runtime} \rightarrow (A^{dir}, A^{ctx}, A^{guard}) \rightarrow A^{shell},
@@ -546,6 +701,7 @@ Operationally, each row should now report the earliest family that still explain
 The current local anchor set suggests that D06 should no longer treat planner-side active perception as one monolithic utility term. **LMPath** improves one-more-look value mainly by using language-mediated priors to decide *where an extra observation is likely to collapse the search space most cheaply*. **StereoNav** improves one-more-look value mainly by using geometry-grounded target-location priors to decide *when another view is likely to repair cross-view anchor drift before commitment*. **WildOS** improves one-more-look value mainly by using open-vocabulary frontier-search cues to decide *which boundary node is worth re-checking before a full route commitment*. **AgentVLN** improves one-more-look value mainly by using modular skill routing to decide *which sensing or planning skill should be invoked before the next packet is emitted*. These are all real planner-side gains, but they are still best understood as different routes to **cheap ambiguity reduction before packet commitment**, not as packet-contract evidence by default.
 
 We therefore require an additional family-matched logging block before packet promotion: `LMPath-One-More-Look Match | StereoNav-Recheck Match | WildOS-Frontier-Recheck Match | AgentVLN-Skill-Routed Sensing Match | Q^{unc}_{plan} | One-More-Look Gain | Sensing-Cost Penalty | Hover-Risk Penalty | Active-Perception-Only Explanation Remaining | Guidance-after-Look Ceiling`. Here `One-More-Look Gain` records how much the row improves after one extra sensing opportunity under matched budget, `Sensing-Cost Penalty` records the temporal or energy cost of delaying commitment, and `Hover-Risk Penalty` records the additional exposure or instability risk incurred by that delay. If a row's gain is still honestly exhausted by these planner-side one-more-look routes, the row must freeze at **active-perception support** rather than packet-contract language, regardless of whether later aggregate navigation success looks strong.
+<<<<<<< HEAD
 
 ### 4.2.24 World-Prior and Semantic-Completion Families must be Subtracted before Packet Promotion
 
@@ -569,11 +725,37 @@ We therefore require any row whose gain depends on extra sensing, short verifica
 
 ### 4.2.27 Packet-Promotion Eligibility after Active Perception, World Priors, and Semantic Completion
 
+=======
+
+### 4.2.24 World-Prior and Semantic-Completion Families must be Subtracted before Packet Promotion
+
+SAGE and PLMD expose two additional upstream explanations that D06 must now keep explicit in the experiments section. SAGE-like systems may win because a physics-grounded semantic sandbox produces better open-world transfer, lower early search entropy, and stronger planner-side priors before any packet has been stress-tested at consume time. PLMD-like systems may win because diffusion-style label-map completion sharpens unknown-region semantics, predicts goal-relevant structure behind occlusion, and reduces exploratory waste before direct confirmation. Both routes can materially improve `w^+`, early target-zone concentration, and search efficiency, but they still live upstream of packet accountability.
+
+We therefore require every D06 row potentially helped by these routes to log: `World-Prior Family Match | Q^{world}_{prior} | Semantic-Completion Family Match | Q^{comp}_{sem} | Early-Stage Search-Entropy Reduction | Unknown-Region Goal-Map Gain | World-Prior-Only Explanation Remaining | Semantic-Completion-Only Explanation Remaining | Packet-Promotion Eligibility after World/Completion Matching`. If a row's gain is exhausted by better sandbox priors or better map completion, it must freeze at **world-prior transfer support** or **semantic-completion support** rather than packet-contract language.
+
+This subtraction matters because D06 now has enough local evidence to tell a tempting but inflated story: the planner enters the right region earlier, carries a cleaner target hypothesis, and appears more stable under refresh, so the packet must be better. Our contract rejects that shortcut. Only residual gains that remain after subtracting SAGE-style world-prior advantages and PLMD-style semantic-completion advantages, and that still preserve `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}`, may be promoted to packet-contract language; only rows that additionally preserve `A^{shell}` may support NtM handoff claims.
+
+### 4.2.25 Current Evidence-Consistent Freeze after World-Prior and Semantic-Completion Matching
+
+Under the current D06 anchor set, the evidence ceiling remains deliberately conservative. Rows primarily explained by `Q^{reason}_{route}` remain **reasoning-route support**; rows primarily explained by `Q^{lang}_{narrow}` or `Q^{geo}_{narrow}` remain **search-prior support**; rows primarily explained by `Q^{world}_{prior}` remain **world-prior transfer support**; rows primarily explained by `Q^{comp}_{sem}` remain **semantic-completion support**; rows primarily matched by AerialVLA-style direct control remain **latent execution sufficiency**; and rows whose main advantage is only guarded refresh or runtime continuity remain **runtime continuity support**. Only rows that survive all these matched explanations and still preserve `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` may be promoted to packet-contract language; only rows that additionally preserve `A^{shell}` may support NtM handoff claims.
+
+This means D06 should still resist over-promotion even when a variant simultaneously benefits from better world priors, cleaner semantic completion, and smoother refresh behavior. Such a row may still be fully explainable by upstream abstraction quality and uncertainty reduction rather than by a stronger reusable packet interface. The packet-first headline remains reserved for residual evidence that survives all these subtractions at actual controller-use time.
+
+### 4.2.26 Planner-Side Active-Perception Family Match under the Current Local Anchor Set
+
+LMPath, StereoNav, WildOS, and AgentVLN jointly suggest that some of the strongest recent aerial-VLN gains may come from a deceptively simple route: the system becomes better at deciding whether it should spend **one more look** before committing the next packet. LMPath contributes language-mediated uncertainty reduction, StereoNav contributes geometry-grounded verification utility, WildOS contributes frontier-search-driven semantic recheck value, and AgentVLN contributes modular skill-routing for sensing choices. In our experiment contract, these gains should be logged as an **active-perception family** rather than silently merged into packet survival.
+
+We therefore require any row whose gain depends on extra sensing, short verification motion, hover-and-check behavior, or ambiguity-aware commitment delay to report: `Active-Perception Family Match`, `Q^{unc}_{plan}`, `One-More-Look Gain`, `Sensing-Cost Penalty`, `Hover-Risk Penalty`, and `Active-Perception-Only Explanation Remaining`. If the observed gain disappears after conditioning on these fields, the row must freeze at **active-perception support**. Only if a residual remains and later survives delayed consumption with preserved `A^{dir}`, `A^{ctx}`, and `A^{guard}` may the row be promoted further.
+
+### 4.2.27 Packet-Promotion Eligibility after Active Perception, World Priors, and Semantic Completion
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 To unify the newer families with the older ladder, we recommend the following reviewer-facing order for late-window D06 rows:
 \[
 Q^{reason}_{route} \rightarrow (Q^{lang}_{narrow}, Q^{geo}_{narrow}, \tau_{search}) \rightarrow Q^{unc}_{plan} \rightarrow (Q^{world}_{prior}, Q^{comp}_{sem}) \rightarrow \tau_{latent} \rightarrow \tau_{runtime} \rightarrow (A^{dir}, A^{ctx}, A^{guard}) \rightarrow A^{shell}.
 \]
 A row may only be promoted to the next stage if the earlier family-matched explanation no longer exhausts the gain. This gives D06 one clean answer to a reviewer's hardest question: after subtracting planner modularity, search narrowing, one-more-look active perception, world priors, semantic completion, compact latent execution, and runtime continuity, **is there still packet-level residual evidence at actual consume time?**
+<<<<<<< HEAD
 
 If not, the result should stop at the earliest honest ceiling. If yes, and only then, D06 may promote the row to packet-contract language; `A^{shell}` still decides whether that packet survives strongly enough to support full NtM handoff claims.
 
@@ -586,6 +768,12 @@ Rows that may benefit from WorldVLN-style autoregressive world-action modeling m
 For each row, we define a promotion ceiling after world-action subtraction. If gains survive matched world-action subtraction but fail before `w^{\dagger}_{consume}`, the ceiling is **refresh-stable packet support**. If gains survive through `w^{\dagger}_{consume}` with `A^{dir}`, `A^{ctx}`, and `A^{guard}` preserved, the row may be promoted to **packet-contract accountability**. Only rows additionally preserving `A^{shell}` may support **NtM handoff preservation**.
 
 ### 4.2.30 Mid-Level-and-Shell/Data Unified Promotion Schema
+=======
+
+If not, the result should stop at the earliest honest ceiling. If yes, and only then, D06 may promote the row to packet-contract language; `A^{shell}` still decides whether that packet survives strongly enough to support full NtM handoff claims.
+
+### 4.2.28 Mid-Level-and-Shell/Data Unified Promotion Schema
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 The re-read of **AwareVLN** and **Fly0** makes one mid-level risk explicit: D06 may appear stronger simply because it (i) escalates stages more cautiously, or (ii) hands geometric realization to a cleaner downstream planner after semantic grounding. Both are useful, but neither is equivalent to proving that a reusable packet stayed honest until delayed controller consumption. We therefore freeze a dedicated mid-level ladder before any packet-facing claim is allowed.
 
@@ -593,25 +781,41 @@ Concretely, rows matched by **AwareVLN** are first evaluated as **progress-aware
 
 Operationally, the reviewer-facing reading order becomes: `Q^{reason}_{route} → (Q^{lang}_{narrow}, Q^{geo}_{narrow}, τ_{search}) → Q^{unc}_{plan} → Q^{data}_{prior} → τ_{latent} → Q^{shell}_{local} → (AwareVLN-style progress-aware support, Fly0-style semantic-geometric support) → τ_{runtime} → (A^{dir}, A^{ctx}, A^{guard}) → A^{shell}`. This ordering matters because it prevents D06 from mistaking **better stage discipline** or **cleaner semantic-geometric decomposition** for genuine evidence that a packet survived refresh, recommit, and delayed use more honestly.
 
+<<<<<<< HEAD
 ### 4.2.31 Submission-Ready Logging Contract for Mid-Level Family Matching
+=======
+### 4.2.26 Submission-Ready Logging Contract for Mid-Level Family Matching
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 To make the above ladder executable, D06 needs a submission-ready logging schema that aligns experiments with the new mid-level anchors. We therefore require any row potentially explained by AwareVLN or Fly0 to record: `Progress-Aware Match | Wrong-Escalation Penalty | Stage-Confidence Consistency | Progress-Only Explanation Remaining | Semantic-Geometric Decoupling Match | Q^{dec}_{sg} | Oscillation Reduction after Grounding | Decoupling-Only Explanation Remaining | Last Surviving Family after Subtraction | Promotion Ceiling | Promotion Blocker | Weakest Honest Claim`.
 
 These fields answer a concrete paper-writing question: after reasoning, search, active-perception, data, latent-control, and local-shell subtraction have been applied, is the remaining gain still fully explained by **better progress-aware stage control** or **better semantic-geometric decomposition**? If yes, the row must freeze there and cannot borrow stronger language from later consume-time metrics. Only rows whose residual survives the full mid-level subtraction and still closes `A^{dir}`, `A^{ctx}`, and `A^{guard}` at `w^{\dagger}_{consume}` may be promoted to packet-contract language.
 
+<<<<<<< HEAD
 ### 4.2.32 Current Evidence-Consistent Freeze after Mid-Level Family Alignment
+=======
+### 4.2.27 Current Evidence-Consistent Freeze after Mid-Level Family Alignment
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 Under the current D06 anchor set, the most honest freeze remains conservative even after adding AwareVLN and Fly0. Rows primarily explained by `Q^{reason}_{route}` remain **reasoning-route support**. Rows exhausted by `Q^{lang}_{narrow}`, `Q^{geo}_{narrow}`, or WildOS-style outdoor-search subtraction remain **search-prior support**. Rows exhausted by `Q^{unc}_{plan}` remain **active-perception support**. Rows exhausted by `Q^{data}_{prior}` remain **pretraining-support only**. Rows matched by AerialVLA-style compact control remain **latent execution sufficiency**. Rows matched by KIO-style local shells remain **execution-shell support**. Rows exhausted by AwareVLN-style stage discipline remain **progress-aware planner support**. Rows exhausted by Fly0-style role separation remain **semantic-geometric decoupling support**. Rows whose main residual advantage is only guarded refresh or continuity remain **runtime continuity support**.
 
 Only the residual that survives all of these matched explanations and still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` may be promoted to packet-contract language; only rows that additionally preserve `A^{shell}` may support NtM handoff claims. This freeze is intentionally strict. A row that both escalates more cautiously and flies more smoothly after grounding may still be fully explained by mid-level planner discipline and semantic-geometric decomposition. Such a row does not yet earn a packet-first headline.
 
+<<<<<<< HEAD
 ### 4.2.33 Direction-Conditioned Recommit Audit must be Closed before Packet Promotion
+=======
+### 4.2.29 Direction-Conditioned Recommit Audit must be Closed before Packet Promotion
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 LMPath-, StereoNav-, WildOS-, and AgentVLN-style gains often improve the *decision to look again* rather than the truthfulness of the same packet after that extra look. D06 therefore needs an explicit recommit audit that separates **better planner-side re-observation policy** from **better post-look packet survival**. We require every row that benefits from one-more-look behavior to log `Post-Look Direction Retention`, `Post-Look Context-Thread Retention`, `Refresh-to-Commit Delay`, `Recommit Drift after One-More-Look`, and `Packet-Survival after Active-Perception Recommit` before any packet-facing promotion is allowed.
 
 These fields answer a concrete deployment question: after a planner-side recheck, did the system preserve the *same* directional clause and context thread, or did it quietly swap to a nearby but different hypothesis and then claim success under a stronger packet story? If the gain is still honestly exhausted by better re-observation timing, lower ambiguity, or cheaper planner-side recommitment, the row must freeze at **active-perception support**. Only rows whose refreshed packet still preserves `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` after the post-look recommit may continue to packet-contract language; `A^{shell}` remains the final gate for NtM handoff claims.
 
+<<<<<<< HEAD
 ### 4.2.34 Current Evidence-Consistent Freeze after Re-reading LMPath / StereoNav / AwareVLN / Fly0 / FlyMirage / WorldVLN
+=======
+### 4.2.30 Current Evidence-Consistent Freeze after Re-reading LMPath / StereoNav / AwareVLN / Fly0 / FlyMirage
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 Under the current local anchor set, the most honest family-matched freeze is now sharply stratified. **LMPath** is best treated as **language-mediated search-prior support**, because its main gain is earlier target-zone narrowing from environmental semantics rather than consume-time packet preservation. **StereoNav** is best treated as **geometry-grounded anchoring support**, because its main gain is lower cross-view target drift and stabler partial-target attachment before delayed use. **AwareVLN** is best treated as **progress-aware planner support**, because its main gain is cleaner stage discipline, lower wrong-escalation rates, and better alignment between progress state and verifier evidence. **Fly0** is best treated as **semantic-geometric decoupling support**, because its gain is largely explained by cleaner separation between target grounding and geometric realization, with lower oscillation after grounding. **FlyMirage** is best treated as **synthetic data-scaling support**, because its main value is richer data coverage and stronger pretraining priors rather than stronger packet honesty.
 
@@ -621,6 +825,7 @@ This freeze is deliberately conservative. A D06 row may look impressive because 
 
 We present a packet-centric aerial VLN framework that reframes aerial navigation as a deployable interface problem rather than only a waypoint prediction problem. By combining 3D semantic frontier mapping, dynamics-aware exploration, and a Navigate-then-Manipulate handoff architecture, the framework exposes where language grounding, runtime continuity, delayed controller consumption, and local interaction readiness truly succeed or fail. More importantly, the paper argues for a stricter evidence discipline: planner-time gains, runtime continuity gains, latent execution sufficiency, and full packet-contract preservation should not be conflated. This framing gives D06 a clearer path toward honest evaluation and, eventually, a stronger aerial embodied intelligence system.
 
+<<<<<<< HEAD
 ### 4.2.28 World-Action Family Matching before Packet Promotion
 
 Rows that may benefit from WorldVLN-style autoregressive world-action modeling must explicitly log `World-Action Family Match`, `Q^{wam}_{plan}`, `Short-Horizon Rollout Consistency Gain`, and `World-Action-Only Explanation Remaining` before any packet-level promotion is allowed. If the dominant gain is exhausted after matched world-action subtraction, the row freezes as **world-action planning support** and cannot be narrated as packet-contract superiority.
@@ -637,6 +842,16 @@ Concretely, every D06 row potentially explained by these families must expose at
 
 This schema also fixes the reading order for the current D06 mid-level regime. A row that is still fully explained by better stage discipline freezes at **progress-aware planner support**. A row that survives that check but is exhausted by cleaner semantic-geometric separation freezes at **semantic-geometric decoupling support**. A row whose remaining gain is still fully explained by a stronger KIO-style near-field shell freezes at **execution-shell support**. A row whose remaining gain is still explained by richer FlyMirage-style pretraining or coverage freezes at **pretraining-support only**. Only rows that survive all four family matches and still preserve `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` may be promoted to packet-contract language; `A^{shell}` remains the final gate for NtM handoff claims.
 
+=======
+### 4.2.28 Mid-Level-and-Shell/Data Unified Promotion Schema
+
+Recent local anchors show that D06 now has four strong non-packet explanations that may all produce convincing gains before full consume-time packet accountability is closed: **AwareVLN-style progress-aware stage control**, **Fly0-style semantic-geometric decoupling**, **KIO-planner-style local execution shells**, and **FlyMirage-style synthetic-data scaling**. If these routes are logged separately in related work but not jointly subtracted in experiments, a row can still be rhetorically over-promoted from "better stage discipline / smoother execution / safer near-field shell / richer training prior" into an inflated packet-contract story. We therefore require a unified promotion schema that keeps all four families on the same evidential ladder.
+
+Concretely, every D06 row potentially explained by these families must expose at least the following fields before any late-window promotion is allowed: `Progress-Aware Match`, `Wrong-Escalation Penalty`, `Stage-Confidence Consistency`, `Progress-Only Explanation Remaining`, `Semantic-Geometric Decoupling Match`, `Q^{dec}_{sg}`, `Oscillation Reduction after Grounding`, `Decoupling-Only Explanation Remaining`, `Local-Shell Family Match`, `Q^{shell}_{local}`, `Shell-Only Explanation Remaining`, `Synthetic-Data Family Match`, `Q^{data}_{prior}`, `Data-Only Explanation Remaining`, `Last Surviving Family after Subtraction`, `Promotion Ceiling`, `Promotion Blocker`, and `Weakest Honest Claim`. These fields force the paper to answer a stricter question than ordinary aerial VLN reporting: after subtracting progress-aware planning, semantic-geometric role separation, local execution-shell support, and synthetic-data prior support, **is there still packet-facing residual evidence at the actual consume-time boundary?**
+
+This schema also fixes the reading order for the current D06 mid-level regime. A row that is still fully explained by better stage discipline freezes at **progress-aware planner support**. A row that survives that check but is exhausted by cleaner semantic-geometric separation freezes at **semantic-geometric decoupling support**. A row whose remaining gain is still fully explained by a stronger KIO-style near-field shell freezes at **execution-shell support**. A row whose remaining gain is still explained by richer FlyMirage-style pretraining or coverage freezes at **pretraining-support only**. Only rows that survive all four family matches and still preserve `A^{dir}`, `A^{ctx}`, and `A^{guard}` through `w^{\dagger}_{consume}` may be promoted to packet-contract language; `A^{shell}` remains the final gate for NtM handoff claims.
+
+>>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ### 4.2.29 Current Evidence-Consistent Freeze after Mid-Level + Shell/Data Alignment
 
 Under the current anchor set, the most evidence-consistent freeze remains conservative. Gains dominated by AwareVLN-style self-awareness should be reported as **progress-aware planner support**; gains dominated by Fly0-style grounding/execution role separation should be reported as **semantic-geometric decoupling support**; gains dominated by KIO-planner-style near-field safety and executability should be reported as **execution-shell support**; gains dominated by FlyMirage-style data diversity and pretraining coverage should be reported as **pretraining-support only**. These explanations are all valuable, but none of them by itself proves that the reusable packet survives refresh episodes and delayed controller consumption more honestly.
