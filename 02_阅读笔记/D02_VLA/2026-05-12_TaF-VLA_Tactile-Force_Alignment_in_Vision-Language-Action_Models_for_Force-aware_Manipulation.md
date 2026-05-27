@@ -1,5 +1,6 @@
 ---
-title: TaF-VLA: Tactile-Force Alignment in Vision-Language-Action Models for Force-aware Manipulation
+
+title: "TaF-VLA: Tactile-Force Alignment in Vision-Language-Action Models for Force-aware Manipulation"
 authors: 未知
 arxiv: 2601.20321
 date: 2026-01-31

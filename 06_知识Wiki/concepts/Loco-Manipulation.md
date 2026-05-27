@@ -2,6 +2,7 @@
 type: concept
 id: concept.Loco-Manipulation
 pageType: concept
+updated: "2026-05-14"
 ---
 
 # Loco-Manipulation

@@ -70,7 +70,7 @@ ACT 是 Paper A 三层架构中**低层精细执行**候选之一（详见 [[ove
 
 ## 关键论文
 
-- ACT (Stanford, CoRL 2023) — Action Chunking 奠基工作 [[02_阅读笔记/01_机器人与具身/2023-01_ACT.md]]
+- ACT (Stanford, CoRL 2023) — Action Chunking 奠基工作 [[02_阅读笔记/D02_VLA/2023-01_ACT.md]]
 - OpenVLA — 将 ACT chunking 引入开源 VLA 系统 [[05_科研研究/D02_VLA/REPORT.md]]
 
 ## Related
@@ -89,5 +89,6 @@ ACT 是 Paper A 三层架构中**低层精细执行**候选之一（详见 [[ove
 
 
 ## 相关页面
+- [[concepts/动作生成]]
 - [[comparisons/ACT动作分块_vs_扩散策略_vs_流匹配]]
 - [[overview/方向_VLA_技术路线图]]

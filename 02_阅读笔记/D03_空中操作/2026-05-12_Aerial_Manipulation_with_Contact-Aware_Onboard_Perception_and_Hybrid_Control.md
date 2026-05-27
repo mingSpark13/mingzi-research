@@ -6,12 +6,14 @@ date: 2026-02-12
 institution: 未知
 conf: arXiv
 keywords: [aerial manipulation, onboard perception, hybrid control, contact-rich manipulation]
-tags: ["空中操作", "MPC", "运动控制", "主动感知"]
+tags: ["空中机械臂", "UAM", "空中操作", "MPC", "运动控制", "主动感知"]
+summary: "这篇工作把接触一致性因子并入机载状态估计，再结合图像伺服与 hybrid force-motion control，让空中机械臂在无外部定位条件下也能更稳地完成接触式操作。"
 domain: 空中操作
+subdomain: 空中机械臂
 pdf_path: "../../01_论文库/空中操作/2602.08251_Aerial_Manipulation_Contact_Aware_Onboard_Perception_Hybrid_Control.pdf"
 reading_date: 2026-05-12
 reading_status: 已读
-related_concepts: ["空中操作", "MPC", "运动控制", "主动感知"]
+related_concepts: ["空中机械臂", "UAM", "空中操作", "MPC", "运动控制", "主动感知"]
 ---
 
 # 📖 花火格式笔记
@@ -41,10 +43,11 @@ Aerial Manipulation with Contact-Aware Onboard Perception and Hybrid Control
 
 ## 🔗 知识图谱
 
-- [[空中操作]] - 无人机执行接触式操作任务的核心设定
-- [[运动控制]] - 接触期的姿态与运动调节是主问题之一
-- [[主动感知]] - 利用接触一致性改善状态估计可视作任务相关主动感知
-- [[MPC]] - 后续可直接嫁接到模型预测控制框架中增强部署性
+- [[concepts/空中机械臂]] - 本文核心方向，UAM 接触感知与力控的代表工作
+- [[concepts/空中操作]] - 父概念，无人机执行接触式操作任务的核心设定
+- [[concepts/运动控制]] - 接触期的姿态与运动调节是主问题之一
+- [[concepts/主动感知]] - 利用接触一致性改善状态估计可视作任务相关主动感知
+- [[concepts/MPC]] - 后续可直接嫁接到模型预测控制框架中增强部署性
 
 ## 🔗 相关链接
 

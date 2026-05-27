@@ -1,5 +1,6 @@
 ---
-title: RoboAlign-R1: Distilled Multimodal Reward Alignment for Robot Video World Models
+
+title: "RoboAlign-R1: Distilled Multimodal Reward Alignment for Robot Video World Models"
 authors: Hao Wu, Yuqi Li, Yuan Gao, Fan Xu, Fan Zhang, Kun Wang, Penghao Zhao, Qiufeng Wang, Yizhou Zhao, Weiyan Wang, Yingli Tian, Xian Wu, Xiaomeng Huang
 arxiv: 2605.03821
 date: 2026-05-05
@@ -7,6 +8,7 @@ institution: 未明确标注（以论文首页为准）
 conf: arXiv
 keywords: [robot video world models, reward alignment, multimodal evaluation, long-horizon prediction, robotworldbench]
 tags: [隐空间世界模型, 物理一致性, 动作条件预测, 视频生成, 实时推理]
+summary: "RoboAlign-R1 用多模态奖励对齐与 Sliding Window Re-encoding 强化机器人视频世界模型的任务一致性和长程稳定性，在 RobotWorldBench 上显著优于现有基线。"
 domain: 世界模型
 pdf_path: "../../01_论文库/世界模型/2605.03821_RoboAlign-R1.pdf"
 reading_date: 2026-05-06

@@ -122,22 +122,22 @@ status: active
 - `concepts/概念_ACT动作分块.md`: Non-source page is missing `sourceIds` provenance.
 - `concepts/概念_ACT动作分块.md`: Page freshness needs review (missing updatedAt).
 - `concepts/概念_ACT动作分块.md`: Broken wikilink target `overview/方向_世界模型_技术路线图`.
-- `concepts/概念_ACT动作分块.md`: Broken wikilink target `02_阅读笔记/01_机器人与具身/2023-01_ACT.md`.
+- `concepts/概念_ACT动作分块.md`: Broken wikilink target `02_阅读笔记/D02_VLA/2023-01_ACT.md`.
 - `concepts/概念_ACT动作分块.md`: Broken wikilink target `05_科研研究/D02_VLA/REPORT.md`.
 - `concepts/概念_DiffusionPolicy.md`: Non-source page is missing `sourceIds` provenance.
 - `concepts/概念_DiffusionPolicy.md`: Page freshness needs review (missing updatedAt).
 - `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `comparisons/ACT_vs_DiffusionPolicy_vs_FlowMatching`.
 - `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `overview/方向_世界模型_技术路线图`.
-- `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `02_阅读笔记/03_学习范式/2303_DiffusionPolicy.md`.
+- `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `02_阅读笔记/D04_跨载体泛化/2303_DiffusionPolicy.md`.
 - `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `05_科研研究/D02_VLA/REPORT.md`.
-- `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `02_阅读笔记/01_机器人与具身/dVLA_Diffusion_VLA_CoT_2509.25681.md`.
+- `concepts/概念_DiffusionPolicy.md`: Broken wikilink target `02_阅读笔记/D02_VLA/dVLA_Diffusion_VLA_CoT_2509.25681.md`.
 - `concepts/概念_FlowMatching.md`: Non-source page is missing `sourceIds` provenance.
 - `concepts/概念_FlowMatching.md`: Page freshness needs review (missing updatedAt).
 - `concepts/概念_FlowMatching.md`: Broken wikilink target `overview/方向_世界模型_技术路线图`.
-- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/03_学习范式/2210_FlowMatching.md`.
-- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/01_机器人与具身/2026-03-22_Action-to-Action_Flow_Matching.md`.
-- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/01_机器人与具身/2412_FlowPolicy.md`.
-- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/01_机器人与具身/2026-04-16_RDT2.md`.
+- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/D04_跨载体泛化/2210_FlowMatching.md`.
+- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/D02_VLA/2026-03-22_Action-to-Action_Flow_Matching.md`.
+- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/D02_VLA/2412_FlowPolicy.md`.
+- `concepts/概念_FlowMatching.md`: Broken wikilink target `02_阅读笔记/D02_VLA/2026-04-16_RDT2.md`.
 - `concepts/概念_FlowMatching.md`: Broken wikilink target `05_科研研究/D02_VLA/REPORT.md`.
 - `concepts/概念_VLA架构.md`: Non-source page is missing `sourceIds` provenance.
 - `concepts/概念_VLA架构.md`: Page freshness needs review (missing updatedAt).

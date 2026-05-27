@@ -1,5 +1,6 @@
 ---
-title: AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots
+
+title: "AtomicVLA: Unlocking the Potential of Atomic Skill Learning in Robots"
 authors: Unknown
 arxiv: 2603.07648
 date: 2026-03-10

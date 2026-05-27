@@ -1,5 +1,6 @@
 ---
-title: ActiveVLA: Injecting Active Perception into Vision-Language-Action Models for Precise 3D Robotic Manipulation
+
+title: "ActiveVLA: Injecting Active Perception into Vision-Language-Action Models for Precise 3D Robotic Manipulation"
 authors: 未知
 arxiv: 2601.08325
 date: 2026-01-14
