@@ -1,7 +1,7 @@
 ---
 title: "Scene Map-based Prompt Tuning for Navigation Instruction Generation"
 authors: Sheng Fan, Rui Liu, Wenguan Wang, Yi Yang
-arxiv: ""
+arxiv: 待补充
 date: 2025
 institution: Zhejiang University
 conf: CVPR 2025

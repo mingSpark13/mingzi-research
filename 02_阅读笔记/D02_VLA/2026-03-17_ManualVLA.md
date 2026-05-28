@@ -1,7 +1,7 @@
 ---
 title: "ManualVLA: A Unified VLA Model for Chain-of-Thought Manual Generation and Robotic Manipulation"
 authors: Chenyang Gu, Jiaming Liu, Hao Chen, Runzhong Huang, Qingpo Wuwu, Zhuoyang Liu, Xiaoqi Li, Ying Li, Renrui Zhang, Peng Jia, Pheng-Ann Heng, Shanghang Zhang
-arxiv: "2512.02013"
+U12.02013
 date: 2025-12-01
 institution: Peking University, CUHK
 conf: arXiv preprint

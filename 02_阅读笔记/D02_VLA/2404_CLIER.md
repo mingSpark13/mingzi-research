@@ -1,7 +1,7 @@
 ---
 title: "CLIER: Closed-Loop Interactive Embodied Reasoning"
 authors: Multiple
-arxiv: 2404.15194
+T04.15194
 date: 2024-04
 institution: various
 conf: arXiv

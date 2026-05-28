@@ -1,7 +1,7 @@
 ---
 title: "3D-GRAND: A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination"
 authors: Multiple Authors
-arxiv: ""
+arxiv: 待补充
 date: 2025
 institution: Multiple
 conf: CVPR 2025

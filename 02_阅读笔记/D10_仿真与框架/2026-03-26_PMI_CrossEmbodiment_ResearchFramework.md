@@ -7,6 +7,7 @@ institution: 个人研究
 conf: 研究框架
 keywords: PMI, Cross-Embodiment, Perceptual-Motor Interface, Intent Interface, One-Brain-Many-Forms
 tags: ["PMI", "跨载体泛化"]
+summary: "这份研究框架把跨躯体泛化问题重写为“世界模型/意图层与执行层解耦”的接口问题，核心目标是为不同载体提供可验证、可迁移的中间意图表示。"
 domain: 具身智能
 pdf_path: 
 reading_date: 2026-03-26
