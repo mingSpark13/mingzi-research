@@ -14364,3 +14364,16 @@ updated: "2026-05-27 00:22"
   - `source.2026-03-17_ManualVLA`（新建，14行）— MoT多专家统一规划与动作执行，ManualCoT显隐推理，RLBench 70%超越π0 7%，D02 VLA架构/长程任务规划
 - index.md：新增5篇wikilink（插入sources/最新添加顶部），updated→2026-05-28 13:43
 - **覆盖率**：1026 sources / ~367 notes（实质覆盖率提升，新增5篇已覆盖）
+
+## [2026-05-28 14:44] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：refactor dry-run确认**1001个sources正文均≤25行**（✅0膨胀，15665 total lines，较12:28无变化）；filesystem确认**6篇新增阅读笔记**全部来自数据合成目录（SceneCode/SceneAssistant/AutoUE/NavRAG/GenSim2/RoboGen，2026-05-28入库D05）；全量验证10条coverage返回项，**7条真缺失**（SceneCode/SceneAssistant/AutoUE/NavRAG/GenSim2/RoboGen/Holodeck均无source页）+ 3条命名差异假阳性（HUGE-Bench✓/AirCopBench✓/SAGE✓已以不同stem格式存在）；0 duplicate origins ✅；0 bloated ✅
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（概念7✓/对比10✓/总览4✓），无新增编译项
+- **阶段C**：filesystem发现**6篇真缺失**（SceneCode/SceneAssistant/AutoUE/NavRAG/GenSim2/RoboGen，2026-05-28入库数据合成），补建6篇：
+  - `source.2605.19587_SceneCode`（新建，12行）— NLP prompt编译为可执行Blender Python program生成SDF场景，「场景即代码」范式，D05 程序化内容生成/数据合成/仿真平台
+  - `source.2603.12238_SceneAssistant`（新建，11行）— VLM渲染反馈迭代修改场景，「渲染-反馈-修改」视觉反馈循环，D05 程序化内容生成/多模态统一架构
+  - `source.2603.07106_AutoUE`（新建，11行）— 多Agent协作框架（检索+场景生成+代码+playtesting），D05 多智能体系统/仿真平台
+  - `source.2502.11142_NavRAG`（新建，11行）— RAG-LLM基于scene tree和用户画像生成多样化导航指令，D06 语义导航/检索增强生成
+  - `source.2410.03645_GenSim2`（新建，11行）— 多模态LLM+推理LLM提升机器人任务生成复杂度，CoRL 2024，D05 数据合成/多模态统一架构
+  - `source.2311.01455_RoboGen`（新建，11行）— 生成式仿真propose-generate-learn循环，CoRL 2024，D05 数据合成/世界模型
+- index.md：新增6篇wikilink（插入sources/最新添加顶部），updated→2026-05-28 14:44
+- **覆盖率**：1007 sources / ~367 notes（实质覆盖率提升，新增6篇已覆盖）

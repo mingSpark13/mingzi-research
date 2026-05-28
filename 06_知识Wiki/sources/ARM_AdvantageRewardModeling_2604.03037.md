@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**与我们的关系**:"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_ARM_Advantage_Reward_Modeling", "../../02_阅读笔记/D01_世界模型/2026-05-12_2605.10942_HarmoWAM", "02_阅读笔记/D01_世界模型/2026-05-12_2605.10942_HarmoWAM"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_ARM_Advantage_Reward_Modeling", "../../02_阅读笔记/D01_世界模型/2026-05-12_2605.10942_HarmoWAM", "02_阅读笔记/D01_世界模型/2026-05-12_2605.10942_HarmoWAM", "02_阅读笔记/99_归档/重复笔记/2026_GoalSwarm_Multi-UAV_Semantic_Search"]
 updated: "2026-04-17"
 ---
 
@@ -14,3 +14,4 @@ updated: "2026-04-17"
 - [[../../02_阅读笔记/D02_VLA/2026-04-09_ARM_Advantage_Reward_Modeling]]
 - [[../../02_阅读笔记/D01_世界模型/2026-05-12_2605.10942_HarmoWAM]]
 - [[02_阅读笔记/D01_世界模型/2026-05-12_2605.10942_HarmoWAM]]
+- [[02_阅读笔记/99_归档/重复笔记/2026_GoalSwarm_Multi-UAV_Semantic_Search]]

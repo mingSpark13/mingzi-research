@@ -1,25 +1,14 @@
 ---
 type: "source"
-tags: ["空中操作", "MPC", "MPPI", "RGB-D感知", "精密农业"]
-summary: "空中机械臂 + RGB-D 感知 + MPPI 飞控 + 2-DoF 机械臂，实现垂直农业非接触授粉的花朵定位与末端对准，为空中精细操作提供完整感知-控制-操作 pipeline 参考。"
-<<<<<<< HEAD
-origins: ["../../02_阅读笔记/D03_空中操作/2026-05-11_Aerial_Manipulator_Flower", "../../02_阅读笔记/D07_腿足机器人/2026-05-11_Active_Embodiment_Identification_with_Reinforcement_Learning_for_Legged_Robots", "../../02_阅读笔记/D01_世界模型/2026-05-11_2605.06388_Semantic_Latent_Space_World_Models", "02_阅读笔记/D01_世界模型/2026-05-11_2605.06388_Semantic_Latent_Space_World_Models"]
-=======
-origins: ["../../02_阅读笔记/D03_空中操作/2026-05-11_Aerial_Manipulator_Flower", "../../02_阅读笔记/D07_腿足机器人/2026-05-11_Active_Embodiment_Identification_with_Reinforcement_Learning_for_Legged_Robots", "02_阅读笔记/D07_腿足机器人/2026-05-11_Active_Embodiment_Identification_with_Reinforcement_Learning_for_Legged_Robots", "02_阅读笔记/D01_世界模型/2026-05-11_2605.06388_Semantic_Latent_Space_World_Models"]
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
-updated: "2026-05-11"
+tags: []
+summary: ""
+origins: ["02_阅读笔记/99_归档/重复笔记/2026-05-11_OA_WAM"]
+updated: "2026-04-17"
 ---
 
 # 2026-05-11_Aerial_Manipulator_Flower
 
-**核心价值**: 空中机械臂 + RGB-D 感知 + MPPI 飞控 + 2-DoF 机械臂，实现垂直农业非接触授粉的花朵定位与末端对准，为空中精细操作提供完整感知-控制-操作 pipeline 参考。
+**核心价值**: 
 
 **原始资料**:
-- [[../../02_阅读笔记/D03_空中操作/2026-05-11_Aerial_Manipulator_Flower]]
-- [[../../02_阅读笔记/D07_腿足机器人/2026-05-11_Active_Embodiment_Identification_with_Reinforcement_Learning_for_Legged_Robots]]
-<<<<<<< HEAD
-- [[../../02_阅读笔记/D01_世界模型/2026-05-11_2605.06388_Semantic_Latent_Space_World_Models]]
-=======
-- [[02_阅读笔记/D07_腿足机器人/2026-05-11_Active_Embodiment_Identification_with_Reinforcement_Learning_for_Legged_Robots]]
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
-- [[02_阅读笔记/D01_世界模型/2026-05-11_2605.06388_Semantic_Latent_Space_World_Models]]
+- [[02_阅读笔记/99_归档/重复笔记/2026-05-11_OA_WAM]]

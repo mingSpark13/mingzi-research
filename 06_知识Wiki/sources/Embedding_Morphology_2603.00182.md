@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D02_VLA/2603_MorphologyEmbedding", "02_阅读笔记/D02_VLA/2603_MorphologyEmbedding"]
+origins: ["../../02_阅读笔记/D02_VLA/2603_MorphologyEmbedding", "02_阅读笔记/D02_VLA/2603_MorphologyEmbedding", "02_阅读笔记/99_归档/重复笔记/2603_MorphologyEmbedding"]
 updated: "2026-04-17"
 ---
 
@@ -13,3 +13,4 @@ updated: "2026-04-17"
 **原始资料**:
 - [[../../02_阅读笔记/D02_VLA/2603_MorphologyEmbedding]]
 - [[02_阅读笔记/D02_VLA/2603_MorphologyEmbedding]]
+- [[02_阅读笔记/99_归档/重复笔记/2603_MorphologyEmbedding]]

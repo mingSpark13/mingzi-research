@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**与我们的关系**:"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-04-09_ABot-PhysWorld", "02_阅读笔记/D01_世界模型/2026-04-09_ABot-PhysWorld"]
+origins: ["../../02_阅读笔记/D01_世界模型/2026-04-09_ABot-PhysWorld", "02_阅读笔记/D01_世界模型/2026-04-09_ABot-PhysWorld", "02_阅读笔记/99_归档/重复笔记/2026-04-09_ABot-PhysWorld"]
 updated: "2026-04-17"
 ---
 
@@ -16,3 +16,4 @@ updated: "2026-04-17"
 **原始资料**:
 - [[../../02_阅读笔记/D01_世界模型/2026-04-09_ABot-PhysWorld]]
 - [[02_阅读笔记/D01_世界模型/2026-04-09_ABot-PhysWorld]]
+- [[02_阅读笔记/99_归档/重复笔记/2026-04-09_ABot-PhysWorld]]

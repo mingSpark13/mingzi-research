@@ -6,6 +6,14 @@
 
 ## sources/
 
+### 最新添加（2026-05-28 14:44）
+- [[sources/source.2605.19587_SceneCode|SceneCode (2605.19587)]] — NLP prompt编译为可执行Blender Python program生成SDF场景，「场景即代码」范式支持可交互性查询和批量变体生成，D05 程序化内容生成/数据合成/仿真平台
+- [[sources/source.2603.12238_SceneAssistant|SceneAssistant (2603.12238)]] — VLM渲染反馈迭代修改场景，「渲染-反馈-修改」视觉反馈循环提升空间一致性，D05 程序化内容生成/多模态统一架构
+- [[sources/source.2603.07106_AutoUE|AutoUE (2603.07106)]] — 多Agent协作框架（检索+场景生成+代码+playtesting），从自然语言生成可玩游戏关卡，D05 多智能体系统/仿真平台
+- [[sources/source.2502.11142_NavRAG|NavRAG (2502.11142)]] — RAG-LLM基于scene tree和用户画像生成多样化导航指令，861场景200万+标注，D06 语义导航/检索增强生成
+- [[sources/source.2410.03645_GenSim2|GenSim2 (2410.03645)]] — 多模态LLM+推理LLM提升机器人任务生成复杂度，6-DoF关节机器人支持，CoRL 2024，D05 数据合成/多模态统一架构
+- [[sources/source.2311.01455_RoboGen|RoboGen (2311.01455)]] — 生成式仿真propose-generate-learn循环覆盖任务提议到技能学习全过程，主动数据飞轮雏形，CoRL 2024，D05 数据合成/世界模型
+
 ### 最新添加（2026-05-28 13:43）
 - [[sources/source.2026-03-17_ManualVLA|ManualVLA (2026-03)]] — MoT多专家统一规划与动作执行，ManualCoT显隐推理，RLBench 70%超越π0 7%，D02 VLA架构/长程任务规划
 - [[sources/source.2026-03-28_MMaDA-VLA|MMaDA-VLA (2026-03)]] — 离散扩散VLA替代自回归，语言/图像/动作统一token去噪，LIBERO 98.0%达SOTA，D02 VLA架构/扩散策略
@@ -200,7 +208,7 @@
 
 ---
 type: index
-updated: "2026-05-28 11:43"
+updated: "2026-05-28 14:44"
 ---
 
 ### 来源页 (sources/) - 最新添加（2026-05-24 00:13）

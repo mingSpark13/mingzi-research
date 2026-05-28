@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D03_空中操作/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control", "02_阅读笔记/D03_空中操作/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control"]
+origins: ["../../02_阅读笔记/D03_空中操作/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control", "02_阅读笔记/D03_空中操作/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control", "02_阅读笔记/99_归档/重复笔记/2026-04-21_2602.08251_ContactAware_Aerial_Manipulation"]
 updated: "2026-04-17"
 ---
 
@@ -13,3 +13,4 @@ updated: "2026-04-17"
 **原始资料**:
 - [[../../02_阅读笔记/D03_空中操作/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control]]
 - [[02_阅读笔记/D03_空中操作/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control]]
+- [[02_阅读笔记/99_归档/重复笔记/2026-04-21_2602.08251_ContactAware_Aerial_Manipulation]]
