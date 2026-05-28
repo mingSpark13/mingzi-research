@@ -21,7 +21,21 @@
 
 ## 📝 主人批注区
 
-> 目前暂无批注，等待主人添加。
+### [2026-05-27] 推进 Method 3.x 具体技术描述
+**类型**: 写作风格
+**优先级**: 🟡 下轮执行
+
+D04 的 Related Work 结构健康（真实的方法分类，不是路由规则堆积），核心贡献（geometry-first 跨载体迁移协议）独立有价值。主要问题是 Method 的具体技术描述还不够完整。
+
+**执行要求**：
+1. **禁止**在 Related Work 下继续新增子章节，现有 2.1-2.11 已足够
+2. 本轮及后续轮次的 80% 精力集中在 **Method 3.x**：
+   - **3.1 Geometry-First Transfer Protocol**：具体写出 shared geometry packet 的数据结构定义，以及 geometry verification 的判断条件（公式层面）
+   - **3.2 Geometry-Conditioned Latent Action Retargeting**：具体写出 latent action 重定向的网络架构和训练目标
+   - **3.3 In-Context Embodiment Residual Modeling**：具体写出在线载体上下文推断的机制
+   - **3.4 Escalation Rule**：将现有文字描述的升级规则转化为可执行的算法步骤
+3. 当 Method 各子章节完成后，再写 Abstract
+4. 每轮推进后同步更新头部 `最后更新` 字段
 
 ---
 
@@ -31,4 +45,6 @@
 
 | 日期 | 响应的批注 | 执行动作 |
 |------|-----------|---------|
-| — | — | — |
+| 2026-05-28 | [2026-05-27] 推进 Method 3.x 具体技术描述 | 本轮继续主推进 D04 Method 3.x：补强 3.3 latent retargeting 的 token 分解、core/fmt 因子化、window-faithfulness 训练目标与 contact/window 监督；本地 QMD 命中 D04 README、Flying Hand、全身协调运动，未形成需完整入库的新高价值论文；已同步更新 PAPER 头部时间戳 |
+| 2026-05-28 | [2026-05-27] 推进 Method 3.x 具体技术描述 | 本轮继续主推进 D04 Method 3.x：细化 3.3 latent retargeting 的 token 化架构与训练目标，补写 3.5 in-context residual 的双分支机制与路由损失，重写 3.7 escalation 为可执行 shortest-honest algorithm，并同步更新时间戳；本轮本地扫描命中 RIO / Human-Robot Copilot / D-CLING / Any2Any / OPFA，无新增正式入库 |
+| 2026-05-28 | [2026-05-27] 推进 Method 3.x 具体技术描述 | 主推进 D04 Method 3.x：重写 3.1 几何包与验证判据、3.3 latent retargeting 架构与目标、3.5 context residual 机制、3.7 escalation algorithm；同步更新 PAPER 头部日期 |

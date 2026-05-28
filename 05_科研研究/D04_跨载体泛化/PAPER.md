@@ -1,7 +1,7 @@
 # Unified Cross-Embodiment Policy Transfer via Shared Geometry and Latent Action Interfaces
 
 > 方向：D04 跨载体泛化 | 目标会议：CoRL 2027 | 状态：🔴 草稿
-> 最后更新：2026-05-04
+> 最后更新：2026-05-28 13:47
 
 ---
 
@@ -193,22 +193,23 @@ This gives us a stricter interpretation order. Representation exposure, prior-pr
 
 ### 3.1 Transfer Decision Protocol
 
-```
-Step 1: Shared Geometry Interface (C1)
-    → If IG0 + SC0 pass: shared geometry sufficient
-    → If DRB elevated: proceed to Step 2
+We formalize cross-embodiment transfer as a staged verification-and-escalation procedure over a shared geometry packet. For each rollout segment, the interface state is represented as
+\[
+\mathcal{G}_t = \{P_t^{\text{obj}},\; M_t^{\text{scene}},\; A_t^{\text{contact}},\; \phi_t,\; E,\; T_t,\; C_t,\; W_t\},
+\]
+where \(P_t^{\text{obj}}\) denotes object-relative pose hypotheses, \(M_t^{\text{scene}}\) the geometry-rich scene substrate (depth / point / Gaussian / occupancy state), \(A_t^{\text{contact}}\) the contact-affordance packet, \(\phi_t\) the task-phase token, \(E\) the embodiment descriptor, \(T_t\) the terrain-state slot, \(C_t\) the coordination-state slot, and \(W_t\) the view/world-frame consistency traces. The packet is considered valid only when it supports stable pre-contact geometry, contact-candidate consistency, and cross-view state persistence under matched perturbations.
 
-Step 2: Latent Action Alignment (C2)
-    → Diffusion-based latent retargeting
-    → If MCG not dominant: shared latent sufficient
+We use an explicit geometry-verification score
+\[
+S_{\text{geo}} = \alpha_1 S_{\text{pose}} + \alpha_2 S_{\text{view}} + \alpha_3 S_{\text{contact}} + \alpha_4 S_{\text{coord}} + \alpha_5 S_{\text{terrain}},
+\]
+with nonnegative weights \(\alpha_i\) summing to 1. Here \(S_{\text{pose}}\) measures object/goal pose agreement across source-target reconstructions, \(S_{\text{view}}\) measures cross-view latent stability, \(S_{\text{contact}}\) measures consistency of contact-affordance prediction, \(S_{\text{coord}}\) measures synchronized shared-state agreement, and \(S_{\text{terrain}}\) measures whether traversability / support-region evidence is already task-sufficient. A transfer route is allowed to leave the geometry stage only if
+\[
+S_{\text{geo}} \ge \tau_{\text{geo}} \quad \text{and} \quad \Delta_{\text{view}},\Delta_{\text{coord}},\Delta_{\text{terrain}} \le \varepsilon_{\text{geo}},
+\]
+meaning that geometry remains stable under matched viewpoint, coordination, and terrain-completion perturbations.
 
-Step 3: Morphology Compensation (C3)
-    → Only when DRB remains high after Step 2
-    → Explicit morphology injection
-
-Step 4: Dynamics Residual (C4)
-    → Physics adapter for platform-specific dynamics
-```
+This verification-first formulation prevents D04 from treating cross-embodiment transfer as a monolithic success number. If the score increases mainly because a UAV reveals missing terrain layout, because a synchronized world frame repairs stale shared state, or because a reusable tactile/contact packet finally exposes interaction state, then the first honest explanation remains **terrain-state completion**, **coordination-state completion**, or **contact-interface enrichment** rather than latent transfer. Only after these geometry-side confounds are controlled do we allow the method to escalate toward latent retargeting, embodiment residual inference, or dynamics-aware adaptation.
 
 ### 3.2 Shared Geometry Interface (C1)
 
@@ -227,11 +228,62 @@ Finally, the embodiment-parameterization slot records transferable structural de
 
 ### 3.3 Latent Action Alignment (C2)
 
-On top of the verified geometry packet, we learn a shared latent action interface that factors out platform-specific actuation while preserving task-level transition semantics. Following the intuition of LAD and related latent transfer methods, source-domain trajectories are projected into a common latent action manifold, while lightweight platform-conditioned decoders retarget latent transitions into embodiment-specific controls. The key hypothesis is not that all embodiments share identical low-level actions, but that they can share a sufficiently compact latent transition structure once geometry and task phase have been stabilized.
+On top of the verified geometry packet, we instantiate geometry-conditioned latent retargeting as an explicit encoder--decoder architecture rather than a generic shared-latent placeholder. At each step, the verified packet is first serialized into five token groups,
+\[
+X_t = [x_t^{\text{scene}},\; x_t^{\text{object}},\; x_t^{\text{contact}},\; x_t^{\text{state}},\; x_t^{\text{view}}],
+\]
+where `scene` encodes depth / point / Gaussian / occupancy geometry, `object` stores object-goal relative pose and grasp-frame candidates, `contact` stores contact-affordance or tactile-completion fields, `state` stores phase, terrain, coordination, and embodiment-descriptor traces, and `view` stores cross-view/world-frame consistency residuals used to distinguish geometry repair from true transfer. We concatenate these with source embodiment tokens and a short action history,
+\[
+\tilde{X}_t = [X_{t-k:t},\; E_s,\; u_{t-k:t}^s],
+\]
+and feed them to a temporal transformer encoder `Enc_\theta` with embodiment-aware FiLM conditioning and phase-aware causal masking. The encoder outputs a latent transition token
+\[
+z_t = f_\theta(\tilde{X}_t) \in \mathbb{R}^{d_z},
+\]
+which is trained to represent **what task-level transition should happen next** rather than **which actuator command should be replayed verbatim**.
 
-We further extend this design toward a unified physical-language view inspired by UniT [REF: 2604.19734]. Instead of treating latent action tokens as robot-only surrogates, we let visual consequences anchor the latent interface, so that human demonstrations, ground-robot rollouts, and aerial-manipulation trajectories can all be compared through their induced geometry transition and contact evolution. PokeVLA [REF: 2604.20834] provides an additional recent signal that spatially grounded semantics and action-specialist routing can be profitably inserted before full action decoding, which supports our choice to keep the latent interface explicitly geometry-conditioned rather than purely command-conditioned. In the D04 narrative, this means compact VLA priors are not just downstream baselines: they become evidence that stronger spatial grounding can raise the fraction of transfer gain already explained at the latent-interface stage.
+We explicitly factor `z_t` into a geometry-shared core and a bounded embodiment-formatting suffix,
+\[
+z_t = [z_t^{\text{core}},\; z_t^{\text{fmt}}], \qquad z_t^{\text{core}} \perp E_r \mid X_t,
+\]
+so the method is forced to keep most transfer structure inside a geometry-conditioned, embodiment-light subspace. Intuitively, `z_t^{core}` should capture scene-consistent subgoal transitions such as *approach left rim*, *stabilize pre-contact yaw*, or *lift along free corridor*, while `z_t^{fmt}` is only allowed to encode target-side command formatting differences such as end-effector convention, actuator scaling, or aerial setpoint parametrization. This decomposition gives D04 a concrete mechanism for testing whether a route really needs embodiment-aware structure or merely needs cleaner command formatting.
 
-Our decision protocol therefore uses latent alignment as the default second stage after geometry verification. If latent retargeting already explains most transfer gain and morphology compensation remains marginal, we freeze the narrative at shared geometry plus latent sufficiency. Only when residual errors remain strongly correlated with embodiment-dependent kinematics or dynamics do we escalate to explicit morphology-conditioned compensation or physics adaptation.
+The target-side decoder is factorized into a geometry-aware coarse retargeter and a lightweight embodiment-conditioned action head. Concretely,
+\[
+\bar{u}_t^r = g_\psi^{\text{coarse}}(z_t, X_t, E_r, \phi_t), \qquad
+\hat{u}_t^r = g_\psi^{\text{fine}}(\bar{u}_t^r, z_t, E_r),
+\]
+where the coarse head predicts a task-aligned target action proposal in a normalized control frame and the fine head maps it to platform-specific control parameters such as joint-space deltas, end-effector twist, or aerial manipulator setpoints. We additionally require the coarse head to predict a **contact-readiness flag** and a **window-localization flag**,
+\[
+(\rho_t^{\text{contact}},\; \rho_t^{W}) = h_\psi(z_t, X_t, E_r),
+\]
+so that the model can report whether its gain appears before contact, at contact onset, or only in delayed rescue windows. This is important because D04 claims should stop earlier when the improvement is only visible after contact or only after long-horizon repair.
+
+The training objective combines four losses and one consistency margin:
+\[
+\mathcal{L}_{\text{latent}} = \lambda_1 \mathcal{L}_{\text{pred}} + \lambda_2 \mathcal{L}_{\text{rec}} + \lambda_3 \mathcal{L}_{\text{cycle}} + \lambda_4 \mathcal{L}_{\text{contrast}} + \lambda_5 \mathcal{L}_{\text{margin}}.
+\]
+Here `pred` predicts next-step geometry evolution from `(z_t, X_t)`, `rec` reconstructs valid target-embodiment controls, `cycle` enforces source→target→source retargeting consistency, `contrast` keeps task-consistent but embodiment-different windows close while separating unrelated windows, and `margin` penalizes cases where latent retargeting only wins after hidden residual rescue. We further add a lightweight factorization regularizer and a window-faithfulness loss,
+\[
+\mathcal{L}_{\text{fact}} = \|\mathrm{Cov}(z^{\text{core}}, E_r)\|_F^2 + \max(0, m - \Delta(z^{\text{fmt}}, E_r)),
+\]
+\[
+\mathcal{L}_{\text{win}} = \mathrm{CE}(\rho_t^{W}, W_t^{+}) + \mathrm{BCE}(\rho_t^{\text{contact}}, y_t^{\text{contact}}),
+\]
+so that the geometry-shared part does not silently memorize the target embodiment and the latent branch remains honest about when its gain first becomes useful.
+
+The final latent-stage objective is therefore
+\[
+\tilde{\mathcal{L}}_{\text{latent}} = \mathcal{L}_{\text{latent}} + \lambda_6 \mathcal{L}_{\text{fact}} + \lambda_7 \mathcal{L}_{\text{win}}.
+\]
+We write the sufficiency condition as
+\[
+\Delta_{\text{latent}} > \tau_{\text{latent}}, \qquad
+\Delta_{\text{latent}} - \Delta_{\text{residual}} > \tau_{\text{sep}},
+\]
+meaning that latent transfer is only credited when it explains the dominant gain **before** history-conditioned residual correction becomes necessary.
+
+This formulation is consistent with OPFA, UniT, PokeVLA, and Any2Any-style evidence from the local library: geometry-aligned intermediate structure plus lightweight target-specific formatting can already absorb a large fraction of cross-platform variation. In D04 terms, latent retargeting is therefore the default null hypothesis after geometry is verified, not a late optional add-on. Stronger embodiment-aware claims are only allowed when this stage still leaves structured residuals that survive matched controls and cannot be consumed by geometry-conditioned latent transfer alone.
 
 ### 3.4 Human-to-Robot Geometry Anchors and Physical Intent Tokens
 
@@ -241,19 +293,40 @@ Operationally, this module serves two purposes. First, it turns human videos int
 
 ### 3.5 In-Context Embodiment Residual Modeling
 
-Recent work such as AdaTracker [REF: 2604.20305] suggests that embodiment-specific residual information can sometimes be inferred online from rollout history rather than injected only through static morphology tokens. We therefore include an optional embodiment-context residual module that reads recent trajectory history and predicts whether remaining transfer error is better explained by embodiment-conditioned constraints, contact timing drift, or platform-dependent control bandwidth limits. This module is intentionally positioned as a residual explainer rather than the primary transfer mechanism: it is only enabled after geometry and latent-transfer stages have already been evaluated.
+When geometry verification and latent retargeting still leave systematic residual error, we invoke an online embodiment-context module instead of immediately promoting a heavier embodiment-specific controller. We implement this module as a two-branch context inference block operating on a recent rollout buffer
+\[
+H_t = \{o_{t-k:t},\; u_{t-k:t-1},\; z_{t-k:t-1},\; \mathcal{G}_{t-k:t}\}.
+\]
+A temporal encoder `Ctx_\omega` first summarizes execution history into a compact context state
+\[
+c_t = h_\omega(H_t, E),
+\]
+then two lightweight heads decompose it into a **slow embodiment/context branch** and a **fast residual branch**,
+\[
+r_t^{\text{slow}} = m_{\omega_1}(c_t), \qquad r_t^{\text{fast}} = m_{\omega_2}(c_t, \phi_t),
+\]
+where the slow branch captures persistent embodiment properties such as compliance class, reachable contact family, or underactuation burden, while the fast branch captures short-horizon stabilization and timing corrections. The residual action is then predicted as
+\[
+\delta u_t = q_\eta(z_t, r_t^{\text{slow}}, r_t^{\text{fast}}, X_t, E), \qquad
+\tilde{u}_t = \hat{u}_t + \delta u_t.
+\]
+This design makes the residual path explicitly subordinate to the latent path: it is only allowed to explain what remains after geometry-stable intent transfer has already been established.
 
-This design gives D04 a cleaner falsification route. If the context residual module contributes substantial gains after latent retargeting, then our paper must explicitly acknowledge that shared geometry plus latent interface is not yet sufficient. If its gains remain marginal, AdaTracker-style context adaptation can be reinterpreted as a useful diagnostic baseline rather than a necessary component of the final transfer stack. For aerial manipulation in particular, we will log whether the inferred context mainly captures morphology mismatch or delayed stabilization dynamics; only the former is allowed to count toward cross-embodiment residual recovery, while the latter is reassigned to dynamics-residual burden.
+We further decompose the residual explanation into three audited buckets,
+\[
+R_t = (r_t^{\text{emb}},\; r_t^{\text{temp}},\; r_t^{\text{dyn}}),
+\]
+corresponding to embodiment-structure residuals, temporal/contact-alignment residuals, and platform-dynamics residuals. The training loss therefore includes a residual sparsity and route-separation term,
+\[
+\mathcal{L}_{\text{res}} = \beta_1 \mathcal{L}_{\text{task}} + \beta_2 \lVert \delta u_t \rVert_1 + \beta_3 \mathcal{L}_{\text{route-sep}} + \beta_4 \mathcal{L}_{\text{window-cons}},
+\]
+where `task` optimizes the corrected action, `|δu|_1` discourages the residual branch from relearning the whole controller, `route-sep` separates embodiment vs temporal vs dynamics evidence, and `window-cons` enforces consistent attribution across pre-contact, contact, and delayed-consumption windows. A residual branch may support a D04 embodiment claim only if
+\[
+\Delta_{\text{emb}} > \max(\Delta_{\text{temp}},\; \Delta_{\text{dyn}}) + \tau_{\text{margin}},
+\]
+and if the gain is not confined to late stabilization-only windows.
 
-A further unified-prior control is now necessary. Pelican-Unified 1.0 [REF: 2605.15153] suggests that a single embodied foundation model can already share scene semantics, reasoning traces, future imagination, and action history grounding inside one checkpoint. For D04, this means some gains previously narrated as evidence for a stronger transfer interface may instead reflect a sufficiently capable unified prior that already internalizes large parts of cross-platform structure. We therefore treat unified embodied models as a new negative-control family: if a shared geometry packet or latent retargeting module only helps on top of weak backbones but loses explanatory necessity once a strong unified prior is used, the honest conclusion should be prior saturation rather than new transfer structure.
-
-We further reserve a refinement-style interpretation slot inspired by ResVLA [REF: 2604.21391]. If the trajectory history mainly helps reconstruct a coarse intent anchor while the remaining benefit comes from high-frequency correction, then the residual branch should be interpreted as **intent-conditioned refinement** rather than evidence that the shared interface itself failed. This gives D04 a more disciplined split between transferable low-frequency structure and embodiment-specific high-frequency recovery.
-
-A stronger negative-control baseline is heterogeneous-scale pretraining. JoyAI-RA 0.1 [REF: 2604.20100] indicates that explicit action-space unification plus large heterogeneous corpora may already absorb a non-trivial fraction of embodiment variance before any online residual modeling is enabled. We therefore treat context residual modeling as justified only when it explains gains that are still left after geometry stabilization, latent retargeting, and heterogeneous-pretraining baselines have all been accounted for. In other words, a context encoder should not be credited for rescuing weaknesses that can already be removed by better shared priors.
-
-Pelican-Unified 1.0 [REF: 2605.15153] sharpens the same issue from the opposite direction. Instead of adding a lightweight residual head on top of a modest transfer stack, it suggests that a single unified embodied foundation model may already internalize broad scene semantics, reasoning traces, future imagination, and action grounding across heterogeneous embodiments. For D04, this creates a new negative-control requirement: if a residual module only helps on weak or medium backbones but loses explanatory necessity once a strong unified embodied prior is installed, then the honest interpretation is not “new transfer structure,” but **prior saturation**. We therefore log unified-prior controls before promoting any context-residual gain to embodiment-structure evidence.
-
-A final attribution rule is needed inside the morphology-aware family itself. When a history-conditioned model such as DexFormer [REF: 2502.11147] outperforms static morphology-token baselines, we do not immediately interpret the gain as stronger embodiment priors. Instead, the gain is first tested against a temporal-residual explanation: if the improvement concentrates in delayed contact alignment, stabilization, or rollout-dependent bandwidth mismatch, it is recorded as **temporal embodiment residual recovery** rather than as evidence that static morphology descriptors are intrinsically insufficient. Separately, when a topology-aware analytical prior such as kinematic intelligence improves transfer, we record that gain under **kinematic feasibility prior** rather than merging it into either latent sufficiency or history-conditioned residual adaptation. This prevents D04 from collapsing online embodiment inference, static morphology conditioning, topology-aware feasibility priors, and dynamics adaptation into a single undifferentiated “morphology-aware” bucket.
+This module therefore functions as a falsification tool, not a default headline generator. If the context encoder adds little after latent transfer, D04 can honestly conclude that the shared interface already absorbs most cross-platform structure. If it adds a lot, the paper still has to report **which residual bucket was actually rescued** instead of collapsing all online gains into a vague morphology-aware adaptation story. That boundary is especially important for aerial manipulation, where delayed stabilization often masquerades as embodiment generalization if the residual route is left un-audited.
 
 ### 3.6 Real-to-Sim-to-Real Geometry Anchoring for Heterogeneous Sources
 
@@ -263,9 +336,33 @@ For D04, the value of this module is methodological rather than merely data-augm
 
 ### 3.7 Escalation Rule from Shared Latent to Dynamics Residual
 
-Our paper logic now enforces a one-way escalation order: shared geometry must be established before latent transfer claims are made, and shared latent must be exhausted before embodiment-specific compensation is promoted to the main explanation. Concretely, once the geometry packet passes interface stability checks, latent retargeting becomes the default explanation layer. Morphology-aware adapters are only upgraded when they provide repeatable gains beyond latent transfer, and physics-aware guidance is only upgraded when the remaining error pattern is clearly dominated by embodiment-dependent dynamics such as payload swing, underactuation, or delayed stabilization.
+We convert the narrative escalation discipline into an executable routing algorithm. For each evaluated route, we compute a matched-budget attribution tuple
+\[
+\Gamma_t = (S_{\text{geo}},\; \Delta_{\text{terrain}},\; \Delta_{\text{coord}},\; \Delta_{\text{contact}},\; \Delta_{\text{latent}},\; \Delta_{\text{kin}},\; \Delta_{\text{emb}},\; \Delta_{\text{dyn}},\; \text{PTL},\; \text{GRS},\; B,\; W^+),
+\]
+where `B` is the matched adaptation / context budget and `W+` is the first positive consumption window. Instead of using these terms only as reviewer prose, we define an explicit shortest-honest routing procedure:
 
-This ordering matters especially for aerial manipulation. Prior aerial VLA evidence indicates that visual-semantic priors may transfer well while platform dynamics remain the dominant failure source. Therefore, D04 should not frame every residual error as proof that morphology tokens are missing. Instead, our method explicitly separates morphology-conditioned improvements from dynamics-residual recovery, allowing the paper to conclude either that shared geometry plus latent interface is already sufficient for most transfer, or that the true bottleneck has shifted to platform-specific dynamics adaptation.
+**Algorithm 1: Weakest-Honest Escalation for Cross-Embodiment Claims**
+1. **Geometry gate**. If `S_geo < τ_geo`, return `geometry/interface failure`.
+2. **Scene/interface completion gate**. Test terrain, coordination, contact, and descriptor exposure under matched toggles. If any weaker route explains the gain, return the weakest surviving tag in `{terrain, coordination, contact, descriptor}`.
+3. **Demonstration-translation gate**. If gain appears only after embodiment-matched replay / relabeling / translated supervision, return `demonstration-translation completion`.
+4. **Latent sufficiency gate**. If `Δ_latent > τ_latent` and `Δ_latent - max(Δ_emb, Δ_dyn) > τ_sep`, return `shared geometry + latent transfer`.
+5. **Kinematic / prior-preserving gate**. If gains emerge before online residual inference and are absorbed by topology-aware priors, richer descriptors, or bounded prior-preserving adaptation, return `kinematic-feasibility prior` or `bounded adaptation support`.
+6. **Residual-context gate**. If history-conditioned inference adds stable gain, compare embodiment, temporal, and dynamics routes in the same consumption window. Promote to `embodiment residual` only if the embodiment bucket remains dominant after subtracting temporal and dynamics explanations.
+7. **Dynamics fallback**. If the remaining gain is concentrated in payload stabilization, delayed correction, or bandwidth relief, return `dynamics-residual burden relief`.
+8. **Low-data honesty check**. If the chosen tag depends on small target-side tuning that materially worsens `PTL` or `GRS`, demote one level to `adaptation-side bounded support`.
+
+In compact decision form, the headline tag is
+\[
+\tau^* = \operatorname*{arg\,min}_{\tau \in \mathcal{H}} \{\tau \mid \tau \text{ still explains the gain under matched controls}\},
+\]
+where the honesty lattice is ordered as
+\[
+\text{geometry} \prec \text{terrain/contact/coordination/descriptor} \prec \text{demonstration translation} \prec \text{latent} \prec \text{kinematic/bounded adaptation} \prec \text{embodiment residual} \prec \text{dynamics residual}.
+\]
+We additionally require that every promoted claim report its `creation stage`, `first positive window`, and `last honest consumption boundary`, so early packet improvements cannot be overclaimed as full cross-embodiment success.
+
+This algorithmic view is central to D04 because the paper now lives exactly at the boundary where scene-state completion, supervision cleanup, latent transfer, and late residual rescue all compete for credit. By writing the escalation rule as an executable procedure, Method 3.x stops being a philosophical reporting guideline and becomes a reproducible evaluation protocol: every result must stop at the weakest explanation that still survives under matched controls, budget, and window localization.
 
 ### 3.8 Data-First Interface Formation
 
@@ -443,7 +540,6 @@ To make this distinction executable, we add one cheap supervision-side sanity to
 ### 4.2.47 Family-Matched Representation-First Freeze after DexFormer Re-read
 
 A fresh local re-read of **DexFormer** [REF: 2502.11147] sharpens a boundary that D04 still risks blurring. DexFormer is clearly useful: a history-conditioned transformer can infer embodiment-dependent kinematics and dynamics online, and zero-shot gains across unseen dexterous hands suggest that some residual transfer burden is indeed temporal rather than purely static. But under the current D04 attribution discipline, this evidence should not be promoted too early to broad embodiment-structure claims. Before a history-conditioned route is allowed to headline remaining embodiment structure, it must first defeat a weaker and still plausible explanation: that the observed gain mainly reflects **better rollout-time descriptor consumption** after shared geometry, latent packet formation, and contact-capable embodiment exposure are already in place.
-<<<<<<< HEAD
 
 We therefore freeze a stricter default route for DexFormer-like evidence:
 `shared geometry / latent packet readiness → contact-capable descriptor exposure → history-conditioned descriptor consumption → remaining embodiment structure`.
@@ -453,17 +549,6 @@ Reviewer-facing, the key question is not whether history helps, but **when and w
 
 Given the present D04 anchor set, the cleanest near-term integration of DexFormer is conservative and useful. **RIO** still freezes at `representation/infrastructure exposure`; **HandCDO** still freezes at `contact-capable descriptor exposure`; **D-CLING** still freezes at `prior-preserving bounded assistance`; **GA3T** still freezes at `terrain-state completion`; and **DexFormer** should now freeze at `history-conditioned descriptor consumption / temporal embodiment residual recovery` unless it defeats those weaker families at the same decisive consumption window. This matters because DexFormer is exactly the kind of strong result that can tempt an over-upgrade from "history helps online" to "shared latent plus online embodiment inference solves cross-embodiment transfer." The current evidence does not yet license that jump.
 
-=======
-
-We therefore freeze a stricter default route for DexFormer-like evidence:
-`shared geometry / latent packet readiness → contact-capable descriptor exposure → history-conditioned descriptor consumption → remaining embodiment structure`.
-Reviewer-facing, the key question is not whether history helps, but **when and where that history is first honestly consumed**. If the gain mainly appears after contact onset, delayed stabilization, or manipulation-phase rollout accumulation, then the first honest tag should stop at **history-conditioned descriptor consumption** or **temporal embodiment residual recovery**, not jump directly to a stronger claim that D04 has uncovered a universally better cross-embodiment controller interface. Only if the same gain survives matched controls against stronger static descriptor baselines, richer contact-capable embodiment parameterization, and prior-preserving bounded adaptation in the same decisive window may it be promoted to remaining embodiment-structure evidence.
-
-### 4.2.48 Current Evidence-Consistent Freeze after DexFormer Integration
-
-Given the present D04 anchor set, the cleanest near-term integration of DexFormer is conservative and useful. **RIO** still freezes at `representation/infrastructure exposure`; **HandCDO** still freezes at `contact-capable descriptor exposure`; **D-CLING** still freezes at `prior-preserving bounded assistance`; **GA3T** still freezes at `terrain-state completion`; and **DexFormer** should now freeze at `history-conditioned descriptor consumption / temporal embodiment residual recovery` unless it defeats those weaker families at the same decisive consumption window. This matters because DexFormer is exactly the kind of strong result that can tempt an over-upgrade from "history helps online" to "shared latent plus online embodiment inference solves cross-embodiment transfer." The current evidence does not yet license that jump.
-
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 The practical D04 stop rule therefore becomes sharper: **better prepared packet, better exposed contact structure, better preserved prior, better seen terrain, and better consumed temporal descriptor** are five distinct explanation families, not five interchangeable forms of transfer success. Under this serialization, a DexFormer-style gain is scientifically valuable even before it becomes a headline claim, because it helps pin down whether the remaining bottleneck truly lives in online embodiment-conditioned consumption rather than in earlier packet formation, descriptor exposure, or scene-state completion. That is exactly the kind of disciplined contraction D04 needs before escalating toward stronger embodiment-structure language.
 
 ### 4.2.15 Attribution Priority after Terrain, Contact, and Coordination Completion
@@ -880,7 +965,6 @@ Operationally, every row built from the current anchor set must report at least 
 
 To make the rule stricter under the current local evidence, we additionally bind each family to its most defensible minimal explanation: **GA3T = terrain-state completion**, **RIO = packet hygiene / infrastructure exposure**, **HandCDO = descriptor readability before consumable contact transfer**, and **D-CLING = low-data prior-preserving bounded refinement**. The moment a result can still be fully explained by one of these weaker routes, the promotion ladder must stop there. This prevents D04 from silently merging scene completion, interface cleanup, descriptor enrichment, and lightweight adaptation into a single inflated transfer story.
 
-<<<<<<< HEAD
 ### 4.2.48 DexFormer as a Family-Matched Temporal-Inference Anchor rather than Immediate Embodiment Evidence
 
 A useful next anchor under the same serialization rule is **DexFormer** [REF: 2502.11147]. DexFormer is valuable because it does not merely add a static morphology token; it uses trajectory history to infer hand morphology and dynamics online. For D04, that makes DexFormer a clean representative of the `history-conditioned temporal inference` family. The key reviewer-facing question is therefore not whether DexFormer improves transfer in aggregate, but whether its gain appears only after weaker families such as representation exposure, descriptor readability, terrain-state completion, and bounded prior-preserving adaptation have already been exhausted. If not, then DexFormer should not be narrated as immediate evidence that a deeper embodiment-specific controller is necessary.
@@ -894,9 +978,6 @@ Under the current local anchor mix, the strongest honest sentence is still conse
 In practical writing terms, the next D04 result paragraph can now use a sharper serialization: *current evidence suggests that many gains still stop at terrain-state completion, representation/infrastructure cleanup, contact-capable descriptor exposure, or prior-preserving bounded adaptation; DexFormer-like history inference should be counted only as the surviving temporal residual beyond those audits, not as immediate proof that the shared latent interface is fundamentally insufficient.*
 
 ### 4.2.50 Active Embodiment Identification as a Deployment-Time Probe rather than Interface Sufficiency
-=======
-### 4.2.49 Active Embodiment Identification as a Deployment-Time Probe rather than Interface Sufficiency
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 
 A final boundary becomes useful once the literature moves from transfer *during training* to transfer *at deployment*. Active Embodiment Identification [REF: 2605.08020] suggests that a policy can recover part of the apparent cross-embodiment gap by first spending a short interaction budget to probe its own morphology, damaged joints, or hidden embodiment state before the downstream task begins. This is strategically relevant to D04 because such gains are easy to overclaim: a route may look more transferable not because the shared geometry packet or latent interface became stronger, but because the system inserted an **active embodiment-probe stage** that reveals the current body configuration before execution.
 

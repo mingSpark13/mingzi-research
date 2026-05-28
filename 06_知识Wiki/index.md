@@ -1,9 +1,56 @@
-<<<<<<< HEAD
 ## 导航
 
 - [[concepts/index|概念总索引]]
+- [[reports/lint|Lint 报告]]
+- [[syntheses/index|综合分析索引]]
 
 ## sources/
+
+### 最新添加（2026-05-28 13:43）
+- [[sources/source.2026-03-17_ManualVLA|ManualVLA (2026-03)]] — MoT多专家统一规划与动作执行，ManualCoT显隐推理，RLBench 70%超越π0 7%，D02 VLA架构/长程任务规划
+- [[sources/source.2026-03-28_MMaDA-VLA|MMaDA-VLA (2026-03)]] — 离散扩散VLA替代自回归，语言/图像/动作统一token去噪，LIBERO 98.0%达SOTA，D02 VLA架构/扩散策略
+- [[sources/source.2026-04-10_A1|A1 (2604.05672)]] — 预算感知自适应截断VLA，延迟降低72%，跨层action一致性 early-exit，D02 VLA架构/实时推理
+- [[sources/source.2026-04-18_LIBERO|LIBERO (2306.03310)]] — 130任务终身机器人学习benchmark，顺序finetuning优于现有方法，naive预训练损害LLDM，D02 仿真平台/持续学习
+- [[sources/source.2605.05172_When_Life_Gives_You_BC_Make_Q-functions|Q2RL (2605.05172)]] — BC提取Q-function+Q-gating切换BC/RL动作，1-2小时真机交互提升成功率至3.75×，D07 离线到在线强化学习/灵巧操作
+
+### 最新添加（2026-05-28 11:43）
+- [[sources/source.2310.01361_GenSim|GenSim (2310.01361)]] — GPT-4生成仿真任务代码，goal-directed+exploratory双模式，benchmark从10个扩展到100+，sim2real真实机器人提升25%，ICLR 2024，数据合成 程序化内容生成/LLM驱动机器人
+- [[sources/source.2025_MAPInstructor|MAPInstructor (2025)]] — 3D voxel+拓扑地图编码LLM提示，landmark hallucination rate显著降低，CVPR 2025，数据合成 语义导航/视觉语言导航/LLM驱动机器人
+- [[sources/source.2025_3D_GRAND|3D-GRAND (2025)]] — 40K场景620万条dense grounding指令，3D-POPE幻觉评估基准，dense数据量越大3D-LLM性能越稳定，CVPR 2025，具身智能 数据合成 评测基准
+
+### 最新添加（2026-05-28 11:13）
+- [[sources/source.2605.19587_SceneCode|SceneCode (2605.19587)]] — NLP prompt编译为可执行Blender Python program生成SDF场景，实现"场景即代码"范式，支持可交互性查询和批量变体生成，数据合成 程序化内容生成/世界模型/仿真平台
+- [[sources/source.2603.12238_SceneAssistant|SceneAssistant (2603.12238)]] — VLM渲染反馈迭代修改场景，"渲染-反馈-修改"视觉反馈循环，数据合成 程序化内容生成/视觉语言导航/多模态统一架构
+- [[sources/source.2603.07106_AutoUE|AutoUE (2603.07106)]] — 多Agent协作框架（检索+场景生成+代码+playtesting），从自然语言生成可玩游戏关卡，数据合成 程序化内容生成/多智能体系统/仿真平台
+- [[sources/source.2502.11142_NavRAG|NavRAG (2502.11142)]] — RAG-LLM基于scene tree和用户画像生成多样化导航指令，861场景200万+标注，数据合成 语义导航/检索增强生成/视觉语言导航
+- [[sources/source.2312.09067_Holodeck|Holodeck (2312.09067)]] — GPT-4生成空间约束+Objaverse资产检索，语言prompt转可用3D场景，NeurIPS 2024，数据合成 程序化内容生成/多模态统一架构
+
+### 最新添加（2026-05-28 08:28）
+- [[sources/source.2604.16903_VR_Robot_Games_Data_Collection|VR Robot Games (2604.16903)]] — VR机器人游戏化采集界面降低遥操作门槛，吞吐量高于传统方案，为数据飞轮提供低成本入口，D05 数据飞轮/遥操作/模仿学习
+
+### 最新添加（2026-05-28 04:13）
+- [[sources/source.2605.26638_HyperSim|HyperSim (2605.26638)]] — 高保真环境合成+对抗轨迹生成+sim/real co-training三件套，ACT/π0成功率80%/95%，扰动完成率+35%，D05 数据飞轮/Sim2Real/通用操作
+
+### 最新添加（2026-05-27 20:13）
+- [[sources/source.2605.27284_FineVLA|FineVLA (2605.27284)]] — FineVLA细粒度指令对齐实现可控VLA策略，附机器人专用VLM标注器扩数据，双臂操作任务成功率提升，D02 VLA架构/灵巧操作
+- [[sources/source.2605.27114_VR-DAgger|VR-DAgger (2605.27114)]] — VR遥操作+uncertainty-guided DAgger，高不确定性状态优先请求专家修正，提升灵巧操作数据闭环效率，D05 数据飞轮/灵巧操作
+
+### 最新添加（2026-05-27 19:43）
+- [[sources/source.2509.08435_PegasusFlow|PegasusFlow (2509.08435)]] — 首创无专家纯分数匹配训练diffusion policy，WBFO采样+IsaacGym并行rollout，D01 世界模型/动作接口设计/D05 Diffusion Policy
+
+### 最新添加（2026-05-27 19:13）
+- [[sources/source.2605.18746_ESI-Bench|ESI-Bench (2605.18746)]] — 首个系统性量化MLLMs"动作盲区"的具身空间智能基准，OmniGibson+BEHAVIOR-1K覆盖3081任务，D02 VLA架构/主动感知/评测基准
+
+### 最新添加（2026-05-27 17:13）
+- [[sources/source.2310.16828_TD-MPC2|TD-MPC2 (2310.16828)]] — ICLR 2024 隐式世界模型+latent MPC，单套超参跨104任务，317M参数验证可扩展性，D07 隐空间世界模型/MPC/强化学习
+
+### 最新添加（2026-05-27 15:13）
+- [[sources/source.2605.23733_Any2Any_CrossEmbodiment_Humanoid|Any2Any (2605.23733)]] — 运动学对齐+PEFT动力学适应实现人形WBT跨载体迁移，1%算力达从头训练同等性能，D04 跨载体泛化/动作空间统一/强化学习
+
+### 最新添加（2026-05-27 14:44）
+- [[sources/source.2601.02456_InternVLA-A1|InternVLA-A1 (2601.02456)]] — MoT三专家架构统一语义理解/视觉预见/动作执行，动态操作场景+26.7%，D02 VLA架构/多模态统一架构/视频生成
+- [[sources/source.2602.07101_Relightable3DGS_UAV_Navigation|Relightable 3DGS UAV (2602.07101)]] — Relightable 3DGS分解光照与几何，Real-Sim-Real管线森林10m/s零样本UAV导航，D06 Sim2Real/3D高斯溅射/强化学习
+- [[sources/source.2602.20342_3DGS_UAV_Outdoor_Reconstruction|3DGS UAV Reconstruction (2602.20342)]] — 端到端UAV航拍→RTMP→3DGS在线重建→WebSocket流式部署，保真度仅差4-7%离线参考，D09 3D高斯溅射/3D重建/SLAM
 
 ### 最新添加（2026-05-27 06:44）
 - [[sources/source.2609.12594_LightVLA|LightVLA (2609.12594)]] — 可微分 token 剪枝动态选择视觉 token，FLOPs 降低 59.1%、延迟降低 38.2%，同时成功率提升 2.9%，D02 VLA架构/实时推理
@@ -22,10 +69,6 @@
 ### 最新添加（2026-05-26 15:13）
 - [[sources/source.2603.17670_AgentVLN|AgentVLN (2603.17670)]] — VLM-as-Brain 范式将 VLN 语义推理与几何感知解耦，3B 超越 8.3B 大模型，支撑 Unitree Go2 + Jetson 边缘端实时导航，D06 空中VLN/VLA架构/跨载体泛化
 
-=======
-## sources/
-
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 ### 最新添加（2026-05-26 12:40）
 - [[sources/source.2026-05-11_OA_WAM|OA-WAM (2026-05-11 入库)]] — 对象可寻址 slot 分离 addr/content 向量解决 WAM 目标绑定难题，LIBERO 97.8%，VLA架构/隐空间世界模型
 - [[sources/source.2508.08328_DQ-Net|DQ-Net (2508.08328)]] — Grasp Fusion Module 记忆库+注意力匹配6D位姿，KD训练双视角轻量策略，RA-L 2026，腿足机器人/全身协调运动
@@ -157,11 +200,7 @@
 
 ---
 type: index
-<<<<<<< HEAD
-updated: "2026-05-27 04:08"
-=======
-updated: "2026-05-26 14:13"
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
+updated: "2026-05-28 11:43"
 ---
 
 ### 来源页 (sources/) - 最新添加（2026-05-24 00:13）
