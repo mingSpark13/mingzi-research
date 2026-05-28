@@ -97,14 +97,14 @@
 
 ### 3.1 TravelUAV 基准（Route VLN，Seen / Unseen）
 
-| 方法 | Seen SR↑ | Seen SPL↑ | Unseen SR↑ | Unseen SPL↑ | 测试时间 | 备注 |
-|---|---|---|---|---|---|---|
-| AerialVLN Baseline（R-01）* | — | — | — | — | — | 原论文数据 |
-| AerialVLA TravelUAV SOTA（R-03）* | — | — | — | — | — | AAAI SOTA |
-| AutoFly（R-04）* | — | — | +14.0% vs base | +7.9% vs base | — | ICLR 2026 |
-| OpenFly-Agent（R-05）* | — | — | — | — | — | — |
-| **AirSpark Rule-based（A-01）** | | | | | | 待测 |
-| **AirSpark VLA（A-02）** | | | | | | 待测 |
+| 方法                              | Seen SR↑ | Seen SPL↑ | Unseen SR↑     | Unseen SPL↑   | 测试时间 | 备注        |
+| ------------------------------- | -------- | --------- | -------------- | ------------- | ---- | --------- |
+| AerialVLN Baseline（R-01）*       | —        | —         | —              | —             | —    | 原论文数据     |
+| AerialVLA TravelUAV SOTA（R-03）* | —        | —         | —              | —             | —    | AAAI SOTA |
+| AutoFly（R-04）*                  | —        | —         | +14.0% vs base | +7.9% vs base | —    | ICLR 2026 |
+| OpenFly-Agent（R-05）*            | —        | —         | —              | —             | —    | —         |
+| **AirSpark Rule-based（A-01）**   |          |           |                |               |      | 待测        |
+| **AirSpark VLA（A-02）**          |          |           |                |               |      | 待测        |
 
 ### 3.2 OpenUAV 基准（Object Search，连续 6-DoF）
 
