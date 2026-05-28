@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: ""
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-19_Dual_Pose-Graph_Drone_Racing"]
+origins: ["../../02_阅读笔记/D06_空中VLN/2026-05-02_2604.15168_Dual_Pose_Graph_Drone_Racing"]
 updated: "2026-04-17"
 ---
 
@@ -11,4 +11,4 @@ updated: "2026-04-17"
 **核心价值**: 
 
 **原始资料**:
-- [[../../02_阅读笔记/D09_感知与3D视觉/2026-04-19_Dual_Pose-Graph_Drone_Racing]]
+- [[../../02_阅读笔记/D06_空中VLN/2026-05-02_2604.15168_Dual_Pose_Graph_Drone_Racing]]

@@ -16,7 +16,7 @@ updated: "2026-05-16"
 | **架构** | VLM backbone → action head，单一路forward | 意图层(LLM) → 技能层(VLM/LLM调度) → 精细执行层(ACT/Diffusion/FM) |
 | **信息流** | 图像+语言直接映射到动作 | 逐层抽象、模块间传递高层意图或轨迹目标 |
 | **典型代表** | RT-2, OpenVLA, π₀, StarVLA-α | [[concepts/隐空间世界模型\|世界模型]]+执行器、AirVLA物理适配分离、MoLA |
-| **论文来源** | [[02_阅读笔记/D02_VLA/RT-2_2307.10820]] [[02_阅读笔记/D02_VLA/OpenVLA_2410]] | [[02_阅读笔记/D02_VLA/MoLA_2605.12167]] [[02_阅读笔记/D02_VLA/AirVLA_Physics-Guided_Transfer_2603.25038]] |
+| **论文来源** | [[02_阅读笔记/D02_VLA/2026-03-27_RT-2]] [[02_阅读笔记/D02_VLA/2026-03-27_OpenVLA]] | [缺失待补: MoLA] [[02_阅读笔记/D02_VLA/2603.25395_UMBRELLA]] |
 
 ## 详细对比
 

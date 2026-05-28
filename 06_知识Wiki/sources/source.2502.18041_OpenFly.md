@@ -2,7 +2,7 @@
 type: "source"
 tags: ["空中VLN", "D06语义导航", "数据飞轮", "仿真平台"]
 summary: "OpenFly 把多引擎渲染、自动轨迹与自动指令生成拼成统一数据工厂，是 D06 很强的空中 VLN 基础设施样板。"
-origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-10_OpenFly"]
+origins: ["02_阅读笔记/D06_空中VLN/2026-04-10_OpenFly_A_Comprehensive_Platform_for_Aerial_Vision-Language_Navigation"]
 updated: "2026-05-11"
 ---
 
@@ -11,4 +11,4 @@ updated: "2026-05-11"
 **核心价值**: OpenFly 把多引擎渲染、自动轨迹与自动指令生成拼成统一数据工厂，是 D06 很强的空中 VLN 基础设施样板。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2026-04-10_OpenFly]]
+- [[02_阅读笔记/D06_空中VLN/2026-04-10_OpenFly_A_Comprehensive_Platform_for_Aerial_Vision-Language_Navigation]]
