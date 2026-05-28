@@ -2,7 +2,7 @@
 type: "source"
 tags: []
 summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-04_RISE_Self-Improving_Robot_Policy"]
+origins: ["../../02_阅读笔记/D01_世界模型/2026-04-06_RISE"]
 updated: "2026-04-17"
 ---
 
@@ -11,4 +11,4 @@ updated: "2026-04-17"
 **核心价值**: **原始资料**:
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-04-04_RISE_Self-Improving_Robot_Policy]]
+- [[../../02_阅读笔记/D01_世界模型/2026-04-06_RISE]]

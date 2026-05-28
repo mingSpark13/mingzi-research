@@ -10235,7 +10235,7 @@ updated: "2026-05-26 02:26"
 - **阶段A Lint**：
   - 膨胀检测：0 ✅（903个sources文件正文均≤25行）
   - 手动修复3个origins断链问题：
-    - `source.2602.11291_HWM.md`：origins:[] → 修复为 `../../02_阅读笔记/D02_VLA/2602_HWM.md`
+    - `source.2602.11291_HWM.md`：origins:[] → 修复为 `../../02_阅读笔记/D01_世界模型/2026-05-09_2602.11291_H-WM_Hierarchical_World_Model.md`
     - `source.2601.08485_AME-2.md`：origins:[] → 修复为 `../../02_阅读笔记/D09_感知与3D视觉/2026-03-17_AME-2.md`
     - `source.2203.12601_R3M.md`：错误指向FoundationPose → 修复为 `../../02_阅读笔记/D04_跨载体泛化/2026-03-27_R3M.md`
   - 修复后验证所有3个origins路径均指向真实文件 ✅

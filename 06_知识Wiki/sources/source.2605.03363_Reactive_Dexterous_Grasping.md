@@ -5,7 +5,7 @@ summary: "这篇工作把层级 task-space RL 与关节空间 QP 安全层结合
 <<<<<<< HEAD
 origins: ["../../02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping", "02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping"]
 =======
-origins: ["../../02_阅读笔记/D07_强化学习与控制机械臂控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping", "02_阅读笔记/D07_强化学习与控制机械臂控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping", "02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping"]
+origins: ["../../02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping", "02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping", "02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping"]
 >>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 updated: "2026-04-17"
 ---
@@ -18,7 +18,7 @@ updated: "2026-04-17"
 <<<<<<< HEAD
 - [[../../02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping]]
 =======
-- [[../../02_阅读笔记/D07_强化学习与控制机械臂控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping]]
-- [[02_阅读笔记/D07_强化学习与控制机械臂控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping]]
+- [[../../02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping]]
+- [[02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping]]
 >>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 - [[02_阅读笔记/D07_强化学习与控制/2026-05-07_2605.03363_Reactive_Dexterous_Grasping]]
