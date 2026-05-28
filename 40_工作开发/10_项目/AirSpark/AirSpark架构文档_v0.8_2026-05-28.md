@@ -305,6 +305,44 @@ UE Scene → SceneScanner（多视角 RGB+Depth+Seg）
   → 输出：TaskTrace + Instructions + MapMemory supervision
 ```
 
+### 6.5.1 对标方案与设计指引（2026-05-28 收敛）
+
+AirSpark AnnotationOps 对标的不是 SAM3（感知工具），而是以下方案的组合：
+
+| 对标对象 | 借鉴什么 | AirSpark 阶段 |
+|---|---|---|
+| HOV-SG / OpenGraph | 层级区域图（floor-room-object），开放词汇 3D scene graph | P3.2 RegionGraph |
+| NavRAG | scene description tree + RAG + LLM 生成多样化导航指令 | P3.4 Instruction Gen |
+| MAPInstructor | 指令生成必须输入 region path + landmark + map context | P3.4 |
+| 3D-GRAND | 每条语言必须 dense ground 到 object/region/relation | P3.4 grounding |
+| Clio | task-driven compact scene graph，只保留任务相关对象 | P3.1 task_relevance |
+| ConceptGraphs / OpenMask3D / SAM3 | 2D foundation model → 3D object graph | **P4** 真实场景 |
+
+**关键设计要求：**
+
+1. **Task-driven 标注（Clio）**：对象标注必须包含 `task_relevance` 和 `task_roles` 字段，避免全量冗余标注
+2. **Dense grounding（3D-GRAND）**：每条 instruction 必须绑定 target_object / target_region / relations / landmarks
+3. **地图上下文驱动指令生成（MAPInstructor）**：LLM 生成指令时必须输入 region path、关键 landmark、转向事件、可见性信息
+4. **层级区域图（HOV-SG）**：RegionGraph 必须层级化（campus → building → floor → room），query 是"找二楼走廊里的 A101 门"而非"找一个门"
+
+**三层分离原则：**
+
+| 层 | 含义 | 示例 |
+|---|---|---|
+| 模型输入 | 推理时模型能看到什么 | RGB + instruction + state（+ optional online map_context） |
+| 训练监督 | 训练时的标签 | current_region / visible_objects / subgoal / memory_update |
+| 评测真值 | 判断模型是否做对 | 是否进入正确区域？是否找到目标？是否碰撞？ |
+
+**三种 Benchmark 模式：**
+
+| 模式 | 输入 | 适合任务 |
+|---|---|---|
+| Pure RGB VLA | RGB + instruction + state | 短程接近、目标观察、局部 grounding |
+| Map-conditioned VLN | RGB + instruction + state + online map_context | 大范围搜索、区域推理、探索记忆 |
+| Oracle Map Upper Bound | RGB + instruction + state + ground-truth SemanticMap | 策略上限测试 |
+
+**SAM3 定位：** P3 不进主线（School 有 UE 真值）；P4 真实/第三方场景时作为 object discovery 前端接入同一套 AnnotationOps pipeline。预留 `--mode sam3-discover` 接口。
+
 ### 6.6 系统分层架构
 
 ```plaintext
