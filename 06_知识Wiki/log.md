@@ -14977,3 +14977,10 @@ HEARTBEAT_OK
   - 1007 = 904 正常笔记 + 95 归档重复笔记 + 8 汇总/README/模板
   - sources/笔记数比 1.16x
 - **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
+
+## [2026-06-02 10:23] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：refactor确认**1166个sources正文均≤25行**（✅0膨胀，20558 total lines，较09:38+0新增/去重后净稳定）；自研broken/duplicate/bloat三检**0 broken origins / 0 duplicate origins / 0 膨胀**；filesystem核查09:38→10:23约45min空窗期**0新增阅读笔记**（02_阅读笔记/最新实质mtime=2026-06-02 09:26 AcornRobot已于09:38批次覆盖）
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（概念71✓/对比6✓/总览4✓），无新增编译项；inbox 6条候选仍为"首次出现"单点（无≥3频次升级阈值），字典v1.1稳定
+- **阶段C**：**双算法交叉验证**：(1) wiki_coverage_check.py 返回6条——**全部为已知聚合笔记/README stem假阳性**（D06/D04/D02/99_归档×3 论文笔记汇总.md + 99_归档/重复笔记/README__dup2.md，**非单篇论文**，属已知系统性stem假阳性）；(2) 自研归一化+token模糊匹配（去source.前缀/去日期/去arxivID/去4位年份/小写归一/支持全中文）4个"missing"全部确认为**已建source的命名差异**：WEM ✓（`source.2026-05-20_WEM_2605.19957.md` + `source.2605.19957_WEM.md` alias）/光流避障 ✓（`source.2411.04413_光流避障.md` + `source.2411.04413_OpticalFlow_DiffPhys_Obstacle_Avoidance.md` alias）/SustainableTransfer ✓（`source.2604.06943_Sustainable_Transfer_Learning.md`）/UAV-ON ✓（`UAV-ON_2026.md` + `source.ACM_MM_2025_UAV-ON.md` alias）；**0补建**
+- **覆盖率**：1166 sources / 905 notes（✅实质100%全覆盖，sources/笔记数比1.29x，部分热门论文有重命名alias页）
+- **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
