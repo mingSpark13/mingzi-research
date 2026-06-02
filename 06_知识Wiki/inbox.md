@@ -7,3 +7,9 @@
 - [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：prompt措辞敏感性（频次：首次出现）—— DROID 高频动词（pick=25,985次）vs 低频词（0次）带来 14% 性能差距，揭示语言条件化是 VLA 泛化瓶颈
 - [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：USD中间格式（频次：首次出现）—— 用 USD 作为 simulator-agnostic 资产适配中间层，转 MJCF / Isaac native / ManiSkill
 - [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：articulated抓取标注（频次：首次出现）—— 验证抓取在关节驱动下不滑脱的 pipeline（铰接物体专属），与刚性抓取 antipodal+抖动测试并列
+- [02_阅读笔记/D07_强化学习与控制/2026-06-02_公众号_传统控制在大模型时代生存现状.md] 候选概念：分层共生架构（频次：首次出现）—— 大脑-小脑-脊髓三层架构（大模型认知/RL敏捷/MPC安全）
+- [02_阅读笔记/D07_强化学习与控制/2026-06-02_公众号_传统控制在大模型时代生存现状.md] 候选概念：双链路切换（频次：首次出现）—— 慢路径VLM/快路径传统规划自适应切换（DriveVLM-Dual）
+- [02_阅读笔记/D02_VLA/2026-06-02_2402.12289_DriveVLM.md] 候选概念：nuScenes+SUP-AD（频次：首次出现）—— 国内长尾场景补充数据集
+- [02_阅读笔记/D07_强化学习与控制/2026-06-02_2409.15610_DIAL-MPC.md] 候选概念：扩散退火MPC（频次：首次出现）—— MPPI与单步扩散的数学等价性 + landscape分析
+- [02_阅读笔记/D07_强化学习与控制/2026-06-02_2310.16828_TD-MPC2.md] 候选概念：统一tokenizer跨embodiment（频次：首次出现）—— 异构观测空间统一编码方法
+- [02_阅读笔记/D02_VLA/2026-06-02_2505.15660_AGNOSTOS_VLA_Cross-Task_Generalization.md] 候选概念：in-context跨任务泛化（频次：首次出现）—— LLM条件在seen task demos上预测unseen task动作
