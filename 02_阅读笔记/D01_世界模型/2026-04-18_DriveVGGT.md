@@ -16,6 +16,7 @@ pdf_path: "../../01_论文库/世界模型/2511.22264_DriveVGGT.pdf"
 reading_date: 2026-04-18
 reading_status: 已读
 related_concepts: ["感知与3D视觉", "3D重建", "SLAM", "深度估计"]
+summary: "DriveVGGT 把标定信息与多相机先验注入前馈几何 Transformer，在自动驾驶长序列上同时提升重建精度与推理效率。"
 ---
 
 # 🎯 题目

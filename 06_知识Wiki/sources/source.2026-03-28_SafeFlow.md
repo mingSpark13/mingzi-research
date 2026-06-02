@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-03-28_SafeFlow"]
-updated: "2026-04-17"
+id: "source.2026-03-28_SafeFlow"
+pageType: "source"
+tags: ["Safe Trajectory Generation", "Control Barrier Functions", "Flow Matching", "Safe Sampling", "D01", "流匹配"]
+summary: "将 control barrier functions 直接注入 flow matching 采样过程，在生成轨迹时同时维持安全约束与轨迹质量。"
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2025-04-23_SafeFlow.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: 将 control barrier functions 直接注入 flow matching 采样过程，在生成轨迹时同时维持安全约束与轨迹质量。
 
 **原始资料**:
-- [[../../02_阅读笔记/D09_感知与3D视觉/2026-03-28_SafeFlow]]
+- [[../../02_阅读笔记/99_归档/重复笔记/2025-04-23_SafeFlow.md]]

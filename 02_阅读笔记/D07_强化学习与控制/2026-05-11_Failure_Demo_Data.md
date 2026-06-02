@@ -7,6 +7,7 @@ institution: TBD
 conf: arXiv
 keywords: ["Imitation Learning", "Failure Data", "Data Selection", "Attention Mechanism", "Offline RL"]
 tags: ["模仿学习", "强化学习"]
+summary: "论文通过学习成功与失败示范的差异表示来筛选失败轨迹，让失败数据从噪声变成可提升模仿学习效率的监督信号。"
 domain: 强化学习
 pdf_path: "../../01_论文库/强化学习/2605.07560_Failure_Demo_Data.pdf"
 reading_date: "2026-05-11"

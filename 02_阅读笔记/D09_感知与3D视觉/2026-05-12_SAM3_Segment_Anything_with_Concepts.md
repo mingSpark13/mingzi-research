@@ -7,6 +7,7 @@ institution: Meta AI Research
 conf: arXiv
 keywords: ["SAM", "Segment Anything", "Promptable Concept Segmentation", "Video Tracking", "Unified Detection"]
 tags: ["感知与3D视觉", "多模态统一架构"]
+summary: "SAM 3 将 Segment Anything 扩展到概念级 promptable segmentation，在开放词汇图像/视频分割与跟踪上显著超过既有系统。"
 domain: 感知与3D视觉
 pdf_path: "../../01_论文库/感知与3D视觉/2511.16719_SAM3.pdf"
 reading_date: "2026-05-12"

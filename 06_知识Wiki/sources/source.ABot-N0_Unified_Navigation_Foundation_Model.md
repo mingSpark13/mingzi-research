@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D06_空中VLN/2026_ABot-N0_Unified_Navigation_Foundation_Model"]
-updated: "2026-04-17"
+id: "source.ABot-N0_Unified_Navigation_Foundation_Model"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2026_ABot-N0_Unified_Navigation_Foundation_Model]]

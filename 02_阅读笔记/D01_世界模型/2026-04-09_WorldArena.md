@@ -1,3 +1,16 @@
+---
+title: "WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models"
+authors: "WorldArena authors"
+arxiv: "2602.08971"
+date: "2026-04-09"
+tags: ["世界模型", "物理一致性", "评测基准"]
+summary: "WorldArena 为具身世界模型建立统一评测，显式拆开感知质量与功能效用，强调生成逼真不等于下游可用。"
+domain: 世界模型
+reading_date: "2026-04-09"
+reading_status: 已深挖
+related_concepts: ["世界模型", "物理一致性"]
+---
+
 # WorldArena — A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models
 
 - **论文**: WorldArena: A Unified Benchmark for Evaluating Perception and Functional Utility of Embodied World Models

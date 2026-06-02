@@ -12,6 +12,7 @@ pdf_path: ../../01_论文库/世界模型/2025_Self_Forcing.pdf
 reading_date: 2026-03-25
 reading_status: 已入库
 related_concepts: ["实时推理", "视频生成"]
+summary: "Self-Forcing 通过训练时模拟 rollout、引入 KV cache 与 video-level supervision，缩小自回归视频扩散训练和推理的分布偏移。"
 ---
 
 ## 🎯 题目

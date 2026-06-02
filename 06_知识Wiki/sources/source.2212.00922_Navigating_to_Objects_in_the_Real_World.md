@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["语义导航", "Sim2Real", "跨载体泛化"]
-summary: "首次大规模真实家庭语义导航三类方法系统对比，模块化方法90%成功率，端到端仅23%，揭示Sim2Real鸿沟根源"
-origins: ["../../02_阅读笔记/D06_空中VLN/2026-05-09_Navigating_to_Objects_in_the_Real_World"]
-updated: "2026-05-11"
+id: "source.2212.00922_Navigating_to_Objects_in_the_Real_World"
+pageType: "source"
+tags: ["semantic visual navigation", "sim-to-real", "modular learning", "end-to-end learning", "robot navigation", "语义导航"]
+summary: "真实家庭语义导航实证表明，模块化学习在 Sim2Real 上远稳于端到端方法，是当前真实物体导航更可靠的工程路线。"
+origins: ["../../02_阅读笔记/D06_空中VLN/2026-05-09_Navigating_to_Objects_in_the_Real_World.md"]
+updated: "2026-06-02"
 ---
 
 # Navigating to Objects in the Real World (2212.00922)
 
-**核心价值**: 首次大规模真实家庭语义导航三类方法系统对比，模块化方法90%成功率，端到端仅23%，揭示Sim2Real鸿沟根源
+**核心价值**: 真实家庭语义导航实证表明，模块化学习在 Sim2Real 上远稳于端到端方法，是当前真实物体导航更可靠的工程路线。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2026-05-09_Navigating_to_Objects_in_the_Real_World]]
+- [[../../02_阅读笔记/D06_空中VLN/2026-05-09_Navigating_to_Objects_in_the_Real_World.md]]

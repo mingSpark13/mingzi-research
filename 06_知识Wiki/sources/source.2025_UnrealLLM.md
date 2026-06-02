@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["程序化内容生成", "仿真平台", "具身智能", "多模态统一架构"]
-summary: "UnrealLLM 多智能体框架用 LLM 操控 UE5 PCG 系统生成高度可控可交互 3D 场景，858K+ 资产库 + PCG 知识库实现自然语言到可执行 blueprint 的转译。"
-origins: ["../02_阅读笔记/数据合成/2025_UnrealLLM"]
-updated: "2026-05-28 14:20"
+id: "source.2025_UnrealLLM"
+pageType: "source"
+tags: ["LLM", "PCG", "Unreal Engine 5", "3D scene generation", "multi-agent", "程序化内容生成"]
+summary: "问题背景: 3D场景自动化生成对游戏和仿真应用至关重要，但现有方法难以在保留PCG优势的同时实现自然语言控制，核心挑战在于如何让LLM与专业PCG系统有效对接。"
+origins: ["../../02_阅读笔记/数据合成/2025_UnrealLLM.md"]
+updated: "2026-06-02"
 ---
 
 # UnrealLLM (ACL Findings 2025)
 
-**核心价值**: UnrealLLM 多智能体框架用 LLM 操控 UE5 PCG 系统生成高度可控可交互 3D 场景，858K+ 资产库 + PCG 知识库实现自然语言到可执行 blueprint 的转译。
+**核心价值**: 问题背景: 3D场景自动化生成对游戏和仿真应用至关重要，但现有方法难以在保留PCG优势的同时实现自然语言控制，核心挑战在于如何让LLM与专业PCG系统有效对接。
 
 **原始资料**:
-- [[../02_阅读笔记/数据合成/2025_UnrealLLM]]
+- [[../../02_阅读笔记/数据合成/2025_UnrealLLM.md]]

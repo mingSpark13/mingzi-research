@@ -1,15 +1,16 @@
 ---
 type: "source"
-tags: ["仿真平台", "Sim2Real", "3D高斯溅射", "物理一致性", "数据飞轮"]
-summary: "光真感 3DGS 渲染与自研并行物理引擎深度耦合，单卡 10,000+ FPS 吞吐，支持 Real2Sim 一键场景重建与零样本 Sim2Real 迁移，RSS 2026。"
-origins: ["../../02_阅读笔记/D10_仿真与框架/2026-05-06_GS-Playground", "../../02_阅读笔记/D01_世界模型/2026-04-08_AeroDGS"]
-updated: "2026-05-10"
+id: "source.2604.25459_GS-Playground"
+pageType: "source"
+tags: ["GS-Playground", "3DGS", "光真感仿真", "机器人仿真", "Sim2Real", "仿真平台"]
+summary: "GS-Playground 把 3DGS 光真渲染和高吞吐并行物理仿真耦合起来，为视觉增强机器人学习提供可批量 Real2Sim 的光真感训练底座。"
+origins: ["../../02_阅读笔记/D10_仿真与框架/2026-05-06_GS-Playground.md"]
+updated: "2026-06-02"
 ---
 
 # GS-Playground: A High-Throughput Photorealistic Simulator (2604.25459)
 
-**核心价值**: 光真感 3DGS 渲染与自研并行物理引擎深度耦合，单卡 10,000+ FPS 吞吐，支持 Real2Sim 一键场景重建与零样本 Sim2Real 迁移，RSS 2026。
+**核心价值**: GS-Playground 把 3DGS 光真渲染和高吞吐并行物理仿真耦合起来，为视觉增强机器人学习提供可批量 Real2Sim 的光真感训练底座。
 
 **原始资料**:
-- [[../../02_阅读笔记/D10_仿真与框架/2026-05-06_GS-Playground]]
-- [[../../02_阅读笔记/D01_世界模型/2026-04-08_AeroDGS]]
+- [[../../02_阅读笔记/D10_仿真与框架/2026-05-06_GS-Playground.md]]

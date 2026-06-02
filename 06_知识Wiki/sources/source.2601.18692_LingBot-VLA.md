@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "数据合成", "跨载体泛化", "多模态统一架构"]
-summary: "2万小时真实双臂数据训练统一VLA基模，GM-100评测基准，8卡吞吐261 samples/s，工程与学术并重的务实路线"
-origins: ["../../02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA", "02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA"]
-updated: "2026-04-17"
+id: "source.2601.18692_LingBot-VLA"
+pageType: "source"
+tags: ["VLA foundation model", "large-scale real-world data", "dual-arm robots", "benchmark", "efficient training", "VLA架构"]
+summary: "问题背景: 真正可部署的 VLA 基础模型不仅要泛化强，还要在数据成本、训练吞吐和跨平台适配上足够务实。"
+origins: ["../../02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA.md", "02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA.md"]
+updated: "2026-06-02"
 ---
 
 # LingBot-VLA: A Pragmatic VLA Foundation Model
 
-**核心价值**: 2万小时真实双臂数据训练统一VLA基模，GM-100评测基准，8卡吞吐261 samples/s，工程与学术并重的务实路线
+**核心价值**: 问题背景: 真正可部署的 VLA 基础模型不仅要泛化强，还要在数据成本、训练吞吐和跨平台适配上足够务实。
 
 **原始资料**:
-- [[../../02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA]]
-- [[02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA]]
+- [[../../02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA.md]]
+- [[02_阅读笔记/D05_数据飞轮/2026-05-10_2601.18692_LingBot-VLA.md]]

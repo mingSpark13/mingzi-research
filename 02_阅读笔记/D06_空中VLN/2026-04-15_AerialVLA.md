@@ -1,3 +1,20 @@
+---
+title: "AerialVLA: A Vision-Language-Action Model for UAV Navigation via Minimalist End-to-End Control"
+authors: 待补充
+arxiv: "2603.14363"
+date: "2026-04-15"
+institution: 待补充
+conf: arXiv
+keywords: ["空中VLA", "双视角感知", "语义导航", "端到端控制"]
+tags: ["空中VLN", "VLA架构", "端到端控制"]
+summary: "AerialVLA 用双视角感知和模糊方向提示实现极简端到端无人机视觉语言导航，是 D06 里最直接的空中 VLA 基线。"
+domain: 空中视觉语言导航
+pdf_path: ""
+reading_date: "2026-04-15"
+reading_status: 已读
+related_concepts: ["空中VLN", "VLA架构", "端到端控制"]
+---
+
 # AerialVLA 深挖笔记
 
 - **日期**: 2026-04-15

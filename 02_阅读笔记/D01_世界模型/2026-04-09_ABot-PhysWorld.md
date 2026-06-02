@@ -1,3 +1,16 @@
+---
+title: "ABot-PhysWorld: Interactive World Foundation Model for Robotic Manipulation with Physics Alignment"
+authors: "ABot-PhysWorld authors"
+arxiv: "2603.23376"
+date: "2026-03-24"
+tags: ["世界模型", "物理一致性", "动作条件预测"]
+summary: "ABot-PhysWorld 用 physics-aware 标注、偏好优化与解耦判别器提升操作世界模型的物理一致性与动作对齐评测。"
+domain: 世界模型
+reading_date: "2026-04-09"
+reading_status: 摘要级深挖
+related_concepts: ["世界模型", "物理一致性", "动作条件预测"]
+---
+
 # ABot-PhysWorld: Interactive World Foundation Model for Robotic Manipulation with Physics Alignment
 
 - **arXiv**: 2603.23376

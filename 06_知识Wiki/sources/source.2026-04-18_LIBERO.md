@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["仿真平台", "持续学习", "模仿学习"]
-summary: "LIBERO 是终身机器人学习 benchmark，包含 130 个任务覆盖程序性知识迁移、策略架构设计和预训练效果等关键主题。"
-origins: ["../02_阅读笔记/D02_VLA/2026-04-18_LIBERO"]
-updated: "2026-05-28"
+id: "source.2026-04-18_LIBERO"
+pageType: "source"
+tags: ["Lifelong robot learning", "Knowledge transfer", "Benchmark", "LIBERO", "Robot manipulation", "仿真平台"]
+summary: "终身学习在决策领域（LLDM）不仅需要迁移陈述性知识，还需要迁移程序性知识（如动作和行为），这与图像/文本领域的终身学习有根本区别。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-18_LIBERO.md"]
+updated: "2026-06-02"
 ---
 
 # LIBERO: Benchmarking Knowledge Transfer for Lifelong Robot Learning
 
-**核心价值**: LIBERO 是终身机器人学习 benchmark，包含 130 个任务覆盖程序性知识迁移、策略架构设计和预训练效果等关键主题。
+**核心价值**: 终身学习在决策领域（LLDM）不仅需要迁移陈述性知识，还需要迁移程序性知识（如动作和行为），这与图像/文本领域的终身学习有根本区别。
 
 **原始资料**:
-- [[../02_阅读笔记/D02_VLA/2026-04-18_LIBERO]]
+- [[../../02_阅读笔记/D02_VLA/2026-04-18_LIBERO.md]]

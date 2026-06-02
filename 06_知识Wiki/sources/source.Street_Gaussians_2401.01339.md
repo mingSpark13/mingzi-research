@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["3D高斯溅射", "3D重建", "视频生成"]
-summary: "3DGS动态城市场景建模，将前景车辆与背景分离，135FPS渲染超越NeRF类方法，Waymo/KITTI数据集验证，适用于自动驾驶仿真平台"
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_Street_Gaussians"]
-updated: "2026-05-10"
+id: "source.Street_Gaussians_2401.01339"
+pageType: "source"
+tags: ["3D高斯溅射", "3D重建", "视频生成", "感知与3D视觉", "世界模型", "3D视觉"]
+summary: "问题背景: 传统 NeRF 类方法渲染速度慢（数分钟/帧），难以满足自动驾驶仿真平台的实时性需求。"
+origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_Street_Gaussians.md"]
+updated: "2026-06-02"
 ---
 
 # Street Gaussians: Dynamic Urban Scenes with GS (2401.01339)
 
-**核心价值**: 3DGS动态城市场景建模，将前景车辆与背景分离，135FPS渲染超越NeRF类方法，Waymo/KITTI数据集验证，适用于自动驾驶仿真平台
+**核心价值**: 问题背景: 传统 NeRF 类方法渲染速度慢（数分钟/帧），难以满足自动驾驶仿真平台的实时性需求。
 
 **原始资料**:
-- [[../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_Street_Gaussians]]
+- [[../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_Street_Gaussians.md]]

@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["VLA架构", "空中操作", "多模态学习"]
-summary: "将飞行平台、机械臂、语言条件与任务执行统一到空中操作 VLA 系统设计中，为语言驱动空中抓取与接触任务提供基线。"
-origins: ["../../02_阅读笔记/D03_空中操作/2026-04-23_AIR-VLA - Vision-Language-Action Systems for Aerial Manipulation"]
-updated: "2026-05-10"
+id: "source.2601.21602_AIR-VLA"
+pageType: "source"
+tags: ["待补充", "D02", "通用操作"]
+summary: "问题: 现有VLA模型成功应用于地面具身智能，但 aerial manipulation systems (AMS) 仍是未探索的前沿——AMS的浮动基动力学、UAV-机械臂强耦合、多步长时操作任务对现有VLA范式构成严峻挑战。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-03-28_AIR-VLA.md"]
+updated: "2026-06-02"
 ---
 
 # AIR-VLA: Vision-Language-Action Systems for Aerial Manipulation (2601.21602)
 
-**核心价值**: 将飞行平台、机械臂、语言条件与任务执行统一到空中操作 VLA 系统设计中，为语言驱动空中抓取与接触任务提供基线。
+**核心价值**: 问题: 现有VLA模型成功应用于地面具身智能，但 aerial manipulation systems (AMS) 仍是未探索的前沿——AMS的浮动基动力学、UAV-机械臂强耦合、多步长时操作任务对现有VLA范式构成严峻挑战。
 
 **原始资料**:
-- [[../../02_阅读笔记/D03_空中操作/2026-04-23_AIR-VLA - Vision-Language-Action Systems for Aerial Manipulation]]
+- [[../../02_阅读笔记/D02_VLA/2026-03-28_AIR-VLA.md]]

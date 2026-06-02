@@ -6,12 +6,13 @@ date: 2025
 institution: ""
 conf: RA-L 2025
 keywords: adaptive exploration, semantic-geometric fusion, object-goal navigation, zero-shot
-tags: ["D06", "零样本泛化"]
+tags: ["空中VLN", "语义导航", "零样本泛化"]
 domain: 语义导航
 pdf_path: ""
 reading_date: 待补充
 reading_status: 已读
 related_concepts: ["零样本泛化"]
+summary: "ApexNav 用语义线索强弱驱动语义/几何探索切换，并用 target-centric fusion 降低误检，适合作为空中语义搜索的鲁棒探索参考。"
 ---
 
 ## 🎯 题目

@@ -1,9 +1,11 @@
 ---
 type: "source"
-tags: ["跨载体泛化", "流匹配", "动作分层", "动作分块", "少样本学习"]
-summary: "MOTIF将跨载体动作时空模式抽象为motifs，条件化flow-matching策略实现少样本跨载体迁移，是功能对齐流派最新代表。"
-origins: ["../../02_阅读笔记/D02_VLA/MOTIF_2602.13764", "02_阅读笔记/D02_VLA/MOTIF_2602.13764"]
-updated: "2026-05-09"
+id: "source.MOTIF_2602.13764"
+pageType: "source"
+tags: ["cross-embodiment transfer", "action motifs", "flow matching", "few-shot transfer", "跨载体泛化", "流匹配"]
+summary: "MOTIF 将跨载体共享的动作时空模式抽象为 motifs，再条件化 flow-matching 策略，实现少样本跨载体迁移。"
+origins: ["../../02_阅读笔记/D02_VLA/MOTIF_2602.13764.md", "02_阅读笔记/D02_VLA/MOTIF_2602.13764.md"]
+updated: "2026-06-02"
 ---
 
 # MOTIF: Learning Action Motifs for Few-shot Cross-Embodiment Transfer (2602.13764)
@@ -19,5 +21,5 @@ updated: "2026-05-09"
 - 3. **少样本适配协议**：新载体仅需 5-10 条 demo 即可迁移
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/MOTIF_2602.13764]]
-- [[02_阅读笔记/D02_VLA/MOTIF_2602.13764]]
+- [[../../02_阅读笔记/D02_VLA/MOTIF_2602.13764.md]]
+- [[02_阅读笔记/D02_VLA/MOTIF_2602.13764.md]]

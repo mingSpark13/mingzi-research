@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-03-25_UniGRPO_Unified_Policy_Reasoning_Visual_Generation"]
-updated: "2026-05-12"
+id: "source.2603.23500_UniGRPO"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # UniGRPO: Unified Policy Optimization for Reasoning-Driven Visual Generation (2603.23500)
 
-**核心价值**: **原始资料**:
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D09_感知与3D视觉/2026-03-25_UniGRPO_Unified_Policy_Reasoning_Visual_Generation]]

@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-03-19_SMART_ICAPS2025_RealisticMAPF"]
-updated: "2026-05-12"
+id: "source.2503.04798_SMART"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # SMART (2503.04798)
 
-**核心价值**: **原始资料**:
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D09_感知与3D视觉/2026-03-19_SMART_ICAPS2025_RealisticMAPF]]

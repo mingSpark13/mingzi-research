@@ -7,6 +7,7 @@ institution: Inria
 conf: SIGGRAPH 2023
 keywords: 3DGS, Gaussian Splatting, Real-Time Rendering, View Synthesis
 tags: ["D01", "3D高斯溅射"]
+summary: "3DGS 用显式高斯原语实现高质量近实时辐射场渲染，证明高效几何表示是交互式世界建模的重要基础。"
 domain: 世界模型
 pdf_path: ../../01_论文库/世界模型/2023_3D_Gaussian_Splatting.pdf
 reading_date: 2026-03-25

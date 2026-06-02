@@ -7,6 +7,7 @@ institution: various
 conf: NeurIPS 2022
 keywords: Flow Matching, CNF, Continuous Normalizing Flows, Generative Model
 tags: ["流匹配"]
+summary: "Flow Matching 用连续归一化流上的条件向量场回归替代扩散式采样训练，为后续机器人动作生成模型提供了更直接的连续时间生成范式。"
 domain: 学习范式
 pdf_path: ../../01_论文库/具身智能/2210_FlowMatching.pdf
 reading_date: 待补充

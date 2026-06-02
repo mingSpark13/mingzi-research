@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["VLA架构", "多模态统一架构", "零样本泛化"]
-summary: "$M^2$-VLA 通过 layer mixture 与 meta-skill 模块增强 VLM 到操作策略的迁移，兼顾语义保留与跨任务泛化。"
-origins: ["02_阅读笔记/D02_VLA/2026-04-29_M2-VLA"]
-updated: "2026-05-11"
+id: "source.2026-04-29_M2-VLA"
+pageType: "source"
+tags: ["VLA", "manipulation", "generalization", "vision-language model", "meta-skills", "VLA架构"]
+summary: "现有 VLA 往往依赖端到端微调，容易削弱通用 VLM 的语义泛化能力，并在机械臂操作中出现遗忘与跨任务泛化不足。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-29_M2-VLA.md"]
+updated: "2026-06-02"
 ---
 
 # $M^2$-VLA (2604.24182)
 
-**核心价值**: $M^2$-VLA 通过 layer mixture 与 meta-skill 模块增强 VLM 到操作策略的迁移，兼顾语义保留与跨任务泛化。
+**核心价值**: 现有 VLA 往往依赖端到端微调，容易削弱通用 VLM 的语义泛化能力，并在机械臂操作中出现遗忘与跨任务泛化不足。
 
 **原始资料**:
-- [[02_阅读笔记/D02_VLA/2026-04-29_M2-VLA]]
+- [[../../02_阅读笔记/D02_VLA/2026-04-29_M2-VLA.md]]

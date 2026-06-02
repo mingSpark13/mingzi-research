@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["MPC", "运动控制", "最优控制", "四旋翼"]
-summary: "将执行器动力学显式纳入MPC预测模型，解决高速机动场景下轨迹跟踪误差与控制饱和问题，ETH Zurich工作。"
-origins: ["../../02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics", "02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics"]
-updated: "2026-04-17"
+id: "source.2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics"
+pageType: "source"
+tags: ["quadrotor", "model predictive control", "trajectory tracking", "actuator dynamics", "MPC", "运动控制"]
+summary: "问题背景: 传统四旋翼轨迹跟踪常把执行器动态简化掉，导致在高速或强约束场景下预测模型与真实响应不一致。"
+origins: ["../../02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics.md", "02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics.md"]
+updated: "2026-06-02"
 ---
 
 # MPC-Based Trajectory Tracking for a Quadrotor UAV with Uniform Actuator Dynamics (2603.27576)
 
-**核心价值**: 将执行器动力学显式纳入MPC预测模型，解决高速机动场景下轨迹跟踪误差与控制饱和问题，ETH Zurich工作。
+**核心价值**: 问题背景: 传统四旋翼轨迹跟踪常把执行器动态简化掉，导致在高速或强约束场景下预测模型与真实响应不一致。
 
 **原始资料**:
-- [[../../02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics]]
-- [[02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics]]
+- [[../../02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics.md]]
+- [[02_阅读笔记/D07_强化学习与控制/2026-05-12_2603.27576_MPC_Quadrotor_Uniform_Actuator_Dynamics.md]]

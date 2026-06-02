@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "零样本泛化", "多模态统一架构"]
-summary: "VLA-GSE通过谱分解把冻结骨干拆成generalized与specialized experts，仅2.51%可训练参数在LIBERO-Plus零样本成功率达81.2%，兼顾预训练能力保留与任务特化"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE", "02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE"]
-updated: "2026-04-17"
+id: "source.2605.06175_VLA_GSE"
+pageType: "source"
+tags: ["VLA", "parameter-efficient fine-tuning", "mixture of experts", "zero-shot manipulation", "LIBERO-Plus", "VLA架构"]
+summary: "问题背景: VLA 下游适配若直接全量微调，容易过拟合机器人小数据并破坏预训练视觉语言能力，而传统 PEFT 又常常适配不够深。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE.md", "02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE.md"]
+updated: "2026-06-02"
 ---
 
 # VLA-GSE (2605.06175)
 
-**核心价值**: VLA-GSE通过谱分解把冻结骨干拆成generalized与specialized experts，仅2.51%可训练参数在LIBERO-Plus零样本成功率达81.2%，兼顾预训练能力保留与任务特化
+**核心价值**: 问题背景: VLA 下游适配若直接全量微调，容易过拟合机器人小数据并破坏预训练视觉语言能力，而传统 PEFT 又常常适配不够深。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE]]
-- [[02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE]]
+- [[../../02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE.md]]
+- [[02_阅读笔记/D02_VLA/2026-05-12_2605.06175_VLA_GSE.md]]

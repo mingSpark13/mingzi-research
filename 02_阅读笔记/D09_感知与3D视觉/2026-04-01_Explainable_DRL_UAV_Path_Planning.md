@@ -6,7 +6,8 @@ date: 2021-11
 institution: 待补（作者来自该论文署名机构）
 conf: Aerospace Science and Technology, Volume 118, 107052 (2021)
 keywords: UAV path planning, deep reinforcement learning, explainability, obstacle avoidance, AirSim
-tags: []
+tags: ["强化学习", "空中操作", "无人机避障", "Sim2Real", "运动控制"]
+summary: "这篇工作把可解释性引入无人机 DRL 路径规划，是 AirSim 复现实验和传统 UAV 导航 baseline 的扎实起点。"
 domain: 空中操作
 pdf_path: ""
 reading_date: 2026-04-01

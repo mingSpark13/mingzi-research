@@ -113,6 +113,43 @@
 ### 当前预期结论
 首轮更可能成立的是：**event-triggered refresh** 比固定周期 refresh 更诚实；而 **speculative async refresh** 更像 proposal/bind 侧增益，需要先证明自己没有把 delayed-consumption 问题藏起来，才配进入主标题。
 
+## E15b. Semantic-Screening / Refresh-Density / Stale-Route Subtraction Smoke Test（R20260530 新增）
+
+### 目标
+把 D01 新近收束出的一个更危险混淆点单独压成烟测：**semantic latent 更强、refresh 更快、delayed semantic route 更稳**，并不自动等于 **packet contract 更强**。这一组实验专门检验：在扣除 `semantic ranking gain`、`refresh density gain`、`stale-route support` 之后，还剩下多少真实的 delayed-consumption 提升。
+
+### 对照组
+1. **S0 reconstruction latent + single-release**：重建型 latent，不做 refresh subtraction
+2. **S1 semantic latent + single-release**：只看 semantic screening gain
+3. **S2 semantic latent + periodic/event refresh**：叠加 refresh density gain
+4. **S3 semantic latent + async refresh + stale-route audit**：完整做扣减审计
+
+### 最小日志 tuple
+- `Δsem-rank`：semantic latent 带来的 ranking / screening 提升
+- `Δrefresh-density`：更快 refresh 带来的额外 proposal 机会提升
+- `Δstale-route`：看起来更强的结果中，有多少仍可由 delayed semantic routing 解释
+- `Δbind`：扣减后剩余的 bind-honest 提升
+- `Δconsume`：扣减后剩余的 consume-honest 提升
+
+可统一记为：
+`ψ_t = (Δsem-rank, Δrefresh-density, Δstale-route, Δbind, Δconsume)`
+
+### 核心指标
+- **SRS**（Semantic Ranking Support）：仅由 semantic latent 提供的 proposal-side 增益
+- **RDS**（Refresh Density Support）：仅由更快 refresh 提供的 proposal 密度增益
+- **SRSR**（Stale-Route Support Residual）：扣减后仍可由 delayed semantic route 解释的剩余比例
+- **BHR\***（Residual Bind-Honest gain）：扣掉前三项后剩余的 bind 提升
+- **CHR\***（Residual Consume-Honest gain）：扣掉前三项后剩余的 consume 提升
+
+### 判线规则
+- 若 S1/S2 的主要收益只体现在 `Δsem-rank` 或 `Δrefresh-density`，则只能记为 **semantic-refresh support**。
+- 若 async refresh 后 `Δbind > 0`，但扣掉 `Δstale-route` 后增益消失，则只能记为 **interface-side delayed-routing support**。
+- 只有当 `CHR* > 0`，且不是由 semantic ranking 或 refresh density 借来的增益，才允许升级成 **packet-contract evidence**。
+- 若 `SRSR` 长期偏高，说明当前实验更像在验证 delayed semantic-control interface，而不是 D01 自己的 delayed-consumption contract。
+
+### 当前预期结论
+更可能出现的诚实结论是：**semantic latent + fast refresh** 先稳定改善 proposal 侧筛选质量，但真正能穿过扣减审计、留下 `CHR*` 的方法会少得多；这正好能保护 D01 不把“更会选包”误写成“更会保包”。
+
 ## E13. 首轮主叙事冻结烟测（R862 新增）
 
 

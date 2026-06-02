@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["空中VLN", "VLA架构", "长程任务规划", "多机器人协调", "具身智能"]
-summary: "Aerial VLN综述系统梳理LLM时代空中VLN发展脉络：任务定义/数据集/仿真器/评测/方法分类/多智能体，D06空中VLN方向总览地图"
-origins: ["../../02_阅读笔记/D06_空中VLN/2604.07705_AerialVLN_Survey"]
-updated: "2026-05-10"
+id: "source.2604_07705_AerialVLN_Survey"
+pageType: "source"
+tags: ["空中VLN", "语义导航"]
+summary: "旧位置保留页；该综述主笔记已迁移到 D06 方向目录，当前文件仅负责兼容旧链接。"
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2604_07705_AerialVLN_Survey.md"]
+updated: "2026-06-02"
 ---
 
 # Vision-Language Navigation for Aerial Robots (2604.07705)
 
-**核心价值**: Aerial VLN综述系统梳理LLM时代空中VLN发展脉络：任务定义/数据集/仿真器/评测/方法分类/多智能体，D06空中VLN方向总览地图
+**核心价值**: 旧位置保留页；该综述主笔记已迁移到 D06 方向目录，当前文件仅负责兼容旧链接。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2604.07705_AerialVLN_Survey]]
+- [[../../02_阅读笔记/99_归档/重复笔记/2604_07705_AerialVLN_Survey.md]]

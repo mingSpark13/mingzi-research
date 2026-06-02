@@ -7,6 +7,7 @@ institution: "DeepSeek-AI"
 conf: "arXiv preprint"
 keywords: [GRPO, reinforcement learning, mathematical reasoning, policy optimization]
 tags: [强化学习, 策略优化, GRPO]
+summary: "DeepSeekMath 用 GRPO 去掉独立 value model，在显著降低 RL 微调内存成本的同时保持数学推理性能。"
 domain: 强化学习
 pdf_path: "../../01_论文库/强化学习/2402.03300_DeepSeekMath.pdf"
 reading_date: 2026-05-02

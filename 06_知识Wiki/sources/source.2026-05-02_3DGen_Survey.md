@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/数据合成/2604.26509_3D_Gen_Survey"]
-updated: "2026-04-17"
+id: "source.2026-05-02_3DGen_Survey"
+pageType: "source"
+tags: ["3D generation", "embodied AI", "robotic simulation", "3DGS", "NeRF", "3D视觉"]
+summary: "具身 AI 和机器人仿真训练需要大量高质量 3D 场景，但手工建模成本高、真实数据采集困难，限制了数据规模和多样性"
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2026-05-02_3DGen_Survey.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: 具身 AI 和机器人仿真训练需要大量高质量 3D 场景，但手工建模成本高、真实数据采集困难，限制了数据规模和多样性
 
 **原始资料**:
-- [[../../02_阅读笔记/数据合成/2604.26509_3D_Gen_Survey]]
+- [[../../02_阅读笔记/99_归档/重复笔记/2026-05-02_3DGen_Survey.md]]

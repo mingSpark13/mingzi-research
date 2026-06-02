@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: ["语义导航", "零样本泛化", "VLA"]
-summary: "仅用第一视角RGB实现开放词汇目标导航，推理速度2Hz，OVON val-unseen达44.0% SR，适合对接低层MPC/locomotion policy"
-origins: ["../../02_阅读笔记/D06_空中VLN/2025_Nav-R2_RGB_Only_Navigation"]
-updated: "2026-05-10"
+id: "source.Nav-R2_RGB_Only_Navigation"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # Nav-R2: RGB-Only Open-Vocabulary Navigation
 
-**核心价值**: 仅用第一视角RGB实现开放词汇目标导航，推理速度2Hz，OVON val-unseen达44.0% SR，适合对接低层MPC/locomotion policy
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2025_Nav-R2_RGB_Only_Navigation]]

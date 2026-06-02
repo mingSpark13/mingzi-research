@@ -12,6 +12,7 @@ pdf_path: ../../01_论文库/运动控制/2502.01521_Symmetry_Guided_Memory_Augm
 reading_date: 2026-04-10
 reading_status: 已读
 related_concepts: ["强化学习", "腿足机器人"]
+summary: "该工作把对称性先验注入记忆策略学习过程，在腿足 locomotion 中提升样本效率、稳定性与泛化能力。"
 ---
 
 ## 🎯 题目

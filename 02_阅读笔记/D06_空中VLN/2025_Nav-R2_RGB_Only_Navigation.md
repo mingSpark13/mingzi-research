@@ -1,5 +1,4 @@
 ---
----
 title: "Nav-R2: Efficient Open-Vocabulary ObjectNav with Single RGB Input"
 authors: ""
 arxiv: ""

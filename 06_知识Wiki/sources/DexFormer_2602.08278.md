@@ -1,9 +1,11 @@
 ---
 type: "source"
-tags: []
-summary: "- **History-conditioned transformer**: 利用历史观测而非单帧输入，在线推断 embodiment 差异"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer", "02_阅读笔记/D02_VLA/2026-04-09_DexFormer"]
-updated: "2026-04-17"
+id: "source.DexFormer_2602.08278"
+pageType: "source"
+tags: ["cross-embodiment", "dexterous manipulation", "history-conditioned transformer", "zero-shot transfer", "跨载体泛化", "灵巧操作"]
+summary: "利用历史条件 Transformer 隐式推断不同手型与动力学差异，实现零样本跨灵巧手泛化。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md", "02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md"]
+updated: "2026-06-02"
 ---
 
 # DexFormer_2602.08278
@@ -19,5 +21,5 @@ updated: "2026-04-17"
 - 3. **适合作为对照基线**：后续主人做异构末端执行器/空中机械臂共享策略时，可把它作为“implicit inference”路线，对照 CEI/SoftAct/Embedding Morphology 这类显式结构先验路线
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer]]
-- [[02_阅读笔记/D02_VLA/2026-04-09_DexFormer]]
+- [[../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md]]
+- [[02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md]]

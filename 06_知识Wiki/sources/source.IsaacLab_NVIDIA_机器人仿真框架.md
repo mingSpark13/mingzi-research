@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["仿真平台", "强化学习", "模仿学习", "空中操作"]
-summary: "NVIDIA GPU加速开源机器人仿真框架，基于Isaac Sim，GPU并行仿真远快于实时，支持RSL-RL等主流RL框架和16+机器人类型，含多旋翼/机械臂/接触仿真"
-origins: ["../../02_阅读笔记/D10_仿真与框架/IsaacLab_NVIDIA_机器人仿真框架"]
-updated: "2026-05-10"
+id: "source.IsaacLab_NVIDIA_机器人仿真框架"
+pageType: "source"
+tags: []
+summary: "定位: IsaacLab 是 NVIDIA 出品的 GPU 加速开源机器人仿真框架，基于 Isaac Sim，统一强化学习、模仿学习、运动规划的 workflows。"
+origins: ["../../02_阅读笔记/D10_仿真与框架/IsaacLab_NVIDIA_机器人仿真框架.md"]
+updated: "2026-06-02"
 ---
 
 # IsaacLab (NVIDIA)
 
-**核心价值**: NVIDIA GPU加速开源机器人仿真框架，基于Isaac Sim，GPU并行仿真远快于实时，支持RSL-RL等主流RL框架和16+机器人类型，含多旋翼/机械臂/接触仿真
+**核心价值**: 定位: IsaacLab 是 NVIDIA 出品的 GPU 加速开源机器人仿真框架，基于 Isaac Sim，统一强化学习、模仿学习、运动规划的 workflows。
 
 **原始资料**:
-- [[../../02_阅读笔记/D10_仿真与框架/IsaacLab_NVIDIA_机器人仿真框架]]
+- [[../../02_阅读笔记/D10_仿真与框架/IsaacLab_NVIDIA_机器人仿真框架.md]]

@@ -6,12 +6,13 @@ date: 2025-03-14
 institution: Kling AI Research 等
 conf: arXiv
 keywords: ReCamMaster, Camera-Controlled Rendering, Video Re-rendering, Single Video
-tags: ["D01"]
+tags: ["视频生成", "3D重建", "隐空间世界模型"]
 domain: 世界模型
 pdf_path: ../../01_论文库/世界模型/2025_ReCamMaster.pdf
 reading_date: 2026-03-25
 reading_status: 已入库
 related_concepts: ["视频生成", "3D重建"]
+summary: "ReCamMaster 把单视频受控重拍系统化为 camera-controlled generative rerendering，为世界模型里的可控视角生成提供直接参考。"
 ---
 
 ## 🎯 题目

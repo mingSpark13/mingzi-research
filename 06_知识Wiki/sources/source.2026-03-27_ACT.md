@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["D02", "模仿学习", "VLA架构", "ACT动作分块", "灵巧操作"]
-summary: "ACT通过一次性预测动作序列(action chunking)减少模仿学习误差累积，结合Transformer处理图像-动作序列，在ALOHA精细双臂操作任务上表现优异，是LeRobot官方入门首推policy。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-03-27_ACT"]
-updated: "2026-05-11"
+id: "source.2026-03-27_ACT"
+pageType: "source"
+tags: ["imitation learning", "transformer", "action chunking", "manipulation", "D02", "模仿学习"]
+summary: "问题背景: 模仿学习在精细操作任务中容易因逐步动作预测导致误差累积，单步预测难以处理长时序任务。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-03-27_ACT.md"]
+updated: "2026-06-02"
 ---
 
 # ACT: Action Chunking Transformer (LeRobot)
 
-**核心价值**: ACT通过一次性预测动作序列(action chunking)减少模仿学习误差累积，结合Transformer处理图像-动作序列，在ALOHA精细双臂操作任务上表现优异，是LeRobot官方入门首推policy。
+**核心价值**: 问题背景: 模仿学习在精细操作任务中容易因逐步动作预测导致误差累积，单步预测难以处理长时序任务。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-03-27_ACT]]
+- [[../../02_阅读笔记/D02_VLA/2026-03-27_ACT.md]]

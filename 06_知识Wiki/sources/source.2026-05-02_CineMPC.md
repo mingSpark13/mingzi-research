@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-05-02_CineMPC"]
-updated: "2026-04-17"
+id: "source.2026-05-02_CineMPC"
+pageType: "source"
+tags: ["UAV cinematography", "MPC", "camera control", "autonomous filming", "UAV跟踪", "运动控制"]
+summary: "把变焦、对焦与无人机运动统一进MPC闭环，实现自主电影级跟拍控制。"
+origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-05-02_CineMPC.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: 把变焦、对焦与无人机运动统一进MPC闭环，实现自主电影级跟拍控制。
 
 **原始资料**:
-- [[../../02_阅读笔记/D11_UAV目标跟踪/2026-05-02_CineMPC]]
+- [[../../02_阅读笔记/D11_UAV目标跟踪/2026-05-02_CineMPC.md]]

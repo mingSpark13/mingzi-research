@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "流匹配", "多模态统一架构", "长程任务规划", "零样本泛化"]
-summary: "HiVLA 把高层视觉 grounding 规划与低层 flow-matching 动作专家解耦，在保住推理能力的同时提升长程操作稳定性。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA", "02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA"]
-updated: "2026-04-17"
+id: "source.2604.14125_HiVLA"
+pageType: "source"
+tags: ["hierarchical VLA", "embodied manipulation", "visual grounding", "diffusion transformer", "long-horizon", "VLA架构"]
+summary: "HiVLA 通过高层视觉 grounding 与低层 flow-matching 动作专家的层次化架构，兼顾长程推理保真与精细操作稳定性。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA.md", "02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA.md"]
+updated: "2026-06-02"
 ---
 
 # HiVLA (arXiv 2604.14125)
 
-**核心价值**: HiVLA 把高层视觉 grounding 规划与低层 flow-matching 动作专家解耦，在保住推理能力的同时提升长程操作稳定性。
+**核心价值**: HiVLA 通过高层视觉 grounding 与低层 flow-matching 动作专家的层次化架构，兼顾长程推理保真与精细操作稳定性。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA]]
-- [[02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA]]
+- [[../../02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA.md]]
+- [[02_阅读笔记/D02_VLA/2026-04-19_2604.14125_HiVLA.md]]

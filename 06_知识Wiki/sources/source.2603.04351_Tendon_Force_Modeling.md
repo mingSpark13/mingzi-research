@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["Sim2Real", "强化学习", "运动控制", "零样本泛化"]
-summary: "学习式腱力模型替代解析/有限元近似，把腱力预测误差压至最大电机力3%以内，显著提升腱驱动机器人RL策略sim2real迁移稳定性"
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling", "02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling"]
-updated: "2026-04-17"
+id: "source.2603.04351_Tendon_Force_Modeling"
+pageType: "source"
+tags: ["sim2real", "tendon-driven robots", "reinforcement learning", "musculoskeletal robots", "force modeling", "Sim2Real"]
+summary: "问题背景: 腱驱动肌骨机器人在仿真训练里常把 tendon force 近似得太粗，导致 RL 策略一上真机就因为驱动力学失真而掉性能。"
+origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling.md", "02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling.md"]
+updated: "2026-06-02"
 ---
 
 # Tendon Force Modeling (2603.04351)
 
-**核心价值**: 学习式腱力模型替代解析/有限元近似，把腱力预测误差压至最大电机力3%以内，显著提升腱驱动机器人RL策略sim2real迁移稳定性
+**核心价值**: 问题背景: 腱驱动肌骨机器人在仿真训练里常把 tendon force 近似得太粗，导致 RL 策略一上真机就因为驱动力学失真而掉性能。
 
 **原始资料**:
-- [[../../02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling]]
-- [[02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling]]
+- [[../../02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling.md]]
+- [[02_阅读笔记/D04_跨载体泛化/2026-05-11_2603.04351_Tendon_Force_Modeling.md]]

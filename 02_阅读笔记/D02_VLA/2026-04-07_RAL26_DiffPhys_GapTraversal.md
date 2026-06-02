@@ -5,13 +5,14 @@ arxiv: 待补充
 date: 待补充
 institution: 待补充
 conf: 待补充
-keywords: 待补充
-tags: ["D02"]
+keywords: [differentiable physics, UAV traversal, irregular gaps, end-to-end control]
+tags: ["空中操作", "Sim2Real", "运动控制"]
+summary: "这篇工作用可微物理仿真直接训练无人机穿越不规则缝隙的端到端策略，在复杂 SE(3) 机动里实现更快收敛和更强零样本迁移。"
 domain: 通用操作
 pdf_path: 
 reading_date: 2026-04-07
 reading_status: 已读
-related_concepts: ["Sim2Real", "空中操作"]
+related_concepts: ["Sim2Real", "空中操作", "运动控制"]
 ---
 
 ## 🎯 题目

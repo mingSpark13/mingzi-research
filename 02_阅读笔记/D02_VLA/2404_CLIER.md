@@ -1,12 +1,13 @@
 ---
 title: "CLIER: Closed-Loop Interactive Embodied Reasoning"
 authors: Multiple
-T04.15194
+arxiv: 2404.15194
 date: 2024-04
 institution: various
 conf: arXiv
 keywords: Closed-Loop, Interactive Reasoning, Embodied AI, Non-Visual Properties, Action Consequences
 tags: ["D02", "具身智能"]
+summary: "CLIER 通过执行中多模态反馈持续修正推理链，是闭环具身推理和触觉驱动策略更新的重要近邻工作。"
 domain: 具身智能
 pdf_path: ../../01_论文库/具身智能/2404_CLIER.pdf
 reading_date: 待补充

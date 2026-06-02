@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-03-25_WildWorld_Dynamic_World_Modeling_Actions"]
-updated: "2026-05-12"
+id: "source.2603.23497_WildWorld"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # WildWorld: Large-Scale Dataset for Dynamic World Modeling with Actions
 
-**核心价值**: **原始资料**:
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D01_世界模型/2026-03-25_WildWorld_Dynamic_World_Modeling_Actions]]

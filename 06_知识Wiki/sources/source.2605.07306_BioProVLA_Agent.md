@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["VLA架构", "多机器人协调", "LLM驱动机器人"]
-summary: "协议驱动的视觉增强 VLA 多智能体系统，LLM 协调协议解析+状态验证+具身执行闭环推理"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-11_BioProVLA_Agent"]
-updated: "2026-05-11"
+id: "source.2605.07306_BioProVLA_Agent"
+pageType: "source"
+tags: ["VLA", "Biological Laboratory", "Multi-Agent", "Protocol-Driven", "Closed-Loop", "VLA架构"]
+summary: "BioProVLA-Agent 用协议驱动的多智能体 VLA 闭环推理框架，把生物实验室操作拆成可验证的协议执行链。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-11_BioProVLA_Agent.md"]
+updated: "2026-06-02"
 ---
 
 # BioProVLA-Agent (2605.07306)
 
-**核心价值**: 协议驱动的视觉增强 VLA 多智能体系统，LLM 协调协议解析+状态验证+具身执行闭环推理
+**核心价值**: BioProVLA-Agent 用协议驱动的多智能体 VLA 闭环推理框架，把生物实验室操作拆成可验证的协议执行链。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-05-11_BioProVLA_Agent]]
+- [[../../02_阅读笔记/D02_VLA/2026-05-11_BioProVLA_Agent.md]]

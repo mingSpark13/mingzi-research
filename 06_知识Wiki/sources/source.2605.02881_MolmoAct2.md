@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "流匹配", "多模态统一架构", "数据合成", "遥操作"]
-summary: "MolmoAct2 把具身推理骨干、跨载体动作 tokenizer 与 flow-matching 连续动作专家打包成开源部署体系，在真实与仿真基准上逼近闭源前沿。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2", "02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2"]
-updated: "2026-04-17"
+id: "source.2605.02881_MolmoAct2"
+pageType: "source"
+tags: ["Vision-Language-Action", "embodied reasoning", "robot manipulation", "action tokenizer", "bimanual dataset", "VLA架构"]
+summary: "MolmoAct2 将具身推理骨干、跨 embodiment 动作 tokenizer 与 flow-matching 动作专家打包为开源部署体系，在 7 个真实与仿真机器人基准上超越 Pi-0.5。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2.md", "02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2.md"]
+updated: "2026-06-02"
 ---
 
 # MolmoAct2 (arXiv 2605.02881)
 
-**核心价值**: MolmoAct2 把具身推理骨干、跨载体动作 tokenizer 与 flow-matching 连续动作专家打包成开源部署体系，在真实与仿真基准上逼近闭源前沿。
+**核心价值**: MolmoAct2 将具身推理骨干、跨 embodiment 动作 tokenizer 与 flow-matching 动作专家打包为开源部署体系，在 7 个真实与仿真机器人基准上超越 Pi-0.5。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2]]
-- [[02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2]]
+- [[../../02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2.md]]
+- [[02_阅读笔记/D02_VLA/2026-05-06_2605.02881_MolmoAct2.md]]

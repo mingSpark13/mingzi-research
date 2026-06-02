@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["安全护栏", "扩散策略", "MPC"]
-summary: "在轨迹层面做路径一致性刹车，保持训练分布一致性同时提供形式化安全保证，解决Diffusion Policy无法保证安全的问题"
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385", "02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385"]
-updated: "2026-04-17"
+id: "source.PACS_Path_Consistent_Safety_2511.06385"
+pageType: "source"
+tags: ["待补充", "运动控制"]
+summary: "核心问题: Diffusion Policy 无法保证安全，外部安全机制会破坏训练分布导致性能下降"
+origins: ["../../02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385.md", "02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385.md"]
+updated: "2026-06-02"
 ---
 
 # PACS: Path-Consistent Safety Filtering (2511.06385)
 
-**核心价值**: 在轨迹层面做路径一致性刹车，保持训练分布一致性同时提供形式化安全保证，解决Diffusion Policy无法保证安全的问题
+**核心价值**: 核心问题: Diffusion Policy 无法保证安全，外部安全机制会破坏训练分布导致性能下降
 
 **原始资料**:
-- [[../../02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385]]
-- [[02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385]]
+- [[../../02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385.md]]
+- [[02_阅读笔记/D09_感知与3D视觉/PACS_Path_Consistent_Safety_2511.06385.md]]

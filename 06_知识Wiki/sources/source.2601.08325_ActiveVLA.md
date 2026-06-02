@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: ["VLA架构", "主动感知", "多模态统一架构", "零样本泛化"]
-summary: "将主动感知注入VLA，让机器人在执行前/中主动调整观察位姿，补强精细3D操作的空间感知精度短板"
-origins: ["02_阅读笔记/D02_VLA/2026-05-12_ActiveVLA_Injecting_Active_Perception_into_Vision-Language-Action_Models_for_Precise_3D_Robotic_Manipulation"]
-updated: "2026-05-12"
+id: "source.2601.08325_ActiveVLA"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # ActiveVLA (arXiv 2601.08325)
 
-**核心价值**: 将主动感知注入VLA，让机器人在执行前/中主动调整观察位姿，补强精细3D操作的空间感知精度短板
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[02_阅读笔记/D02_VLA/2026-05-12_ActiveVLA_Injecting_Active_Perception_into_Vision-Language-Action_Models_for_Precise_3D_Robotic_Manipulation]]

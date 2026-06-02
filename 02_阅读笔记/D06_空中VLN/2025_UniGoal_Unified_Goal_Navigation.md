@@ -7,6 +7,7 @@ institution: ""
 conf: CVPR 2025
 keywords: unified navigation, object-goal, image-goal, text-goal, graph matching, zero-shot
 tags: ["D06", "零样本泛化"]
+summary: "UniGoal 用统一的图表示和图匹配机制把 object-goal、image-goal、text-goal 三类目标导航合到同一框架里，在多基准上取得零样本 SOTA。"
 domain: 语义导航
 pdf_path: ""
 reading_date: 待补充

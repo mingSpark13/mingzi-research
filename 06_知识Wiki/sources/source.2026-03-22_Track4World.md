@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-03-22_Track4World"]
-updated: "2026-04-17"
+id: "source.2026-03-22_Track4World"
+pageType: "source"
+tags: ["Monocular Video", "3D Tracking", "4D Reconstruction", "Scene Flow", "Feedforward Model", "Dense Prediction"]
+summary: "Track4World以VGGT式全局3D表征实现单目视频任意帧对的前馈式全像素密集3D跟踪。"
+origins: ["../../02_阅读笔记/D01_世界模型/2026-03-22_Track4World.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: Track4World以VGGT式全局3D表征实现单目视频任意帧对的前馈式全像素密集3D跟踪。
 
 **原始资料**:
-- [[../../02_阅读笔记/D01_世界模型/2026-03-22_Track4World]]
+- [[../../02_阅读笔记/D01_世界模型/2026-03-22_Track4World.md]]

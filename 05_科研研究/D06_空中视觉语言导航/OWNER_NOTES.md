@@ -76,4 +76,8 @@ AirSpark 的 P5 目标（Navigate-then-Manipulate 完整链路）正是 D06 的 
 
 | 日期 | 响应的批注 | 执行动作 |
 |------|-----------|---------|
+| 2026-06-01 | 2026-05-26 两条🔴批注（PAPER 拆分收窄 + AirSpark/WaypointExecutor 对齐） | 本轮继续按批注推进 D06 方法论文：先做本地优先扫描（WorldVLN / AerialVLA / OnFly + QMD 命中 AerialVLA 与既有 D06 报告，未触发新增入库），随后把 PAPER.md 的 Method 与 Experiments 明确补上 executor-view reduction，将 AerialVLA 冻结为 latent execution sufficiency、OnFly 冻结为 runtime continuity support，并把 `Q^{exec}_{view}` 与 `C_{ser}/e^{auth}/e^{bind}/e^{consume}/c^{trace}` 写入 promotion gate，进一步把方法主张收窄到可被 AirSpark WaypointExecutor 消费和审计的 packet 接口 |
+| 2026-05-31 | 2026-05-26 两条🔴批注（PAPER 拆分收窄 + AirSpark/WaypointExecutor 对齐） | 本轮继续按批注推进 D06 方法论文：基于本地锚点 AerialVLA / OnFly / LookasideVLN / LiveVLN / LMPath / StereoNav / SAGE / PLMD 回扫后未新增入库论文，直接把 PAPER.md 的 Related Work / Limitations / Method 继续向 AirSpark-WaypointExecutor 对齐，修正 Limitations 编号并压实 packet→`manifest.json`/`frames.jsonl`/`actions.jsonl` 的 serialization 与 consume-time trace contract，进一步把方法主张收窄为可审计、可消费的 Semantic Waypoint Packet 接口 |
+| 2026-05-30 | 2026-05-26 两条🔴批注（PAPER 拆分收窄 + AirSpark/WaypointExecutor 对齐） | 本轮继续按批注收窄 D06：未扩平台/benchmark 叙事，而是把 PAPER.md 中 WorldVLN / active-perception / world-prior / semantic-completion 四条解释链统一压回 pre-consumption support，并把 `Q^{wam}_{plan}` 显式并入 matched subtraction gate，继续把方法论文重心锁定在 packet→WaypointExecutor 的最小证据栈 |
+| 2026-05-28 | 2026-05-26 两条🔴批注（PAPER 拆分收窄 + AirSpark/WaypointExecutor 对齐） | 本轮优先按批注重写 D06 写作重心：继续维持方法论文聚焦 Semantic Waypoint Packet + 3D VL-Frontier Map，并把 experiments 新增 packet→executor schema alignment 门槛，明确 packet claim 需对齐 `manifest.json / actions.jsonl / frames.jsonl` 与 WaypointExecutor 消费字段 |
 | — | — | — |

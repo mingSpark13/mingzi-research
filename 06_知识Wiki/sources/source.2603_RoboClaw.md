@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D02_VLA/2603_RoboClaw"]
-updated: "2026-04-17"
+id: "source.2603_RoboClaw"
+pageType: "source"
+tags: ["Agent-Driven", "Self-Improving", "Data Collection", "EAP", "Entangled Action Pairs", "Reset-Free"]
+summary: "RoboClaw 通过 agent-driven data collection 与自复位 Entangled Action Pairs 构建真实机器人可持续自我改进的数据飞轮。"
+origins: ["../../02_阅读笔记/D02_VLA/2603_RoboClaw.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: RoboClaw 通过 agent-driven data collection 与自复位 Entangled Action Pairs 构建真实机器人可持续自我改进的数据飞轮。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2603_RoboClaw]]
+- [[../../02_阅读笔记/D02_VLA/2603_RoboClaw.md]]

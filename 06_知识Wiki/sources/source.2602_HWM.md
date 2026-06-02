@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-05-09_2602.11291_H-WM_Hierarchical_World_Model"]
-updated: "2026-04-17"
+id: "source.2602_HWM"
+pageType: "source"
+tags: ["Hierarchical World Model", "Embodied Planning", "Intent Representation", "Cross-Body", "D02", "世界模型"]
+summary: "问题背景: 现有 world model 通常是单层的，在跨躯体泛化和长时规划上能力不足。"
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2602_HWM.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: 问题背景: 现有 world model 通常是单层的，在跨躯体泛化和长时规划上能力不足。
 
 **原始资料**:
-- [[../../02_阅读笔记/D01_世界模型/2026-05-09_2602.11291_H-WM_Hierarchical_World_Model]]
+- [[../../02_阅读笔记/99_归档/重复笔记/2602_HWM.md]]

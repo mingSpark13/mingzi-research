@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D02_VLA/2410_pi0"]
-updated: "2026-04-17"
+id: "source.2410_pi0"
+pageType: "source"
+tags: ["VLA", "Flow Matching", "Generalist Policy", "Dexterous Manipulation", "High-frequency Control", "VLA架构"]
+summary: "π0 将 flow matching 引入通用机器人 VLA，直接生成高频连续动作块，兼顾语义泛化与精细操控能力。"
+origins: ["../../02_阅读笔记/D02_VLA/2410_pi0.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: π0 将 flow matching 引入通用机器人 VLA，直接生成高频连续动作块，兼顾语义泛化与精细操控能力。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2410_pi0]]
+- [[../../02_阅读笔记/D02_VLA/2410_pi0.md]]

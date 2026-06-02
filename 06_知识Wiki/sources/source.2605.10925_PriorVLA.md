@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["D02", "VLA架构", "跨载体泛化"]
-summary: "PriorVLA冻结先验专家+轻量适配专家双结构，防止微调灾难性遗忘，预训练知识保留同时实现少样本OOD泛化，RoboTwin 2.0-Hard超pi0.5达11pt，LIBERO均值99.1%"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-13_PriorVLA"]
-updated: "2026-05-13"
+id: "source.2605.10925_PriorVLA"
+pageType: "source"
+tags: ["VLA", "adaptation", "prior preservation", "few-shot", "OOD", "D02"]
+summary: "PriorVLA 通过冻结 Prior Expert 与轻量 Adaptation Expert 保留预训练先验，在少样本与 OOD 场景下显著降低 VLA 适配阶段的灾难性遗忘。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-13_PriorVLA.md"]
+updated: "2026-06-02"
 ---
 
 # PriorVLA (arXiv 2605.10925)
 
-**核心价值**: PriorVLA冻结先验专家+轻量适配专家双结构，防止微调灾难性遗忘，预训练知识保留同时实现少样本OOD泛化，RoboTwin 2.0-Hard超pi0.5达11pt，LIBERO均值99.1%
+**核心价值**: PriorVLA 通过冻结 Prior Expert 与轻量 Adaptation Expert 保留预训练先验，在少样本与 OOD 场景下显著降低 VLA 适配阶段的灾难性遗忘。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-05-13_PriorVLA]]
+- [[../../02_阅读笔记/D02_VLA/2026-05-13_PriorVLA.md]]

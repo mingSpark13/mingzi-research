@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["主动感知", "长程任务规划", "多机器人协调", "实时推理"]
-summary: "Track A* 在四维时空网格(x,y,z,t)上做 visibility-aware DAG 搜索，三项工程优化（跨时间障碍缓存/每层beam pruning/多射线可见性评估）实现 23x 加速，用于生成主动目标跟踪的高质量离线参考轨迹。"
-origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar", "02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar"]
-updated: "2026-04-17"
+id: "source.2605.05338_Track_Astar"
+pageType: "source"
+tags: ["active target tracking", "trajectory planning", "visibility-aware planning", "A*", "CARLA", "主动感知"]
+summary: "Track A* 在四维时空网格上做 visibility-aware 搜索，并用三项工程优化把主动目标跟踪参考轨迹规划提速到 23x。"
+origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar.md", "02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar.md"]
+updated: "2026-06-02"
 ---
 
 # Track A* (arXiv 2605.05338)
 
-**核心价值**: Track A* 在四维时空网格(x,y,z,t)上做 visibility-aware DAG 搜索，三项工程优化（跨时间障碍缓存/每层beam pruning/多射线可见性评估）实现 23x 加速，用于生成主动目标跟踪的高质量离线参考轨迹。
+**核心价值**: Track A* 在四维时空网格上做 visibility-aware 搜索，并用三项工程优化把主动目标跟踪参考轨迹规划提速到 23x。
 
 **原始资料**:
-- [[../../02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar]]
-- [[02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar]]
+- [[../../02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar.md]]
+- [[02_阅读笔记/D11_UAV目标跟踪/2026-05-12_2605.05338_Track_Astar.md]]

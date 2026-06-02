@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["安全护栏", "扩散策略", "MPC"]
-summary: "将Control Barrier Functions集成进Diffusion模型采样过程，对每步采样方向做安全校正，保证轨迹满足安全约束同时保持质量"
-origins: ["../../02_阅读笔记/D01_世界模型/SafeDiffuser_OpenReview"]
-updated: "2026-05-10"
+id: "source.SafeDiffuser_OpenReview"
+pageType: "source"
+tags: []
+summary: "问题背景: diffusion model在轨迹/动作规划中无法保证安全性，需要在生成过程中引入安全约束机制。"
+origins: ["../../02_阅读笔记/D01_世界模型/SafeDiffuser_OpenReview.md"]
+updated: "2026-06-02"
 ---
 
 # SafeDiffuser: CBF for Safe Diffusion Planning
 
-**核心价值**: 将Control Barrier Functions集成进Diffusion模型采样过程，对每步采样方向做安全校正，保证轨迹满足安全约束同时保持质量
+**核心价值**: 问题背景: diffusion model在轨迹/动作规划中无法保证安全性，需要在生成过程中引入安全约束机制。
 
 **原始资料**:
-- [[../../02_阅读笔记/D01_世界模型/SafeDiffuser_OpenReview]]
+- [[../../02_阅读笔记/D01_世界模型/SafeDiffuser_OpenReview.md]]

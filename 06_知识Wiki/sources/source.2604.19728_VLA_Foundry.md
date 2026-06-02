@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-22_VLA_Foundry_Unified_VLA_Framework"]
-updated: "2026-05-12"
+id: "source.2604.19728_VLA_Foundry"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # VLA Foundry: 统一VLA训练框架 (2604.19728)
 
-**核心价值**: **原始资料**:
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-04-22_VLA_Foundry_Unified_VLA_Framework]]

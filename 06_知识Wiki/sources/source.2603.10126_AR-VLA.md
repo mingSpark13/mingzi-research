@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "多模态统一架构", "实时推理", "ACT动作分块"]
-summary: "独立自回归动作专家替换chunk-based action head，解决快控制与慢感知频率错配，提升轨迹平滑性与历史感知能力"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA", "02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA"]
-updated: "2026-04-17"
+id: "source.2603.10126_AR-VLA"
+pageType: "source"
+tags: ["autoregressive action expert", "VLA", "action generation", "long-lived memory", "re-anchoring", "VLA架构"]
+summary: "问题背景: 现有 VLA 和 diffusion policy 常在每次新观测后重置时序上下文，导致快控制与慢推理频率错配，历史感不足。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA.md", "02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA.md"]
+updated: "2026-06-02"
 ---
 
 # AR-VLA: True Autoregressive Action Expert for Vision-Language-Action Models
 
-**核心价值**: 独立自回归动作专家替换chunk-based action head，解决快控制与慢感知频率错配，提升轨迹平滑性与历史感知能力
+**核心价值**: 问题背景: 现有 VLA 和 diffusion policy 常在每次新观测后重置时序上下文，导致快控制与慢推理频率错配，历史感不足。
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA]]
-- [[02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA]]
+- [[../../02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA.md]]
+- [[02_阅读笔记/D02_VLA/2026-05-10_2603.10126_AR-VLA.md]]

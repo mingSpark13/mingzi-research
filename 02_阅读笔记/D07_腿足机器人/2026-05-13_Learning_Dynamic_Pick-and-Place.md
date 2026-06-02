@@ -7,6 +7,7 @@ institution: KAIST + HKUST(GZ)
 conf: IEEE Robotics and Automation Letters (RA-L) 2026
 keywords: [Reinforcement Learning, Legged Robots, Mobile Manipulation, Whole-body Control, Hierarchical RL]
 tags: [强化学习, 腿足机器人, 全身协调运动, 模仿学习]
+summary: "该工作用分层强化学习、在线质量自适应与课程学习实现四足机械臂高速连续动态拾放。"
 domain: 腿足机器人
 pdf_path: "../../01_论文库/腿足机器人/Learning_Dynamic_Pick-and-Place.pdf"
 reading_date: 2026-05-13

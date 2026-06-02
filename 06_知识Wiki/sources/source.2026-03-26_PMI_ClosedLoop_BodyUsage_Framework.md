@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["PMI", "具身智能", "多模态统一架构"]
-summary: "PMI 将具身控制拆成意图状态与身体使用状态双闭环，为跨载体与能力感知控制提供统一接口。"
-origins: ["../../02_阅读笔记/D10_仿真与框架/2026-03-26_PMI_ClosedLoop_BodyUsage_Framework"]
-updated: "2026-05-11"
+id: "source.2026-03-26_PMI_ClosedLoop_BodyUsage_Framework"
+pageType: "source"
+tags: ["PMI", "Closed-Loop", "Body-Usage Adaptation", "Dual-State", "Intent-Body Co-adaptation", "Embodied Intelligence"]
+summary: "问题背景: 待补充"
+origins: ["../../02_阅读笔记/D10_仿真与框架/2026-03-26_PMI_ClosedLoop_BodyUsage_Framework.md"]
+updated: "2026-06-02"
 ---
 
 # PMI闭环升级版
 
-**核心价值**: PMI 将具身控制拆成意图状态与身体使用状态双闭环，为跨载体与能力感知控制提供统一接口。
+**核心价值**: 问题背景: 待补充
 
 **原始资料**:
-- [[../../02_阅读笔记/D10_仿真与框架/2026-03-26_PMI_ClosedLoop_BodyUsage_Framework]]
+- [[../../02_阅读笔记/D10_仿真与框架/2026-03-26_PMI_ClosedLoop_BodyUsage_Framework.md]]

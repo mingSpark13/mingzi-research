@@ -1,14 +1,15 @@
 ---
 type: "source"
+id: "source.2026-05-01_LWD部署中学习"
+pageType: "source"
 tags: []
-summary: "**原始资料**:"
-origins: ["02_阅读笔记/D05_数据飞轮/2026-05-01_LWD部署中学习"]
+summary: ""
+origins: []
 updated: "2026-04-17"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: 
 
 **原始资料**:
-- [[02_阅读笔记/D05_数据飞轮/2026-05-01_LWD部署中学习]]

@@ -1,14 +1,15 @@
 ---
 type: "source"
-tags: []
-summary: ""
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-05-20_DeiT_数据高效图像Transformer与注意力蒸馏"]
-updated: "2026-04-17"
+id: "source.2012.12877_DeiT"
+pageType: "source"
+tags: ["待补笔记"]
+summary: "⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。"
+origins: []
+updated: "2026-06-02"
 ---
 
 # DeiT (2012.12877)
 
-**核心价值**: 
+**核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 
 **原始资料**:
-- [[../../02_阅读笔记/D04_跨载体泛化/2026-05-20_DeiT_数据高效图像Transformer与注意力蒸馏]]

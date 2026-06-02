@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: []
-summary: "**原始资料**:"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-01-28_ConstrainedGeneration"]
-updated: "2026-04-17"
+id: "source.2026-01-28_ConstrainedGeneration"
+pageType: "source"
+tags: ["Constrained Decoding", "Control Barrier", "Hard Constraints", "LLM Generation", "物理一致性", "动作条件预测"]
+summary: "这篇综述把 constrained decoding、barrier guidance 与投影采样统一到“硬约束生成”框架下，强调只有把约束嵌入生成过程才能真正保证可行性。"
+origins: ["../../02_阅读笔记/D01_世界模型/2026-01-28_ConstrainedGeneration.md"]
+updated: "2026-06-02"
 ---
 
 # ViSA-Enhanced AVLN (2603.08007)
 
-**核心价值**: **原始资料**:
+**核心价值**: 这篇综述把 constrained decoding、barrier guidance 与投影采样统一到“硬约束生成”框架下，强调只有把约束嵌入生成过程才能真正保证可行性。
 
 **原始资料**:
-- [[../../02_阅读笔记/D01_世界模型/2026-01-28_ConstrainedGeneration]]
+- [[../../02_阅读笔记/D01_世界模型/2026-01-28_ConstrainedGeneration.md]]

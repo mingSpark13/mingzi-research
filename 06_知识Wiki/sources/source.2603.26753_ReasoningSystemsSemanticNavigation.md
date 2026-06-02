@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["语义导航", "长程任务规划", "知识推理", "本体建模", "LLM驱动机器人"]
-summary: "实现并对比基于关系数据库与 KnowRob 本体的两套语义推理系统，接入真实移动机器人语义导航，给出语义地图、知识表示与推理栈落地的系统级经验对比。"
-origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-20_ReasoningSystemsSemanticNavigation"]
-updated: "2026-05-11"
+id: "source.2603.26753_ReasoningSystemsSemanticNavigation"
+pageType: "source"
+tags: ["semantic navigation", "knowledge reasoning", "mobile robot", "KnowRob", "语义导航", "长程任务规划"]
+summary: "问题背景: 语义导航要让机器人理解“去厨房桌子旁边”这类人类目标，仅靠几何地图不够，还需要环境语义表示与高层推理系统。"
+origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-20_ReasoningSystemsSemanticNavigation.md"]
+updated: "2026-06-02"
 ---
 
 # Reasoning Systems for Semantic Navigation (2603.26753)
 
-**核心价值**: 实现并对比基于关系数据库与 KnowRob 本体的两套语义推理系统，接入真实移动机器人语义导航，给出语义地图、知识表示与推理栈落地的系统级经验对比。
+**核心价值**: 问题背景: 语义导航要让机器人理解“去厨房桌子旁边”这类人类目标，仅靠几何地图不够，还需要环境语义表示与高层推理系统。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2026-04-20_ReasoningSystemsSemanticNavigation]]
+- [[../../02_阅读笔记/D06_空中VLN/2026-04-20_ReasoningSystemsSemanticNavigation.md]]

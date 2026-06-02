@@ -1,7 +1,7 @@
 # Unified Cross-Embodiment Policy Transfer via Shared Geometry and Latent Action Interfaces
 
 > 方向：D04 跨载体泛化 | 目标会议：CoRL 2027 | 状态：🔴 草稿
-> 最后更新：2026-05-28 13:47
+> 最后更新：2026-06-01 18:06
 
 ---
 
@@ -226,7 +226,7 @@ The terrain-state slot is introduced specifically for heterogeneous ground–aer
 Finally, the embodiment-parameterization slot records transferable structural descriptors that matter specifically for contact affordance realization, such as fingertip geometry, local curvature, reachable contact family, or end-effector compliance class. HandCDO [REF: 2604.27557] motivates this refinement by suggesting that richer parametric embodiment descriptions can expose transferable contact affordance structure before any heavy adaptation module is activated. This gives D04 a stricter routing rule: if performance rises after adding a better embodiment descriptor but before online residual adaptation materially helps, the gain should first be frozen as **contact-capable embodiment parameterization** or **contact affordance exposure**, not immediately promoted to a broad embodiment-aware controller story.
 
 
-### 3.3 Latent Action Alignment (C2)
+### 3.3 Geometry-Conditioned Latent Action Retargeting (C2)
 
 On top of the verified geometry packet, we instantiate geometry-conditioned latent retargeting as an explicit encoder--decoder architecture rather than a generic shared-latent placeholder. At each step, the verified packet is first serialized into five token groups,
 \[
@@ -283,7 +283,7 @@ We write the sufficiency condition as
 \]
 meaning that latent transfer is only credited when it explains the dominant gain **before** history-conditioned residual correction becomes necessary.
 
-This formulation is consistent with OPFA, UniT, PokeVLA, and Any2Any-style evidence from the local library: geometry-aligned intermediate structure plus lightweight target-specific formatting can already absorb a large fraction of cross-platform variation. In D04 terms, latent retargeting is therefore the default null hypothesis after geometry is verified, not a late optional add-on. Stronger embodiment-aware claims are only allowed when this stage still leaves structured residuals that survive matched controls and cannot be consumed by geometry-conditioned latent transfer alone.
+This formulation is consistent with OPFA [REF: 2603.14522], UniT [REF: 2604.19734], and PokeVLA [REF: 2604.20834]: geometry-aligned intermediate structure plus lightweight target-specific formatting can already absorb a large fraction of cross-platform variation. In D04 terms, latent retargeting is therefore the default null hypothesis after geometry is verified, not a late optional add-on. Stronger embodiment-aware claims are only allowed when this stage still leaves structured residuals that survive matched controls and cannot be consumed by geometry-conditioned latent transfer alone.
 
 ### 3.4 Human-to-Robot Geometry Anchors and Physical Intent Tokens
 
@@ -326,6 +326,8 @@ where `task` optimizes the corrected action, `|δu|_1` discourages the residual 
 \]
 and if the gain is not confined to late stabilization-only windows.
 
+AdaTracker [REF: 2604.20305] motivates exactly this kind of context-first route: a substantial fraction of cross-embodiment performance can come from identifying embodiment constraints from recent history and only then modulating the policy. Our method keeps that insight but makes the audit stricter: history-conditioned context is useful evidence for D04 only when it remains a **residual** after geometry verification and latent retargeting have already been given full credit. In parallel, D-CLING [REF: 2605.19690] reminds us that some “residual gains” are actually just prior-preserving bounded adaptation to scene geometry; those should be routed to the bounded-adaptation family before they are upgraded to embodiment structure.
+
 This module therefore functions as a falsification tool, not a default headline generator. If the context encoder adds little after latent transfer, D04 can honestly conclude that the shared interface already absorbs most cross-platform structure. If it adds a lot, the paper still has to report **which residual bucket was actually rescued** instead of collapsing all online gains into a vague morphology-aware adaptation story. That boundary is especially important for aerial manipulation, where delayed stabilization often masquerades as embodiment generalization if the residual route is left un-audited.
 
 ### 3.6 Real-to-Sim-to-Real Geometry Anchoring for Heterogeneous Sources
@@ -338,7 +340,7 @@ For D04, the value of this module is methodological rather than merely data-augm
 
 We convert the narrative escalation discipline into an executable routing algorithm. For each evaluated route, we compute a matched-budget attribution tuple
 \[
-\Gamma_t = (S_{\text{geo}},\; \Delta_{\text{terrain}},\; \Delta_{\text{coord}},\; \Delta_{\text{contact}},\; \Delta_{\text{latent}},\; \Delta_{\text{kin}},\; \Delta_{\text{emb}},\; \Delta_{\text{dyn}},\; \text{PTL},\; \text{GRS},\; B,\; W^+),
+\Gamma_t = (S_{\text{geo}},\; \Delta_{\text{terrain}},\; \Delta_{\text{coord}},\; \Delta_{\text{contact}},\; \Delta_{\text{demo}},\; \Delta_{\text{latent}},\; \Delta_{\text{kin}},\; \Delta_{\text{bound}},\; \Delta_{\text{emb}},\; \Delta_{\text{dyn}},\; \text{PTL},\; \text{GRS},\; B,\; W^+),
 \]
 where `B` is the matched adaptation / context budget and `W+` is the first positive consumption window. Instead of using these terms only as reviewer prose, we define an explicit shortest-honest routing procedure:
 
@@ -347,7 +349,7 @@ where `B` is the matched adaptation / context budget and `W+` is the first posit
 2. **Scene/interface completion gate**. Test terrain, coordination, contact, and descriptor exposure under matched toggles. If any weaker route explains the gain, return the weakest surviving tag in `{terrain, coordination, contact, descriptor}`.
 3. **Demonstration-translation gate**. If gain appears only after embodiment-matched replay / relabeling / translated supervision, return `demonstration-translation completion`.
 4. **Latent sufficiency gate**. If `Δ_latent > τ_latent` and `Δ_latent - max(Δ_emb, Δ_dyn) > τ_sep`, return `shared geometry + latent transfer`.
-5. **Kinematic / prior-preserving gate**. If gains emerge before online residual inference and are absorbed by topology-aware priors, richer descriptors, or bounded prior-preserving adaptation, return `kinematic-feasibility prior` or `bounded adaptation support`.
+5. **Kinematic / bounded-adaptation gate**. If gains emerge before online residual inference and are absorbed by topology-aware priors, richer descriptors, or prior-preserving side adapters, return `kinematic-feasibility prior` or `bounded adaptation support`.
 6. **Residual-context gate**. If history-conditioned inference adds stable gain, compare embodiment, temporal, and dynamics routes in the same consumption window. Promote to `embodiment residual` only if the embodiment bucket remains dominant after subtracting temporal and dynamics explanations.
 7. **Dynamics fallback**. If the remaining gain is concentrated in payload stabilization, delayed correction, or bandwidth relief, return `dynamics-residual burden relief`.
 8. **Low-data honesty check**. If the chosen tag depends on small target-side tuning that materially worsens `PTL` or `GRS`, demote one level to `adaptation-side bounded support`.
@@ -362,15 +364,51 @@ where the honesty lattice is ordered as
 \]
 We additionally require that every promoted claim report its `creation stage`, `first positive window`, and `last honest consumption boundary`, so early packet improvements cannot be overclaimed as full cross-embodiment success.
 
-This algorithmic view is central to D04 because the paper now lives exactly at the boundary where scene-state completion, supervision cleanup, latent transfer, and late residual rescue all compete for credit. By writing the escalation rule as an executable procedure, Method 3.x stops being a philosophical reporting guideline and becomes a reproducible evaluation protocol: every result must stop at the weakest explanation that still survives under matched controls, budget, and window localization.
+This algorithmic view is central to D04 because the paper now lives exactly at the boundary where scene-state completion, supervision cleanup, latent transfer, bounded adaptation, and late residual rescue all compete for credit. By writing the escalation rule as an executable procedure, Method 3.x stops being a philosophical reporting guideline and becomes a reproducible evaluation protocol: every result must stop at the weakest explanation that still survives under matched controls, budget, and window localization.
 
-### 3.8 Data-First Interface Formation
+### 3.8 Family-Matched Specialist Promotion Blocker
+
+The escalation rule above still leaves one practically important ambiguity: after shared geometry, latent retargeting, and bounded support routes have all been evaluated, how do we decide whether a remaining gain should be credited to **specialist embodiment structure** rather than to a family-matched but weaker support route? We address this by inserting an explicit promotion blocker that compares residual specialist gains against three local anchor families already present in the D04 literature and local knowledge base: **prior-preserving bounded adaptation** (D-CLING [REF: 2605.19690]), **bounded supervision-side completion** (Human-Robot Copilot [REF: 2604.03613]), and **generalist-to-specialist residual cleanup** (Embodiment-Aware Generalist Specialist Distillation [REF: 2602.02960]).
+
+For every row that appears to benefit from a specialist branch, we augment the attribution tuple with
+\[
+\Xi_t = (RIG,\; BPA,\; BSC,\; LTS,\; SRS,\; CW,\; PC,\; PB),
+\]
+where `RIG` denotes representation / infrastructure exposure gain, `BPA` prior-preserving bounded-adaptation gain, `BSC` bounded supervision/copilot gain, `LTS` latent-transition sufficiency, `SRS` specialist-residual survival after family subtraction, `CW` the last honest consumption window, `PC` the current promotion ceiling, and `PB` the active promotion blocker. We then apply a **family-matched subtraction rule**: if a specialist-looking gain disappears after matching the same honest window with a weaker `BPA` or `BSC` route, then the specialist claim is blocked and the row must be frozen at bounded adaptation or supervision support.
+
+Operationally, the decision is made by the following reviewer-facing serialization. First, representation cleanup and packet hygiene are exhausted, because cleaner geometry packets can make a route *look* more embodiment-aware without changing the embodiment interface itself. Second, prior-preserving bounded adaptation is tested: if a small side branch or depth-conditioned adapter already explains the uplift while preserving the backbone prior, the gain is frozen at **bounded adaptation support**. Third, copilot-style bounded supervision is tested: if sparse human correction or intermittent assistance removes the same failure tail, the gain is frozen at **supervision-side support**. Only if the residual survives these matched family tests in the same decisive window do we allow promotion toward **remaining embodiment structure**. Formally, specialist promotion is permitted only when
+\[
+SRS > \max(BPA,\; BSC) + \tau_{\text{spec}}
+\]
+and when the dominant gain window is not merely a late rescue window already explained by supervision-side completion.
+
+This addition matters because D04 now sits in a crowded methodological region where stronger claims are easy to over-promote. A route can improve because it preserves a useful prior under low target data, because sparse human correction rescues rare tails, or because a specialist branch truly absorbs embodiment-specific residual structure. Without a family-matched blocker, these three cases collapse into the same headline. By writing `\Xi_t` and the subtraction rule into Method 3.x, we force specialist evidence to earn its place only after the cheaper and weaker explanations have already failed under matched-budget, matched-window comparison.
+
+### 3.9 Shared-Latent Promotion Blocker under Kinematic Retargeting and Lightweight Adaptation
+
+A complementary ambiguity appears one step earlier than specialist promotion: after geometry verification succeeds, a route may look like it has established **shared-latent transfer**, while its actual gain still comes from easier-to-satisfy families such as **kinematic retargeting with lightweight adaptation** or **representation-side deployment completion**. Recent local anchors make this boundary concrete. Any2Any [REF: 2605.23733] shows that strong cross-embodiment uplift can emerge from a two-stage recipe of source/target kinematic alignment plus tiny PEFT-style dynamics-sensitive adaptation, even when no deep embodiment-invariant latent interface is explicitly learned. RIO [REF: 2605.11564] and closely related infrastructure-facing routes indicate that cleaner packetization, I/O normalization, and deployment-side representation exposure can also create deceptively large transfer gains before the policy interface itself becomes scientifically stronger. For D04, this means we need a promotion blocker that prevents every post-geometry improvement from being immediately narrated as latent-transition sufficiency.
+
+We therefore introduce a second matched-family tuple
+\[
+\Omega_t = (KAG,\; DAG,\; RIG,\; LTS,\; HRS,\; CW,\; PC,\; PB_{\text{lat}}),
+\]
+where `KAG` denotes **kinematic-alignment gain**, `DAG` denotes **lightweight dynamics-adaptation gain**, `RIG` is representation/infrastructure exposure gain, `LTS` is latent-transition sufficiency, `HRS` is the latent-route survival after subtracting these weaker families, `CW` is the decisive consumption window, `PC` is the current promotion ceiling, and `PB_lat` is the active blocker on latent promotion. The core rule is parallel to Section 3.8 but applied one stage earlier: if a row’s improvement can already be explained by better retargetable kinematic correspondence, deployment-side packet hygiene, or tiny dynamics-sensitive PEFT modules, then the headline must stop at those explanations instead of leaping to `shared latent transfer`.
+
+Operationally, we serialize the check in four steps. First, geometry packet validity must already hold; otherwise the row never enters this blocker. Second, representation/infrastructure exposure is subtracted, because a cleaner observation-action bridge can raise transfer scores without changing the latent transition itself. Third, kinematic alignment is tested: if matching source/target topology, reachable branch selection, or normalized actuation conventions already explains the gain, then the honest ceiling becomes **kinematic retargeting support**. Fourth, lightweight target-side adaptation is tested: if a PEFT-sized or dynamics-sensitive adapter absorbs the remaining mismatch under the same window and budget, then the row is frozen at **lightweight dynamics adaptation** or **kinematic+adapter support**. Only when a residual still survives these matched tests do we promote the explanation to shared latent transfer. Formally, latent promotion is permitted only when
+\[
+HRS > \max(KAG,\; DAG,\; RIG) + \tau_{\text{lat-block}}
+\]
+under matched context length, matched adaptation budget, and the same first-positive window.
+
+This blocker matters because Any2Any-style evidence is scientifically valuable but does not automatically imply that D04 has discovered a richer geometry-conditioned latent interface. A route that transfers with `kinematic alignment + tiny PEFT` may be exactly the right practical answer, yet its honest interpretation ceiling is still weaker than `shared latent sufficiency` until those simpler families are exhausted. By writing `\Omega_t` into Method 3.x, we force D04 to distinguish three different stories that are often collapsed in practice: **the packet became easier to deploy**, **the bodies became easier to align**, and **a reusable latent transition truly survived embodiment change**. Only the third should support the paper’s strongest interface claim.
+
+### 3.10 Data-First Interface Formation
 
 We additionally treat structured cross-embodiment data organization as part of the method rather than as a passive experimental choice. Inspired by Data Analogies [REF: 2603.06450], our training pipeline prioritizes paired or analogy-preserving demonstrations where source and target embodiments share task scene, object configuration, and subgoal order, even when low-level motions differ. The purpose is to stabilize correspondence at the geometry packet and latent-transition level before the model is asked to infer embodiment-specific control mappings.
 
 This design is especially important for mixed human, ground-robot, and aerial-manipulation corpora. Unstructured aggregation can inflate nominal diversity while weakening cross-embodiment correspondences, causing later morphology adapters to absorb what is fundamentally a data alignment problem. By contrast, geometry anchors, robot-to-robot analogies, and simulation-generated paired trajectories provide explicit supervision for interface formation, making the later escalation from latent sufficiency to morphology or dynamics adaptation more interpretable.
 
-### 3.9 Terrain-Coordination-Contact Routing before Policy-Interface Promotion
+### 3.11 Terrain-Coordination-Contact Routing before Policy-Interface Promotion
 
 We now make the mixed ground--aerial routing rule explicit at the method level. Before any result is promoted to shared latent transfer, policy-interface transfer, or embodiment residual recovery, the system must first test whether the apparent gain is better explained by **terrain-state completion**, **coordination-state completion**, **contact-interface enrichment**, or **contact-capable embodiment parameterization**. This ordering is motivated by recent local anchors that expose four different pre-transfer confounds. GA3T [REF: 2605.06478] shows that an aerial platform can improve success simply by revealing traversability structure, obstacle topology, or overhead support-region visibility that the ground embodiment never observed. OmniRobotHome [REF: 2604.28197] shows that multi-agent or multi-view systems may fail because embodiments no longer act on the same synchronized world state. FlexiTac [REF: 2604.28156] shows that a reusable tactile packet can rescue transfer only because contact onset, slip tendency, or persistence finally become observable. HandCDO [REF: 2604.27557] shows that richer embodiment descriptors can expose transferable contact affordance structure before any heavy adaptation module becomes necessary.
 
@@ -398,8 +436,6 @@ Concretely, if a specialist head improves only narrow failure tails, sparse cont
 We explicitly position large-scale heterogeneous pretraining as a **decision test**, not just a stronger baseline. Foundation models such as JoyAI-RA [REF: 2604.20100] combine web data, egocentric human video, simulation rollouts, and robot trajectories under unified action formatting, which means they may absorb part of the transfer gain that earlier papers would attribute to handcrafted cross-embodiment structure. Our method therefore asks a sharper question: after geometry verification, does staged latent transfer still explain additional gain beyond scale, or has the problem largely collapsed into better heterogeneous pretraining plus minimal residual adaptation?
 
 This matters for paper framing. If strong heterogeneous pretraining already saturates transfer once geometry is stable, then D04 should emphasize **measurement, attribution, and interface auditing** rather than proposing an unnecessarily heavy transfer stack. If scale does not saturate the gain, then the staged ladder remains justified and the remaining error can be more cleanly assigned to latent insufficiency, embodiment-conditioned residuals, or platform dynamics. In other words, JoyAI-RA-style scale is part of the scientific protocol because it helps determine whether the geometry→latent→residual decomposition is explanatory necessity or merely architectural preference.
-
-### 3.10 Terrain-First Reporting Rule for Mixed Ground--Aerial Transfer
 
 For mixed ground--aerial settings, we introduce a terrain-first reporting rule before any embodiment-transfer headline is allowed. Let the first-pass interpretation tuple be
 `M_D04=(IGS, VGS-xEmb, TSG, TSR, CIG, CSC, LTS, KFG, HIG, DRB, B, τ*)`,
@@ -977,7 +1013,21 @@ Under the current local anchor mix, the strongest honest sentence is still conse
 
 In practical writing terms, the next D04 result paragraph can now use a sharper serialization: *current evidence suggests that many gains still stop at terrain-state completion, representation/infrastructure cleanup, contact-capable descriptor exposure, or prior-preserving bounded adaptation; DexFormer-like history inference should be counted only as the surviving temporal residual beyond those audits, not as immediate proof that the shared latent interface is fundamentally insufficient.*
 
-### 4.2.50 Active Embodiment Identification as a Deployment-Time Probe rather than Interface Sufficiency
+### 4.2.50 Bounded-Adaptation and Copilot Families must be Subtracted before Specialist Promotion
+
+The current D04 anchor set still contains a reviewer-facing ambiguity that is easier to miss than representation exposure or terrain completion: some rows may look like strong residual cross-embodiment evidence even though the gain is mostly carried by **prior-preserving bounded adaptation** or **bounded supervision-side completion**. D-CLING [REF: 2605.19690] is the cleanest local anchor for the first family. Its zero-initialized depth-conditioned side branch protects the backbone prior while absorbing new geometry or sensor statistics, which is valuable deployment engineering but not yet proof that the shared geometry packet or latent transition interface became intrinsically more transferable across embodiments. Human-Robot Copilot [REF: 2604.03613] is the cleanest local anchor for the second family. Sparse human intervention can rescue out-of-distribution drift and increase data efficiency, yet this still first explains a row as supervision-side support or bounded residual assistance rather than as direct evidence that embodiment-conditioned structure has been scientifically isolated.
+
+We therefore insert a stricter serialization before any result is allowed to borrow specialist language: `representation/infrastructure exposure → contact-capable descriptor exposure → prior-preserving bounded adaptation → bounded supervision/copilot support → shared-latent sufficiency → remaining embodiment structure`. Operationally, every candidate row must report a matched tuple `Ξ_row=(RIG, CDE, BPA, BSC, LTS, SRS, CW, PC, PB)`, where `RIG` is representation/infrastructure exposure gain, `CDE` contact-descriptor exposure gain, `BPA` prior-preserving bounded-adaptation gain, `BSC` bounded supervision/copilot gain, `LTS` latent-transition sufficiency after weaker-family subtraction, `SRS` surviving specialist residual, `CW` the last honest consumption window, `PC` the current promotion ceiling, and `PB` the dominant promotion blocker. If the row collapses once a depth-conditioned side adapter or a copilot correction channel is family-matched and budget-matched, the honest ceiling must remain **prior-preserving bounded adaptation** or **bounded supervision-side completion**. Only the residual that still survives after both audits in the same decisive consumption window may be promoted to shared-latent insufficiency or remaining embodiment structure.
+
+This subtraction matters because D04 is now close to a failure mode where reviewer-facing “specialist” improvements are actually just late support-side cleanup. In the mixed ground--aerial setting, bounded adapters may merely stabilize changed geometry, and copilot signals may merely keep the controller inside a recoverable state manifold. Those are useful engineering routes, but they should not be overclaimed as proof that the transfer stack discovered a deeper embodiment-conditioned controller. The correct first-pass interpretation is therefore: if the gain depends on a protected prior patch, stop at **bounded adaptation support**; if it depends on sparse human rescue or supplementary correction, stop at **copilot/supervision support**; only the post-subtraction remainder may talk about embodiment-conditioned residual structure.
+
+### 4.2.51 Current Evidence-Consistent Freeze after D-CLING / Copilot Re-read
+
+Under the current local anchor set, the evidence-consistent ceiling should remain conservative. **D-CLING** should continue to be frozen as `prior-preserving bounded adaptation`, because its strongest demonstrated contribution is to preserve a useful shared navigation prior while absorbing new-scene geometry through a constrained side branch. **Human-Robot Copilot** should continue to be frozen as `bounded supervision-side completion`, because its strongest demonstrated contribution is to repair off-distribution drift with intermittent human correction rather than to prove that a stronger cross-embodiment latent/controller interface has emerged. Consequently, any D04 row that only clears these families should still be written as *support-side completion after weaker-family subtraction*, not as a full embodiment-structure result.
+
+In submission-facing terms, the current honest promotion ladder is now sharper: many rows may still stop at **terrain-state completion**, **representation/infrastructure exposure**, **contact-capable descriptor exposure**, **prior-preserving bounded adaptation**, or **bounded copilot assistance**. Shared-latent insufficiency and specialist-backed embodiment structure should be discussed only when the same positive evidence remains after D-CLING-style and Copilot-style families have both been matched away in the same latest honest consumption window. This rule keeps D04 from accidentally turning low-data adaptation convenience or human rescue efficiency into an overgrown cross-embodiment headline.
+
+### 4.2.52 Active Embodiment Identification as a Deployment-Time Probe rather than Interface Sufficiency
 
 A final boundary becomes useful once the literature moves from transfer *during training* to transfer *at deployment*. Active Embodiment Identification [REF: 2605.08020] suggests that a policy can recover part of the apparent cross-embodiment gap by first spending a short interaction budget to probe its own morphology, damaged joints, or hidden embodiment state before the downstream task begins. This is strategically relevant to D04 because such gains are easy to overclaim: a route may look more transferable not because the shared geometry packet or latent interface became stronger, but because the system inserted an **active embodiment-probe stage** that reveals the current body configuration before execution.
 
@@ -985,7 +1035,7 @@ We therefore add a strict reviewer-facing distinction between **deployment-time 
 
 This distinction matters even more for mixed ground--aerial transfer. A UAV manipulator or heterogeneous team may appear more robust simply because the target platform gets a few safe calibration interactions to identify payload, arm offset, rotor asymmetry, or contact readiness before task rollout. That is scientifically useful, but it is not the same claim as saying the cross-embodiment policy interface itself is already sufficient. D04 should therefore serialize the interpretation as: **probe-enabled self-identification first, then latent/interface sufficiency only if the gain survives probe removal**.
 
-### 4.2.50 Current Evidence-Consistent Freeze after Local Re-read of Probe and Contact-State Anchors
+### 4.2.52 Current Evidence-Consistent Freeze after Local Re-read of Probe and Contact-State Anchors
 
 After the current local re-read of **Active Embodiment Identification** [REF: 2605.08020], **Hardware-Agnostic Quadrupedal World Models** [REF: 2604.08780], and **Learning Tactile-Aware Quadrupedal Loco-Manipulation Policies** [REF: 2604.27224], the strongest honest near-term D04 claim becomes slightly sharper. Recent local anchors still do not overturn the existing terrain / representation / descriptor / bounded-adaptation routing stack, but they clarify two adjacent boundaries: some gains should stop at **deployment-time embodiment probing**, and some should stop at **contact-state completion** instead of being promoted directly to stronger transfer language.
 

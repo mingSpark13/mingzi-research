@@ -1,16 +1,17 @@
 ---
 type: "source"
-tags: ["Sim2Real", "状态抽象", "强化学习"]
-summary: "Abstract Sim2Real形式化了‘抽象模拟器也能迁移’的问题，给不完美仿真环境中的策略训练建立状态抽象理论基础。"
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-04-19_2604.15289_Abstract_Sim2Real", "02_阅读笔记/D04_跨载体泛化/2026-04-19_2604.15289_Abstract_Sim2Real", "02_阅读笔记/99_归档/重复笔记/2026-04-19_Abstract_Sim2Real__dup2"]
-updated: "2026-05-10"
+id: "source.Abstract_Sim2Real_2604.15289"
+pageType: "source"
+tags: ["Sim2Real", "State Abstraction", "Reinforcement Learning", "Transfer", "D02", "状态抽象"]
+summary: "真实机器人部署时模拟器无法建模所有任务细节，本文研究如何使用抽象模拟器训练能在真实世界迁移的策略。"
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2026-04-19_Abstract_Sim2Real__dup2.md", "02_阅读笔记/99_归档/重复笔记/2026-04-19_Abstract_Sim2Real__dup2.md"]
+updated: "2026-06-02"
 ---
 
 # Abstract Sim2Real (2604.15289)
 
-**核心价值**: Abstract Sim2Real形式化了‘抽象模拟器也能迁移’的问题，给不完美仿真环境中的策略训练建立状态抽象理论基础。
+**核心价值**: 真实机器人部署时模拟器无法建模所有任务细节，本文研究如何使用抽象模拟器训练能在真实世界迁移的策略。
 
 **原始资料**:
-- [[../../02_阅读笔记/D04_跨载体泛化/2026-04-19_2604.15289_Abstract_Sim2Real]]
-- [[02_阅读笔记/D04_跨载体泛化/2026-04-19_2604.15289_Abstract_Sim2Real]]
-- [[02_阅读笔记/99_归档/重复笔记/2026-04-19_Abstract_Sim2Real__dup2]]
+- [[../../02_阅读笔记/99_归档/重复笔记/2026-04-19_Abstract_Sim2Real__dup2.md]]
+- [[02_阅读笔记/99_归档/重复笔记/2026-04-19_Abstract_Sim2Real__dup2.md]]

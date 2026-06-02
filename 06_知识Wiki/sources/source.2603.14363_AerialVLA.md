@@ -1,16 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "无人机导航", "空中VLN", "端到端控制"]
-summary: "AerialVLA：双视角精简感知+机载模糊方向提示，实现 oracle-free 端到端 VLA 无人机导航，TravelUAV seen SOTA + unseen 近3倍基线成功率，D06空中VLN/端到端控制"
-origins: ["../../02_阅读笔记/D06_空中VLN/2026-05-13_2603.14363_AerialVLA", "02_阅读笔记/D06_空中VLN/2026-05-13_2603.14363_AerialVLA", "02_阅读笔记/99_归档/重复笔记/2026-05-13_2603.14363_AerialVLA"]
-updated: "2026-04-17"
+id: "source.2603.14363_AerialVLA"
+pageType: "source"
+tags: ["UAV", "Vision-Language-Action", "Vision-Language Navigation", "End-to-End Control", "TravelUAV", "具身智能"]
+summary: "问题背景: UAV 的视觉语言导航需要同时做语言理解、3D场景感知和连续控制，现有分层方案依赖 oracle guidance 或额外检测器，真实自主性不足。"
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2026-05-13_2603.14363_AerialVLA.md", "02_阅读笔记/99_归档/重复笔记/2026-05-13_2603.14363_AerialVLA.md"]
+updated: "2026-06-02"
 ---
 
 # AerialVLA (arXiv:2603.14363)
 
-**核心价值**: AerialVLA：双视角精简感知+机载模糊方向提示，实现 oracle-free 端到端 VLA 无人机导航，TravelUAV seen SOTA + unseen 近3倍基线成功率，D06空中VLN/端到端控制
+**核心价值**: 问题背景: UAV 的视觉语言导航需要同时做语言理解、3D场景感知和连续控制，现有分层方案依赖 oracle guidance 或额外检测器，真实自主性不足。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2026-05-13_2603.14363_AerialVLA]]
-- [[02_阅读笔记/D06_空中VLN/2026-05-13_2603.14363_AerialVLA]]
-- [[02_阅读笔记/99_归档/重复笔记/2026-05-13_2603.14363_AerialVLA]]
+- [[../../02_阅读笔记/99_归档/重复笔记/2026-05-13_2603.14363_AerialVLA.md]]
+- [[02_阅读笔记/99_归档/重复笔记/2026-05-13_2603.14363_AerialVLA.md]]

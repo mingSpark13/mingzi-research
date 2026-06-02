@@ -8,6 +8,7 @@ institution: 暂未统一标注
 conf: arXiv
 keywords: world foundation model, robotic manipulation, video diffusion, neural simulator, benchmark, policy learning
 tags: ["D02", "灵巧操作", "隐空间世界模型", "跨载体泛化"]
+summary: "Genie Envisioner 试图把视频生成、神经仿真与策略学习收束到统一世界基础平台，为机器人操作提供可扩展的世界模型预训练与评测底座。"
 domain: 通用操作
 pdf_path: ../../01_论文库/通用操作/2508.05635_Genie_Envisioner_A_Unified_World_Foundation_Platform_for_Robotic_Manipulation.pdf
 reading_date: 2026-04-10

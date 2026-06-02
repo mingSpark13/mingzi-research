@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["腿足机器人", "全身协调运动", "强化学习", "运动控制", "课程学习"]
-summary: "LALO 提出 decoupled-yet-coordinated loco-manipulation 架构：运动学参考+height-conditioned offset 提供名义姿态，RL policy 学 residual joint action，配合 history-based estimator 处理负载和操作扰动，纯仿真训练可零成本部署到全尺寸人形。"
-origins: ["../../02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO", "02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO"]
-updated: "2026-04-17"
+id: "source.2026-05-25_2603.14308_LALO"
+pageType: "source"
+tags: ["humanoid locomotion", "loco-manipulation", "reinforcement learning", "load-carrying", "industrial transportation", "腿足机器人"]
+summary: "问题背景: 工业搬运中的 humanoid 不只要走稳，还得在搬箱子时处理负载变化、上肢动作扰动和部分可观测带来的动态耦合难题。"
+origins: ["../../02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO.md", "02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO.md"]
+updated: "2026-06-02"
 ---
 
 # source.2026-05-25_2603.14308_LALO
 
-**核心价值**: LALO 提出 decoupled-yet-coordinated loco-manipulation 架构：运动学参考+height-conditioned offset 提供名义姿态，RL policy 学 residual joint action，配合 history-based estimator 处理负载和操作扰动，纯仿真训练可零成本部署到全尺寸人形。
+**核心价值**: 问题背景: 工业搬运中的 humanoid 不只要走稳，还得在搬箱子时处理负载变化、上肢动作扰动和部分可观测带来的动态耦合难题。
 
 **原始资料**:
-- [[../../02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO]]
-- [[02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO]]
+- [[../../02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO.md]]
+- [[02_阅读笔记/D07_腿足机器人/2026-05-25_2603.14308_LALO.md]]

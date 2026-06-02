@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["数据合成", "3D重建", "零样本泛化", "主动感知"]
-summary: "VRS框架从车载LiDAR合成路侧数据，跨视角novel-view rendering填补 roadside perception 数据稀缺，vehicle-to-roadside数据飞轮验证可行"
-origins: ["../../02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis", "02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis"]
-updated: "2026-04-17"
+id: "source.2605.05897_VRS_Roadside_LiDAR_Synthesis"
+pageType: "source"
+tags: ["LiDAR synthesis", "novel view synthesis", "roadside perception", "data generation", "cross-view rendering", "数据合成"]
+summary: "VRS 把车载 LiDAR 数据跨视角合成为路侧数据，证明几何一致的数据生成能有效补齐稀缺目标视角监督。"
+origins: ["../../02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis.md", "02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis.md"]
+updated: "2026-06-02"
 ---
 
 # VRS Roadside LiDAR Synthesis (2605.05897)
 
-**核心价值**: VRS框架从车载LiDAR合成路侧数据，跨视角novel-view rendering填补 roadside perception 数据稀缺，vehicle-to-roadside数据飞轮验证可行
+**核心价值**: VRS 把车载 LiDAR 数据跨视角合成为路侧数据，证明几何一致的数据生成能有效补齐稀缺目标视角监督。
 
 **原始资料**:
-- [[../../02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis]]
-- [[02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis]]
+- [[../../02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis.md]]
+- [[02_阅读笔记/D05_数据飞轮/2026-05-10_2605.05897_VRS_Roadside_LiDAR_Synthesis.md]]

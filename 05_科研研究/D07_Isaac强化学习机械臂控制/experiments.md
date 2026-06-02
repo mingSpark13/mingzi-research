@@ -12,6 +12,13 @@
 
 目标不是追最高分，而是先回答一个更关键的问题：**D07 第一轮到底该冻结成 acceleration、retention bridge、safety-shell support，还是 deployable hybrid。**
 
+在已有 guidance-first / verification-first 审计之外，本轮再补一层 **drift-amplitude decoupling** 读法：MEGA 的 reviewer-facing 首问，不再是“哪条 support family 看起来更强”，而是 **随着 base-drift 幅度增加，机械臂是否真的把末端误差稳定地从移动基座漂移里解耦出来**。因此后续四行最小实验包必须同时输出：
+- **解耦主曲线**：`base-drift amplitude → end-effector error`
+- **三类失败桶**：`arm agility deficit / local-state-quality deficit / arm-induced back-reaction`
+- **两层 support subtraction**：`V_row`（verification shell）与 `I_row`（intervention hygiene / copilot support）
+
+也就是说，本轮后 D07 的主表不只是判断谁更会纠偏，而是判断：**末端误差是否在更大漂移下仍保持 bounded，且这个 bounded gain 不能被验证壳更全、接管更平滑、或 copilot 更会修动作这些更弱解释吃掉。**
+
 ---
 
 ## 1. 四行最小实验包
@@ -89,6 +96,22 @@
 - `R_rew=(AER, RCR, LRS, w^+_rew, s^dagger_rew)`
 - 最高存活扰动源：`s_v / s_b / s_c / s_p`
 
+### 4.3 MEGA 解耦主曲线与失败桶（2026-05-30 新增）
+- **解耦主曲线**：`drift_amp → BDEE`，至少在 `D0 / D1 / D2 / D3` 四档漂移幅度上输出均值、方差与 slope。
+- **曲线核心判读**：若 base drift 增大时 `BDEE` 只缓慢增长、且在 contact / post-contact 阶段仍保持 bounded，才说明“机械臂高频补偿无人机低频漂移”的核心物理主张初步站住。
+- **失败桶分解**：
+  - `F_arm`：**arm agility deficit**（机械臂响应频率/幅度不够，无法及时抵消 base drift）
+  - `F_state`：**local-state-quality deficit**（局部观测/接触/目标状态不稳定，导致 arm 有能力但补偿方向不准）
+  - `F_react`：**arm-induced back-reaction**（机械臂快速运动反过来激化机体扰动，形成耦合放大）
+- **最小新增日志字段**：
+  - `mega.drift.amp`
+  - `mega.drift.bdee_mean`
+  - `mega.drift.bdee_std`
+  - `mega.failure.arm_agility`
+  - `mega.failure.local_state`
+  - `mega.failure.back_reaction`
+- **解释纪律**：若某行 guidance tuple 看起来变强，但解耦曲线斜率没改善，或失败主要从 `F_arm/F_state/F_react` 某一桶泄露，则该行最多保留为 support-side 改善，不得直接升格为 **deployable hybrid**。
+
 ---
 
 ## 5. stop 规则
@@ -126,11 +149,14 @@
 
 ---
 
-## 7. 首轮结束后唯一要填的四项
+## 7. 首轮结束后唯一要填的七项
 - **赢家行**：B1 / B2 / B3 / B4
 - **最早站住窗口**：W1 / W2 / W3
 - **最高存活扰动源**：`s_v / s_b / s_c / s_p`
 - **冻结出的标题口径**：acceleration / retention bridge / safety-shell support / reward-shaped recovery / deployable hybrid
+- **解耦曲线斜率**：`slope(drift_amp → BDEE)`
+- **主失败桶**：`F_arm / F_state / F_react`
+- **是否仍被 support subtraction 吃掉**：verification shell / intervention hygiene / copilot / reward / decomposition / none
 
 ---
 
@@ -155,9 +181,11 @@
 | `g^+` | 最早稳定正增益 guidance window | `W1/W2/W3` |
 | `g^†` | 最晚仍存活 guidance window | `W1/W2/W3` |
 | `s^†` | 最高存活扰动源 | `s_v/s_b/s_c/s_p` |
+| `DriftSlope` | `drift_amp → BDEE` 解耦曲线斜率 | 至少四档幅度拟合 |
+| `FailureBucketDominant` | 主失败桶 | `F_arm/F_state/F_react/none` |
 | `SupportFamilyExplanation` | 当前最弱仍成立的 support-family 解释 | acceleration / retention / projection / reward / copilot / decomposition |
 | `GuidanceSubtractedCeiling` | 扣除 guidance 改善后该行还能宣称到哪一档 | acceleration / retention bridge / safety-shell support / reward-shaped recovery / deployable hybrid |
-| `PromotionBlocker` | 当前不能升格的直接原因 | late-window 缺失 / 未到 `s_p` / family-control 未击败 / `R_rew` 主导 |
+| `PromotionBlocker` | 当前不能升格的直接原因 | late-window 缺失 / 未到 `s_p` / family-control 未击败 / `R_rew` 主导 / drift-decoupling 不成立 |
 
 ### 9.2 推荐日志 key（训练侧直接导出）
 - `mega.bdee.mean_d1`
@@ -168,6 +196,13 @@
 - `mega.guidance.first_positive_window`
 - `mega.guidance.last_surviving_window`
 - `mega.guidance.highest_disturbance_source`
+- `mega.drift.amp`
+- `mega.drift.bdee_mean`
+- `mega.drift.bdee_std`
+- `mega.drift.slope`
+- `mega.failure.arm_agility`
+- `mega.failure.local_state`
+- `mega.failure.back_reaction`
 - `mega.route.support_family`
 - `mega.route.guidance_subtracted_ceiling`
 - `mega.route.promotion_blocker`
@@ -206,8 +241,7 @@
 - **RL-Based Sim-Real Co-Training family**：默认先解释更稳的 sim-real anchoring / curriculum continuity；若 gain 主要停在早期 `ΔBDEE/ΔCET`，只能算 **protocol support**。
 - **MobileManiBench / verification family**：默认先解释 task coverage、failure surfacing、slice completeness；若只是让问题“更容易被看见”，不能占据 MEGA guidance-bearing 叙事。
 
-<<<<<<< HEAD
-### 9.10.3 本轮 D07 冻结结论（2026-05-27）
+### 9.10.3 本轮 D07 冻结结论（2026-05-28）
 - 本轮高价值扫描命中 **3 个本地锚点**：`MobileManiBench (2602.05233)`、`Hand-in-the-Loop (2605.15157)`、`DiSCo (2603.22787)`。
 - **新增正式入库 0 篇**：本地覆盖已足够，不触发 arXiv / Tavily 外扩。
 - PAPER 侧新增重点：把 `verification-support` 与 `intervention-hygiene / copilot-support` 两条最容易误升格的 support family 明确压进 D07 的 guidance-first promotion 边界，新增 `V_row` 与 `I_row` 两层减法审计。
@@ -215,14 +249,28 @@
 
 它们的作用不是增加报表好看程度，而是强制回答：**这行结果到底是真的推进了 moving-base guidance，还是仍可被 verification shell / intervention hygiene / copilot support / decomposition / retention / projection 这些更弱解释吃掉。**
 
-### 9.10.4 intervention-hygiene / verification-shell 日志字段（2026-05-27 新增）
+### 9.10.5 contact-state / critic-guided optimization support 字段（2026-06-01 新增）
+在现有 guidance-first、verification-first、intervention-hygiene 审计之外，下一轮 D07 bundle 还必须补两条新的 support-family 日志，用来扣除“接触状态更真”和“critic-guided 训练更高效”带来的伪增益：
+- `ContactStateSupportFamily`
+- `CriticGuidanceSupportFamily`
+- `ContactStateSubtractedCeiling`
+- `CriticGuidanceSubtractedCeiling`
 
-#### intervention-hygiene tuple
-- `mega.intervention.takeover_jitter`
-- `mega.intervention.correction_quality`
-- `mega.intervention.smoothness`
-- `mega.intervention.support_family`
-- `mega.intervention.subtracted_ceiling`
+推荐训练侧直接导出：
+- `mega.contact.support_family`
+- `mega.contact.state_quality_gain`
+- `mega.contact.post_contact_jitter_reduction`
+- `mega.contact.subtracted_ceiling`
+- `mega.critic.support_family`
+- `mega.critic.sample_efficiency_gain`
+- `mega.critic.recovery_quality_gain`
+- `mega.critic.subtracted_ceiling`
+
+默认解释纪律：
+- **Physics-Grounded Contact Representation / CoP family**：默认先解释 `F_state` 的改善、W2/W3 接触状态更真、post-contact jitter 更低；若没有同步压平 `drift_amp → BDEE` 斜率并稳住 `ΔPGFR`，只能算 **contact-state support**。
+- **CGPO / critic-guided diffusion RL family**：默认先解释训练更快、探索更稳、恢复动作更接近高 Q 路线；若没有同步把 guidance gain 推到 `g^†=W3` 与 payload-bearing `s_p`，只能算 **critic-guided optimization support**。
+
+它们的作用不是增加表项，而是强制回答：**这行结果到底是真的证明“机械臂在高频补偿无人机低频漂移”，还是仍可被“接触状态更真 / critic guidance 更会训策略”这些更弱解释吃掉。**
 
 #### verification-shell tuple
 - `mega.verify.task_coverage_diversity`
@@ -237,17 +285,7 @@
 - **DiSCo**：默认先解释 sequence-level bounded assistance 与 intent-preserving correction；若收益主要停在 `ΔBDEE/ΔCET` 或用户可控性上，不能升级成 late-window MEGA evidence。
 - **MobileManiBench**：默认先解释任务覆盖、失败暴露、验证壳更完整；若只是更容易发现问题，而不是 guidance residual 变强，不能占据控制主叙事。
 
-=======
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
-### 9.10.3 本轮 D07 冻结结论（2026-05-26）
-- 本轮高价值扫描命中 **3 个本地锚点**：`Isaac Lab (2511.04831)`、`RL-Based Sim-Real Co-Training (2602.12628)`、`MobileManiBench (2602.05233)`。
-- **新增正式入库 0 篇**：本地覆盖已足够，不触发 arXiv / Tavily 外扩。
-- PAPER 侧新增重点：把 `verification-support / infrastructure-hygiene / sim-real protocol support` 明确并入 D07 的 guidance-first promotion 边界。
-- 下轮优先动作：把 `VerificationSupportFamily / TaskCoverageDiversity / FailureModeCoverage / DisturbanceSliceCompleteness / VerificationSubtractedCeiling` 真正接进训练日志与首张 submission-ready 主表。
-
-它们的作用不是增加报表好看程度，而是强制回答：**这行结果到底是真的推进了 moving-base guidance，还是仍可被 decomposition / retention / projection / copilot / reward 这些更弱解释吃掉。**
-
-### 9.10.2 guidance-family 默认最弱解释顺序
+### 9.10.5 guidance-family 默认最弱解释顺序
 默认 reviewer-facing 读取顺序固定为：
 1. 先看 `ΔBDEE / ΔCET`（是不是只有早期 guidance acquisition）
 2. 再看 `ΔPCST`（是不是只在接触后局部稳一点）
@@ -257,22 +295,16 @@
 
 若某行在第 1-3 步就站不住，则后面 family 解释再漂亮，也不得升格为 `deployable hybrid`。
 
-### 9.10.3 本地锚点的默认 ceiling
-- **Find-the-Fruit / decomposition family**：默认只能先解释更强任务准备、遮挡鲁棒性、或间接 `ΔBDEE / ΔCET` 改善；若没有把 gain 推到 `ΔPGFR + W3 + s_p`，只能停在 **decomposition support**。
-- **Q2RL / retention family**：默认先解释 `g^†` 延长、W2 carryover 更稳；若 `ΔPGFR` 不改善，只能停在 **retention bridge**。
-- **Reactive projection / analytic safety-shell family**：默认先解释 `ΔPCST`；若主要收益只是 safer projection / unsafe-action rejection，而没有把 gain 带到 payload-bearing guidance survival，只能停在 **safety-shell support**。
-- **copilot / intervention-hygiene family**：默认只允许先解释 `ΔBDEE` 或早期 `ΔCET`；若没有继续推进 `W3` 与 `ΔPGFR`，只能停在 **intervention-hygiene support**，不得借 smoother correction 抢标题位。
-
-### 9.10.4 当前唯一诚实的标题冻结纪律
+### 9.10.6 当前唯一诚实的标题冻结纪律
 只有同时满足以下四项，才允许从 support-family 升到 `deployable hybrid`：
 - `ΔPCST` 站住
 - `ΔPGFR` 站住
 - `g^† = W3`
 - `s^† = s_p`
 
-否则，一律冻结到最弱仍成立的那一档：`acceleration / retention bridge / safety-shell support / reward-shaped recovery / decomposition support`。
+否则，一律冻结到最弱仍成立的那一档：`acceleration / retention bridge / safety-shell support / reward-shaped recovery / decomposition support / intervention-hygiene support / verification-support`。
 
-## 9.11 MobileManiBench 对齐的 verification-first schema（2026-05-26 新增）
+## 9.11 MobileManiBench 对齐的 verification-first schema（2026-05-28 新增）
 
 ### 9.11.1 新增 verification tuple
 在 guidance-first 主表之外，下一轮 D07 训练/验证日志必须再补一组 verification tuple：
@@ -307,7 +339,6 @@
 - `mega.route.verification_support_flag`
 - `mega.route.verification_subtracted_ceiling`
 
-<<<<<<< HEAD
 ### 9.11.5 guidance tuple + verification tuple 联合日志模板（2026-05-26 补充）
 
 后续四行 bundle 的训练日志和 submission-ready 主表都必须同时输出两组字段：
@@ -349,5 +380,3 @@
 - 本轮高价值扫描命中本地锚点：**MobileManiBench / Find the Fruit / Q2RL / Reactive Dexterous Grasping**
 - 正式新增入库：**0 篇**
 - D07 下一步不该扩 paper list，而应优先把 `guidance tuple + verification tuple` 真正映射进首轮 bundle 的训练脚本与主表导出逻辑
-=======
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a

@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["跨载体泛化", "全身协调运动", "动作空间统一", "强化学习"]
-summary: "提出embodiment-aware generalist-specialist distillation框架，将跨机体共享能力与平台专长分离建模再蒸馏统一，实现人形全身控制跨平台迁移"
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation", "02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation"]
-updated: "2026-04-17"
+id: "source.2602.02960_EmbodimentAware_Generalist_Specialist_Distillation"
+pageType: "source"
+tags: ["humanoid whole-body control", "cross-embodiment", "policy distillation", "generalist policy", "specialist policy", "跨载体泛化"]
+summary: "问题背景: 人形全身控制往往强依赖单一机体建模与专用策略，换平台后动作接口、动力学和接触模式一变，已有控制器就很难直接复用。"
+origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation.md", "02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation.md"]
+updated: "2026-06-02"
 ---
 
 # Embodiment-Aware Generalist Specialist Distillation (2602.02960)
 
-**核心价值**: 提出embodiment-aware generalist-specialist distillation框架，将跨机体共享能力与平台专长分离建模再蒸馏统一，实现人形全身控制跨平台迁移
+**核心价值**: 问题背景: 人形全身控制往往强依赖单一机体建模与专用策略，换平台后动作接口、动力学和接触模式一变，已有控制器就很难直接复用。
 
 **原始资料**:
-- [[../../02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation]]
-- [[02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation]]
+- [[../../02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation.md]]
+- [[02_阅读笔记/D04_跨载体泛化/2026-05-12_2602.02960_EmbodimentAware_Generalist_Specialist_Distillation.md]]

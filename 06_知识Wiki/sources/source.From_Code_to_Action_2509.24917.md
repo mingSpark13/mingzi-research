@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["VLA架构", "模仿学习", "扩散策略", "长程任务规划"]
-summary: "层次化VLM代码生成做高层规划+Diffusion Policy做低层执行，Memory机制维护子程序上下文处理非马尔可夫任务，是Paper A三层解耦的完整技术参考"
-origins: ["../../02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917", "02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917"]
-updated: "2026-04-17"
+id: "source.From_Code_to_Action_2509.24917"
+pageType: "source"
+tags: ["待补充", "D02", "通用操作"]
+summary: "核心问题: 模仿学习在复杂长时域任务上泛化差、数据稀缺"
+origins: ["../../02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917.md", "02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917.md"]
+updated: "2026-06-02"
 ---
 
 # From Code to Action: Hierarchical VLM + Diffusion (2509.24917)
 
-**核心价值**: 层次化VLM代码生成做高层规划+Diffusion Policy做低层执行，Memory机制维护子程序上下文处理非马尔可夫任务，是Paper A三层解耦的完整技术参考
+**核心价值**: 核心问题: 模仿学习在复杂长时域任务上泛化差、数据稀缺
 
 **原始资料**:
-- [[../../02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917]]
-- [[02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917]]
+- [[../../02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917.md]]
+- [[02_阅读笔记/D02_VLA/From_Code_to_Action_Hierarchical_VLM_2509.24917.md]]

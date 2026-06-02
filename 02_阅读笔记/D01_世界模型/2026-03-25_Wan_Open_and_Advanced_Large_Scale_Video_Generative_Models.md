@@ -6,7 +6,7 @@ date: 2025-03-26
 institution: Alibaba / Wan Team
 conf: arXiv
 keywords: Wan, Video Foundation Model, T2V, I2V, Video Diffusion
-tags: ["D01"]
+tags: ["视频生成", "多模态统一架构", "实时推理"]
 summary: "Wan 是开放大规模视频生成基础模型，覆盖 T2V/I2V/编辑多任务，并已成为 InSpatio-World 等系统工作的生成骨干层。"
 domain: 世界模型
 pdf_path: ../../01_论文库/世界模型/2025_Wan_Open_and_Advanced_Large_Scale_Video_Generative_Models.pdf

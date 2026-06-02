@@ -1,15 +1,17 @@
 ---
 type: "source"
-tags: ["空中操作", "目标检测与识别", "模型预测控制", "Sim2Real"]
-summary: "空中机械臂 + RGB-D 感知 + MPPI 飞控 + 2-DoF 末端补偿，实现垂直农业非接触式授粉的厘米级精准定位"
-origins: ["../../02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator", "02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator"]
-updated: "2026-04-17"
+id: "source.2605.06759_Flower_Targeting_Aerial_Manipulator"
+pageType: "source"
+tags: ["aerial manipulator", "flower targeting", "vertical farming", "RGB-D perception", "MPPI", "空中操作"]
+summary: "这篇空中授粉平台把 RGB-D 感知、MPPI 飞控和 2-DoF 末端补偿串成完整空中精细作业链，证明分层接近+末端微调对厘米级对位有效。"
+origins: ["../../02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator.md", "02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator.md"]
+updated: "2026-06-02"
 ---
 
 # An Aerial Manipulator for Perception-Driven Flower Targeting (2605.06759)
 
-**核心价值**: 空中机械臂 + RGB-D 感知 + MPPI 飞控 + 2-DoF 末端补偿，实现垂直农业非接触式授粉的厘米级精准定位
+**核心价值**: 这篇空中授粉平台把 RGB-D 感知、MPPI 飞控和 2-DoF 末端补偿串成完整空中精细作业链，证明分层接近+末端微调对厘米级对位有效。
 
 **原始资料**:
-- [[../../02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator]]
-- [[02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator]]
+- [[../../02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator.md]]
+- [[02_阅读笔记/D03_空中操作/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator.md]]

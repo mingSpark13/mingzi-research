@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["VLA架构", "长程任务规划", "模仿学习"]
-summary: "ManualVLA 用 Mixture-of-Transformers 架构统一规划专家与动作专家，通过 ManualCoT 显隐结合推理，在长程操作任务上超越 π0 和 CoT-VLA。"
-origins: ["../02_阅读笔记/D02_VLA/2026-03-17_ManualVLA"]
-updated: "2026-05-28"
+id: "source.2026-03-17_ManualVLA"
+pageType: "source"
+tags: []
+summary: "问题背景: 现有VLA模型在需要明确目标终态的长程任务（乐高搭建、物体重排）中，难以协调高层规划与精细操控。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-03-17_ManualVLA.md"]
+updated: "2026-06-02"
 ---
 
 # ManualVLA: Chain-of-Thought Manual Generation and Robotic Manipulation
 
-**核心价值**: ManualVLA 用 Mixture-of-Transformers 架构统一规划专家与动作专家，通过 ManualCoT 显隐结合推理，在长程操作任务上超越 π0 和 CoT-VLA。
+**核心价值**: 问题背景: 现有VLA模型在需要明确目标终态的长程任务（乐高搭建、物体重排）中，难以协调高层规划与精细操控。
 
 **原始资料**:
-- [[../02_阅读笔记/D02_VLA/2026-03-17_ManualVLA]]
+- [[../../02_阅读笔记/D02_VLA/2026-03-17_ManualVLA.md]]

@@ -1,14 +1,16 @@
 ---
 type: "source"
-tags: ["空中VLN", "零样本泛化", "长程任务规划", "多模态统一架构", "语义导航"]
-summary: "FineCog-Nav把语言/感知/记忆/想象/推理/决策拆成细粒度认知模块，配套AerialVLN-Fine句级对齐基准，在长时程规划和未见环境泛化上稳定优于零样本基线，CVPR 2026 Findings。"
-origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-20_FineCog-Nav"]
-updated: "2026-05-10"
+id: "source.2026-04-20_FineCog-Nav"
+pageType: "source"
+tags: ["Aerial VLN", "UAV navigation", "zero-shot navigation", "multimodal reasoning", "cognitive modules", "空中VLN"]
+summary: "空中 VLN 在长时程、多步骤语言指令下容易被单体大模型的提示脆弱性和模块协作松散拖垮，零样本泛化尤其不稳。"
+origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-20_FineCog-Nav.md"]
+updated: "2026-06-02"
 ---
 
 # source.2026-04-20_FineCog-Nav
 
-**核心价值**: FineCog-Nav把语言/感知/记忆/想象/推理/决策拆成细粒度认知模块，配套AerialVLN-Fine句级对齐基准，在长时程规划和未见环境泛化上稳定优于零样本基线，CVPR 2026 Findings。
+**核心价值**: 空中 VLN 在长时程、多步骤语言指令下容易被单体大模型的提示脆弱性和模块协作松散拖垮，零样本泛化尤其不稳。
 
 **原始资料**:
-- [[../../02_阅读笔记/D06_空中VLN/2026-04-20_FineCog-Nav]]
+- [[../../02_阅读笔记/D06_空中VLN/2026-04-20_FineCog-Nav.md]]
