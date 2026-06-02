@@ -4,7 +4,7 @@ id: "source.SOMA_2603.24060"
 pageType: "source"
 tags: ["待补充", "D02", "通用操作"]
 summary: "通过对比式双记忆检索、LLM 调度器与 MCP 干预，在不微调 VLA 参数的前提下显著提升 OOD 长时序任务鲁棒性。"
-origins: ["../../02_阅读笔记/D02_VLA/2603.24060_SOMA.md", "02_阅读笔记/D02_VLA/2603.24060_SOMA.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2603.24060_SOMA.md", "../../02_阅读笔记/D02_VLA/2603.24060_SOMA.md"]
 updated: "2026-06-02"
 ---
 

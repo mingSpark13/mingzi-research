@@ -4,7 +4,7 @@ id: "source.2026-04-27_2604.22591_RedVLA"
 pageType: "source"
 tags: ["VLA", "safety", "red teaming", "physical risk", "robustness", "安全"]
 summary: "问题背景: VLA 真部署前最大的坑不是榜单分数，而是会不会在真实物理世界里做出不可逆危险动作；目前几乎没有系统化的“物理安全攻防测试”框架。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-27_2604.22591_RedVLA.md", "02_阅读笔记/D02_VLA/2026-04-27_2604.22591_RedVLA.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-27_2604.22591_RedVLA.md", "../../02_阅读笔记/D02_VLA/2026-04-27_2604.22591_RedVLA.md"]
 updated: "2026-06-02"
 ---
 

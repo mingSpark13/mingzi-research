@@ -4,7 +4,7 @@ id: "source.SimWorld_2512.01078"
 pageType: "source"
 tags: ["仿真平台", "世界模型", "VLA", "具身智能", "LLM", "隐空间世界模型"]
 summary: "SimWorld 用 UE 联合模拟物理世界与社会行为，为具身智能提供开放式高保真仿真与程序化数据生成底座。"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-04-18_SimWorld.md", "02_阅读笔记/D01_世界模型/2026-04-18_SimWorld.md"]
+origins: ["../../02_阅读笔记/D01_世界模型/2026-04-18_SimWorld.md", "../../02_阅读笔记/D01_世界模型/2026-04-18_SimWorld.md"]
 updated: "2026-06-02"
 ---
 

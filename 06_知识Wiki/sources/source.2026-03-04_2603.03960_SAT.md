@@ -4,7 +4,7 @@ id: "source.2026-03-04_2603.03960_SAT"
 pageType: "source"
 tags: ["3D dexterous manipulation", "cross-embodiment transfer", "flow matching", "point cloud", "transformer", "强化学习"]
 summary: "问题背景: 异构灵巧手之间做模仿学习时，2D观测和时间序列式动作表示很难同时保留3D空间关系与跨形态可迁移性。"
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-03-04_2603.03960_SAT.md", "02_阅读笔记/D04_跨载体泛化/2026-03-04_2603.03960_SAT.md"]
+origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-03-04_2603.03960_SAT.md", "../../02_阅读笔记/D04_跨载体泛化/2026-03-04_2603.03960_SAT.md"]
 updated: "2026-06-02"
 ---
 

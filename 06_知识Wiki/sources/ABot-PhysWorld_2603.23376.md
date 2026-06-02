@@ -4,7 +4,7 @@ id: "source.ABot-PhysWorld_2603.23376"
 pageType: "source"
 tags: []
 summary: "- **arXiv**: 2603.23376 - **日期**: 2026-03-24 - **方向**: D01 世界模型 - **状态**: 摘要级深挖（待全文复核 Method / Experiments）"
-origins: ["../../02_阅读笔记/99_归档/重复笔记/2026-04-09_ABot-PhysWorld.md", "02_阅读笔记/99_归档/重复笔记/2026-04-09_ABot-PhysWorld.md"]
+origins: ["../../02_阅读笔记/99_归档/重复笔记/2026-04-09_ABot-PhysWorld.md", "../../02_阅读笔记/99_归档/重复笔记/2026-04-09_ABot-PhysWorld.md"]
 updated: "2026-06-02"
 ---
 

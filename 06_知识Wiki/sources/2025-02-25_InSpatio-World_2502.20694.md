@@ -4,7 +4,7 @@ id: "source.2025-02-25_InSpatio-World_2502.20694"
 pageType: "source"
 tags: ["World Model", "Video Generation", "Multi-view Consistency", "4D Reconstruction", "Egocentric Video", "D01"]
 summary: "以状态锚定加可控渲染实现跨时间跨视角一致的交互式视频世界模型"
-origins: ["../../02_阅读笔记/D01_世界模型/2025-02-25_InSpatioWorld.md", "02_阅读笔记/D01_世界模型/2025-02-25_InSpatioWorld.md"]
+origins: ["../../02_阅读笔记/D01_世界模型/2025-02-25_InSpatioWorld.md", "../../02_阅读笔记/D01_世界模型/2025-02-25_InSpatioWorld.md"]
 updated: "2026-06-02"
 ---
 

@@ -4,7 +4,7 @@ id: "source.2602.10116_SAGE"
 pageType: "source"
 tags: []
 summary: ""
-origins: ["../../02_阅读笔记/数据合成/2602.10116_SAGE.md", "02_阅读笔记/数据合成/2602.10116_SAGE.md"]
+origins: ["../../02_阅读笔记/数据合成/2602.10116_SAGE.md", "../../02_阅读笔记/数据合成/2602.10116_SAGE.md"]
 updated: "2026-04-17"
 ---
 

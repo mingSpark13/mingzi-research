@@ -4,7 +4,7 @@ id: "source.2603.24584_TAG"
 pageType: "source"
 tags: ["待补充", "D02", "通用操作"]
 summary: "TAG 通过比较原始观测与目标擦除观测的策略差异生成 steering signal，增强 VLA 在杂乱场景中的物体级 grounding 稳定性。"
-origins: ["../../02_阅读笔记/D02_VLA/2603.24584_TAG.md", "02_阅读笔记/D02_VLA/2603.24584_TAG.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2603.24584_TAG.md", "../../02_阅读笔记/D02_VLA/2603.24584_TAG.md"]
 updated: "2026-06-02"
 ---
 

@@ -4,7 +4,7 @@ id: "source.WheelArm-Sim_2601.21129"
 pageType: "source"
 tags: []
 summary: "- **arXiv**: 2601.21129 - **方向**: D07 Isaac 强化学习机械臂控制 - **阅读深度**: 摘要级深挖（基于 arXiv HTML 可访问正文） - **时间**: 2026-04-13 R665"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-13_WheelArm-Sim.md", "02_阅读笔记/D02_VLA/2026-04-13_WheelArm-Sim.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-13_WheelArm-Sim.md", "../../02_阅读笔记/D02_VLA/2026-04-13_WheelArm-Sim.md"]
 updated: "2026-06-02"
 ---
 

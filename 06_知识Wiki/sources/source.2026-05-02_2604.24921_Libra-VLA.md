@@ -4,7 +4,7 @@ id: "source.2026-05-02_2604.24921_Libra-VLA"
 pageType: "source"
 tags: ["Libra-VLA", "dual-system", "coarse-to-fine", "LIBERO", "VLA", "VLA架构"]
 summary: "问题背景: 传统 VLA 常把语义规划、动作生成和细粒度控制“一锅炖”进同一个高频模型里，导致长程任务、精细操作和实时部署三者之间难以兼顾，训练与推理都容易失衡。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-02_2604.24921_Libra-VLA.md", "02_阅读笔记/D02_VLA/2026-05-02_2604.24921_Libra-VLA.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-02_2604.24921_Libra-VLA.md", "../../02_阅读笔记/D02_VLA/2026-05-02_2604.24921_Libra-VLA.md"]
 updated: "2026-06-02"
 ---
 

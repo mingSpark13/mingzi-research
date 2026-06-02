@@ -4,7 +4,7 @@ id: "source.TongSIM_2512.20206"
 pageType: "source"
 tags: ["embodied AI", "simulation platform", "multi-scale", "robotics", "仿真平台", "具身智能"]
 summary: "问题背景: 现有仿真平台普遍针对单一任务设计、泛化性不足，多模态大模型（MLLM）时代需要一个可泛化的通用仿真环境支撑从底层导航到高层复合活动的多尺度具身任务。"
-origins: ["../../02_阅读笔记/D10_仿真与框架/2026-04-18_TongSIM.md", "02_阅读笔记/D10_仿真与框架/2026-04-18_TongSIM.md"]
+origins: ["../../02_阅读笔记/D10_仿真与框架/2026-04-18_TongSIM.md", "../../02_阅读笔记/D10_仿真与框架/2026-04-18_TongSIM.md"]
 updated: "2026-06-02"
 ---
 

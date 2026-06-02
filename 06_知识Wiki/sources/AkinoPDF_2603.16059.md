@@ -4,7 +4,7 @@ id: "source.AkinoPDF_2603.16059"
 pageType: "source"
 tags: []
 summary: ""
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-05_AkinoPDF.md", "02_阅读笔记/D02_VLA/2026-04-05_AkinoPDF.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-05_AkinoPDF.md", "../../02_阅读笔记/D02_VLA/2026-04-05_AkinoPDF.md"]
 updated: "2026-06-02"
 ---
 

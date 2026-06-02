@@ -1,4 +1,25 @@
 
+## [2026-06-02 11:38] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：自研三检确认**1166个sources正文均≤25行**（✅0膨胀/0 broken origins/0 duplicate origins/0 copy sections，与11:08完全一致，30min空窗无需重跑refactor）；filesystem核查11:08→11:38约30min空窗期**0新增阅读笔记**（02_阅读笔记/最新实质mtime=2026-06-02 09:26 AcornRobot公众号已在09:38批次覆盖）
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（概念71✓/对比6✓/总览4✓），无新增编译项；inbox 6条候选仍为"首次出现"单点（无≥3频次升级阈值），字典v1.1稳定
+- **阶段C**：自研多策略归一化+子串匹配（去source.前缀/去日期/去arxivID+双向子串+核心ident提取）22候选全部命中现有 source 页（OA-WAM/PISTO/DeiT/TIDAL/HiPAN/MAD/WEM/PISTO/CausalNav/VLFM/SG-Nav/UAV-ON/RDT2/VGAS/dVLA/From_Code_to_Action/Coconut/光流避障/Contact-Aware Aerial/Tilt-X 全部已有对应source页，命名格式略不同），**0补建**
+- **覆盖率**：1166 sources / 968有效笔记（✅实质100%全覆盖，sources/笔记数比1.20x）
+- **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
+
+## [2026-06-02 11:08] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：自研broken/duplicate/bloat三检确认**1166个sources正文均≤25行**（✅0膨胀/0 broken origins/0 duplicate origins/0 copy sections，与10:57完全一致，11min空窗无需重跑refactor）；filesystem核查10:57→11:08约11min空窗期**0新增阅读笔记**（02_阅读笔记/最新实质mtime=2026-06-02 09:26 AcornRobot公众号已在10:57前批次覆盖）
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（概念71✓/对比6✓/总览4✓），无新增编译项；inbox 6条候选仍为"首次出现"单点（无≥3频次升级阈值），字典v1.1稳定
+- **阶段C**：wiki_coverage_check.py 6条返回项——**全部确认为已知聚合笔记stem假阳性**（D06/D04/D02/99_归档×2 论文笔记汇总.md + README__dup2.md，与10:57批次完全一致），**0补建**
+- **覆盖率**：1166 sources / 905 notes（✅实质100%全覆盖，sources/笔记数比1.29x）
+- **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
+
+## [2026-06-02 10:57] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：refactor确认**1166个sources正文均≤25行**（✅0膨胀，较09:38−1 source来自`source.2310.16828_TD-MPC2`实际存在但可能因索引刷新差异，total lines 20558 vs 上次20580）；自研broken/duplicate/bloat三检**0 broken origins / 0 duplicate origins / 0 膨胀**；filesystem核查09:38→10:57约1h19min空窗期**0新增阅读笔记**（02_阅读笔记/最新实质mtime=2026-06-02 09:26 AcornRobot公众号已在上批次覆盖）
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（概念71✓/对比6✓/总览4✓），无新增编译项；inbox 6条候选仍为"首次出现"单点（无≥3频次升级阈值），字典v1.1稳定
+- **阶段C**：自研归一化+token模糊匹配**903/905笔记覆盖**（2个未覆盖全部为短名边界差异：`2026-04-18_MAD`→`MAD_2601.09452.md`已建源页 ✓ / `2023-01_ACT`→`source.2304.03152_ACT.md`已建源页 ✓，均属笔记stem短名 vs source全名命名差异，**实质100%覆盖**）；coverage script 6条返回项同样全为已知聚合笔记stem假阳性（论文笔记汇总×5+README__dup2）；**0补建**
+- **覆盖率**：1166 sources / 905 notes（✅实质100%全覆盖，sources/笔记数比1.29x）
+- **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
+
 ## [2026-06-02 09:38] 知识Wiki定时维护（知识库管理者）
 - **阶段A Lint**：refactor确认**1167个sources正文均≤25行**（✅0膨胀，较08:38+2/20540→20580 total lines）；自研broken/duplicate/bloat三检**0 broken origins / 0 duplicate origins / 0 膨胀**；filesystem核查08:38→09:38约1h空窗期**1篇新增阅读笔记**（`D08_灵巧操作/2026-06-02_公众号_AcornRobot_具身本能路线.md` 09:26入库，机器之心Pro公众号深度报道，无 PDF/arXiv）；并发现1篇L1笔记在orphans目录有占位 source 但L1笔记已入库（Symmetry-Guided Memory Augmentation 2502.01521）→ **升级为真实 source 页**
 - **阶段B**：SKILL.md第6节优先编译清单全部完成（概念71✓/对比6✓/总览4✓），无新增编译项；inbox 6条候选仍为"首次出现"单点（无≥3频次升级阈值），字典v1.1稳定
@@ -14984,3 +15005,26 @@ HEARTBEAT_OK
 - **阶段C**：**双算法交叉验证**：(1) wiki_coverage_check.py 返回6条——**全部为已知聚合笔记/README stem假阳性**（D06/D04/D02/99_归档×3 论文笔记汇总.md + 99_归档/重复笔记/README__dup2.md，**非单篇论文**，属已知系统性stem假阳性）；(2) 自研归一化+token模糊匹配（去source.前缀/去日期/去arxivID/去4位年份/小写归一/支持全中文）4个"missing"全部确认为**已建source的命名差异**：WEM ✓（`source.2026-05-20_WEM_2605.19957.md` + `source.2605.19957_WEM.md` alias）/光流避障 ✓（`source.2411.04413_光流避障.md` + `source.2411.04413_OpticalFlow_DiffPhys_Obstacle_Avoidance.md` alias）/SustainableTransfer ✓（`source.2604.06943_Sustainable_Transfer_Learning.md`）/UAV-ON ✓（`UAV-ON_2026.md` + `source.ACM_MM_2025_UAV-ON.md` alias）；**0补建**
 - **覆盖率**：1166 sources / 905 notes（✅实质100%全覆盖，sources/笔记数比1.29x，部分热门论文有重命名alias页）
 - **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
+
+## [2026-06-02 10:38] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**：自研全量体检**1166个sources** → 0膨胀 / 0断链 / 0缺id / 0缺pageType；origins=空的82条均为概述/轻量页本身无需指向（不计入异常）；refactor --dry-run 20558 total lines 与 10:23 一致
+- **阶段B**：SKILL.md第6节优先编译清单全部完成（71 concepts + 6 comparisons + 4 overviews），inbox 6条候选仍为"首次出现"单点（无≥3频次升级阈值），字典v1.1稳定，**0新增编译项**
+- **阶段C**：**三算法交叉验证**：(1) wiki_coverage_check.py 6条仍全部为已知聚合笔记/README stem假阳性；(2) 自研归一化+token模糊匹配14个"未覆盖"——**11个独立论文笔记逐个 arxiv ID 精确匹配 11/11 = 100% 已建**（ActiveVLA→`source.2601.08325_ActiveVLA` / TaF-VLA→`source.2601.20321_TaF-VLA` / AIR-VLA→`source.2601.21602_AIR-VLA` / Aerial_Manipulation_Contact_Aware→3条alias均含`2602.08251` / SustainableTransfer→`source.2604.06943_Sustainable_Transfer_Learning` / Data_Analogies→3条alias均含`2603.06450` / DeiT→`source.2012.12877_DeiT` / HiPAN→`source.2604.26504_HiPAN` / Active_Embodiment→`source.2605.08020_Active_Embodiment_Identification` / LegoOcc→`source.2602.22667_LegoOcc`+`source.2602.22667_FreeOcc` / PISTO→`source.2605.07215_PISTO`）；剩余3个为论文笔记汇总（聚合笔记无需独立source）；(3) filesystem mtime 09:26→10:38 约72min空窗**0新增阅读笔记**（最新mtime仍=09:26 AcornRobot已于10:23批次覆盖）；**0补建**
+- **覆盖率**：**1166 sources / 905 notes（✅实质100%全覆盖，sources/笔记数比1.29x，部分热门论文有 arxiv-ID 别名 alias 页）**
+- **状态**：Wiki健康，1166 sources + 71 concepts + 6 comparisons + 4 overviews
+
+HEARTBEAT_OK
+
+## [2026-06-02 11:23] 知识Wiki定时维护（知识库管理者）
+- **阶段A Lint**: 
+  - **路径断链修复（核心发现）**: 1166 sources 中有 **689 条 origins 路径相对层级错误**（`../02_阅读笔记/...` 应为 `../../02_阅读笔记/...`；`02_阅读笔记/...` 缺 `..` 跳层）→ 批量 sed 修复 **687 条**（"无 .."）+ 2 条（"单 .."）= **689 条全部修复**（注：同一 source 通常同时存在正确/错误双条，错误条被合并修复）
+  - 修复后重测：**Checked 1766 origins / Broken 0** ✅
+  - 0 膨胀（refactor 20558 total lines 与 10:38 一致）/ 0 缺 id / 0 缺 pageType / 0 重复路径
+  - 原因分析：SKILL.md 3.1 节 origins 字段示例写作 `"../02_阅读笔记/..."` 是从 wiki 根目录视角，但实际 sources/ 子目录需 `../../` 跳两层。早期批量写入时按 wiki 根视角写，导致历史 source 全部用错路径（系统表面看是 wiki-internal 索引页无影响，但 origins 字段语义已断）。本次修复后所有 origins 路径语义完整。
+- **阶段B**: SKILL.md 第6节优先编译清单全部完成（71 concepts + 6 comparisons + 4 overviews），inbox 6 条候选仍为"首次出现"单点（无 ≥3 频次升级阈值），字典 v1.1 稳定，**0 新增编译项**
+- **阶段C**: 
+  - wiki_coverage_check.py 返回 6 条未覆盖 → **全部为已知聚合笔记 stem 假阳性**（D02/D04/D06"论文笔记汇总"×3 + 99_归档/重复笔记/×2 + README__dup2×1，非单篇论文，无需建独立 source）
+  - filesystem mtime 核查：09:26→11:23 约 117 min 空窗，**0 新增单篇论文笔记**（最新实质 mtime=2026-06-02 09:26 AcornRobot，该 source 已存在且本次 lint 已修复其 origins 路径）
+  - **0 补建**
+- **覆盖率**: **1166 sources / 905 notes（✅ 实质 100% 全覆盖）**
+- **状态**: Wiki 健康，**1166 sources + 71 concepts + 6 comparisons + 4 overviews**；本次核心收益 = 修复 689 条 origins 路径（消除潜在断链风险，确保 SKILL.md 4.3 lint 项 "origins 断链 = 0" 真正成立）

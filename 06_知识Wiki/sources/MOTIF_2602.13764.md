@@ -4,7 +4,7 @@ id: "source.MOTIF_2602.13764"
 pageType: "source"
 tags: ["cross-embodiment transfer", "action motifs", "flow matching", "few-shot transfer", "跨载体泛化", "流匹配"]
 summary: "MOTIF 将跨载体共享的动作时空模式抽象为 motifs，再条件化 flow-matching 策略，实现少样本跨载体迁移。"
-origins: ["../../02_阅读笔记/D02_VLA/MOTIF_2602.13764.md", "02_阅读笔记/D02_VLA/MOTIF_2602.13764.md"]
+origins: ["../../02_阅读笔记/D02_VLA/MOTIF_2602.13764.md", "../../02_阅读笔记/D02_VLA/MOTIF_2602.13764.md"]
 updated: "2026-06-02"
 ---
 
