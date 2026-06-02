@@ -4,3 +4,6 @@
 - [02_阅读笔记/2026-05-20_DeiT_数据高效图像Transformer与注意力蒸馏.md] 候选概念：知识蒸馏（频次：首次出现）—— teacher-student 架构下用教师网络指导学生网络训练，DeiT 核心方法，字典无对应规范名
 - [02_阅读笔记/D04_跨载体泛化/2026-05-23_2605.19420_Dual_Heatmap_Semantic_Navigation.md] 候选概念：导航可供性场（频次：首次出现）—— 用连续热力图表达可达区域与朝向约束，替代单点 waypoint 回归
 - [02_阅读笔记/D07_强化学习与控制/2026-05-23_2605.22123_Invariant_Rewards_Real_World_Robotics.md] 候选概念：不变量奖励（频次：首次出现）—— 从少量示范中蒸馏任务级行为不变量，构建跨场景可复用奖励函数
+- [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：prompt措辞敏感性（频次：首次出现）—— DROID 高频动词（pick=25,985次）vs 低频词（0次）带来 14% 性能差距，揭示语言条件化是 VLA 泛化瓶颈
+- [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：USD中间格式（频次：首次出现）—— 用 USD 作为 simulator-agnostic 资产适配中间层，转 MJCF / Isaac native / ManiSkill
+- [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：articulated抓取标注（频次：首次出现）—— 验证抓取在关节驱动下不滑脱的 pipeline（铰接物体专属），与刚性抓取 antipodal+抖动测试并列

@@ -55,6 +55,7 @@
 | 论文 | arXiv | 核心贡献 | 深挖 |
 |------|-------|---------|------|
 | MolmoBot | 2603.16861 | 180万仿真轨迹→真机79.2% zero-shot | 🔶 |
+| **MolmoSpaces** | 2602.11337 | Ai2 230K场景+130K物体+42M抓取生态；Sim-to-Real R=0.96（752真机episodes from RoboArena）；首个MuJoCo/Isaac/ManiSkill三兼容；prompt措辞/腕部遮挡/初始joint三类敏感性诊断 | ✅ R20260602 |
 
 ### 数据组织与泛化策略
 | 论文 | arXiv | 核心贡献 | 深挖 |
