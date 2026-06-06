@@ -13,3 +13,10 @@
 - [02_阅读笔记/D07_强化学习与控制/2026-06-02_2409.15610_DIAL-MPC.md] 候选概念：扩散退火MPC（频次：首次出现）—— MPPI与单步扩散的数学等价性 + landscape分析
 - [02_阅读笔记/D07_强化学习与控制/2026-06-02_2310.16828_TD-MPC2.md] 候选概念：统一tokenizer跨embodiment（频次：首次出现）—— 异构观测空间统一编码方法
 - [02_阅读笔记/D02_VLA/2026-06-02_2505.15660_AGNOSTOS_VLA_Cross-Task_Generalization.md] 候选概念：in-context跨任务泛化（频次：首次出现）—— LLM条件在seen task demos上预测unseen task动作
+- [02_阅读笔记/D06_空中VLN/2026-06-02_2605.19600_FlyMirage.md] 候选概念：生成式世界模型（频次：首次出现）—— 把 LLM 场景规范实例化为 3DGS 场景的中间模块（区别于传统 World Model 的状态预测）
+- [02_阅读笔记/D06_空中VLN/2026-06-02_2605.19600_FlyMirage.md] 候选概念：Boxer*自动标注（频次：首次出现）—— Meta Reality Labs Boxer 的 3D 边界框估计变体，2D框→逐帧3D→融合3D→相机路径规划→细化
+- [02_阅读笔记/D06_空中VLN/2026-06-02_2605.19600_FlyMirage.md] 候选概念：动力学可行轨迹（频次：首次出现）—— UAV 物理约束下的轨迹生成，区别于普通最短路径
+
+- [2026-06-06_2606.03159_OmniDreams.md] 候选概念：WAM (World-Action Model) / 世界-动作模型（频次：首次系统命名出现；NVIDIA 2026 OmniDreams 用 2B WAM 反超 10B VLA）
+- [2026-06-06_2606.03159_OmniDreams.md] 候选概念：闭环世界模型 / Closed-Loop World Model（频次：首次系统出现；用于区分"离线 rollout"和"实时闭环仿真"）
+- [2026-06-06_2606.03159_OmniDreams.md] 候选概念：World-Scenario Map / 世界场景地图（频次：首次出现；HD 地图 + 3D bbox + 文本天气作为生成条件）
