@@ -1,9 +1,16 @@
 # D04: 跨载体泛化 研究报告
 
-> 最后更新：2026-04-20 | 成熟度：🟡中期（R851 已把接口通过后的首轮结果继续收束到“共享接口先成立，然后只允许在 geometry / morphology compensation / dynamics compensation 中冻结一条主补偿叙事”）
+> 最后更新：2026-06-07 | 成熟度：🟡中期（R851 已把接口通过后的首轮结果继续收束到“共享接口先成立，然后只允许在 geometry / morphology compensation / dynamics compensation 中冻结一条主补偿叙事”）
 > 状态：🟡 推进中
 
+## Round 2026-06-07 01:56 CST | 方向: D04_跨载体泛化
+- **D04_轻量扫描**：本轮按轮换切回 **D04 跨载体泛化**，既避免与最近明确记录的主推进 **D06(2026-06-06 19:56)** 连续重复，也继续满足近三轮覆盖 `D01/D04/D06` 至少一个。严格先做本地优先：复核 `README.md / PAPER.md / OWNER_NOTES.md / 研究状态追踪`，确认主人 2026-05-27 对 **Method 3.x** 的推进要求仍是最高优先级；回扫近 30 天本地 L1 锚点 **Human2Humanoid / RIO / JoyAI-RA 0.1**，并补跑 QMD `cross embodiment generalization specialist distillation bounded adaptation shared latent survival --no-rerank`，但本地索引提示 **last updated 50 days ago** 且进程被终止，未返回足以改写判断的新证据。因此本轮 **高价值扫描命中 3 篇核心本地锚点（Human2Humanoid、RIO、JoyAI-RA 0.1）**、**正式新增入库 0 篇**，不触发 arXiv / Tavily 外扩。
+- **D04_PAPER.md 推进**：本轮直接推进 `PAPER.md` 的 **Method 3.x**，把 **Human2Humanoid (2606.03476)** 正式固化进 **3.12 Human-to-Humanoid Geometry Anchors without Paired Demonstrations**。新增 `\Psi_t=(UGA, PEC, MIE, LTS, HRS^{hum}, CW, PC)`，明确无配对 human→humanoid 提升必须先拆成 **unpaired geometry-anchor gain / physics-executability completion / morphology-invariant end-effector alignment** 三类上游监督来源，只有在 matched no-anchor control 下仍保留增益时，才允许晋升为 shared latent sufficiency；同时清理重复编号，把后续 **Data-First Interface Formation** 顺延为 **3.13**。
+- **核心价值**：这一步把 D04 从“human anchors 能不能帮助跨载体”继续压实到更诚实的一层：**先分清是更好的无配对几何监督、更物理可执行的 retargeting，还是 latent interface 本身真的更强。** 也就是说，D04 现在不再把 human→humanoid 提升直接混进 embodiment-agnostic transfer，而是要求先经过 `UGA / PEC / MIE` 三档上游扣账。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D04，下一步最值钱的是把 `\Psi_t` 真正同步进 `Experiments 4.x` 的主表字段，与 `\Lambda_t / \Sigma_t / \Xi_t` 形成统一的 submission-ready 审计模板。
+
 > **R759 阶段更新**：① 新增 LAC-WM (ICLR 2026) — 统一 latent action space 机器人基础世界模型，验证 latent action 对齐在 scaling 下的 +46.7% 增益；② 创新点从 C1-C7 收束为四大轴；三/四节结构化重构；③ 新增统一实验对照表（Section 4）
+
 
 > **R763 阶段更新**：① 新增 LAD (ICRA 2026) — Latent Action Diffusion for Cross-Embodiment Manipulation，扩散模型+latent action统一接口，ICRA 2026已接收；② 新增 Unified Latent Space for Humanoid Cross-Embodiment（arXiv:2601.15419），验证人型机器人共享latent表示可扩展性；③ 创新轴C（latent统一）获ICRA 2026直接验证，支撑更强；④ 深化轴C与轴D互补性论证
 

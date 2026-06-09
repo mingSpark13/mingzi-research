@@ -1,6 +1,50 @@
+> 最后更新：2026-06-07 R915
+
+## R915 本轮推进结论：把 D06 从“reconstruction-aware executor contract 已进入 experiments”继续压到“PEACE 这类 typed planner–executor baseline 必须在 PAPER 的 Method/Related Work 里和 `C_{ser}→e^{auth}→e^{bind}→e^{consume}→c^{trace}→R^{pkt}` 一起闭环，否则 executor-facing增益仍可能只是 decoupling gain，不得升级成 full packet-contract claim”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：本轮按轮换主推进 **D06**，满足“近三轮必须覆盖 D01/D04/D06 至少一个”，同时避免与最近明确记录的 D07 连续重复。严格先做本地优先：复核 `README.md / PAPER.md / experiments.md`，并回扫近 30 天本地 L1 命中 **PEACE (2606.00104)**、**WorldVLN (2605.15964)** 与既有 **OnFly / AerialVLA / QuadAgent**。QMD 对 `aerial visual language navigation waypoint executor packet AirSpark semantic waypoint --no-rerank` 因索引老旧与资源限制未返回新的高价值 executor-facing 文献，因此不触发 arXiv / Tavily 外扩。
+- **扫描结论**：本轮 **高价值扫描命中 2 篇核心本地锚点（PEACE、WorldVLN）**、**正式新增入库 0 篇**。当前最值钱的增量不在新增论文，而在把 PEACE 这类 **typed planner–executor + external constraint layer** 的替代解释，进一步压进 D06 的 packet-contract 写法里，防止把 decoupling/bind-time cleanliness 误写成 packet 自身更诚实地活到了 consume time。
+- **PAPER.md 推进**：本轮直接推进 **Related Work + Method**。一是在 `2.20 AirSpark-Schema-Aligned Waypoint Execution...` 中显式吸收 **PEACE**，把它冻结为 **planner–executor decoupling with constraint enforcement family**；二是在 `3.4 WaypointExecutor-Aligned Packet Serialization, Consume-Time Logging, and Post-hoc Reconstruction Contract` 中补强 executor-facing 论证：D06 的 strongest claim 只有在同一行同时穿过 `C_{ser}`、`e^{auth}`、`e^{bind}`、`e^{consume}`、`c^{trace}` 与 `R^{pkt}`，且做完 PEACE-style decoupling subtraction 后仍有残差，才允许升级成 **full Semantic Waypoint Packet contract**。
+- **核心价值**：这一步把 D06 从“实验表里知道要审 reconstruction-aware contract”继续推进到“论文方法论本身也明确承认 PEACE-style typed plan/safety validator 是最近邻替代解释”。也就是说，D06 现在不仅要求 packet 可序列化、可绑定、可消费、可追踪、可重建，还进一步要求说明：这些优势不是仅仅因为 **planner–executor split 更干净、typed mission object 更明确、constraint layer 更审计友好**。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，下一步最值钱的是把 `experiments.md` 现有的 `planner–executor subtraction / POI final-meters subtraction / reconstruction audit` 真正整理成 submission-ready 五子表结构，并把 `R^{pkt}` failure bucket 映射到可直接记录的 AirSpark 日志键。
+
+## R914 本轮推进结论：把 D06 从“schema-aligned serialization + consume-time trace + post-hoc reconstructability”继续压到“executor-facing实验主表必须显式拆出 reconstruction-aware contract，否则任何 bind-stable packet 都不得升级成 full packet-contract claim”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：本轮按轮换切回 **D06**，既满足近三轮覆盖 `D01/D04/D06` 至少一个，也避免与最近明确记录的主推进 **D07(2026-06-06 05:56)** 连续重复。严格先做本地优先：复核 `README.md / PAPER.md / OWNER_NOTES.md / experiments.md / 研究状态追踪`，确认 2026-05-26 两条 🔴 批注仍要求 D06 方法论文继续收窄到 **3D VL-Frontier Map + Semantic Waypoint Packet + AirSpark WaypointExecutor 对齐**。补跑 QMD `aerial visual language navigation waypoint executor packet consume-time --no-rerank` 后结果仍主要回流 **D06/REPORT.md**、**AerialVLA** 与 **QuadAgent** 等既有锚点；近 30 天本地 L1 grep 也未出现新的成熟 executor-facing 论文，因此不触发 arXiv / Tavily 外扩。
+- **扫描结论**：本轮 **高价值扫描命中 3 篇本地锚点（D06/REPORT、AerialVLA、QuadAgent）**、**正式新增入库 0 篇**。当前最值钱的增量不在新增论文，而在把 `PAPER.md` 已经提出的 `C_{ser} / e^{auth} / e^{bind} / e^{consume} / c^{trace} / R^{pkt}` 真正压成 experiments 的 executor-facing 主表合同。
+- **experiments 推进**：本轮新增一条 **reconstruction-aware executor contract**，要求所有想升级成 **full Semantic Waypoint Packet contract / deployable planner→verifier→WaypointExecutor interface / NtM handoff preservation** 的 D06 结果，除现有 `Executor-Schema Match / Consume-Time Trace Match / e^{auth} / e^{bind} / e^{consume} / c^{trace}` 外，还必须显式补齐 `Packet-Reconstructability Match / Manifest↔Frames↔Actions Joint Recoverability / Reconstructed-Packet Identity Consistency / Hidden-Planner-State Dependence / Reconstruction-Only Failure Cause / Weakest Honest Claim after Reconstruction Audit`。若这些字段缺失，结果最多只能冻结为 **schema-aligned serialization support**、**bind-stable but reconstruction-fragile support** 或 **consume-stable yet audit-fragile packet support**，不得升级成真正的 **full packet-contract accountability**。
+- **核心价值**：这一步把 D06 从“packet 能不能被绑定、消费、追踪”继续推进到更贴近 AirSpark 平台审计的一层：**事后能不能只靠 `manifest.json / frames.jsonl / actions.jsonl` 把同一 packet 实例完整重建出来**。也就是说，D06 现在不只要求 executor 可消费，还要求 executor 后可审计、可重建、可归责，进一步防止把“bind-time 合法但 replay 不回同一 semantic thread”的结果误写成 deployable packet contract。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D04_跨载体泛化**；若继续回到 D06，下一步最值钱的是把 `experiments.md` 正式拆成 `schema alignment / consume-time trace / planner–executor subtraction / POI final-meters subtraction / reconstruction audit` 五个子表，并把 `R^{pkt}` 与 `c^{trace}` 的 failure bucket 映射到可直接记录的日志字段。
+
+## R913 本轮推进结论：把 D06 从“planner–executor decoupling 也必须先减掉”继续压到“POI-grounded final-meters reasoning 也必须先减掉，否则任何末段贴点更准都不得升级成 packet-contract claim”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：本轮优先执行 Phase 0，复核 `OWNER_NOTES.md` 中 2026-05-26 两条 🔴 批注，确认方法论文仍必须继续收窄到 **3D VL-Frontier Map + Semantic Waypoint Packet + AirSpark WaypointExecutor 对齐**，而不是继续扩 benchmark。随后复核 `README.md / PAPER.md / experiments.md`，并做本地优先扫描：QMD 对 `aerial visual language navigation planner executor packet consume-time waypoint --no-rerank` 仍主要回流既有 D06 文档与 QuadAgent/AerialVLA source；近 30 天 L1 明显缺少新的 D06 强锚点，因此本轮不触发 arXiv/Tavily 外扩，而是继续把写作重心压回 **endpoint precision vs consume-time packet honesty** 这条接口边界。
+- **扫描结论**：本轮 **高价值扫描命中 3 篇核心本地锚点（AerialVLA、OnFly、QuadAgent）**、**正式新增入库 0 篇**，不触发 arXiv / Tavily 外扩。当前最有价值增量仍不在新增论文，而在进一步区分 **final-meters POI alignment gain** 与 **真实 consume-time packet preservation**。
+- **experiments 推进**：本轮新增一条 **POI-grounded final-meters subtraction contract**，要求所有想升级成 **consume-time packet superiority / full packet-contract accountability / NtM handoff preservation** 的 D06 结果，除现有 `Executor-Schema Match / Consume-Time Trace Match / e^{auth} / e^{bind} / e^{consume} / c^{trace}` 外，还必须补齐 `POI-Family Match / Final-Meters Arrival Gain / Late-Stage Target Snap Accuracy / POI-Only Explanation Remaining / Promotion Ceiling after POI Matching`。若这些字段缺失，结果最多只能冻结为 **POI-grounded final-meters support** 或 **refresh-stable but endpoint-fragile support**，不得直接升级成真正的 **deployable packet contract**。
+- **核心价值**：这一步继续直接响应主人“不要继续在纸面上堆路由规则”的要求。D06 现在不仅审 packet 能不能映射到 AirSpark 的 episode schema、能不能在 WaypointExecutor consume-time 保持 trace consistency、是不是只是 planner–executor split 更干净，还开始审 **是不是只是最后几米 POI 对齐更准**。这能有效防止把“更会贴近最终目标点”误写成“Semantic Waypoint Packet 本身更诚实地活到了 consume time”。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，优先把现有主表正式拆成 `executor-schema alignment / consume-time trace / planner–executor subtraction / final-meters POI subtraction` 四个子表，并和 `C_{ser} / e^{auth} / e^{bind} / e^{consume} / c^{trace}` 做一一映射。
+
+- **R914（2026-06-06）重建审计收束**：在现有 `executor-schema alignment / consume-time trace / planner–executor subtraction / final-meters POI subtraction` 之上，再新增 **reconstruction-aware executor contract**。所有想升级成 **full packet-contract accountability** 的 D06 结果，必须显式补齐 `Packet-Reconstructability Match / Manifest↔Frames↔Actions Joint Recoverability / Reconstructed-Packet Identity Consistency / Hidden-Planner-State Dependence / Reconstruction-Only Failure Cause / Weakest Honest Claim after Reconstruction Audit`；若缺失，结果最多冻结为 **schema-aligned serialization support**、**bind-stable but reconstruction-fragile support** 或 **consume-stable yet audit-fragile packet support**。核心收束：D06 现在不仅问 packet 能否序列化、绑定、消费、追踪，还要求 **能否事后仅凭 AirSpark 日志完整重建同一 semantic packet 实例**。
+
 # D06 experiments
 
-> 最后更新：2026-05-30 R910
+> 最后更新：2026-06-03 R912
+
+## R912 本轮推进结论：把 D06 从“packet→executor schema 对齐 + consume-time trace 一致性”继续压到“PEACE 这类 planner–executor decoupling 也必须先减掉，否则任何 typed mission / safety validator 增益都不得升级成 packet-contract claim”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：本轮优先执行 Phase 0，复核 `OWNER_NOTES.md` 中 2026-05-26 两条 🔴 批注，确认方法论文仍必须继续收窄到 **3D VL-Frontier Map + Semantic Waypoint Packet + AirSpark WaypointExecutor 对齐**，而不是继续扩 benchmark。随后复核 `README.md / PAPER.md / experiments.md`，并做本地优先扫描：近 30 天 L1 命中 **PEACE (2606.00104)** 新笔记，QMD 对 `aerial visual language navigation waypoint executor consume-time --no-rerank` 仍主要回流既有 D06 文档与 AerialVLA source，提示当前最值钱的新锚点不在 VLN 本体，而在 **planner–executor + constraint enforcement** 这条 executor-interface 相邻路线。
+- **扫描结论**：本轮 **高价值扫描命中 1 篇新增本地锚点（PEACE, 2606.00104）**、**正式新增入库 0 篇**，不触发 arXiv / Tavily 外扩。它的核心价值不在“又多一篇无人机 agent”，而在明确提供一个与 D06 极近的替代解释：很多部署增益可能只是来自 **typed plan + external safety validator + cleaner planner–executor split**，而不是 Semantic Waypoint Packet 自己更诚实地活到了 consume time。
+- **experiments 推进**：本轮新增一条 **planner–executor decoupling subtraction contract**，要求所有想升级成 **deployable packet interface / full packet-contract accountability / NtM handoff preservation** 的 D06 结果，除现有 `Executor-Schema Match / Consume-Time Trace Match / e^{auth} / e^{bind} / e^{consume} / c^{trace}` 外，还必须补齐 `Planner–Executor Family Match / Typed-Plan Completeness / Constraint-Enforced Bind Success / Executor-Ambiguity Reduction / Decoupling-Only Explanation Remaining / Promotion Ceiling after Planner–Executor Matching`。若这些字段缺失，结果最多只能冻结为 **executor-interface support**、**constraint-enforced bind-time support** 或 **bind-stable but consume-fragile support**，不得升级成真正的 **deployable packet contract**。
+- **核心价值**：这一步继续直接响应主人“不要继续在纸面上堆路由规则”的要求。D06 现在不仅审 packet 能不能映射到 AirSpark 的 episode schema、能不能在 WaypointExecutor consume-time 保持 trace consistency，还开始审 **是不是只是 planner–executor split 更干净、typed plan 更规范、安全约束层更硬**。这能有效防止把“更像工程 agent”误写成“Semantic Waypoint Packet 本身更强”。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，优先把现有主表正式拆成 `executor-schema alignment / consume-time trace / planner–executor subtraction` 三个子表，并和 `C_{ser} / e^{auth} / e^{bind} / e^{consume} / c^{trace}` 做一一映射。
+
+## R911 本轮推进结论：把 D06 从“packet→executor schema alignment”继续压到“consume-time trace consistency 也必须进入主表，否则 Semantic Waypoint Packet 仍只是 bind-time 接口，不得升级成 deployable contract”
+- **本轮方向**：D06 空中视觉语言导航
+- **本地依据**：本轮优先执行 Phase 0，复核 `OWNER_NOTES.md` 中 2026-05-26 两条 🔴 批注，确认方法论文仍必须继续收窄到 **3D VL-Frontier Map + Semantic Waypoint Packet + AirSpark WaypointExecutor 对齐**，而不是继续扩 benchmark 或 subtraction 家族。随后复核 `README.md / PAPER.md / experiments.md`，并做本地优先扫描：近 30 天 L1 实际可用命中主要集中在 **AerialVLA / OnFly / AirVLA / UAV-VLN Survey** 等既有锚点；QMD 对 `aerial vision language navigation drone embodied --no-rerank` 仍主要回流已有 D06 文档与索引陈旧提示，未形成足以触发完整入库的新证据。
+- **扫描结论**：本轮 **高价值扫描命中 3 篇核心本地锚点（AerialVLA、OnFly、UAV-VLN Survey）**、**正式新增入库 0 篇**，不触发 arXiv / Tavily 外扩。当前最有价值增量仍不在新论文，而在把 packet 的 **consume-time trace consistency** 从 paper 叙事压到 experiments 硬字段。
+- **experiments 推进**：本轮新增一条 **consume-time logging contract**，要求所有想升级成 **deployable packet interface / full packet-contract accountability / NtM handoff preservation** 的 D06 结果，除 `Executor-Schema Match / goal_type-valid / pose-bind-valid / yaw-altitude-bind-valid / progress-thread-consistency / budget-envelope-valid` 外，还必须补齐 `Consume-Time Trace Match / emit→bind latency / bind→consume latency / trace gap count / stale-field-at-consume / consume-time semantic-thread drift / First Consume-Time Failure Cause`。若这些字段缺失，结果最多只能冻结为 **bind-stable packet output** 或 **verifier-compatible abstraction**，不得升级成真正的 deployable contract。
+- **核心价值**：这一步继续直接响应主人“不要继续在纸面上堆路由规则”的要求。D06 现在不仅审 packet 能不能映射到 AirSpark 的 episode schema，也开始审它在 **WaypointExecutor 真正消费时，字段链路和语义线程有没有保持一致**。这能有效防止把“看起来能绑定”的 packet 误写成“真的能被消费和复盘”的 planner-controller contract。
+- **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，优先把现有主表正式拆成 `packet→executor schema` 与 `consume-time trace` 两个子表，并和 `C_{ser} / e^{auth} / e^{bind} / e^{consume} / c^{trace}` 做一一映射。
 
 ## R910 本轮推进结论：把 D06 从“family subtraction + route closure 已经很细”继续压到“packet→executor schema alignment 也必须进入 experiments 主表，否则 Semantic Waypoint Packet 仍只是论文抽象层，不得升级成 deployable interface claim”
 - **本轮方向**：D06 空中视觉语言导航
@@ -106,9 +150,6 @@
 - **核心价值**：这一步把 D06 从“知道 PAPER 里该怎样解释 reasoning/search/latent/runtime family”推进到“知道 experiments 如果不按同一套字段记账，正文就没有资格升级 claim”。也就是说，D06 现在不仅区分 **更会拆指令 / 更会缩小搜索区域 / 几何锚定更稳 / 户外搜索更强 / compact control 更稳 / runtime continuity 更好** 这些不同来源的早期增益，还开始要求它们在同一张 submission-ready 表里先走完 subtraction 和 promotion ladder，再决定是否剩下真正的 packet 残差。
 - **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，下一步应把 `experiments.md` 的真实 sanity check 输出重写成上述最小 schema，并补出 `Promotion Ceiling / Promotion Blocker / Weakest Honest Claim` 的可直接落表模板。
 
-# D06 experiments
-
-<<<<<<< HEAD
 ## R908 本轮推进结论：把 D06 从“world-prior / semantic-completion 只是 upstream support”继续压到“WorldVLN 这类 world-action family 也必须先减掉，否则任何短时 rollout 变强都不得升级成 packet-contract claim”
 - **本轮方向**：D06 空中视觉语言导航
 - **本地依据**：复核 `README.md / PAPER.md / OWNER_NOTES.md / experiments.md / 研究状态追踪`，确认 `OWNER_NOTES.md` 仍无未响应批注；回扫近 30 天本地 L1 与本地方向文档，已覆盖 **LMPath / StereoNav / WildOS / AgentVLN / AwareVLN / Fly0 / KIO-planner / FlyMirage / SAGE / PLMD**。在本地覆盖充分后，按流程补做 arXiv API 外扩，最新高价值命中 **WorldVLN (2605.15964)**，且本地尚未形成对应 D06 吸收段落，因此本轮将其作为新增 planner-family 锚点吸收进 PAPER，而不做完整 L1 入库。
@@ -117,8 +158,6 @@
 - **核心价值**：这一步把 D06 从“知道 planner modularity、search prior、active perception、world prior、semantic completion、local shell、runtime continuity 都要先减掉”继续推进到“连最贴脸的 **world-action model** 解释也必须先减掉”。也就是说，D06 现在不仅防止把 **更会拆指令 / 更会缩搜索区域 / 更会一眼消歧 / 上游先验更强 / 本地壳更稳 / runtime continuity 更好** 混写成 packet 胜利，也开始防止把 **短时 rollout 更准、后果预测更好、局部 waypoint 序列更合理** 误写成 packet 自己更诚实地活到了 consume time。
 - **下轮建议**：按轮换优先切 **D01_世界模型** 或 **D07_Isaac强化学习机械臂控制**；若继续回到 D06，下一步应把 `experiments.md` 的真实 sanity check 输出重写成带 `Q^{wam}_{plan}` 的 submission-ready 最小 schema，并与现有 `Q^{reason}_{route} / Q^{lang}_{narrow} / Q^{geo}_{narrow} / Q^{unc}_{plan} / Q^{world}_{prior} / Q^{comp}_{sem}` 合并到同一张主表里。
 
-=======
->>>>>>> 1080f76346ff43cff0d7fb71910b283cdc15be6a
 > 最后更新：2026-05-25 R906
 
 ## R907 本轮推进结论：把 D06 从“PAPER 里已把 AwareVLN / Fly0 写成中层 family”继续压到“experiments 也必须和 KIO-planner / FlyMirage 一起形成完整 mid-level + shell/data subtraction schema，否则任何阶段升级或解耦执行增益都不得升级成 packet-contract claim”

@@ -19,6 +19,12 @@
 
 也就是说，本轮后 D07 的主表不只是判断谁更会纠偏，而是判断：**末端误差是否在更大漂移下仍保持 bounded，且这个 bounded gain 不能被验证壳更全、接管更平滑、或 copilot 更会修动作这些更弱解释吃掉。**
 
+在这套读法上，本轮又补了一条**边界生存性判线**：同一行结果必须区分它是在 **固定飞行底座** 上显得更强，还是在 **自由漂移/耦合回授** 条件下仍然站得住。换句话说，D07 现在不只问“有没有 guidance gain”，还要问 **这个 gain 离开 artificially stabilized base 之后还能不能活下来**。因此首轮 bundle 需追加两项边界标签：
+- `FFB`：fixed-flight boundary survival
+- `FMB`：free-moving-base survival
+
+若某行只在固定底座条件下压平 `drift_amp → BDEE`，一恢复 base-arm 耦合就失效，它最多只能记作 planner/projection-side support；只有同时穿过 `FFB + FMB`，并继续改善 `CET/PCST/PGFR` 的 residual，才更配进入 **MEGA = 机械臂高频稳定器** 的主叙事。
+
 ---
 
 ## 1. 四行最小实验包
@@ -110,7 +116,23 @@
   - `mega.failure.arm_agility`
   - `mega.failure.local_state`
   - `mega.failure.back_reaction`
+  - `mega.vss.task_coverage`
+  - `mega.vss.failure_coverage`
+  - `mega.vss.slice_coverage`
+  - `mega.vss.benchmark_build_cost`
 - **解释纪律**：若某行 guidance tuple 看起来变强，但解耦曲线斜率没改善，或失败主要从 `F_arm/F_state/F_react` 某一桶泄露，则该行最多保留为 support-side 改善，不得直接升格为 **deployable hybrid**。
+- **新增 support-family subtraction**：若某行主要通过更真实的接触状态表征改善 W2/W3，则先记作 `contact-state support`；若某行主要通过 critic-guided diffusion / value-guided 去噪改善训练效率、恢复平滑度或探索质量，则先记作 `critic-guided optimization support`。这两类默认只能解释 `ΔCET/ΔPCST` 或早期 guidance 稳定性，除非同一行还能继续压平 `drift_amp → BDEE` 斜率、存活到 `W3` 并降低 `ΔPGFR`，否则不得升级到 MEGA guidance-bearing 叙事。
+- **新增 bundle-internal metric-first rights**：`B2` 默认先解释 `WSR / PRS / W1` 早窗收益，`B3` 默认先解释 retention-gated 的 `W2/W3` 保持与有限 `CET` 改善，`B4` 默认先解释 `unsafe-action rejection / contact-preserving correction / 局部 PCST` 增益。只要一行的优势仍停留在其机制原生指标上，就不得直接升级成“机械臂高频稳定器”主张；必须在对应 support ceiling 之外继续改善 `BDEE/CET/PCST/PGFR`，才允许进入 MEGA residual 审计。
+- **新增四类首过标签**：首轮每行都必须先标注 `PRS / ROS / VSS / TPS` 的主解释归属，再看 residual guidance。也就是说，下一步不是继续扩 family，而是先回答：这行到底是 **平台更稳 / 奖励更会记账 / 验证壳更完整 / sim-real 协议更顺**，还是确实还剩下 arm-side 高速补偿残差。
+- **新增边界生存标签**：
+  - `FFB`：fixed-flight boundary survival，测试在人工稳定底座下该行是否仍保有 guidance gain
+  - `FMB`：free-moving-base survival，测试恢复 base-arm 耦合后该行 residual 是否仍成立
+- **边界判读纪律**：如果某行只在 `FFB` 站得住、而在 `FMB` 失效，则默认先冻结为 planner-side / projection-side / local-arm support；只有同时通过 `FFB + FMB`，并继续压平 `drift_amp → BDEE`、改善 `CET/PCST/PGFR`，才允许进入真正的 MEGA 高频稳定器叙事。
+- **deployment-risk coverage 后置闸门**：即便某行已通过 `PRS / ROS / VSS / TPS / MCS / WMPS / TFOS / KAS / MTS` subtraction，并在 `FFB + FMB` 下保住 residual guidance，也还必须接受 **ROBOGATE 式两阶段边界聚焦风险发现**。默认流程：先做 coarse sweep，再对成功率过渡区做 boundary-focused refinement；若 transition zone 过窄、风险边界过陡、或 payload / latency / contact-timing 一扰就塌，则该行只能记作“mean-metric 下看似可用”的 support-side 结果，不能直接升格为最强 MEGA wording。
+- **最小新增日志字段**：`mega.risk.coarse_pass_rate / mega.risk.boundary_transition_width / mega.risk.boundary_collapse_axis / mega.risk.coverage_ceiling`。
+- **风险判读纪律**：首轮 reviewer-facing 主表除 `DriftSlope / FFB / FMB` 外，还必须补一句 `boundary-risk note`，明确 residual guidance 是在**宽容边界**上成立，还是只在**狭窄可用区**内成立。只有 residual 同时通过 support subtraction、FFB/FMB、生存到 `g^†=W3`，并且 boundary-focused risk coverage 不显示脆弱窄边界时，才允许进入“机械臂高频稳定器”最强结论。
+- **新增 row-native support match 纪律**：四行最小 bundle 必须先标注各自最自然的 support ceiling，再看是否还有 residual guidance。`B2` 默认先解释 `WSR / PRS / W1` 早窗收益；`B3` 默认先解释 retention-gated 的 `W2/W3` 保持与有限 `CET` 改善；`B4` 默认先解释 `unsafe-action rejection / contact-preserving correction / 局部 PCST` 增益。若优势仍停留在机制原生指标上，则结论必须先冻结为 `acceleration / retention bridge / safety-shell support`，不得直接升级成“机械臂高频稳定器”。
+- **新增 immediate gate**：在既有 `PRS / ROS / VSS / TPS / MCS / WMPS / TFOS / KAS / MTS` subtraction 之后，还必须再过 `FFB + FMB` 双边界与 `ROBOGATE-style boundary-risk coverage`；只有在 support subtraction 之后 residual 仍同时通过固定底座、自由漂移底座、以及边界聚焦风险发现三层测试，才允许进入 strongest MEGA wording。
 
 ---
 
@@ -183,11 +205,111 @@
 | `s^†` | 最高存活扰动源 | `s_v/s_b/s_c/s_p` |
 | `DriftSlope` | `drift_amp → BDEE` 解耦曲线斜率 | 至少四档幅度拟合 |
 | `FailureBucketDominant` | 主失败桶 | `F_arm/F_state/F_react/none` |
+| `FFB` | fixed-flight boundary survival | `pass/fail + note` |
+| `FMB` | free-moving-base survival | `pass/fail + note` |
 | `SupportFamilyExplanation` | 当前最弱仍成立的 support-family 解释 | acceleration / retention / projection / reward / copilot / decomposition |
 | `GuidanceSubtractedCeiling` | 扣除 guidance 改善后该行还能宣称到哪一档 | acceleration / retention bridge / safety-shell support / reward-shaped recovery / deployable hybrid |
-| `PromotionBlocker` | 当前不能升格的直接原因 | late-window 缺失 / 未到 `s_p` / family-control 未击败 / `R_rew` 主导 / drift-decoupling 不成立 |
+| `PromotionBlocker` | 当前不能升格的直接原因 | late-window 缺失 / 未到 `s_p` / family-control 未击败 / `R_rew` 主导 / drift-decoupling 不成立 / FFB-FMB 边界失效 |
 
-### 9.2 推荐日志 key（训练侧直接导出）
+### 9.1e row-native support match, boundary survival, and deployment-risk coverage freeze（2026-06-09 新增）
+- **row-native support ceilings**：
+  - `B2 -> acceleration / warm-start support`：默认先解释 `WSR / PRS / W1 alignment gain`
+  - `B3 -> retention bridge support`：默认先解释 gated retention、`W2/W3` 保持与有限 `ΔCET`
+  - `B4 -> projection / safety-shell support`：默认先解释 `unsafe_action_rejection / contact_preserving_correction / local_PCST_gain`
+- **新增最小日志字段**：`row_native_support_match / row_native_metric_frontier / row_native_residual_guidance / mega.ffb.pass / mega.ffb.note / mega.fmb.pass / mega.fmb.note / mega.boundary_survival_ceiling / mega.risk.coarse_pass_rate / mega.risk.boundary_transition_width / mega.risk.boundary_collapse_axis / mega.risk.coverage_ceiling / mega.risk.boundary_note`
+- **边界生存升级纪律**：任一行即便通过 `PRS / ROS / VSS / TPS / MCS / WMPS / TFOS / KAS / MTS` subtraction，只要 `FMB` 失败，就不能升级到 MEGA strongest wording；默认冻结在 planner-side / projection-side / local-arm support。只有 residual 同时通过 `FFB + FMB`，并继续压平 `DriftSlope`、保持 `g^†=W3`、降低 `ΔPGFR`，才允许升级为 **mechanical-arm high-frequency stabilizer** 叙事。
+- **ROBOGATE 风险覆盖纪律**：即便 `FFB/FMB` 通过，也还必须补做两阶段 boundary-focused risk coverage；若 `boundary_transition_width` 过窄、或 collapse 主要集中在 payload / latency / contact-timing 轴，则结论默认冻结为“deployment-risk 未过”的 support-side 版本，不能直接进入最强标题口径。
+
+### 9.1f curriculum-shell / platform-survey freeze（2026-06-04 新增）
+- **MT-Libero + DGPO (2606.03335) → MCS（multi-task curriculum shell）**：默认只允许先解释 demonstration-guided initialization quality、shared task-family coverage、on-policy optimization stability、adaptation-cost reduction；若没有同步压平 `drift_amp → BDEE`、把 `g^†` 推进到 `W3`，并在 payload slice 降低 `PGFR`，不得升级为高频稳定器证据。
+- **NVIDIA Isaac Sim Survey (2606.03551) → PSS（platform-survey support）**：默认只允许先解释 Isaac Sim / Isaac Lab 作为实验基座的物理、传感器、数据与生态合理性，不参与方法增益归因。
+- **最小 subtraction 字段**：`MCS_match / task_family_coverage_gain / demo_guidance_gain / adaptation_cost_delta / PSS_match / infrastructure_justification_only`。
+- **升级纪律**：只要一行结果仍可被“更会做 multi-task curriculum / demonstration-guided optimization / platform choice 更合理”解释，就不能冒领 **mechanical-arm high-frequency stabilizer** 叙事。
+
+### 9.1d world-model / training-free strong-control family freeze（2026-06-04 新增）
+- **TD-MPC2 (2310.16828) → WMPS（world-model planning support）**：默认只允许先解释 latent dynamics prediction、更平滑的 receding-horizon proposal、cross-regime adaptation、以及 planner-side disturbance handling；若没有在 moving-base 条件下继续压平 `drift_amp → BDEE`、推进 `g^†` 到 `W3` 并降低 payload-bearing `PGFR`，不得升级为机械臂高频稳定器证据。
+- **DIAL-MPC (2409.15610) → TFOS（training-free optimizer support）**：默认只允许先解释更强 full-order online refinement、tracking-error reduction、以及 solver-side short-horizon disturbance rejection；若主要增益仍可由 sampling-based MPC + diffusion-style annealing 解释，而非 arm-side residual compensation，则不得升级为 MEGA guidance-bearing 证据。
+- **最小 subtraction 字段**：`WMPS_match / latent_prediction_gain / planner_refinement_gain / TFOS_match / full_order_solver_gain / training_free_tracking_gain / planner_vs_arm_residual_split`。
+- **升级纪律**：只要一行结果仍可被“planner 已经更会预测/优化”解释，就不能冒领 **mechanical-arm high-frequency stabilizer** 叙事；只有在扣除 `WMPS/TFOS` 后仍保持 `DriftSlope` 更平、`g^†=W3`、且 `ΔPGFR` 继续下降时，才允许继续升级到 deployable hybrid 或更强 guidance claim。
+
+#### 9.1f transfer-protocol support freeze（2026-06-06 新增）
+- **RL-Based Sim-Real Co-Training for VLA (2602.12628) → TPS（transfer-protocol support）**：默认只允许先解释初始化保真、sim-real 适配成本下降、real-anchor continuity、以及 early-window deployment readiness；若没有在 matched subtraction 后继续压平 `drift_amp → BDEE`、把 `g^†` 推进到 `W3`，并在 payload-bearing slice 降低 `PGFR`，不得升级为 **mechanical-arm high-frequency stabilizer** 证据。
+- **四重减法审计**：后续 reviewer-facing 最小残差需显式穿过 `PRS`（platform/reproducibility support）、`ROS`（reward-origin support）、`VSS`（verification-shell support）、`TPS`（transfer-protocol support）四层扣减；只要某行 guidance gain 仍可主要由这四层之一解释，就只能停在对应 support-family ceiling。
+- **最小新增日志 key**：
+  - `mega.tps.match`
+  - `mega.tps.real_anchor_gain`
+  - `mega.tps.adaptation_cost_delta`
+  - `mega.tps.early_window_readiness_gain`
+  - `mega.residual.prs_subtracted`
+  - `mega.residual.ros_subtracted`
+  - `mega.residual.vss_subtracted`
+  - `mega.residual.tps_subtracted`
+  - `mega.residual.high_freq_stabilizer_survives`
+- **解释纪律**：最终允许占据 MEGA 标题的，不是“sim-real 共训后更像能部署”的总印象，而是**在扣除平台、奖励、验证壳与迁移协议优势后，仍持续压平 `DriftSlope`、存活到 `g^†=W3`、并降低 `ΔPGFR` 的 residual guidance gain`。**
+
+
+#### 9.1f verification-shell support freeze（2026-06-05 新增）
+- **MobileManiBench (2602.05233) → VSS（verification-shell support）**：默认只允许先解释 `task coverage / failure-mode surfacing / slice completeness / benchmark construction cost`，不直接参与 moving-base guidance 增益归因。
+- **最小 subtraction 字段**：`VSS_match / task_coverage_gain / failure_coverage_gain / slice_coverage_gain / benchmark_build_cost_delta / verification_shell_only`。
+- **升级纪律**：只要一行结果仍可被“验证壳更全、更容易暴露差异、更系统地定位失败”解释，就不能冒领 **mechanical-arm high-frequency stabilizer** 叙事；只有在扣除 VSS 后仍保持 `DriftSlope` 更平、`g^†=W3`、且 `ΔPGFR` 继续下降时，才允许继续升级。
+
+#### 9.1g sim-real protocol support freeze（2026-06-05 新增）
+- **RL-Based Sim-Real Co-Training for VLA (2602.12628) → PSC（protocol support / sim-real continuity）**：默认只允许先解释 `sim-real anchoring continuity / adaptation-cost reduction / curriculum continuity / transfer readiness`，以及离开仿真后的早期 `ΔBDEE` 或温和 `ΔCET` 改善。
+- **最小 subtraction 字段**：`PSC_match / simreal_anchoring_gain / adaptation_cost_delta / curriculum_continuity_gain / transfer_readiness_gain / protocol_only`。
+- **升级纪律**：只要一行结果仍可被“sim-real protocol 更连续、更容易适配真机”解释，就不能冒领 **mechanical-arm high-frequency stabilizer** 叙事；只有在扣除 PSC 后仍保持 `DriftSlope` 更平、`g^†=W3`、且 `ΔPGFR` 继续下降时，才允许继续升级。
+
+#### 9.1h PSC-VSS coupled subtraction for the first real bundle（2026-06-05 新增）
+- **PSC-VSS 耦合风险**：真实部署 bundle 中，`protocol continuity` 与 `verification-shell completeness` 很可能同时增强，容易把“更顺的 sim-real 迁移”与“更干净的验证壳”误写成 controller-side guidance advance。
+- **默认解释边界**：
+  - `PSC` 只允许先解释 `adaptation continuity / warm-start survivability / sim-real friction reduction`
+  - `VSS` 只允许先解释 `task coverage / failure coverage / slice completeness / benchmark-shell cleanliness`
+- **最小耦合 subtraction 字段**：`PSC_VSS_coupled_match / real_bundle_protocol_gain / real_bundle_shell_gain / coupled_support_ceiling`。
+- **升级纪律**：首个 real bundle 只有在**同时扣除 PSC 与 VSS** 后，残差仍继续改善 `ΔBDEE / ΔCET / ΔPCST / ΔPGFR`，并保持 `DriftSlope` 更平、`g^†=W3`、`ΔPGFR` 继续下降时，才允许继续升级到 MEGA guidance-bearing 叙事。
+- **解释纪律**：如果一行 post-transfer 结果更强，但主要可由“迁移协议更顺”或“验证壳更全”解释，则 ceiling 只能停在 **protocol support** 或 **verification-shell support**，不得冒领 mechanical-arm high-frequency stabilizer。
+
+#### 9.1i multi-task curriculum shell freeze（2026-06-06 新增）
+- **MT-Libero + DGPO (2606.03335) → MCS（multi-task curriculum shell）**：默认只允许先解释 `demonstration-guided initialization quality / heterogeneous task-family coverage / on-policy optimization stability / adaptation-cost reduction`，以及少量早期 `ΔBDEE` 收敛稳定性改善。
+- **最小 subtraction 字段**：`MCS_match / demo_init_gain / task_family_coverage_gain / onpolicy_stability_gain / adaptation_cost_delta / curriculum_shell_only`。
+- **metric-first rights**：MCS 最自然先解释的是 `seed variance ↓ / early ΔBDEE stabilization / adaptation-cost ↓`，而不是 `ΔPCST / ΔPGFR`；若没有同步把 `g^†` 推进到 `W3`、压平 `DriftSlope`、并在 payload slice 降低 `ΔPGFR`，不得升级成 mechanical-arm high-frequency stabilizer 证据。
+- **升级纪律**：只要一行结果仍可被“curriculum 设计更好、示教引导更顺、多任务壳更稳”解释，就不能冒领 **MEGA guidance-bearing** 叙事；只有在扣除 MCS 后 residual 仍持续改善 `ΔBDEE / ΔCET / ΔPCST / ΔPGFR`，才允许继续升级。
+
+#### 9.1ia cross-embodiment transfer-structure freeze（2026-06-08 新增）
+- **Any2Any (2605.23733) → KAS（kinematic-alignment support）**：默认只允许先解释 action-space translation、更低 embodiment mismatch、target-side adaptation cost 下降，以及 shared action interface 带来的早期稳定性改善。
+- **X-DiffVLA (2605.25044) → MTS（morphology-tree support）**：默认只允许先解释 morphology reuse、shared action-head organization、以及 embodiment-family generalization 效率提升。
+- **最小 subtraction 字段**：`KAS_match / embodiment_translation_gain / action_head_reuse_gain / adaptation_cost_delta / MTS_match / morphology_reuse_gain / cross_embodiment_support_ceiling`。
+- **metric-first rights**：KAS/MTS 最自然先解释的是 `adaptation-cost ↓ / early ΔBDEE stabilization / transfer readiness ↑`，而不是 `ΔPCST / ΔPGFR`；若没有同步把 `g^†` 推进到 `W3`、压平 `DriftSlope`、并在 payload slice 降低 `ΔPGFR`，不得升级成 **mechanical-arm high-frequency stabilizer** 证据。
+- **升级纪律**：只要一行结果仍可被“embodiment 对齐更顺 / morphology reuse 更强 / 动作头共享更有效”解释，就不能冒领 **MEGA guidance-bearing** 叙事；只有在扣除 `KAS/MTS` 后 residual 仍持续改善 `ΔBDEE / ΔCET / ΔPCST / ΔPGFR`，才允许继续升级。
+
+#### 9.1j transfer-protocol residual freeze and four-way support audit（2026-06-09 新增）
+- **RL-Based Sim-Real Co-Training for VLA (2602.12628) → TPS（transfer-protocol support）**：默认只允许先解释 `initialization alignment / real-world adaptation-cost reduction / sim-real continuity / early deployment readiness`，以及温和的早窗 `ΔBDEE` 或 `ΔCET` 改善；若没有在 matched subtraction 后继续压平 `drift_amp → BDEE`、把 `g^†` 推进到 `W3`、并在 payload-bearing slice 降低 `ΔPGFR`，不得升级成 **mechanical-arm high-frequency stabilizer** 证据。
+- **四重减法最小审计**：后续 submission-facing bundle 至少显式记录 `PRS / ROS / VSS / TPS` 四层 first-pass explanation，并额外回答 `residual guidance survives?`。也就是说，下一步最值钱的不是再扩 family，而是先判断：该行到底是 **平台更稳 / 奖励更会记账 / 验证壳更完整 / 迁移协议更顺**，还是在扣除这些解释后，真的还剩下 arm-side 高速补偿残差。
+- **最小新增日志 key**：
+  - `mega.tps.match`
+  - `mega.tps.init_alignment_gain`
+  - `mega.tps.real_adaptation_cost_delta`
+  - `mega.tps.simreal_continuity_gain`
+  - `mega.tps.early_readiness_gain`
+  - `mega.residual.prs_subtracted`
+  - `mega.residual.ros_subtracted`
+  - `mega.residual.vss_subtracted`
+  - `mega.residual.tps_subtracted`
+  - `mega.residual.guidance_survives`
+- **解释纪律**：最终允许占据 MEGA 标题的，不是“从 Isaac Lab 更顺地迁到真机”的总体印象，而是**在扣除 PRS / ROS / VSS / TPS 后，仍持续压平 `DriftSlope`、存活到 `g^†=W3`、并降低 `ΔPGFR` 的 residual guidance gain**。
+
+#### 9.1k high-frequency-stabilizer residual after MCS subtraction（2026-06-07 新增）
+- **MT-Libero + DGPO (2606.03335) → MCS（multi-task curriculum shell）** 已正式并入高频稳定器残差定义；后续 D07 的最强 reviewer-facing 残差不再是 `Δ^HF_row = ΔG_row \ (PRS ∪ ROS ∪ VSS ∪ TPS)`，而是 **`Δ^HF_row = ΔG_row \ (PRS ∪ ROS ∪ VSS ∪ TPS ∪ MCS)`**。
+- **MCS 默认解释边界**：只允许先解释 `demonstration-guided initialization quality / task-family coverage / on-policy optimization stability / adaptation-cost reduction / early-window variance reduction`，不能直接解释 payload-bearing `ΔPGFR` 或 `g^†=W3` 的稳定 guidance-bearing 增益。
+- **最小新增日志 key**：
+  - `mega.mcs.match`
+  - `mega.mcs.demo_init_gain`
+  - `mega.mcs.task_family_coverage_gain`
+  - `mega.mcs.onpolicy_stability_gain`
+  - `mega.mcs.adaptation_cost_delta`
+  - `mega.residual.mcs_subtracted`
+  - `mega.residual.high_freq_stabilizer_survives_after_mcs`
+- **解释纪律**：只要一行结果仍可被“multi-task curriculum 更好、示教引导更顺、训练壳更稳”解释，就不能冒领 **mechanical-arm high-frequency stabilizer** 叙事；只有在扣除 `MCS` 后 residual 仍继续压平 `DriftSlope`、推进 `g^†=W3`、并降低 `ΔPGFR` 时，才允许继续升级。
+
+## 9.2 推荐日志 key（训练侧直接导出）
 - `mega.bdee.mean_d1`
 - `mega.bdee.mean_d2`
 - `mega.cet.mean_w2`
@@ -206,6 +328,19 @@
 - `mega.route.support_family`
 - `mega.route.guidance_subtracted_ceiling`
 - `mega.route.promotion_blocker`
+- `mega.support.wmps_match`
+- `mega.support.tfos_match`
+- `mega.support.planner_vs_arm_residual_split`
+- `mega.support.psc_match`
+- `mega.support.simreal_anchoring_gain`
+- `mega.support.adaptation_cost_delta`
+- `mega.support.curriculum_continuity_gain`
+- `mega.support.transfer_readiness_gain`
+- `mega.vss.task_coverage`
+- `mega.vss.failure_coverage`
+- `mega.vss.slice_coverage`
+- `mega.vss.benchmark_build_cost`
+- `mega.vss.subtracted_ceiling`
 
 ### 9.3 四行 bundle 的默认 guidance-first 解读
 - **B1 scratch PPO**：只作为零 support 最弱基线；若 `ΔBDEE/ΔCET/ΔPCST/ΔPGFR` 全弱，则仅保留 planner-side lower bound。

@@ -42,6 +42,8 @@
 | **AirNav** | 2601.03707 | 大规模真实城市空中VLN基准，基于真实城市场景与自然语言指令，提出 AirVLN-R1（SFT+RLFT） | ✅ 已入库-R539 |
 | **APEX** | 2602.00551 | CVPR 2026，解耦式空中目标导航框架，拆成动态时空语义建图、RL动作决策、目标引导探索 | ✅ 已入库-R539 |
 | **OpenFly** | 2502.18041 | 多渲染引擎平台+自动数据生成工具链+100k轨迹基准+OpenFly-Agent关键帧模型 | ✅ 已入库-R571 |
+| **FlyMirage** | 2605.19600 | **浙大高飞团队**，LLM场景设计+生成式世界模型+3DGS+Boxer*自动标注+动力学可行轨迹，500场景×50K轨迹×$2/场景，与 OpenFly 互补 | ✅ 已入库-R20260602-推送 |
+
 | **GoalSwarm** | 2603.12908 | 多无人机去中心化开放词汇目标导航，2D语义占据图 + Bayesian Value Map + UCB frontier | 🆕 候选-R545 |
 | **HETT** | 2512.14222 | History-Enhanced Two-Stage Transformer，粗到细 AVLN，动态聚合视觉特征到结构化空间记忆 | 🆕 候选-R547 |
 | **Unified Aerial VLN** | 2512.08639 | 仅用单目 RGB + 语言输入，统一建模空间/时序/具身推理，含 keyframe selection + action merging + label reweighting | 🆕 候选-R551 |
