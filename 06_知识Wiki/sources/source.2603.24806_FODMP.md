@@ -4,7 +4,7 @@ id: "source.2603.24806_FODMP"
 pageType: "source"
 tags: []
 summary: ""
-origins: ["../../02_阅读笔记/99_归档/重复笔记/2603.24806_FODMP.md", "../../02_阅读笔记/99_归档/重复笔记/2603.24806_FODMP.md"]
+origins: ["../../02_阅读笔记/D09_感知与3D视觉/2603.24806_FODMP.md"]
 updated: "2026-04-17"
 ---
 

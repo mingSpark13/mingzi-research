@@ -4,7 +4,7 @@ id: "source.2602.12628_RLinf"
 pageType: "source"
 tags: ["vision-language-action", "reinforcement learning", "sim-to-real", "Isaac Lab", "co-training", "VLA架构"]
 summary: "论文提出在 Isaac Lab 中以强化学习预训练 VLA 并保留真机微调通道的 sim-real 共训框架，是 D07 机械臂从仿真到真机迁移的直接参考。"
-origins: ["../../02_阅读笔记/D02_VLA/RL_SimReal_CoTraining_VLA_2602.12628.md", "../../02_阅读笔记/D02_VLA/RL_SimReal_CoTraining_VLA_2602.12628.md"]
+origins: ["../../02_阅读笔记/D02_VLA/RL_SimReal_CoTraining_VLA_2602.12628.md", "02_阅读笔记/D02_VLA/RL_SimReal_CoTraining_VLA_2602.12628.md"]
 updated: "2026-06-02"
 ---
 

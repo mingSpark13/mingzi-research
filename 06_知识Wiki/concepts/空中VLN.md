@@ -4,7 +4,7 @@ id: "concept.空中VLN"
 pageType: "concept"
 tags: ["空中视觉语言导航", "语义导航", "单目无地图导航"]
 summary: "空中VLN是无人机在语言条件下进行三维视觉导航的核心任务设定，连接语义理解、在线决策与飞行控制。"
-sources: ["sources/AerialVLA_2603.14363", "sources/source.2602.05552_VLN-Pilot", "sources/2026-05-18_2603.17670_AgentVLN", "sources/source.2010.11561_FUEL"]
+sources: ["sources/source.2603.14363_AerialVLA", "sources/source.2602.05552_VLN-Pilot", "sources/source.2603.17670_AgentVLN", "sources/source.2010.11561_FUEL"]
 updated: "2026-05-19"
 ---
 
@@ -23,9 +23,9 @@ updated: "2026-05-19"
 - **挑战**：3D连续动作空间、视角变化大、动力学约束强、导航与操作衔接困难
 
 ## 代表来源
-- [[sources/AerialVLA_2603.14363]]
+- [[sources/source.2603.14363_AerialVLA]]
 - [[sources/source.2602.05552_VLN-Pilot]]
-- [[sources/2026-05-18_2603.17670_AgentVLN]]
+- [[sources/source.2603.17670_AgentVLN]]
 - [[sources/source.2010.11561_FUEL]]
 
 ## 相关概念

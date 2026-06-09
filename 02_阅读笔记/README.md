@@ -4,6 +4,8 @@
 
 新建论文笔记时复制 `_TEMPLATE.md`。
 
+> 注：`99_归档/`、`README.md`、`论文笔记汇总.md` 属历史归档或导航文件，不纳入论文模板合规统计。
+
 ## 必须章节
 
 1. YAML frontmatter（完整字段）
@@ -35,7 +37,7 @@ YYYY-MM-DD_标题.md
 
 ```markdown
 [[YYYY-MM-DD_标题]]    ← 论文互引
-[[VLA架构]]           ← 引用知识图谱概念（直接用 `06_知识Wiki/concepts/` 下现有文件名）
+[[concepts/VLA架构]]  ← 引用知识图谱概念（直接用 `06_知识Wiki/concepts/` 下现有文件名）
 ```
 
 ## 详细规则

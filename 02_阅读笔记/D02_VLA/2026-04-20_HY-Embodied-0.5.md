@@ -19,11 +19,15 @@ related_concepts: ["VLA架构", "具身智能", "多模态统一架构"]
 
 # HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents
 
-## 📌 三句话摘要
+## 🎯 题目
+
+**HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents**
+
+## 📝 三句摘要
 
 腾讯混元联合 Robot-X 实验室推出 HY-Embodied-0.5，以 MoT 架构 + 视觉隐层 token + 迭代自进化训练 + 大→小在线蒸馏四大设计，构建从 VLM 基座直训 VLA 的完整闭环方案。双版本设计：MoT-2B 面向端侧实时部署（22 个基准 16 项第一），MoE-A32B 面向云端复杂推理（平均分 67.0%，超越 Gemini 3.0 Pro）。在真实机器人控制任务上验证有效：精密插件装配 85%、餐具堆叠 80%、杯子悬挂 75% 成功率。
 
-## 🎯 价值评估
+## 💎 价值评估
 
 **评分：⭐⭐⭐⭐⭐（5/5）**
 
@@ -85,7 +89,7 @@ related_concepts: ["VLA架构", "具身智能", "多模态统一架构"]
 | 餐具堆叠 | 80% |
 | 杯子悬挂 | 75% |
 
-## 💡 可落地实验点
+## 🎯 可落地实验点
 
 1. **D02 VLA 方向**：MoT 架构的视觉语言解耦思路可借鉴，用于改进现有 VLA 小模型的视觉感知能力
 2. **D04 跨载体泛化**：OPD 在线蒸馏策略可用于跨载体知识迁移，大模型教小模型适应新形态

@@ -64,9 +64,9 @@ VLA 是一种将**视觉感知（Vision）**、**语言理解（Language）**和
 
 - [[concepts/跨载体泛化|概念：跨载体泛化（Cross-Embodyment Generalization）]]
 - [[concepts/隐空间世界模型]]|概念：Latent 世界模型（Latent World Model）
-- [[sources/AerialVLA_2603.14363|AerialVLA (2603.14363)]]
-- [[sources/DexFlyWheel_2509.23829|DexFlyWheel (2509.23829)]]
-- [[sources/MMaDA-VLA_2603.25406|MMaDA-VLA (2603.25406)]]
+- [[sources/source.2603.14363_AerialVLA|AerialVLA (2603.14363)]]
+- [[sources/source.2509.23829_DexFlyWheel|DexFlyWheel (2509.23829)]]
+- [[sources/source.2603.25406_MMaDA-VLA|MMaDA-VLA (2603.25406)]]
 - [[sources/RDT2_2602.03310|RDT2 (2602.03310)]]
 - [[sources/RoboInter_2602.09973|RoboInter: A Holistic Intermediate Representation Suite Towards Robotic Manipulation]]
 - [[sources/TIDAL_2601.14945|TIDAL: Temporally Interleaved Diffusion and Action Loop]]

@@ -41,10 +41,10 @@ Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time E
 
 ## 🔗 知识图谱
 
-- [[concepts/概念_VLA架构]] - 本文核心：面向真机实时部署的 VLA 工程化架构
-- [[concepts/概念_ACT动作分块]] - action chunk 时间对齐是本文关键工程贡献
-- [[concepts/概念_流匹配]] - 使用 flow matching 生成连续动作，支持精细操作
-- [[concepts/概念_跨载体泛化]] - 跨载体预训练是本文泛化能力的来源
+- [[concepts/VLA架构]] - 本文核心：面向真机实时部署的 VLA 工程化架构
+- [[concepts/ACT动作分块]] - action chunk 时间对齐是本文关键工程贡献
+- [[concepts/流匹配]] - 使用 flow matching 生成连续动作，支持精细操作
+- [[concepts/跨载体泛化]] - 跨载体预训练是本文泛化能力的来源
 
 ## 🔗 相关链接
 

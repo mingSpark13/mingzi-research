@@ -4,7 +4,7 @@ id: "source.2602.05233_MobileManiBench"
 pageType: "source"
 tags: []
 summary: "问题背景: 移动操作模型常缺统一、可扩展且低人工成本的验证基准，导致策略泛化与评测难以稳定比较。"
-origins: ["../../02_阅读笔记/D07_强化学习与控制/2026-05-25_2602.05233_MobileManiBench.md", "../../02_阅读笔记/D07_强化学习与控制/2026-05-25_2602.05233_MobileManiBench.md"]
+origins: ["../../02_阅读笔记/D07_强化学习与控制/2026-05-25_2602.05233_MobileManiBench.md", "02_阅读笔记/D07_强化学习与控制/2026-05-25_2602.05233_MobileManiBench.md"]
 updated: "2026-06-02"
 ---
 

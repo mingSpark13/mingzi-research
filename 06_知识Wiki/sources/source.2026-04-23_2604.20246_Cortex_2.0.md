@@ -4,7 +4,7 @@ id: "source.2026-04-23_2604.20246_Cortex_2.0"
 pageType: "source"
 tags: ["world model", "industrial manipulation", "long-horizon planning", "VLA", "robot planning", "隐空间世界模型"]
 summary: "在真实工业操作中用潜空间世界模型生成并评分候选未来轨迹，显著提升长程任务规划与执行稳定性。"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-04-23_2604.20246_Cortex_2.0.md", "../../02_阅读笔记/D01_世界模型/2026-04-23_2604.20246_Cortex_2.0.md"]
+origins: ["../../02_阅读笔记/D01_世界模型/2026-04-23_2604.20246_Cortex_2.0.md", "02_阅读笔记/D01_世界模型/2026-04-23_2604.20246_Cortex_2.0.md"]
 updated: "2026-06-02"
 ---
 

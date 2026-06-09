@@ -16,9 +16,9 @@ updated: "2026-05-27"
 
 | 路线 | 代表工作 | 当前价值判断 | 风险边界 |
 |------|---------|-------------|---------|
-| **端到端VLA** | [[sources/AerialVLA_2603.14363|AerialVLA]], AutoFly, DroneVLA | 适合做轻量低延迟基线，能覆盖 tracking-heavy 近场执行 | 语义约束与安全边界难显式诊断 |
+| **端到端VLA** | [[sources/source.2603.14363_AerialVLA|AerialVLA]], AutoFly, DroneVLA | 适合做轻量低延迟基线，能覆盖 tracking-heavy 近场执行 | 语义约束与安全边界难显式诊断 |
 | **层次化/Packet-first** | HTNav, OnFly, Ro-SLM | 仍是 D06 默认主链，利于统一 planner, verifier 与 controller 契约 | packet schema 若欠表达，晚期阶段会持续 reject |
-| **细粒度认知模块化** | FineCog-Nav, [[sources/2026-05-18_2603.17670_AgentVLN|AgentVLN]] | 先作为 diagnostic baseline，检查 instruction adherence 与 memory-hit-to-waypoint 转化 | 若只提升 benchmark 可解释性，不得抢主叙事 |
+| **细粒度认知模块化** | FineCog-Nav, [[sources/source.2603.17670_AgentVLN|AgentVLN]] | 先作为 diagnostic baseline，检查 instruction adherence 与 memory-hit-to-waypoint 转化 | 若只提升 benchmark 可解释性，不得抢主叙事 |
 | **Benchmark+数据工厂** | UAV-VLN Survey, OpenFly, AirNav | 支撑数据闭环与现实评测，是方法判线的必要底座 | 自身不提供主算法净收益 |
 
 ## 当前三大 Gap
@@ -55,7 +55,7 @@ updated: "2026-05-27"
 - [[comparisons/端到端空中VLA_vs_分层Explorer导航]]
 - [[sources/FineCog-Nav_2604.16298]]
 - [[sources/OnFly_2603.10682]]
-- [[sources/2026-05-18_2603.17670_AgentVLN]]
+- [[sources/source.2603.17670_AgentVLN]]
 - [[sources/source.2026-04-22_2604.19536_LiveVLN]]
 - [[sources/source.2025_Nav-R2_RGB_Only_Navigation]]
 - [[sources/source.2605.01477_Action_Agent]]
@@ -63,5 +63,5 @@ updated: "2026-05-27"
 - [[sources/source.2026-04-10_OpenFly_A_Comprehensive_Platform_for_Aerial_Vision-Language_Navigation|OpenFly]]
 - [[sources/UAV-Flow_2026|UAV-Flow Colosseo]]
 - [[sources/ORTrack_2026-04-07|ORTrack (2504.09228)]]
-- [[sources/AerialVLN_Survey_2604.07705]]
-- [[sources/AerialVLA_2603.14363|AerialVLA (2603.14363)]]
+- [[sources/source.2604.07705_AerialVLN_Survey]]
+- [[sources/source.2603.14363_AerialVLA|AerialVLA (2603.14363)]]

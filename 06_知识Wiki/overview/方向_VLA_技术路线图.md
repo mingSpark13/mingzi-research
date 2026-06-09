@@ -84,7 +84,7 @@ updated: "2026-05-27"
 **中期（3-6个月）**：
 1. 引入 [[concepts/流匹配]] 替换 ACT 应对更高控制频率
 2. 结合 [[sources/source.2605.13403_RotVLA|RotVLA]] 的 SO(n) 旋转建模处理空中姿态
-3. 参考 [[sources/source.2605.06481_OA-WAM|OA-WAM]] 的对象可寻址 world-action 表征，评估结构化对象槽位是否优于纯 token 堆叠
+3. 参考 [[sources/source.OA-WAM_2605.06481|OA-WAM]] 的对象可寻址 world-action 表征，评估结构化对象槽位是否优于纯 token 堆叠
 3. 探索 [[sources/source.2605.10925_PriorVLA|PriorVLA]] 的双专家适配防止灾难性遗忘
 
 **长期（6-12个月）**：
@@ -96,7 +96,7 @@ updated: "2026-05-27"
 
 - 端到端VLA基线：[[sources/source.2605.06175_VLA_GSE|VLA-GSE]] / [[sources/source.2605.10925_PriorVLA|PriorVLA]]
 - 层次化代表：[[sources/source.2605.12167_MoLA|MoLA]] / [[sources/source.2026-03-27_ACT|ACT]]
-- 扩散统一架构：[[sources/source.2603.14363_AerialVLA|AerialVLA]] / [[sources/dVLA_2509.25681|dVLA]]
+- 扩散统一架构：[[sources/source.2603.14363_AerialVLA|AerialVLA]] / [[sources/source.2509.25681_dVLA|dVLA]]
 - 外置知识记忆：[[sources/source.2605.18556_Key-Gram|Key-Gram]]，验证“不改主干、外接语言知识”对组合泛化和真实操作的增益
 - 跨载体泛化：[[sources/source.2605.13403_RotVLA|RotVLA]] / [[sources/source.2603.14522_OPFA|OPFA]]
 

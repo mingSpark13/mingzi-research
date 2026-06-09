@@ -13,8 +13,8 @@ pageType: "comparison"
 
 | 路线 | 核心思想 | 代表来源 |
 |------|---------|---------|
-| **端到端空中VLA** | 直接从视觉/语言观测输出连续控制 | [[sources/AerialVLA_2603.14363]], [[sources/source.2604.14125_HiVLA]] |
-| **分层Explorer导航** | 高层语义探索/目标推理 + 中层地图/前沿选择 + 低层控制执行 | [[overview/方向_空中VLN_技术路线图]], [[sources/OnFly_2603.10682]], [[sources/HTNav_2604.08883]] |
+| **端到端空中VLA** | 直接从视觉/语言观测输出连续控制 | [[sources/source.2603.14363_AerialVLA]], [[sources/source.2604.14125_HiVLA]] |
+| **分层Explorer导航** | 高层语义探索/目标推理 + 中层地图/前沿选择 + 低层控制执行 | [[overview/方向_空中VLN_技术路线图]], [[sources/OnFly_2603.10682]], [[sources/source.2604.08883_HTNav]] |
 
 ## 详细对比
 

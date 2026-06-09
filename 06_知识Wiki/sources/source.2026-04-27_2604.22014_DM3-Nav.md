@@ -4,7 +4,7 @@ id: "source.2026-04-27_2604.22014_DM3-Nav"
 pageType: "source"
 tags: ["semantic navigation", "multi-agent", "decentralized robotics", "multimodal goals", "跨载体泛化", "语义导航"]
 summary: "问题背景: 多机器人语义导航常依赖中心协调或共享全局地图，真实部署里这会带来单点失效与通信脆弱性。"
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-04-27_2604.22014_DM3-Nav.md", "../../02_阅读笔记/D04_跨载体泛化/2026-04-27_2604.22014_DM3-Nav.md"]
+origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-04-27_2604.22014_DM3-Nav.md", "02_阅读笔记/D04_跨载体泛化/2026-04-27_2604.22014_DM3-Nav.md"]
 updated: "2026-06-02"
 ---
 

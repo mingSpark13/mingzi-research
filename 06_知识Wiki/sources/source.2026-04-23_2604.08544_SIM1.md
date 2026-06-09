@@ -4,7 +4,7 @@ id: "source.2026-04-23_2604.08544_SIM1"
 pageType: "source"
 tags: ["deformable manipulation", "simulation", "sim2real", "synthetic data", "diffusion", "数据合成"]
 summary: "SIM1 把少量真实演示转成物理对齐的大规模合成监督，在可变形物体操作里显著提升零样本泛化与数据效率。"
-origins: ["../../02_阅读笔记/D05_数据飞轮/2026-04-23_2604.08544_SIM1.md", "../../02_阅读笔记/D05_数据飞轮/2026-04-23_2604.08544_SIM1.md"]
+origins: ["../../02_阅读笔记/D05_数据飞轮/2026-04-23_2604.08544_SIM1.md", "02_阅读笔记/D05_数据飞轮/2026-04-23_2604.08544_SIM1.md"]
 updated: "2026-06-02"
 ---
 

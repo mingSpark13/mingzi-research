@@ -6,15 +6,22 @@
 
 ## sources/
 
+### 最新添加（2026-06-02 11:53）
+- [[sources/source.2025_E2Map_Experience_Emotion_Map_Navigation|E2Map Experience/Emotion Map (ICRA 2025)]] — 首次把用户偏好/风险规避显式存入 experience/emotion map，导航中支持 custom user instruction，D06 语义导航/空中VLN
+- [[sources/source.2026-03-28_ST-VLA|ST-VLA (2026-03)]] — 3D-4D 统一表征桥接 VLM 语义与低层控制，ST-Human 300k episodes 训练，RLBench 零样本 +44.6%/真机 +30.3%，D02 VLA架构/时空理解
+- [[sources/source.2026-03-28_LaMP|LaMP (2026-03)]] — 3D 场景流作为潜运动先验解耦几何与语义，双专家门控交叉注意力，OOD 扰动 +9.7%，D02 VLA架构/3D场景流
+- [[sources/source.2026-05-14_WildOS_Open-Vocabulary_Object_Search_in_the_Wild|WildOS Open-Vocab Search (2602.19308)]] — NASA JPL/ETH 稀疏导航图+ExploRFM+粒子滤波远距定位实现户外开放词汇目标搜索，D06 语义导航/腿足机器人
+- [[sources/source.2602_ABotM0|ABot-M0 (2602.11236)]] — One-Brain, Many-Forms 通用大脑策略+躯体适配层跨形态迁移，PMI 框架 motivation 论文之一，D02/D04 VLA架构/跨载体泛化
+
 ### 最新添加（2026-06-02 09:38）
 - [[sources/source.2026-06-02_公众号_AcornRobot_具身本能路线|Acorn Robot 具身本能路线（机器之心Pro）]] — 清华+哈佛系公众号深度报道：质疑 VLA 端到端范式，提出自下而上的具身本能路线（解耦大脑/小脑 + 触觉反射），零数据冷启动 200Hz，2026 年已在化妆品产线落地，D08 灵巧操作/力-触融合
 - [[sources/source.2502.01521_Symmetry_Guided_Memory_Augmentation|Symmetry-Guided Memory (2502.01521, ETH)]] — 把对称性先验注入 memory-based RL，腿足 locomotion 任务样本效率与稳定性显著提升，L1 笔记已入库（原 orphan 占位升级为真实 source），D07 强化学习/腿足机器人
 
 ### 最新添加（2026-06-02 08:53）
-- [[sources/source.2605.29410_Midair_Docking_Aerial_Manipulation|Midair Docking (2605.29410)]] — Leader-Follower 双无人机中空对接系统，磁吸对接 + progress-aware 四阶段监督器，可复现 ROS2/PX4 实验平台，D08 空中操作/多机器人协调
+- [[sources/source.2605.29410_Midair_Docking_Aerial_Manipulation_Aerial_Manipulation|Midair Docking (2605.29410)]] — Leader-Follower 双无人机中空对接系统，磁吸对接 + progress-aware 四阶段监督器，可复现 ROS2/PX4 实验平台，D08 空中操作/多机器人协调
 - [[sources/source.2605.23128_pi0-EqM|π₀-EqM (2605.23128, Oxford)]] — Equilibrium Matching 替换 π₀ 的 Flow Matching 解码器，RoboTwin 19 任务 +9.8pp / LIBERO-10 87.0%，D02/D01 VLA架构/流匹配
 - [[sources/source.2605.23160_Semantic_Drone|SAGE Drone Exploration (2605.23160, UC Berkeley)]] — FALCON 上集成 CLIP 开放词汇语义 frontier 优先化，object discovery 显著优于纯几何基线，D06 空中VLN/语义导航
-- [[sources/source.2605.19562_Aerial_Ground_Handover|Aerial-Ground Handover (2605.19562, RoManSy 2026)]] — LSTM warm-start + centralized optimizer refinement，3× 加速 + 100% 优化成功率，D03 空地迁移/最优控制
+- [[sources/source.2026-05-22_2605.19562_Aerial_Ground_Handover|Aerial-Ground Handover (2605.19562, RoManSy 2026)]] — LSTM warm-start + centralized optimizer refinement，3× 加速 + 100% 优化成功率，D03 空地迁移/最优控制
 - [[sources/source.2605.13782_LMPath|LMPath (2605.13782, UPenn)]] — 语言模型生成目标-环境语义先验 + 卫星图像分割高概率子区域 + 多目标函数搜索航迹，D06 空中VLN/长程任务规划
 
 ### 最新添加（2026-06-02 02:38）
@@ -41,22 +48,22 @@
 
 ### 最新添加（2026-06-01 22:40）
 - [[sources/source.2026-06-01_AR_Forcing|AR Forcing (2605.31314)]] — 把 diffusion world model 的单步 loss 嵌入自回归训练循环,缓解长时域导航 world model 训练-推理分布错位,RECON/SCAND/HuRoN/TartanDrive 验证,D01 世界模型/语义导航/长程任务规划
-- [[sources/source.2026-06-01_2605.27817_Turning_Video_Models_into_Generalist_Robot_Policies|Turning Video Models (2605.27817)]] — 视频模型+独立 inverse dynamics model 解耦架构,避免紧耦合限制跨载体复用,只动 IDM 即可适配新 embodiment,D01/D04 视频生成/动作条件预测/跨载体泛化
-- [[sources/source.2026-06-01_2605.27491_GE-Sim_2.0|GE-Sim 2.0 (2605.27491)]] — 面向机器人操作的闭环视频世界模拟器 roadmap,action-conditioned generation + 闭环 rollout + 策略训练三件套,D01/D02/D05 视频生成/物理一致性/数据合成
+- [[sources/source.2605.27817_Turning_Video_Models_into_Generalist_Robot_Policies|Turning Video Models (2605.27817)]] — 视频模型+独立 inverse dynamics model 解耦架构,避免紧耦合限制跨载体复用,只动 IDM 即可适配新 embodiment,D01/D04 视频生成/动作条件预测/跨载体泛化
+- [[sources/source.2605.27491_GE-Sim_2.0|GE-Sim 2.0 (2605.27491)]] — 面向机器人操作的闭环视频世界模拟器 roadmap,action-conditioned generation + 闭环 rollout + 策略训练三件套,D01/D02/D05 视频生成/物理一致性/数据合成
 - [[sources/source.2026-06-01_CARLA_Air_Cooperation|CARLA-Air (2605.31066)]] — CARLA+AirSim 同进程统一运行时,移动平台降落+遮挡恢复护送两类闭环任务,诊断 aerial VLA 真实协作缺口,D03 跨载体泛化/空中操作/语义导航
-- [[sources/source.2026-06-01_2602.07388_TF_DP|TF-DP (2602.07388)]] — execution trace 条件化 diffusion policy 缓解长时程多模态动作阶段歧义与时序错乱,NTU 一作,D02/D07 扩散策略/灵巧操作
-- [[sources/source.2026-06-01_2604.09294_POMDAR|POMDAR (2604.09294, ETH Zurich)]] — anthropomorphic hand dexterity 形式化为结构化抓取/操作任务 throughput,统一真实+仿真评测,稳定区分 2/7/11/16 DoF 系统表现,D08 灵巧操作/Sim2Real/跨载体泛化
-- [[sources/source.2026-06-01_2605.23733_Any2Any|Any2Any (2605.23733)]] — 运动学对齐+PEFT 动力学适应两阶段实现人形 WBT 跨载体迁移,1% 算力达从头训练同等性能,D04 跨载体泛化/动作空间统一/强化学习
-- [[sources/source.2026-06-01_2605.00884_LiteVLA-H|LiteVLA-H (2605.00884)]] — 256M 参数机载 VLA+双速率推理(高频 guidance 19.74Hz/低频语义 6Hz),prefill 是边缘 VLA 主瓶颈,D06 空中VLN/VLA架构/实时推理
+- [[sources/source.2602.07388_TF_DP|TF-DP (2602.07388)]] — execution trace 条件化 diffusion policy 缓解长时程多模态动作阶段歧义与时序错乱,NTU 一作,D02/D07 扩散策略/灵巧操作
+- [[sources/source.2604.09294_POMDAR|POMDAR (2604.09294, ETH Zurich)]] — anthropomorphic hand dexterity 形式化为结构化抓取/操作任务 throughput,统一真实+仿真评测,稳定区分 2/7/11/16 DoF 系统表现,D08 灵巧操作/Sim2Real/跨载体泛化
+- [[sources/source.2605.23733_Any2Any|Any2Any (2605.23733)]] — 运动学对齐+PEFT 动力学适应两阶段实现人形 WBT 跨载体迁移,1% 算力达从头训练同等性能,D04 跨载体泛化/动作空间统一/强化学习
+- [[sources/source.2605.00884_LiteVLA-H|LiteVLA-H (2605.00884)]] — 256M 参数机载 VLA+双速率推理(高频 guidance 19.74Hz/低频语义 6Hz),prefill 是边缘 VLA 主瓶颈,D06 空中VLN/VLA架构/实时推理
 
 ### 最新添加（2026-06-01 22:12）
 
 ### 最新添加（2026-06-01 22:12）
-- [[sources/source.2026-05-20_WEM_2605.19957|WEM (2605.19957)]] — 把环境演化与机器人自身演化在 latent 空间显式解耦，world-ego entanglement 解决方案，HTEWorld 长时混合任务 SOTA，D01 隐空间世界模型/长程任务规划/多模态统一架构
-- [[sources/source.2026-05-14_FrameSkip_2605.13757|FrameSkip (2605.13757)]] — dataloader 层对 VLA 训练帧做重要性打分，20% 关键帧预算下宏平均成功率 66.5%→76.15%，不改 VLA 主体架构，D05 数据飞轮/VLA架构/数据合成
-- [[sources/source.2026-05-14_RoboEvolve_2605.13775|RoboEvolve (2605.13775)]] — VLM planner + VGM simulator 共进化闭环，500 张未标注 seed 即可超过全监督基线，planner 提升 30 点/simulator 成功率提升 48%，D05 数据飞轮/数据合成/自动标注
-- [[sources/source.2026-06-01_Midair_Docking_2605.29410|Progress-Aware Midair Docking (2605.29410)]] — leader-follower 双机对接系统 + 轻量磁吸框架 + progress-aware supervisor，四阶段管理 approach/alignment/capture/settle，完整 ROS 2 + Crazyflie/PX4 软硬件栈，D08 灵巧操作/空中操作/多机器人协调
-- [[sources/source.2026-05-12_Aerial_Manipulation_Contact_Aware_2602.08251|Aerial Manipulation Contact-Aware (2602.08251)]] — 全 onboard 接触感知-控制闭环，contact-aware VIO 一致性因子+图像伺服+hybrid force-motion control，接触速度估计提升 ~66%，无 MoCap 即可稳定接触，D03 空中机械臂/主动感知/运动控制
+- [[sources/source.2605.19957_WEM|WEM (2605.19957)]] — 把环境演化与机器人自身演化在 latent 空间显式解耦，world-ego entanglement 解决方案，HTEWorld 长时混合任务 SOTA，D01 隐空间世界模型/长程任务规划/多模态统一架构
+- [[sources/source.2605.13757_FrameSkip|FrameSkip (2605.13757)]] — dataloader 层对 VLA 训练帧做重要性打分，20% 关键帧预算下宏平均成功率 66.5%→76.15%，不改 VLA 主体架构，D05 数据飞轮/VLA架构/数据合成
+- [[sources/source.2605.13775_RoboEvolve|RoboEvolve (2605.13775)]] — VLM planner + VGM simulator 共进化闭环，500 张未标注 seed 即可超过全监督基线，planner 提升 30 点/simulator 成功率提升 48%，D05 数据飞轮/数据合成/自动标注
+- [[sources/source.2605.29410_Midair_Docking_Aerial_Manipulation|Progress-Aware Midair Docking (2605.29410)]] — leader-follower 双机对接系统 + 轻量磁吸框架 + progress-aware supervisor，四阶段管理 approach/alignment/capture/settle，完整 ROS 2 + Crazyflie/PX4 软硬件栈，D08 灵巧操作/空中操作/多机器人协调
+- [[sources/source.2602.08251_ContactAware_Aerial_Manipulation|Aerial Manipulation Contact-Aware (2602.08251)]] — 全 onboard 接触感知-控制闭环，contact-aware VIO 一致性因子+图像伺服+hybrid force-motion control，接触速度估计提升 ~66%，无 MoCap 即可稳定接触，D03 空中机械臂/主动感知/运动控制
 
 ### 最新添加（2026-06-01 21:49）
 - [[sources/source.2026-04-29_HiPAN|HiPAN (2604.26504)]] — 四足机器人层次化 posture-adaptive 导航,深度图直出高层导航+body posture,RA-L 2026,D07 腿足机器人/语义导航/运动控制
@@ -73,7 +80,7 @@
 - [[sources/source.2026-05-13_DQ-Net|DQ-Net (2026-05-13 入库)]] — Grasp Fusion Module 抓取位姿记忆库+注意力匹配6D位姿+KD 轻量学生策略，DQ-Bench 动态抓取 SOTA，D07 腿足机器人/全身协调运动
 
 ### 最新添加（2026-06-01 21:23）
-- [[sources/source.2026-05-03_2604.27557_Dexterous_Hand_CoDesign|Dexterous Hand Co-Design (2604.27557)]] — 灵巧手结构参数与操控策略统一参数化设计空间，面向抓取稳定性的硬件-策略共设计，D07 灵巧操作/强化学习/Sim2Real
+- [[sources/source.2604.27557_Dexterous_Hand_CoDesign|Dexterous Hand Co-Design (2604.27557)]] — 灵巧手结构参数与操控策略统一参数化设计空间，面向抓取稳定性的硬件-策略共设计，D07 灵巧操作/强化学习/Sim2Real
 - [[sources/source.2026-05-11_Aerial_Manipulator_Flower|Aerial Manipulator Flower (2605.06759)]] — RGB-D感知+MPPI控制+2-DoF机械臂的空中机械臂系统，垂直农业非接触式授粉，D03 空中操作/MPC/感知与3D视觉
 - [[sources/source.2026-05-30_Qwen-VLA|Qwen-VLA (2605.30280)]] — Qwen VLM扩展+DiT action decoder统一VLA，操作/导航/轨迹预测单框架跨载体零样本泛化，D02 VLA架构/多模态统一架构/跨载体泛化
 - [[sources/source.2026-04-18_R3D|R3D (2604.15281)]] — 3D policy learning 训练不稳定+过拟合诊断,transformer 3D encoder+diffusion decoder新架构显著超越SOTA 3D基线,D02 VLA架构/D04 跨载体泛化
@@ -144,7 +151,7 @@
 - [[sources/source.2603.14522_OPFA|OPFA (2603.14522)]] — geometry-aware latent action space + 统一 retargeting decoder，跨载体从几何感知潜在对齐替代显式动作对齐，D04 跨载体泛化/动作空间统一
 - [[sources/source.2602.10556_LAP|LAP (2602.10556)]] — 动作文本化监督 VLM 骨干，首个强零样本跨载体 VLA（ LAP-3B），D04 跨载体泛化/动作空间统一/VLA架构
 - [[sources/source.2602.19308_WildOS|WildOS (2602.19308)]] — 稀疏导航图+ExploRFM+粒子滤波，Spot 四足机载零样本开放词汇目标搜索，D06 空中VLN/语义导航
-- [[sources/source.2402.10329_UMI|UMI (2402.10329)]] — 手持夹爪中间媒介最小化具身差距，零样本跨平台部署，RSS 2024，D04 跨载体泛化/零样本泛化
+- [[sources/UMI_2402.10329|UMI (2402.10329)]] — 手持夹爪中间媒介最小化具身差距，零样本跨平台部署，RSS 2024，D04 跨载体泛化/零样本泛化
 
 ### 最新添加（2026-05-27 04:08）
 - [[sources/source.2605.25832_Auto-Robotist|Auto-Robotist (2605.25832)]] — LLM agent将形态搜索试错轨迹沉淀为自然语言skill library，7任务冷启动5x提升并跨尺度迁移，D03 跨载体泛化/LLM驱动机器人/数据合成
@@ -167,7 +174,7 @@
 - [[sources/source.2605.25829_OASIS|OASIS (2605.25829)]] — SE(3) 末端执行器轨迹预测对齐 observation-action 表征，提升 VLA/WAM 在 OOD 场景下的操作泛化稳定性，通用操作/VLA架构
 - [[sources/source.2605.25547_TapSampling|TapSampling (2605.25547)]] — Inference-time Action-VAE 采样 + 任务进度 Verifier 重排，无需重训 backbone 稳定提升通用操作策略成功率，ICML 2026
 - [[sources/source.2605.19420_Beyond_Waypoints|Beyond Waypoints (2605.19420)]] — Dual-Heatmap 把语言目标转化为可达性+朝向联合分布，比单点 waypoint 更利于跨载体语义导航泛化，D04 跨载体泛化
-- [[sources/source.2605.06481_OA-WAM|OA-WAM (2605.06481)]] — Object-addressable slot 分离 address/content 向量，场景扰动下操作绑目标稳健性达 97.8%，D02 具身智能
+- [[sources/source.OA-WAM_2605.06481|OA-WAM (2605.06481)]] — Object-addressable slot 分离 address/content 向量，场景扰动下操作绑目标稳健性达 97.8%，D02 具身智能
 - [[sources/source.2602.22667_FreeOcc|FreeOcc (2602.22667)]] — 首个无需训练的开放词汇 3D 占据预测，SLAM+3DGS 在线构建语言可查询语义地图，RSS 2026
 
 ### 最新添加（2026-05-26 08:19）
@@ -175,29 +182,29 @@
 - [[sources/source.2605.23477_Structured_MoE_Manipulation|Structured MoE Manipulation (2605.23477)]] — 语义结构化 MoE 专家路由实现组合式操作生成，兼顾算力效率与多任务泛化，D05 数据飞轮/扩散策略/灵巧操作
 
 ### 最新添加（2026-05-26 07:46）
-- [[sources/source.2026-05-25_2603.14308_LALO|LALO (2603.14308)]] — decoupled-yet-coordinated loco-manipulation 架构，residual RL + history-based estimator 处理负载变化和操作扰动，纯仿真训练零成本部署全尺寸人形，腿足机器人/全身协调运动
-- [[sources/source.2026-05-22_2605.20484_Leg_Odometry_SLAM|Leg Odometry SLAM (2605.20484)]] — proprioceptive leg-odometry 并联 LIO-SAM 作为垂向锚点，GNSS 拒止场景高程漂移从 30m+ 压到 30cm，腿足机器人/SLAM/语义导航
-- [[sources/source.2026-05-20_2605.17681_PRIME|PRIME (2605.17681)]] — MAP 框架联合优化运动学轨迹+接触力+惯性参数，输出动力学一致带 force/contact 标注数据，腿足机器人/数据合成/物理一致性
-- [[sources/source.2026-05-20_2602.19184_Human_to_Robot_Interaction|Human-to-Robot Interaction (2602.19184)]] — TSM+VLM 视频理解 + TD3 两阶段管线，公开视频转机器人 imitation 监督，89.97% 动作分类准确率，模仿学习/零样本泛化
+- [[sources/source.2603.14308_LALO|LALO (2603.14308)]] — decoupled-yet-coordinated loco-manipulation 架构，residual RL + history-based estimator 处理负载变化和操作扰动，纯仿真训练零成本部署全尺寸人形，腿足机器人/全身协调运动
+- [[sources/source.2605.20484_Leg_Odometry_SLAM|Leg Odometry SLAM (2605.20484)]] — proprioceptive leg-odometry 并联 LIO-SAM 作为垂向锚点，GNSS 拒止场景高程漂移从 30m+ 压到 30cm，腿足机器人/SLAM/语义导航
+- [[sources/source.2605.17681_PRIME|PRIME (2605.17681)]] — MAP 框架联合优化运动学轨迹+接触力+惯性参数，输出动力学一致带 force/contact 标注数据，腿足机器人/数据合成/物理一致性
+- [[sources/source.2602.19184_Human_to_Robot_Interaction|Human-to-Robot Interaction (2602.19184)]] — TSM+VLM 视频理解 + TD3 两阶段管线，公开视频转机器人 imitation 监督，89.97% 动作分类准确率，模仿学习/零样本泛化
 - [[sources/source.2026-05-15_2604.12879_FastGrasp|FastGrasp (2604.12879)]] — grasp proposal + whole-body RL + 触觉反馈三级闭环，移动平台高速灵巧抓取，灵巧操作/全身协调运动/力-触融合
 
 ### 最新添加（2026-05-26 04:29）
 - [[sources/source.2602.19184_Human_to_Robot_Interaction|Human-to-Robot Interaction (2602.19184)]] — 视频理解+TD3两阶段管线把公开视频转机器人imitation监督，87.5%成功率，降低高质量示范数据门槛，模仿学习/零样本泛化
-- [[sources/source.2604.12879_FastGrasp|FastGrasp (2604.12879)]] — grasp proposal+whole-body RL+触觉闭环，移动平台高速灵巧抓取，底盘-机械臂-灵巧手三级协同，灵巧操作/全身协调运动
+- [[sources/source.2026-05-15_2604.12879_FastGrasp|FastGrasp (2604.12879)]] — grasp proposal+whole-body RL+触觉闭环，移动平台高速灵巧抓取，底盘-机械臂-灵巧手三级协同，灵巧操作/全身协调运动
 - [[sources/source.2605.13775_RoboEvolve|RoboEvolve (2605.13775)]] — VLM planner与VGM simulator共进化闭环，500张未标注seed图像超全监督基线，planner+30点/simulator+48%，数据合成/自动标注
 - [[sources/source.2602.23408_Demystifying_Action_Space_Design|Demystifying Action Space (2602.23408)]] — 系统拆解动作空间设计对IL/DP学习稳定性和泛化的影响，为跨平台控制接口选型提供分析框架，动作空间统一/VLA架构
 - [[sources/source.2604.25323_ANCHOR|ANCHOR (2604.25323)]] — 物理锚定把任务规划锚定到可观测几何实体，未见环境实机成功率71.7%，扰动恢复率71.4%，长程任务规划/LLM驱动机器人
 
 ### 最新添加（2026-05-26 03:26）
-- [[sources/source.2026-05-16_2604.01142_Bounded_ES_RL|Bounded ES+RL (2604.01142)]] — DDPG manipulation policy + bounded extremum seeking 在线纠偏，分布外目标与动力学漂移鲁棒，D07 强化学习/运动控制/零样本泛化
-- [[sources/source.2026-05-16_2602.01789_RFS|RFS (2602.01789)]] — flow-matching policy + residual+latent 双通道 steering 微调，灵巧操作高效跨域适配，D07 强化学习/灵巧操作/流匹配
-- [[sources/source.2026-05-16_2512.23703_Robo_Dopamine|Robo-Dopamine (2512.23703)]] — 通用 PRM 35M 样本，单条 expert 适配后 150 次 rollout 0→95% 成功率，D07 强化学习/自动标注/多模态统一架构
-- [[sources/source.2026-05-13_2604.12628_RL_vs_Optimal_Control|RL vs Optimal Control (2604.12628)]] — DDPG vs 伪谱法对比：RL 快 10× 但可行域不全，混合路线兼顾速度与质量，D07 强化学习/运动控制/实时推理
-- [[sources/source.2026-05-13_2603.05574_PRISM|PRISM (2603.05574)]] — IL 冷启动 + LLM 奖励 + human feedback PPO 精炼，语言驱动个性化操作技能适配，D07 模仿学习/强化学习/LLM驱动机器人
+- [[sources/source.2604.01142_Bounded_ES_RL|Bounded ES+RL (2604.01142)]] — DDPG manipulation policy + bounded extremum seeking 在线纠偏，分布外目标与动力学漂移鲁棒，D07 强化学习/运动控制/零样本泛化
+- [[sources/source.2602.01789_RFS|RFS (2602.01789)]] — flow-matching policy + residual+latent 双通道 steering 微调，灵巧操作高效跨域适配，D07 强化学习/灵巧操作/流匹配
+- [[sources/source.2512.23703_Robo_Dopamine|Robo-Dopamine (2512.23703)]] — 通用 PRM 35M 样本，单条 expert 适配后 150 次 rollout 0→95% 成功率，D07 强化学习/自动标注/多模态统一架构
+- [[sources/source.2604.12628_RL_vs_Optimal_Control|RL vs Optimal Control (2604.12628)]] — DDPG vs 伪谱法对比：RL 快 10× 但可行域不全，混合路线兼顾速度与质量，D07 强化学习/运动控制/实时推理
+- [[sources/source.2603.05574_PRISM|PRISM (2603.05574)]] — IL 冷启动 + LLM 奖励 + human feedback PPO 精炼，语言驱动个性化操作技能适配，D07 模仿学习/强化学习/LLM驱动机器人
 
 ### 最新添加（2026-05-25 21:55）
 - [[sources/source.2602.22667_FreeOcc|FreeOcc (2602.22667)]] — 首个无需训练的开放词汇3D占据预测，SLAM+3DGS在线构建语言可查询语义占据地图，RSS 2026，感知与3D视觉/具身智能
-- [[sources/source.2026-05-11_2605.06759_Aerial_Manipulator_Flower|Aerial Manipulator Flower (2605.06759)]] — RGB-D感知+MPPI控制+2-DoF机械臂，垂直农业非接触授粉，感知-控制-操作集成框架，空地迁移/规划与控制
+- [[sources/source.2605.06759_Flower_Targeting_Aerial_Manipulator|Aerial Manipulator Flower (2605.06759)]] — RGB-D感知+MPPI控制+2-DoF机械臂，垂直农业非接触授粉，感知-控制-操作集成框架，空地迁移/规划与控制
 - [[sources/source.2605.07560_Failure_Demo_Data|Failure Demo Data (2605.07560)]] — 学习成功-失败差异隐表示融入注意力机制，有效利用失败数据提升IL性能，强化学习/模仿学习
 - [[sources/source.2003.09512_Allenspach_TiltrotorMAV|Tiltrotor MAV (2003.09512)]] — 倾转旋翼全向飞行设计+最优控制实现6D位姿精确调节，IJRR 2020，空地迁移/规划与控制
 - [[sources/source.2019_Ryll_FlyingEndeffector|Flying End-Effector (2019)]] — Flying end-effector范式将空中机器人整体视作6D末端执行器，绕过欠驱动限制，IJRR 2019，空地迁移/规划与控制
@@ -223,8 +230,8 @@
 - [[sources/source.2604.11751_Grounded_World_Model|Grounded World Model (2604.11751)]] — 语义接地世界模型将语言条件嵌入latent dynamics，配合MPC想象轨迹规划，解决杂乱场景关系指令操作成功率低的问题，D01 世界模型/动作条件预测/多模态统一架构
 
 ### 最新添加（2026-05-25 09:05）
-- [[sources/source.2026-05-20_2602.19184_Human_to_Robot_Interaction|Human-to-Robot Interaction (2602.19184)]] — 视频→动作两阶段管线（TSM+VLM理解+TD3执行），公开视频演示转机器人imitation监督，87.5%操作成功率，D01 模仿学习/数据合成/强化学习
-- [[sources/source.2026-05-19_2603.06073_Lifelong_Embodied_Navigation_Learning|Lifelong Nav Learning (2603.06073)]] — Uni-Walker用DE-LoRA解耦shared/specific知识解决多任务连续导航灾难性遗忘，D03 语义导航/持续学习/LLM驱动机器人
+- [[sources/source.2602.19184_Human_to_Robot_Interaction|Human-to-Robot Interaction (2602.19184)]] — 视频→动作两阶段管线（TSM+VLM理解+TD3执行），公开视频演示转机器人imitation监督，87.5%操作成功率，D01 模仿学习/数据合成/强化学习
+- [[sources/source.2603.06073_Lifelong_Embodied_Navigation_Learning|Lifelong Nav Learning (2603.06073)]] — Uni-Walker用DE-LoRA解耦shared/specific知识解决多任务连续导航灾难性遗忘，D03 语义导航/持续学习/LLM驱动机器人
 
 ### 最新添加（2026-05-25 08:18）
 - [[sources/source.2602.15875_Fly0|Fly0 (2602.15875)]] — 解耦语义 grounding 与几何规划，MLLM 定位语言目标 + 几何规划器生成无碰轨迹，零样本空中 VLN SOTA，D06 空中VLN/语义导航/零样本泛化
@@ -238,7 +245,7 @@
 
 ### 最新添加（2026-05-24 20:11）
 - [[sources/source.2605.20811_Demo-JEPA|Demo-JEPA (2605.20811)]] — JEPA潜在未来轨迹翻译实现one-shot跨载体模仿，绕过显式动作对齐，RBLench+真机验证未见载体零样本迁移，D04 跨载体泛化/世界模型/模仿学习
-- [[sources/source.2605.19420_Dual_Heatmap_Semantic_Navigation|Beyond Waypoints (2605.19420)]] — Dual-Heatmap统一预测可达区域+朝向affordance field，跨Jetbot/H1/Aliengo载体SOTA，D04 跨载体泛化/多模态统一架构/长程任务规划
+- [[sources/source.2605.19420_Beyond_Waypoints|Beyond Waypoints (2605.19420)]] — Dual-Heatmap统一预测可达区域+朝向affordance field，跨Jetbot/H1/Aliengo载体SOTA，D04 跨载体泛化/多模态统一架构/长程任务规划
 
 ### 最新添加（2026-05-24 17:52）
 - [[sources/source.2026-05-24_WAM八年技术演进史|WAM八年技术演进史 (微信公众号)]] — WAM八年四阶段演进史，解耦式→两阶段对齐→联合统一→闭环交互，"大视频基座+轻量动作头"工业路线获初步验证，D01 世界模型/动作预测/技术路线图
@@ -252,11 +259,11 @@
 - [[sources/source.2601.05230_Latent_Action_World_Models|Latent Action WM In The Wild (2601.05230)]] — 从无标签in-the-wild视频学连续latent action，跨数据源统一控制接口，D01 隐空间世界模型/动作条件预测/零样本泛化
 
 ### 最新添加（2026-05-24 08:28）
-- [[sources/source.2026-05-11_2605.06759_Aerial_Manipulator_Flower|Aerial Manipulator Flower (2605.06759)]] — 空中机械臂+RGB-D+MPPI实现垂直农业非接触授粉，感知-控制-操作集成框架，MPPI抗扰动控制可迁移到UAV人体跟随，D03 空中操作/MPC/感知与3D视觉
-- [[sources/source.2026-05-07_2605.05172_Q2RL_BC_to_Q_functions|Q2RL BC→Q (2605.05172)]] — 从BC策略抽取Q函数+Q-gating在BC/RL动作间切换，真实机器人1-2h在线交互达100%成功率3.75×提升，D07 强化学习/模仿学习/Isaac强化学习
-- [[sources/source.2026-05-10_2603.06450_Data_Analogies|Data Analogies (2603.06450)]] — paired demonstrations比扩大未配对异构数据更有效，跨载体迁移瓶颈是任务对应关系的显式暴露，D04 跨载体泛化/模仿学习
-- [[sources/source.2026-04-19_2604.13654_UAV_VLN_Survey|UAV VLN Survey (2604.13654)]] — 无人机VLN系统综述，建立数据集/仿真器/评测taxonomy，填补空中VLN综述空白指向空地协同路线，D06 空中VLN/语义导航/无人机避障
-- [[sources/source.2026-05-11_2605.06481_OA-WAM|OA-WAM (2605.06481)]] — 对象可寻址世界动作模型，slot地址-内容分离解决场景扰动下动作绑定，LIBERO 97.8%，D02 VLA架构/隐空间世界模型/模仿学习
+- [[sources/source.2605.06759_Flower_Targeting_Aerial_Manipulator|Aerial Manipulator Flower (2605.06759)]] — 空中机械臂+RGB-D+MPPI实现垂直农业非接触授粉，感知-控制-操作集成框架，MPPI抗扰动控制可迁移到UAV人体跟随，D03 空中操作/MPC/感知与3D视觉
+- [[sources/source.2605.05172_When_Life_Gives_You_BC_Make_Q-functions|Q2RL BC→Q (2605.05172)]] — 从BC策略抽取Q函数+Q-gating在BC/RL动作间切换，真实机器人1-2h在线交互达100%成功率3.75×提升，D07 强化学习/模仿学习/Isaac强化学习
+- [[sources/source.2603.06450_Data_Analogies|Data Analogies (2603.06450)]] — paired demonstrations比扩大未配对异构数据更有效，跨载体迁移瓶颈是任务对应关系的显式暴露，D04 跨载体泛化/模仿学习
+- [[sources/source.2604.13654_UAV_VLN_Survey|UAV VLN Survey (2604.13654)]] — 无人机VLN系统综述，建立数据集/仿真器/评测taxonomy，填补空中VLN综述空白指向空地协同路线，D06 空中VLN/语义导航/无人机避障
+- [[sources/source.OA-WAM_2605.06481|OA-WAM (2605.06481)]] — 对象可寻址世界动作模型，slot地址-内容分离解决场景扰动下动作绑定，LIBERO 97.8%，D02 VLA架构/隐空间世界模型/模仿学习
 - [[sources/source.2601.21474_DexTac|DexTac (2601.21474)]] — hand-by-hand 示教采集视觉+关节+触觉进 contact-aware policy，单手注射91.67%成功率，触觉区域编码优于 force-only 基线，08 灵巧操作/力-触融合/模仿学习
 - [[sources/source.2603.04531_PTLD|PTLD (2603.04531)]] — 仿真RL privileged策略→真实触觉示范→蒸馏可部署策略，in-hand rotation提升182%，干净sim-to-real桥接路线，08 灵巧操作/Sim2Real/强化学习
 - [[sources/source.2604.21391_ResVLA|ResVLA (2604.21391)]] — intent anchor+residual diffusion bridge 重构VLA动作头，解决语义-控制尺度错配，跨载体鲁棒性更优，D02 VLA架构/扩散策略/流匹配
@@ -279,10 +286,10 @@
 
 ---
 
-- [[sources/source.2026-05-20_2605.17681_PRIME]] — PRIME (2605.17681): 动力学一致轨迹重建，惯性参数+接触力联合估计
-- [[sources/source.2026-05-20_2605.18729_Robo-Cortex]] — Robo-Cortex (2605.18729): 双粒度认知记忆，语言启发式规则库终身自进化
-- [[sources/source.2026-04-27_2604.21189_Poisson_Safety_Functions]] — Poisson Safety (2604.21189): 3D Poisson安全场+CBF实时滤波
-- [[sources/source.2026-05-14_2605.13775_RoboEvolve]] — RoboEvolve (2605.13775): VLM+VGM共进化闭环，500图超全监督
+- [[sources/source.2605.17681_PRIME]] — PRIME (2605.17681): 动力学一致轨迹重建，惯性参数+接触力联合估计
+- [[sources/source.2605.18729_Robo-Cortex]] — Robo-Cortex (2605.18729): 双粒度认知记忆，语言启发式规则库终身自进化
+- [[sources/source.2604.21189_Poisson_Safety_Functions]] — Poisson Safety (2604.21189): 3D Poisson安全场+CBF实时滤波
+- [[sources/source.2605.13775_RoboEvolve]] — RoboEvolve (2605.13775): VLM+VGM共进化闭环，500图超全监督
 - [[sources/source.2026-05-15_2604.12879_FastGrasp]] — FastGrasp (2604.12879): 两阶段RL移动灵巧抓取，触觉闭环
 
 ---
@@ -303,7 +310,7 @@ updated: "2026-06-02 09:38"
 
 ### 来源页 (sources/) - 最新添加（2026-05-23 12:18）
 - [[sources/source.2605.22123_Invariant_Rewards_Real_World_Robotics|Invariant Rewards (2605.22123)]] — 5条示范学习invariant symbolic reward，Meta-World 8任务+Franka 3任务zero-shot跨视角/物体泛化，D07 强化学习/Sim2Real/通用操作
-- [[sources/source.2605.19420_Dual_Heatmap_Semantic_Navigation|Dual-Heatmap Navigation (2605.19420)]] — Dual-Heatmap统一预测可达区域+朝向affordance field，跨Jetbot/H1/Aliengo载体SOTA，D04 跨载体泛化/多模态统一架构/长程任务规划
+- [[sources/source.2605.19420_Beyond_Waypoints|Dual-Heatmap Navigation (2605.19420)]] — Dual-Heatmap统一预测可达区域+朝向affordance field，跨Jetbot/H1/Aliengo载体SOTA，D04 跨载体泛化/多模态统一架构/长程任务规划
 
 ### 导航入口
 - [[entities/index]] — 平台、项目与工具入口
@@ -343,9 +350,9 @@ updated: "2026-06-02 09:38"
 ---
 
 ### 来源页 (sources/) - 最新添加（2026-05-22 04:42）
-- [[sources/source.2026-04-27_2604.22238_CodeGraphVLP|CodeGraphVLP (2604.22238)]] — semantic graph持久状态+code-as-planner解决VLA长程记忆遗忘，进度检查子任务分解比VLM-in-the-loop更低延迟，D02 VLA架构/长程任务规划/主动感知
-- [[sources/source.2026-05-07_2602.01693_GSR|GSR (2602.01693)]] — scene graph结构化推理+对象状态-空间关系-动作后果逐步建模，Manip-Cognition-1.6M支持RLBench/LIBERO/真机零样本泛化SOTA，D02 VLA架构/任务与运动规划/零样本泛化
-- [[sources/source.2026-04-26_2604.21894_Heterogeneous_Multi_Robot_Co_Design|Heterogeneous Co-Design (2604.21894)]] — monotone co-design统一机器人设计-编队-规划联合优化，突破分离式设计trade-off局限，D03多机器人协调/任务与运动规划/跨载体泛化
+- [[sources/source.2604.22238_CodeGraphVLP|CodeGraphVLP (2604.22238)]] — semantic graph持久状态+code-as-planner解决VLA长程记忆遗忘，进度检查子任务分解比VLM-in-the-loop更低延迟，D02 VLA架构/长程任务规划/主动感知
+- [[sources/source.2602.01693_GSR|GSR (2602.01693)]] — scene graph结构化推理+对象状态-空间关系-动作后果逐步建模，Manip-Cognition-1.6M支持RLBench/LIBERO/真机零样本泛化SOTA，D02 VLA架构/任务与运动规划/零样本泛化
+- [[sources/source.2604.21894_Heterogeneous_Multi_Robot_Co_Design|Heterogeneous Co-Design (2604.21894)]] — monotone co-design统一机器人设计-编队-规划联合优化，突破分离式设计trade-off局限，D03多机器人协调/任务与运动规划/跨载体泛化
 
 ### 来源页 (sources/) - 最新添加（2026-05-22 04:12）
 - [[sources/source.2605.21414_PointACT|PointACT (2605.21414)]] — 分层点云直接注入VLA动作解码器，multi-scale point-action interaction让动作token同时关注局部几何和全局场景，RLBench-10Tasks提升~10%，RSS 2026，D02 VLA架构/多模态统一架构/3D重建
@@ -360,10 +367,10 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2605.02487_Visibility_Aware_Mobile_Grasping|Visibility-Aware Mobile Grasping (2605.02487)]] — velocity-aware主动感知+行为树高层子目标+全身规划统一移动抓取，动态环境68.8%成功率超基线22.8%，兼顾遮挡安全和失败恢复，D07 主动感知/任务与运动规划/运动控制
 
 ### 来源页 (sources/) - 质量修复（2026-05-21 14:12）
-- [[sources/2026-05-18_2603.17670_AgentVLN|AgentVLN (2603.17670)]] — 删除误串到 OpenHEART 的错误 origin，补齐 id/pageType，恢复单论文单入口。
-- [[sources/2026-05-11_2603.04351_Tendon_Force_Modeling|Tendon Force Modeling (2603.04351)]] — 删除腿足 Active Embodiment 串线 origin，保留 D04 跨载体泛化原始笔记。
-- [[sources/2026-05-11_2605.04568_Dream-MPC|Dream-MPC (2605.04568)]] — 删除误挂腿足笔记的 origin，恢复 D01 世界模型单源入口。
-- [[sources/2026-05-11_2605.06759_Flower_Targeting_Aerial_Manipulator|Flower Targeting Aerial Manipulator (2605.06759)]] — 补齐空中操作 tags/summary 与 source 元数据，确定为规范页。
+- [[sources/source.2603.17670_AgentVLN|AgentVLN (2603.17670)]] — 删除误串到 OpenHEART 的错误 origin，补齐 id/pageType，恢复单论文单入口。
+- [[sources/source.2603.04351_Tendon_Force_Modeling|Tendon Force Modeling (2603.04351)]] — 删除腿足 Active Embodiment 串线 origin，保留 D04 跨载体泛化原始笔记。
+- [[sources/source.2605.04568_Dream-MPC|Dream-MPC (2605.04568)]] — 删除误挂腿足笔记的 origin，恢复 D01 世界模型单源入口。
+- [[sources/source.2605.06759_Flower_Targeting_Aerial_Manipulator|Flower Targeting Aerial Manipulator (2605.06759)]] — 补齐空中操作 tags/summary 与 source 元数据，确定为规范页。
 - [[sources/2026-05-11_Aerial_Manipulator_Flower|Aerial Manipulator Flower 旧别名页]] — 改成 redirect 保留页，兼容旧链接并解除重复来源页歧义。
 
 ### 来源页 (sources/) - 最新添加（2026-05-21 08:44）
@@ -372,10 +379,10 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.06073_Lifelong_Embodied_Navigation_Learning|Lifelong Navigation (2603.06073)]] — Uni-Walker：task-shared/specific解耦+DE-LoRA持续学习，灾难性遗忘降低，D06 语义导航/持续学习/零样本泛化
 
 ### 来源页 (sources/) - 质量修复（2026-05-21 06:03）
-- [[sources/2025-02-25_InSpatio-World_2502.20694|InSpatio-World (2502.20694)]] — 补齐 source 元数据并归一化到二级概念标签，保留机器人仿真与数据合成定位。
+- [[sources/source.2502.20694_InSpatioWorld|InSpatio-World (2502.20694)]] — 补齐 source 元数据并归一化到二级概念标签，保留机器人仿真与数据合成定位。
 - [[sources/2025-04-23_SafeFlow_2504.08661|SafeFlow (2504.08661)]] — 补齐 source 元数据，并明确其属于隐空间世界模型 + flow matching + MPC 安全采样路线。
 - [[sources/2026-04-10_A1|A1 / Interactive World Simulator]] — 别名保留页补齐 source 元数据，统一挂靠到仿真平台/视频生成侧世界模型语境。
-- [[sources/2026-04-19_2604.15215_HiST_AT|HiST-AT (2604.15215)]] — 旧误命名页补齐 source 元数据，保留到规范来源页的兼容跳转。
+- [[sources/source.2604.15215_HiST_AT|HiST-AT (2604.15215)]] — 旧误命名页补齐 source 元数据，保留到规范来源页的兼容跳转。
 - [[sources/2026-04-19_HiST-AT|HiST-AT 旧别名页]] — 与上条同批修复，避免旧 stem 页面继续裸奔。
 
 ### 来源页 (sources/) - 最新添加（2026-05-21 04:14）
@@ -401,7 +408,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2509.25681_dVLA|dVLA (2509.25681)]] — 扩散+VLA+多模态CoT统一目标，LIBERO 96.4%，D02 VLA架构/扩散策略/模仿学习
 
 ### 来源页 (sources/) - 最新添加（2026-05-20 13:27）
-- [[sources/source.2402.10329_UMI|UMI (2402.10329)]] — 手持夹爪中间媒介最小化具身差距，RSS 2024零样本跨平台部署，数据收集低成本开源，跨载体泛化/零样本泛化/遥操作
+- [[sources/UMI_2402.10329|UMI (2402.10329)]] — 手持夹爪中间媒介最小化具身差距，RSS 2024零样本跨平台部署，数据收集低成本开源，跨载体泛化/零样本泛化/遥操作
 
 ### 来源页 (sources/) - 最新添加（2026-05-20 12:12）
 - [[sources/source.2602.19184_Human_to_Robot_Interaction|Human-to-Robot Interaction (2602.19184)]] — 两阶段管线：TSM+VLM 视频动作理解 + TD3 强化学习执行，从无结构人类演示视频学操作，89.97% 动作分类准确率 + 87.5% 操作成功率，通用操作/模仿学习/零样本泛化
@@ -507,7 +514,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2605.13328_StereoNav_What_Limits_VLN|StereoNav (2605.13328)]] — stereo vision + Target-Location Priors 解决 VLN sim-to-real 瓶颈，RGB-only R2R-CE 81.1 SR，D06 空中VLN/语义导航/Sim2Real
 
 ### 来源页 (sources/) - 最新添加（2026-05-15 00:10）
-- [[sources/source.2604.12879_FastGrasp|FastGrasp (2604.12879)]] — 点云条件grasp candidate+whole-body RL+触觉反馈闭环，移动底盘+机械臂+灵巧手高速协同抓取，D02 灵巧操作/抓取检测/全身协调运动
+- [[sources/source.2026-05-15_2604.12879_FastGrasp|FastGrasp (2604.12879)]] — 点云条件grasp candidate+whole-body RL+触觉反馈闭环，移动底盘+机械臂+灵巧手高速协同抓取，D02 灵巧操作/抓取检测/全身协调运动
 - [[sources/source.2605.13665_Robot_Squid_Game|Robot Squid Game (2605.13665)]] — 程序化隧道生成+teacher-student distillation实现四足狭窄通道穿越，零样本泛化未见几何结构，D07 腿足机器人/课程学习/零样本泛化
 
 ### 来源页 (sources/) - 最新添加（2026-05-14 22:08）
@@ -571,11 +578,11 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.14522_OPFA|OPFA (2603.14522)]] — GaLR共享latent action space + 统一retargeting decoder，11种末端共训+50%，新载体8条≈72条效果，D04跨载体泛化/动作空间统一
 
 ### 来源页 (sources/) - 最新添加（2026-05-13 10:29）
-- [[sources/2026-05-11_OA-WAM_2605.06481|OA-WAM (2605.06481)]] — 对象可寻址World Action Model，address/content slot分离提升场景扰动下机器人稳健操作，LIBERO 97.8%，SimplerEnv 79.3%，D02 VLA架构/流匹配/多模态统一架构
-- [[sources/2026-05-02_Tactile_Aware_Quadrupedal_Loco_Manipulation_2604.27224|Tactile Loco-Manipulation (2604.27224)]] — 两阶段触觉策略（人类示范高层+仿真RL低层），接触密集任务比纯视觉基线提升28.54%，D07 腿足机器人/力-触融合/全身协调运动
-- [[sources/2026-05-06_LeWorldModel_2603.19312|LeWorldModel (2603.19312)]] — 双损失JEPA端到端稳定训练，SIGReg正则化，15M单卡可训，隐空间编码物理量，规划速度比DINO-WM快50倍，D01 隐空间世界模型/物理一致性/MPC
+- [[sources/source.OA-WAM_2605.06481|OA-WAM (2605.06481)]] — 对象可寻址World Action Model，address/content slot分离提升场景扰动下机器人稳健操作，LIBERO 97.8%，SimplerEnv 79.3%，D02 VLA架构/流匹配/多模态统一架构
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulation|Tactile Loco-Manipulation (2604.27224)]] — 两阶段触觉策略（人类示范高层+仿真RL低层），接触密集任务比纯视觉基线提升28.54%，D07 腿足机器人/力-触融合/全身协调运动
+- [[sources/source.2603.19312_LeWorldModel|LeWorldModel (2603.19312)]] — 双损失JEPA端到端稳定训练，SIGReg正则化，15M单卡可训，隐空间编码物理量，规划速度比DINO-WM快50倍，D01 隐空间世界模型/物理一致性/MPC
 - [[sources/2025-04-23_SafeFlow_2504.08661|SafeFlow (2504.08661)]] — CBF集成进flow matching采样过程，安全校正采样方向，保证生成轨迹满足避障/动力学约束，D01 流匹配/MPC
-- [[sources/2025-02-25_InSpatio-World_2502.20694|InSpatio-World (2502.20694)]] — 状态锚定+可控渲染两阶段路线，跨时间/视角一致的世界模拟，WorldModelBench显著超越端到端视频生成基线，D01 世界模型/视频生成
+- [[sources/source.2502.20694_InSpatioWorld|InSpatio-World (2502.20694)]] — 状态锚定+可控渲染两阶段路线，跨时间/视角一致的世界模拟，WorldModelBench显著超越端到端视频生成基线，D01 世界模型/视频生成
 
 ### 来源页 (sources/) - 最新添加（2026-05-13 10:12）
 - [[sources/source.2604.25267_Dynamic_UGV_UAV_Cooperative_Path_Planning|Dynamic UGV-UAV Cooperative Path Planning (2604.25267)]] — DUCPP框架：UAV先行巡检不确定边+实时剔除不可通行道路，双向协同策略100城市路网验证最优，ICRA 2026，D03空地迁移/多机器人协调/任务与运动规划
@@ -624,7 +631,7 @@ updated: "2026-06-02 09:38"
 ### 来源页 (sources/) - 最新添加（2026-05-12 10:13）
 - [[sources/source.2601.08325_ActiveVLA|ActiveVLA (2601.08325)]] — 主动感知注入VLA，机器人主动调整观察位姿克服单视角误差，精细3D操作（抓取/插接）显著优于固定视角基线，D02 VLA架构/主动感知
 - [[sources/source.2601.20321_TaF-VLA|TaF-VLA (2601.20321)]] — 触觉-力觉编码融VLA，tactile-force alignment对齐多模态表征，插拔/压合/接触调节任务优于视觉-only VLA，D05灵巧操作/力-触融合
-- [[sources/source.2602.08251_Aerial_Manipulation_Contact_Aware|Aerial Manipulation Contact-Aware (2602.08251)]] — contact-aware VIO加接触一致性因子+hybrid force-motion control，接触阶段速度估计提升66%，D03空中操作/MPC/主动感知
+- [[sources/source.2602.08251_ContactAware_Aerial_Manipulation|Aerial Manipulation Contact-Aware (2602.08251)]] — contact-aware VIO加接触一致性因子+hybrid force-motion control，接触阶段速度估计提升66%，D03空中操作/MPC/主动感知
 
 ### 来源页 (sources/) - 最新添加（2026-05-12 08:11）
 - [[sources/source.2605.06175_VLA_GSE|VLA-GSE (2605.06175)]] — 谱分解冻结骨干为generalized + specialized experts，2.51%可训练参数零样本成功率81.2%，LIBERO-Plus最优，D02 VLA架构/零样本泛化
@@ -648,12 +655,12 @@ updated: "2026-06-02 09:38"
 
 ### 来源页 (sources/) - 最新添加（2026-05-11 20:15）
 - [[sources/source.2605.07381_Anchor_Centric_Adaptation|Anchor-Centric Adaptation (2605.07381)]] — 两阶段示范分配策略突破coverage-density trade-off，anchor骨架优先+边界定向扩展，D05通用操作/VLA架构/模仿学习
-- [[sources/source.2605.06481_OA-WAM|OA-WAM (2605.06481)]] — Slot-per-object状态分解解决WAM物体身份纠缠，LIBERO 97.8%匹配SOTA，流匹配action chunk，D02 VLA架构/隐空间世界模型
+- [[sources/source.OA-WAM_2605.06481|OA-WAM (2605.06481)]] — Slot-per-object状态分解解决WAM物体身份纠缠，LIBERO 97.8%匹配SOTA，流匹配action chunk，D02 VLA架构/隐空间世界模型
 
 ### 来源页 (sources/) - 最新添加（2026-05-11 18:59）
 - [[sources/source.2605.07560_Failure_Demo_Data|Failure Demo Data (2605.07560)]] — 学习成功/失败差异隐表示融入注意力筛选，失败数据变废为宝，显著提升模仿学习样本效率，强化学习/数据合成
 - [[sources/source.2605.07306_BioProVLA_Agent|BioProVLA-Agent (2605.07306)]] — 协议驱动视觉增强VLA多智能体，LLM协调协议解析+状态验证+具身执行闭环推理，具身智能/多机协调
-- [[sources/source.2605.06759_Aerial_Manipulator_Flower|Aerial Manipulator Flower (2605.06759)]] — 空中机械臂RGB-D感知+MPPI飞控+2-DoF末端补偿，垂直农业非接触授粉厘米级精准定位，D03空中操作/MPC/精细对位
+- [[sources/source.2605.06759_Flower_Targeting_Aerial_Manipulator|Aerial Manipulator Flower (2605.06759)]] — 空中机械臂RGB-D感知+MPPI飞控+2-DoF末端补偿，垂直农业非接触授粉厘米级精准定位，D03空中操作/MPC/精细对位
 - [[sources/source.2605.07687_PhySPRING|PhySPRING (2605.07687)]] — 物理结构保持弹簧-质量数字孪生简化，2.30×加速零样本迁移ACT/π₀保持成功率，D01隐空间世界模型/Sim2Real
 
 ### 来源页 (sources/) - 最新添加（2026-05-11 16:14）
@@ -687,7 +694,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.02443_Safe_Whole-Body_Loco-Manipulation|Safe Whole-Body Loco-Manip (2603.02443)]] — ETH Zurich 导纳+RL混合控制+RG安全约束，Unitree Go2+6DoF实机验证，D02腿足机器人/全身协调运动/强化学习
 - [[sources/source.2602.00708_USS-Nav|USS-Nav (2602.00708)]] — 统一时空语义场景图+粗到细规划，LLM语义决策与轻量探索结合实现零样本UAV目标导航，D06语义导航/空中VLN
 - [[sources/source.2602.18976_Bumper_Drone|Bumper Drone (2602.18976)]] — 弹性形态设计提升接触式无人机容错性，RoboSoft 2026，D03空中操作/运动控制
-- [[sources/source.2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Predictive VS (2604.19618)]] — 视觉伺服MPC+扰动估计，近距管道巡检偏差降52-75%，D03空中操作/MPC/主动感知
+- [[sources/source.2026-04-23_2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Predictive VS (2604.19618)]] — 视觉伺服MPC+扰动估计，近距管道巡检偏差降52-75%，D03空中操作/MPC/主动感知
 
 ### 来源页 (sources/) - 最新添加（2026-05-11 06:37）
 - [[sources/source.2502.18041_OpenFly|OpenFly (2502.18041)]] — 多引擎统一接口空中VLN数据工厂平台，UE/GTA/GoogleEarth/3DGS四类渲染源+自动轨迹+自动指令生成，关键帧压缩降低机载VLM延迟，D06数据飞轮基础设施/语义导航
@@ -707,7 +714,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-05-03_ThreeStepNav|Three-Step Nav (2026-05-03)]] — 同上笔记格式别名，覆盖 D06_语义导航入库路径
 
 ### 来源页 (sources/) - 最新添加（2026-05-11 03:17）
-- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_LocoManip|Tactile-Aware Quadrupedal Loco-Manip (2604.27224)]] — 层级式触觉感知管线：高层触觉条件策略+低层运动控制，四足推门/抽屉/按钮成功率显著提升，IIT+Columbia+浙大，D07腿足机器人/主动感知/模仿学习
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulation|Tactile-Aware Quadrupedal Loco-Manip (2604.27224)]] — 层级式触觉感知管线：高层触觉条件策略+低层运动控制，四足推门/抽屉/按钮成功率显著提升，IIT+Columbia+浙大，D07腿足机器人/主动感知/模仿学习
 - [[sources/source.2402.05054_LGM|LGM (2402.05054)]] — 多视角高斯特征+U-Net主干，前馈5秒生成512分辨率3D高斯，ECCV 2024 Oral，超越LRM表征效率瓶颈，D01 3D高斯溅射/3D重建/视频生成
 - [[sources/source.2403.20309_InstantSplat|InstantSplat (2403.20309)]] — Gaussian Bundle Adjustment联合优化位姿与3D Gaussians，SfM-free少视角秒级重建，Tanks and Temples SSIM 0.375→0.762，D01 3D高斯溅射/3D重建/SLAM
 - [[sources/source.2502.12138_FLARE|FLARE (2502.12138)]] — Cascade learning统一pose+geometry+appearance前馈估计，无标定2-8张图0.5秒出结果，CVPR 2025，D01 3D高斯溅射/3D重建/6D位姿估计
@@ -754,7 +761,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2406.09756_MASt3R|MASt3R (2406.09756)]] — 将图像匹配从2D重新定义为3D问题，Map-free Localization精度+30%，Fast Reciprocal Matching近线性复杂度，D01 3D重建/SLAM/多模态统一架构
 - [[sources/source.2408.13912_Splatt3R|Splatt3R (2408.13912)]] — 零样本无标定图像对pose-free 3DGS，仅需MASt3R输出，4FPS实时，canonical stereo space直接预测Gaussian参数，D01 3D高斯溅射/零样本泛化
 - [[sources/source.2410.24207_NoPoSplat|NoPoSplat (2410.24207)]] — Canonical space极简建模绕过pose估计误差，3-5张稀疏图即可pose-free 3DGS，ICLR 2025 Oral，D01 3D重建/6D位姿估计/零样本泛化
-- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_LocoManip|Tactile LocoManip (2604.27224)]] — 两阶段触觉引导四足loco-manipulation，+28.54% over vision-only，接触密集任务触觉反馈关键，D02 腿足机器人/力-触融合/全身协调运动
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulation|Tactile LocoManip (2604.27224)]] — 两阶段触觉引导四足loco-manipulation，+28.54% over vision-only，接触密集任务触觉反馈关键，D02 腿足机器人/力-触融合/全身协调运动
 
 ### 来源页 (sources/) - 最新添加（2026-05-10 20:13）
 - [[sources/source.2603.03279_ULTRA|ULTRA (2603.03279)]] — 物理驱动神经重定向mocap→人形机体，蒸馏统一多模态tracking policy接受稠密参考+稀疏指令，RL finetune扩展技能，Unitree G1真机验证autonomous whole-body loco-manipulation，RA-L 2026，D07 全身协调运动/腿足机器人/强化学习
@@ -767,7 +774,7 @@ updated: "2026-06-02 09:38"
 
 ### 来源页 (sources/) - 最新添加（2026-05-10 15:13）
 - [[sources/source.2602.02454_World_Gymnast|World-Gymnast (2602.02454)]] — VLM-guided world model作RL训练环境，imagined rollout + VLM reward微调VLA，相对SFT提升18×，world model as training environment，D01世界模型/强化学习/VLA架构
-- [[sources/source.2604.27557_HandCDO|HandCDO (2604.27557)]] — 统一参数化灵巧手共设计框架，掌部结构/运动学/指尖几何纳入同一设计空间，支撑cross-embodiment policy training，D04跨载体泛化/灵巧操作
+- [[sources/source.2604.27557_Dexterous_Hand_CoDesign|HandCDO (2604.27557)]] — 统一参数化灵巧手共设计框架，掌部结构/运动学/指尖几何纳入同一设计空间，支撑cross-embodiment policy training，D04跨载体泛化/灵巧操作
 - [[sources/source.IsaacLab_NVIDIA_机器人仿真框架|IsaacLab (NVIDIA)]] — NVIDIA GPU加速开源仿真框架，Isaac Sim+RTX渲染，支持RSL-RL等主流RL框架和16+机器人类型（含多旋翼），D07 Isaac强化学习/仿真平台/空中操作
 
 ### 来源页 (sources/) - 最新添加（2026-05-10 14:43）
@@ -812,9 +819,9 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-04-18_XSIM|XSIM (2602.05617)]] — 3DGUT扩展统一建模Rolling Shutter相机与LiDAR传感器，相位建模解决球形投影不连续，支撑端到端自动驾驶传感器配置搜索，D01感知/3DGS/数据合成
 - [[sources/source.2026-04-22_UniT_Physical_Language_Humanoid|UniT Physical Language (2604.19734)]] — 物理语言统一框架将人类视频转化为机器人策略，解决人形机器人数据稀缺问题，实现跨形态知识迁移，D04跨载体泛化/VLA架构/模仿学习
 - [[sources/source.2026-04-22_Gated_Memory_Policy|Gated Memory Policy (2604.18933)]] — 可学习门控机制自适应调节记忆长度，对简单任务压缩记忆、对长程任务保留更多上下文，提升长程任务成功率，D02长程任务规划/强化学习
-- [[sources/source.2605.05172_BC_to_Q_functions|Q2RL BC→Q (2605.05172)]] — 从BC策略抽取Q-function并用Q-Gating切换BC/RL动作，真实机器人1-2小时在线交互即达100%成功率，D07强化学习/灵巧操作/离线到在线RL
+- [[sources/source.2605.05172_When_Life_Gives_You_BC_Make_Q-functions|Q2RL BC→Q (2605.05172)]] — 从BC策略抽取Q-function并用Q-Gating切换BC/RL动作，真实机器人1-2小时在线交互即达100%成功率，D07强化学习/灵巧操作/离线到在线RL
 - [[sources/source.2026-04-29_AsyncShield|AsyncShield (2604.24086)]] — 边缘位姿缓冲纠正云端VLA过时意图，CMDP+PPO-Lagrangian权衡跟踪与安全，无需微调云端模型，D06空中VLN/语义导航/实时推理
-- [[sources/source.2026-05-01_2604.27224_Tactile_Quadrupedal_LocoManip|Tactile LocoManip (2604.27224)]] — 触觉并入四足loco-manipulation policy，推顶撑等高接触任务tactile feedback增强稳定性，D02腿足机器人/力-触融合
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulation|Tactile LocoManip (2604.27224)]] — 触觉并入四足loco-manipulation policy，推顶撑等高接触任务tactile feedback增强稳定性，D02腿足机器人/力-触融合
 - [[sources/source.2026-04-23_Learning_Video_World_Models_for_Instruction-Driven_Robot_Manipulation|Video World Model (2602.10717)]] — Say-Dream-Act视频世界模型，想象未来轨迹作为上下文生成动作，长时序操作时空推理参考，D01世界模型/通用操作
 - [[sources/source.2026-04-24_RLToken_RLT|RL Token (π Team)]] — 冻结VLA+轻量RL Token接口，5分钟数据提升精密任务成功率，通用VLA-RL桥接设计，D02 VLA架构/强化学习
 - [[sources/source.2026-04-22_VLA_Foundry_Unified_VLA_Framework|VLA Foundry (2604.19728)]] — 统一VLA训练框架，数据标准化+模块化pipeline+一体化部署，工程门槛显著降低，D02 VLA架构/多模态统一架构
@@ -828,24 +835,24 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2605.05110_LineRides|LineRides (2605.05110)]] — LineRides用空间引导线+稀疏关键朝向代替示范轨迹，解决无示范自行车机器人特技学习难题，IEEE RA-L 2026，D07腿足机器人/强化学习/零样本泛化
 - [[sources/source.2605.06042_MPCC_Flapping_Wing_MAVs|MPCC Flapping-Wing (2605.06042)]] — 弧长参数化MPCC统一轨迹追踪与进度最大化，扑翼MAV精度10倍提升，6.5-9cm误差，3m/s，EPFL，D03空中操作/MPC
 - [[sources/source.2604.25459_GS-Playground|GS-Playground (2604.25459)]] — 光真感3DGS+自研并行物理引擎，单卡10k+ FPS，Real2Sim一键场景重建，零样本Sim2Real迁移，RSS 2026，D07仿真平台/世界模型/Sim2Real
-- [[sources/source.2602.10983_Scaling_World_Model_for_Hierarchical_Manipulation_Policies|Scaling World Model (2602.10983)]] — 分层世界模型支撑长时域操作决策，world model作分层控制中枢而非单纯预测器，OOD泛化提升，D01世界模型/VLA架构/长程任务
+- [[sources/source.2602.10983_Scaling_WM_Hierarchical_Manipulation|Scaling World Model (2602.10983)]] — 分层世界模型支撑长时域操作决策，world model作分层控制中枢而非单纯预测器，OOD泛化提升，D01世界模型/VLA架构/长程任务
 - [[sources/source.2601.21602_AIR-VLA|AIR-VLA (2601.21602)]] — 首个空中操作VLA系统，视觉-语言-动作统一框架，语言驱动空中抓取/接触基线，D03空中操作/VLA架构/多模态学习
 - [[sources/source.2501.14377_Dream_to_Fly|Dream to Fly (2501.14377)]] — DreamerV3世界模型MBRL实现纯像素到控制零样本无人机竞速，HITL验证9m/s速度，MBRL样本效率优势首次在高频飞行控制验证，D07 模型预测控制/视觉运动策略/空中操作
 - [[sources/source.2603.00732_UniHM|UniHM (2603.00732)]] — 统一灵巧手 tokenizer 把异构手型映射到共享离散动作码本，HOI 视频学习语言→操作，ICLR 2026，D02 VLA架构/灵巧操作/跨载体
 - [[sources/source.2604.02260_TimeVarying_MBRL|TimeVarying MBRL (2604.02260)]] — 时变动力学 continual MBRL，滑动窗口/周期重置抑制陈旧数据，dynamic regret 理论分析，D07 强化学习/持续学习/MPC
 - [[sources/source.2605.06311_VISER|VISER (2605.06311)]] — VISER仿真基准：1000+高保真3D资产+PBR材质，sim-real Pearson 0.92，视觉真实性弥合domain gap，D07仿真平台/Sim2Real/VLA架构
-- [[sources/source.2026-05-08_Demystifying_Action_Space_Design_2602.23408|Demystifying Action Space Design (2602.23408)]] — 动作空间设计一等变量分析，位置/姿态/相对控制对学习稳定性与泛化的影响，D02 VLA架构/灵巧操作
-- [[sources/source.2026-05-06_2604.25323_ANCHOR|ANCHOR (2604.25323)]] — 物理锚定+最小责任层级恢复，实机60试验成功率53.3%→71.7%，D04长程任务规划/移动操作
-- [[sources/source.2026-05-06_2603.02854_CoFL|CoFL (2603.02854)]] — 连续流场替代轨迹waypoint，稠密监督提升未见场景精度/安全性/实时性，D06语义导航/实时推理
-- [[sources/source.2026-05-05_2602.00708_USS-Nav|USS-Nav (2602.00708)]] — 时空语义场景图+粗到细规划，UAV零样本目标导航，D06空中VLN/零样本泛化
-- [[sources/source.2026-05-01_2602.06512_Long-tail_Imitation_Learning|Long-tail Imitation Learning (2602.06512)]] — APA无需额外示范提升尾部任务空间推理，ICRA 2026，D05数据飞轮/D02 VLA泛化
+- [[sources/source.2602.23408_Demystifying_Action_Space_Design|Demystifying Action Space Design (2602.23408)]] — 动作空间设计一等变量分析，位置/姿态/相对控制对学习稳定性与泛化的影响，D02 VLA架构/灵巧操作
+- [[sources/source.2604.25323_ANCHOR|ANCHOR (2604.25323)]] — 物理锚定+最小责任层级恢复，实机60试验成功率53.3%→71.7%，D04长程任务规划/移动操作
+- [[sources/source.2603.02854_CoFL|CoFL (2603.02854)]] — 连续流场替代轨迹waypoint，稠密监督提升未见场景精度/安全性/实时性，D06语义导航/实时推理
+- [[sources/source.2602.00708_USS-Nav|USS-Nav (2602.00708)]] — 时空语义场景图+粗到细规划，UAV零样本目标导航，D06空中VLN/零样本泛化
+- [[sources/source.2602.06512_Long-tail_Imitation_Learning|Long-tail Imitation Learning (2602.06512)]] — APA无需额外示范提升尾部任务空间推理，ICRA 2026，D05数据飞轮/D02 VLA泛化
 - [[sources/source.2602.11291_H-WM_Hierarchical_World_Model|H-WM (2602.11291)]] — 分层世界模型联合预测逻辑+视觉状态转移，为 VLA 策略提供中间指导信号，D01 世界模型/任务与运动规划
 - [[sources/source.2603.03733_X-Loco|X-Loco (2603.03733)]] — 多专家 oracle 蒸馏统一人形 locomotion 视觉策略，无需 reference motion 即实现跌倒恢复/地形穿越/全身协调三合一，D07 腿足机器人/强化学习/全身协调运动
 - [[sources/source.2602.11885_BoundingBox_Guided_Policies|BoundingBox Guided Policies (2602.11885)]] — bounding-box guided policy 系统性 scaling law 分析，揭示语义操作数据规模—性能扩展规律，D05 数据飞轮/语义操作/缩放律
 - [[sources/source.2602.07264_aerial_autonomy_stack|aerial-autonomy-stack (2602.07264)]] — autopilot-agnostic 统一 ROS2 框架串联感知—飞控—仿真—部署全链路，兼容 PX4/ArduPilot，D03 空地迁移/UAV/Sim2Real
 - [[sources/source.2602.11978_AGPS|AGPS (2602.11978)]] — 多模态 agent 替代 HIL 人工纠错，FLOAT 漂移触发 + corrective waypoint / spatial constraint，USB 插入/中国结/毛巾折叠真机零人工超越 HIL 样本效率，D07 强化学习/LLM驱动机器人/模仿学习
 - [[sources/source.2605.05714_TriRelVLA|TriRelVLA (2605.05714)]] — 显式 object-hand-task 三元关系图注入 LLM 做动作预测，跨场景/物体/任务三类泛化显著优于纯外观表征，D02 VLA架构/灵巧操作
-- [[sources/source.2605.06481_OA-WAM|OA-WAM (2605.06481)]] — 对象可寻址世界动作模型，address/content 解耦增强 OOD 鲁棒性，LIBERO 97.8%，D02 VLA架构/世界模型/灵巧操作
+- [[sources/source.OA-WAM_2605.06481|OA-WAM (2605.06481)]] — 对象可寻址世界动作模型，address/content 解耦增强 OOD 鲁棒性，LIBERO 97.8%，D02 VLA架构/世界模型/灵巧操作
 - [[sources/source.2605.06222_Adaptive_WAM_Execution|Adaptive WAM Execution (2605.06222)]] — FFDC 验证器动态判断动作块执行长度，减少 69% 前向次数、34% 执行时间同时成功率提升，D02 世界模型/VLA架构/灵巧操作
 - [[sources/source.2603.05487_Observing_and_Controlling_VLA_Features|Observing & Controlling VLA Features (2603.05487)]] — VLA feature-observability与feature-controllability：线性分类器观测表示空间特征+最优控制线性干预，无需微调实时调控行为，OpenVLA/π0.5验证，D02 VLA架构/实时推理/最优控制
 - [[sources/source.2603.14523_VLA-Thinker|VLA-Thinker (2603.14523)]] — thinking-with-image reasoning作为可调用action，视觉CoT冷启动SFT+GRPO两阶段训练，LIBERO 97.5%，多模态显式推理→任务成功率，D02 VLA架构/多模态统一架构/长程任务规划
@@ -884,7 +891,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.TripoSR_2403.02151|TripoSR (2403.02151)]] — LRM架构改进版，0.5秒前馈单图→3D网格，MIT开源，Objaverse/GSO数据集SOTA
 - [[sources/source.TriplaneGaussian_2312.09147|TriplaneGaussian/TGS (2312.09147)]] — CVPR 2024，混合三平面-高斯表征，point decoder桥接transformer与高斯，秒级推理泛化真实图像
 - [[sources/source.2605.04709_ELVIS|ELVIS (2605.04709)]] — Ensemble校准latent imagination长时域视觉MPC，GMM-MPPI多假设规划+ensemble critic不确定性感知lambda-return，D01世界模型/MPC/实时推理
-- [[sources/source.2605.05172_BC_to_Q_functions|BC to Q-functions (2605.05172)]] — Q2RL从BC策略抽取Q函数+Q-Gating切换BC/RL动作，stabilize offline-to-online transfer，1-2小时完成on-robot RL，D07腿足/强化学习/模仿学习
+- [[sources/source.2605.05172_When_Life_Gives_You_BC_Make_Q-functions|BC to Q-functions (2605.05172)]] — Q2RL从BC策略抽取Q函数+Q-Gating切换BC/RL动作，stabilize offline-to-online transfer，1-2小时完成on-robot RL，D07腿足/强化学习/模仿学习
 - [[sources/source.2602.21583_Tiltable_Quadrotors|Tiltable Quadrotors (2602.21583)]] — 过驱动可倾转四旋翼RL控制框架，最小物理一致域随机化，对标NMPC精度实现真机zero-shot，D03空地迁移/空中操作
 - [[sources/source.2601.17550_AsterNav|AsterNav (2601.17550)]] — 红外单目+结构光散焦深度估计，极暗环境95.5%成功率，仿真zero-shot直接迁移真实机，D06空中VLN/极暗导航
 - [[sources/source.2602.01693_GSR|GSR (2602.01693)]] — Scene graph结构化推理增强VLA，解决长程具身操作多步依赖与前提维护难题，零样本泛化显著提升，D02 VLA架构/任务规划
@@ -1095,15 +1102,15 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2605.01787_ZeroShot_Safe_TimeEfficient_UAV_Navigation|ZeroShot Safe UAV Navigation (2605.01787)]] — PBRS+CLF-CBF-QP零样本安全导航，D03/D06部署层
 - [[sources/source.2026-05-06_RoboAlign-R1|RoboAlign-R1 (2605.03821)]] — 多模态奖励对齐机器人视频世界模型，RobotWorldBench六维评测+蒸馏奖励模型RL后训练+SWR长程稳态推理，D01世界模型评测/物理一致性
 - [[sources/source.2026-05-06_2605.02301_SAGA|SAGA (2605.02301)]] — 自注意力anchor-based局部规划器，固定motion anchor一阶段联合回归与排序，高速UAV密集障碍100%成功率，D03/D06无人机局部规划
-- [[sources/source.2602.22667_LegoOcc|LegoOcc (2602.22667)]] — 语言嵌入高斯单目开放词汇3D占据，CVPR 2026 Oral，D01感知/D05数据合成
+- [[sources/source.2602.22667_FreeOcc|LegoOcc (2602.22667)]] — 语言嵌入高斯单目开放词汇3D占据，CVPR 2026 Oral，D01感知/D05数据合成
 - [[sources/source.2603.27181_EventDepth_Flight_Control|EventDepth Flight Control (2603.27181)]] — Event-Depth双向cross-attention融合+SPS专家监督，17m/s高速避障70-80%成功率，D03高速无人机核心基线
 - [[sources/source.2602.24030_Curriculum_RL_Quadrotor_Racing|Curriculum RL Quadrotor Racing (2602.24030)]] — 多阶段curriculum RL+domain randomization统一单网络控制器，硬件在环+真机验证圈速最优，D03强化学习训练范式
-- [[sources/source.2026-05-05_2602.00708_USS-Nav|USS-Nav (2602.00708)]] — 统一时空语义场景图驱动轻量UAV零样本目标导航，粗细两级规划分离语义推理与机载计算，D06空中VLN/语义导航
+- [[sources/source.2602.00708_USS-Nav|USS-Nav (2602.00708)]] — 统一时空语义场景图驱动轻量UAV零样本目标导航，粗细两级规划分离语义推理与机载计算，D06空中VLN/语义导航
 - [[sources/source.2026-05-05_2604.13533_EEAgent|EEAgent (2604.13533)]] — 长短期反思优化机制LSTRO让VLA agent从历史经验中动态改写提示，实现具身操作自进化，D02 VLA架构/持续学习
 - [[sources/source.2026-05-05_2602.09021_chi0|χ₀ (2602.09021)]] — 资源感知建模解决训练-执行分布失配，提升长程灵巧操作在受限算力下的稳健性，D07灵巧操作/零样本泛化
 - [[sources/source.2604.27620_SpaAct|SpaAct (2604.27620)]] — 空间激活转换学习+渐进课程适配，backward/forward双任务补强VLM-VLN动态空间意识，VLN-CE SOTA，D06空中VLN/D06推理链
-- [[sources/source.2604.27557_HandCDO|HandCDO (2604.27557)]] — 统一参数化灵巧手共设计框架，morphology参数化为跨载体策略提供结构先验，D04跨载体/D07灵巧操作
-- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_LocoManipulation|Tactile-Aware Quadrupedal LocoManipulation (2604.27224)]] — 两阶段层级触觉策略，接触密集任务提升28.54%，D07腿足/D03空中接触
+- [[sources/source.2604.27557_Dexterous_Hand_CoDesign|HandCDO (2604.27557)]] — 统一参数化灵巧手共设计框架，morphology参数化为跨载体策略提供结构先验，D04跨载体/D07灵巧操作
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulationulation|Tactile-Aware Quadrupedal LocoManipulation (2604.27224)]] — 两阶段层级触觉策略，接触密集任务提升28.54%，D07腿足/D03空中接触
 - [[sources/source.2506_LatentActionDiffusion|Latent Action Diffusion (2506.14608)]] — 潜在动作空间跨躯体共享表征，decoder映射到各embodiment特定动作，D04跨载体泛化
 - [[sources/source.2601.17835_GGGS|GGGS (2601.17835)]] — 几何一致性约束3DGS表面提取，消除floater多视角一致，理论证明高斯-隐式曲面数学对应，D01感知/3D重建
 - [[sources/source.2026-05-02_Zero-Shot_Sim2Real_Reactive_Catching|Zero-Shot Sim2Real Reactive Catching]] — DRIS多实例物理随机化实现灵巧操作零样本迁移，RSS 2026，D04跨载体/D07灵巧操作
@@ -1146,7 +1153,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2601.03782_PointWorld|PointWorld (2601.03782)]] — 3D point flow 动作接口跨载体世界模型，D01核心底座/MPC实时推理/D04几何统一
 - [[sources/source.2603.06987_Failure_Detection_World_Model|Failure Detection WM (2603.06987)]] — 世界模型不确定性做双臂 failure detection，ICRA 2026，D01安全监控/D02护栏
 - [[sources/source.2602.06512_Long-tail_Imitation_Learning|Long-tail Imitation Learning (2602.06512)]] — 长尾操作任务退化机理分析+APA接近阶段知识迁移，无需额外示范提升尾部任务，ICRA 2026，D05数据飞轮/D02 VLA泛化
-- [[sources/source.2604.27224_Tactile_Quadrupedal_LocoManip|Tactile Quadrupedal LocoManip (2604.27224)]] — 触觉并入四足loco-manipulation policy，显式利用tactile feedback提升接触不确定性场景稳定性，D07腿足/D03空中接触
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulation|Tactile Quadrupedal LocoManip (2604.27224)]] — 触觉并入四足loco-manipulation policy，显式利用tactile feedback提升接触不确定性场景稳定性，D07腿足/D03空中接触
 - [[sources/source.2603.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Predictive VMPC (2604.19618)]] — 扰动感知预测视觉伺服MPC统一动力学与图像特征，管道巡检偏差降低52-75%，D06工业巡检/D03空中控制
 - [[sources/source.2604.27557_Dexterous_Hand_CoDesign|Dexterous Hand CoDesign (2604.27557)]] — 灵巧手硬件-策略共设计框架，统一掌部结构/运动学/指尖几何与抓取稳定性任务，Isaac Lab可采用"先定结构再训策略"流水线，D07灵巧操作
 - [[sources/source.2603.27583_LLM_STL_UAV_Navigation|LLM-STL UAV Navigation (2603.27583)]] — LLM将自然语言翻译为STL时序逻辑+MILP轨迹合成，支持specification repair保持安全约束不放松，D06空中VLN/语义导航
@@ -1193,13 +1200,13 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-05-02_2604.15168_Dual_Pose_Graph_Drone_Racing|Dual Pose-Graph Drone Racing (2604.15168)]] — 双pose-graph语义定位，VIO漂移ATE降低56%-74%，D06轻量定位/D03高速飞行
 - [[sources/source.2026-05-02_2604.24921_Libra-VLA|Libra-VLA (2604.24921)]] — 双系统coarse-to-fine VLA，LIBERO 97.2%，ACL 2026，D02 VLA架构
 - [[sources/source.2026-05-01_2604.16484_DexWorldModel|DexWorldModel (2604.16484)]] — CLWM世界模型+DINOv3 latent feature，RoboTwin 94.0%，SAI推理-50%，零样本sim-to-real，D01世界模型+D05数据飞轮
-- [[sources/source.2026-05-01_2604.27224_Tactile_Quadrupedal_LocoManip|Tactile Quadrupedal LocoManip (2604.27224)]] — 触觉并入四足 loco-manipulation policy，提升接触任务稳定性；D07腿足/D03空中接触
+- [[sources/source.2604.27224_Tactile_Aware_Quadrupedal_Loco_Manipulation|Tactile Quadrupedal LocoManip (2604.27224)]] — 触觉并入四足 loco-manipulation policy，提升接触任务稳定性；D07腿足/D03空中接触
 - [[sources/source.2026-05-01_2604.28192_LaST-R1|LaST-R1 (2604.28192)]] — latent CoT+RL联训，LIBERO 99.8%，真实场景44%提升，D02 VLA+RL后训练
 - [[sources/source.2026-05-01_LWD部署中学习|LWD部署中学习 (2026-05-01)]] — 首个具身VLA部署中学习框架，16台双臂机器人95%成功率，长程91%，数据飞轮41秒转速，D02 VLA持续学习
 - [[sources/source.2026-05-01_EBench具身操作评测基座|EBench具身操作评测基座 (2026-05-01)]] — 上海AI Lab多维能力画像评测基座，五维标签+四类泛化测试揭示成功率≠能力结构，D02 VLA评测
 - [[sources/source.2026-05-01_2602.03983_SD-VLA|SD-VLA (2602.03983)]] — 视觉token静态/动态解耦+KV cache复用，2.26×推理加速+长horizon成功率+39.8%，D02 VLA实时部署
 - [[sources/source.2026-05-01_2512.08333_Parameter_Merging_VLA|Parameter Merging VLA (2512.08333)]] — 微调时参数融合保留预训练基座能力，解决遗忘+新任务过拟合，ICLR 2026，D02 VLA持续学习
-- [[sources/source.2026-05-01_2604.18961_Aerial_Continuum_Hybrid_Vision_Force_Control|Aerial Continuum Hybrid VF Control (2604.18961)]] — SE(3)连续体+混合视觉/力控制，解决空中接触不稳定难题；D03空中接触操作
+- [[sources/source.2026-05-01_2604.18961_Aerial_Continuum|Aerial Continuum Hybrid VF Control (2604.18961)]] — SE(3)连续体+混合视觉/力控制，解决空中接触不稳定难题；D03空中接触操作
 - [[sources/source.2026-05-01_2604.00557_MultiCamera_View_Scaling|Multi-Camera View Scaling (2604.00557)]] — 多相机把单条专家轨迹扩成多条伪示教，提升视角不变表示和数据效率，零额外采集成本；D05数据飞轮第一层增广模块
 - [[sources/source.2026-04-23_2604.20834_PokeVLA|PokeVLA (2604.20834)]] — 两阶段轻量VLA（世界知识预训练+动作专家注入），LIBERO-Plus同量级最优，真实扰动鲁棒；D02轻量VLA路线
 - [[sources/source.2026-04-25_2604.18126_CiT_Conditional_Trajectory_Prediction|CiT (2604.18126)]] — Ego条件化轨迹预测，建模机器人未来动作对周围人的反作用，可直接接入规划控制闭环，D03/D04人机协作
@@ -1216,8 +1223,8 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-04-26_2604.21017_Open-H-Embodiment|Open-H-Embodiment (2604.21017)]] — 49+机构跨医疗平台数据，GR00T-H 64%缝合成功率，Cosmos-H action-conditioned世界模型；数据飞轮架构参考
 - [[sources/source.2026-04-23_2603.23333_Aerial_Continuum_Manipulator_DualCamera|Aerial Continuum Dual-Camera (2603.23333)]] — Cosserat rod应变参数化+双相机IBVS统一UAV刚体与柔性臂耦合动力学，RoboSoft 2026，D03空中操作+力-触融合
 - [[sources/source.2026-04-23_2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware VMPC (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%，风扰/弯管任务基线失败而本方法成功，D06工业巡检
-- [[sources/source.2026-05-01_2602.06512_Long-tail_Imitation_Learning|Long-tail Imitation Learning (2602.06512)]] — 长尾数据下操作策略退化机理分析，APA无监督知识迁移提升尾部任务成功率，ICRA 2026，D05数据飞轮/D02 VLA微调
-- [[sources/source.2026-04-24_2603.06928_Failure_Mechanisms_Granular_Slopes|Failure Mechanisms Granular Slopes (2603.06928)]] — 颗粒坡地腿足机器人失效机理量化，sinkage/slippage两维failure phase diagram，D07腿足运动安全
+- [[sources/source.2602.06512_Long-tail_Imitation_Learning|Long-tail Imitation Learning (2602.06512)]] — 长尾数据下操作策略退化机理分析，APA无监督知识迁移提升尾部任务成功率，ICRA 2026，D05数据飞轮/D02 VLA微调
+- [[sources/source.2603.06928_Failure_Mechanisms_Granular_Slopes|Failure Mechanisms Granular Slopes (2603.06928)]] — 颗粒坡地腿足机器人失效机理量化，sinkage/slippage两维failure phase diagram，D07腿足运动安全
 - [[sources/source.2026-05-01_Human2Nav|Human2Nav (2026)]] — 流匹配+推理时可行性引导跨机器人人群导航，无需重训练弥合机体差距，ICRA 2026，D04跨载体/D06空中VLN参考
 - [[sources/source.2026-04-29_M2-VLA|M²-VLA (2604.24182)]] — Layer Mixture+Meta-Skill增强VLA泛化性，避免破坏backbone，D02 VLA架构
 - [[sources/source.2026-04-29_AsyncShield|AsyncShield (2604.24086)]] — 云端VLA导航异步意图纠偏插件，CMDP安全约束零微调部署，D06空中VLN部署
@@ -1282,15 +1289,15 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.20147_AGILE|AGILE (2603.20147)]] — 人形loco-manipulation RL完整工作流，Isaac Lab标准化评测流程
 - [[sources/MoDE-VLA_2603.08122|MoDE-VLA (2603.08122)]] — MoE残差注入融合力-触异构模态，IMCopilot补充RL技能，双灵巧手层级控制（已建）
 - [[sources/AeroPlace-Flow_2603.07744]] — 语言引导空中机械臂物体放置，Visual Foresight + Object Flow 选择最优抓取时机
-- [[sources/AerialVLA_2603.14363]] — 极简端到端 VLA 无人机导航，双视角感知融合消除 oracle 依赖
+- [[sources/source.2603.14363_AerialVLA]] — 极简端到端 VLA 无人机导航，双视角感知融合消除 oracle 依赖
 - [[sources/ABot-N0]] — LLM认知脑 + Flow Matching 动作专家统一五类导航任务，foundation-model化导航代表作
 - [[sources/source.2604.21241_CorridorVLA|CorridorVLA (2604.21241)]] — 稀疏空间锚点+corridor loss给生成式VLA动作头注入显式几何约束，LIBERO-Plus上比GR00T基线高12.4%成功率
 - [[sources/source.2604.19059_AeroBridge-TTA|AeroBridge-TTA (2604.19059)]] — 语言条件UAV测试时自适应控制，13种OOD条件平均提升22.0点，填补"会理解但飞不稳"执行断点
 - [[sources/source.2601.03707_AirNav|AirNav (2601.03707)]] — 真实城市航拍UAV VLN数据集+自然多样化指令+SFT→RFT训练，D06空中VLN基准
-- [[sources/Rule-VLN_2604.16993]] — 规则约束VLN基准+零样本SNRM修正模块，违规率-19.26%，D06安全合规缺口补全
+- [[sources/source.2604.16993_Rule-VLN]] — 规则约束VLN基准+零样本SNRM修正模块，违规率-19.26%，D06安全合规缺口补全
 - [[sources/source.2604.21363_Deployable_Embodied_VLN_System|Deployable VLN (2604.21363)]] — 三链路异步VLN+认知图记忆+context-aware探索，资源受限平台实时部署，D06语义导航系统落地
-- [[sources/AerialVLN_Survey_2604.07705]] — Aerial VLN 综述：大模型时代空中视觉语言导航的任务定义、数据集、仿真平台、典型方法与开放问题
-- [[sources/AirVLA_2603.25038]] — 物理引导 VLA 迁移空中操作平台，Payload-Aware Guidance 突破 dynamics gap
+- [[sources/source.2604.07705_AerialVLN_Survey]] — Aerial VLN 综述：大模型时代空中视觉语言导航的任务定义、数据集、仿真平台、典型方法与开放问题
+- [[sources/source.2026-04-16_AirVLA_PhysicsGuidedVLA2Aerial_2603.25038]] — 物理引导 VLA 迁移空中操作平台，Payload-Aware Guidance 突破 dynamics gap
 - [[sources/AkinoPDF_2603.16059]] — 差分平坦性极速运动规划，微秒~毫秒级规划，兼容任意采样规划器
 - [[sources/source.2026-04-09_CeRLP|CeRLP (2603.19602)]] — 将异构视觉输入统一为height-adaptive laser scan，实现跨机器人/跨相机配置的通用局部规划，D04跨载体/D06空地导航
 - [[sources/source.2404.15194_CLIER|CLIER (2404.15194)]] — 闭环交互推理：纳入触觉/力反馈等非视觉属性，在执行中持续更新推理，验证闭环优势。为 Body-Usage Adapter 提供参考架构。
@@ -1302,11 +1309,11 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2602.08251_ContactAware_Aerial_Manipulation|ContactAware Aerial Manipulation (2602.08251)]] — CMU空中接触操作：接触一致性VIO+混合力位控制器，纯机载感知闭环，接触阶段速度估计提升66%
 - [[sources/source.2026-03-16_具身智能落地鸿沟与至简动力|具身智能落地鸿沟与至简动力 (2026-03-16)]] — B站学术演讲：至简动力哲学与Paper A三层VLA架构的理论呼应，具身智能落地鸿沟诊断，D02 VLA/D04跨载体
 - [[sources/source.2026-03-15_Drones_Review|Drones Review (2024)]] — 协作空中操作系统综述：9种类型分类、建模控制方法、开发指南，工业应用从被动监视到主动交互
-- [[sources/source.2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Visual Servoing (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%
-- [[sources/DexFlyWheel_2509.23829]] — 自我改进数据飞轮：种子示教→策略执行→筛选→回流→再训练，摆脱重度人工遥操作依赖
+- [[sources/source.2026-04-23_2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Visual Servoing (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%
+- [[sources/source.2509.23829_DexFlyWheel]] — 自我改进数据飞轮：种子示教→策略执行→筛选→回流→再训练，摆脱重度人工遥操作依赖
 - [[sources/deltaVLA_2603.08361]] — ΔVLA 变化量预测范式，PWKE 先验提取 + LWVQ 离散化
-- [[sources/E2E-Fly_2604.12916]] — E2E-Fly集成可微物理仿真器、两阶段验证和sim-to-real alignment，实现四旋翼端到端策略系统性zero-shot迁移
-- [[sources/Energy-MPC-Aerial_2604.14678]] — 能量正则化残差MPC：训练神经残差动力学时引入能量守恒约束，位置MAE提升23%，嵌入PX4飞控的学习残差模块参考
+- [[sources/source.2604.12916_E2E_Fly]] — E2E-Fly集成可微物理仿真器、两阶段验证和sim-to-real alignment，实现四旋翼端到端策略系统性zero-shot迁移
+- [[sources/source.2604.14678_Energy_MPC_Aerial]] — 能量正则化残差MPC：训练神经残差动力学时引入能量守恒约束，位置MAE提升23%，嵌入PX4飞控的学习残差模块参考
 - [[sources/source.2601.14628_NeuroVLA|NeuroVLA (2601.14628)]] — 受大脑皮层-小脑-脊髓分层结构启发的VLA架构，分开高层规划/稳定模块/低延迟反射执行，neuromorphic处理器实现<20ms安全反射
 - [[sources/source.2604.15483_pi0.7|π₀.₇ (2604.15483)]] — Physical Intelligence的π0.7通用机器人基础模型，多样上下文条件训练实现零样本跨载体泛化和复杂操作emergent capability
 - [[sources/DreamPlan_2603.16860]] — World Model rollout + RL fine-tuning 让 VLM planner 学会长时规划，显著提升多步连贯性
@@ -1314,11 +1321,11 @@ updated: "2026-06-02 09:38"
 - [[sources/DexFormer_2602.08278]] — 用历史观测在时序 transformer 中在线推断不同手型/动力学差异，实现零样本跨灵巧手泛化
 - [[sources/source.2026-04-09_DexFormer|DexFormer (2026-04-09)]] — History-conditioned transformer在线推断灵巧手形态差异，无需显式morphology token，零样本跨手型泛化，D04
 - [[sources/source.2602.21811_DexRepNet++|DexRepNet++ (2602.21811)]] — DexRep手物交互表征：几何+空间双分支，40训练物→5000+未见物体87.9%成功率，T-RO 2026
-- [[sources/DeFM_2601.18923]] — 从深度图像学习噪声不变基础表征，depth-invariant特征天然消除外观差异，SOTA跨域sim-to-real迁移
+- [[sources/source.2601.18923_DeFM]] — 从深度图像学习噪声不变基础表征，depth-invariant特征天然消除外观差异，SOTA跨域sim-to-real迁移
 - [[sources/source.dVLA_Diffusion_VLA_CoT_2509.25681|dVLA (2509.25681)]] — Diffusion VLA + Multimodal Chain-of-Thought，LIBERO 96.4%，同作者群 LaST0/ManualVLA/dVLA 构成完整技术栈
-- [[sources/F-ACIL_2603.25583]] — 因子级数据分布分解实现组合泛化，45% 性能提升，5-10x 更少演示
+- [[sources/source.2603.25583_F-ACIL_Data_Flywheel]] — 因子级数据分布分解实现组合泛化，45% 性能提升，5-10x 更少演示
 - [[sources/source.2604.21331_FingerViP|FingerViP (2604.21331)]]
-- [[sources/source.2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware VMPC (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%，D06空中操作+低层抗扰控制
+- [[sources/source.2026-04-23_2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware VMPC (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%，D06空中操作+低层抗扰控制
 - [[sources/source.2603.23333_Aerial_Continuum_Manipulator_DualCamera|Aerial Continuum Dual-Camera (2603.23333)]] — Cosserat rod应变参数化+双相机IBVS，RoboSoft 2026，D03空中操作+力-触融合
 - [[sources/source.2602.18976_Bumper_Drone|Bumper Drone (2602.18976)]] — 弹性形态被动顺应接触，RoboSoft 2026，D06接触友好型UAV平台选型
 - [[sources/source.2604.20444_VTouch++|VTouch++ (2604.20444)]] — 双臂视觉-触觉联合数据集，多任务矩阵跨机器人泛化，D07灵巧操作数据底座
@@ -1329,22 +1336,22 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.10158_XL-VLA|XL-VLA (2603.10158)]] — 跨灵巧手 latent action space 统一，插入标准 VLA 实现跨手型零样本迁移，补全 PMI 动作接口层
 - [[sources/source.2603.06928_Failure_Mechanisms_Granular_Slopes|Failure Mechanisms Granular Slopes (2603.06928)]] — 腿足机器人颗粒地形坡面失效机理量化，建立 sinkage/slippage phase diagram，提供 anchoring timing / 步长 / 速度风险预测
 - [[sources/source.2010.11561_FUEL|FUEL (2010.11561)]] — 层次化无人机探索：前沿信息结构FIS+三层规划器，比SOTA快3-8倍，HKUST RA-L 2020
-- [[sources/HUGE-Bench_2603.19822]] — 高层语义VLN benchmark，3DGS-Mesh数字孪生+8类任务+2.56M轨迹，揭示语义-安全根本矛盾
+- [[sources/source.2603.19822_HUGE-Bench]] — 高层语义VLN benchmark，3DGS-Mesh数字孪生+8类任务+2.56M轨迹，揭示语义-安全根本矛盾
 - [[sources/source.2603.12260_HumDex|HumDex (2603.12260)]] — IMU全身遥操作+两阶段模仿学习Bridging embodiment gap，低成本跨形态灵巧操作数据采集
 - [[sources/HybridWorldSim_2511.22187]] — 前背景解耦混合仿真(静态3DGS+动态扩散)，大视角变化一致性，Waymo/nuScenes验证Sim2Real
-- [[sources/HEX_2604.07993]] — HEX人形对齐专家将不同机器人动作空间映射到统一人形表示再蒸馏回各载体，实现全身协调复杂任务的跨载体迁移
-- [[sources/HTNav_2604.08883]] — 混合IL-RL分层框架，阶段化训练+分层决策+地图表征学习，CityNav SOTA
+- [[sources/source.2604.07993_HEX]] — HEX人形对齐专家将不同机器人动作空间映射到统一人形表示再蒸馏回各载体，实现全身协调复杂任务的跨载体迁移
+- [[sources/source.2604.08883_HTNav]] — 混合IL-RL分层框架，阶段化训练+分层决策+地图表征学习，CityNav SOTA
 - [[sources/IsaacLab_2511.04831]] — GPU 原生加速机器人学习仿真框架，RL/IL/遥操作统一底座，D07 核心基础设施
 - [[sources/IsaacLab_Arena_2026-04-18]] — Isaac Lab Arena模块化可组合仿真，NVIDIA官方扩展，配置文件灵活组合机器人/传感器/任务/奖励函数，LW-BenchHub评测基准，D07核心基础设施
 - [[sources/AgentWorld_2026-04-07]] — 自动化场景构建+双模式遥操作(轮式+人形)，CoRL 2025，场景构建效率提升3-5倍，仿真数据生产平台
 - [[sources/WorldGen_2026-04-07]] — 秒级text/image→3D场景生成，10GB VRAM低显存，兼容Unity/Unreal/OpenXR，空中仿真场景批量生成
 - [[sources/source.2602.10556_LAP|LAP (2602.10556)]] — 语言-动作预训练将低层动作文本化，零样本跨载体 VLA（LAP-3B），语言是跨载体的"元语言"，D04跨载体泛化
 - [[sources/MAD_2601.09452]] — 运动-外观解耦世界模型，运动分支快速适配领域数据，外观分支复用预训练降低fine-tuning成本
-- [[sources/LingBot-World_2601.20540]] — 开源 video-based 世界模拟器，机器人/无人机世界模型训练平台底座
-- [[sources/MMaDA-VLA_2603.25406]] — Native discrete diffusion 统一视觉-语言-动作，联合生成 future goal observation + action chunk
-- [[sources/MOTIF_2602.13764]] — 动作基元解耦条件化flow-matching，少样本跨载体迁移（5-10条demo）
+- [[sources/source.2026-04-16_LingBot-World_2601.20540]] — 开源 video-based 世界模拟器，机器人/无人机世界模型训练平台底座
+- [[sources/source.2603.25406_MMaDA-VLA]] — Native discrete diffusion 统一视觉-语言-动作，联合生成 future goal observation + action chunk
+- [[sources/source.2602.13764_MOTIF]] — 动作基元解耦条件化flow-matching，少样本跨载体迁移（5-10条demo）
 - [[sources/PhysInOne_2604.09415]] — PhysInOne构建覆盖71种基础物理现象、153,810个动态3D场景的统一视觉物理学习套件，为Physical AI / world model提供统一训练和评测基座
-- [[sources/MiniUGV2_2603.00972]] — MiniUGV2：UAV可部署微型履带地面车辆，配备系留模块支持两种作业模式，解决无人机payload限制下的精细操作问题
+- [[sources/source.2603.00972_MiniUGV2]] — MiniUGV2：UAV可部署微型履带地面车辆，配备系留模块支持两种作业模式，解决无人机payload限制下的精细操作问题
 - [[sources/RDT2_2602.03310]] — 7B VLM 零样本跨载体，流匹配三阶段训练配方
 - [[sources/source.RISE_2602.11075]] — Compositional WM + 想象式自改进，+35~45% 绝对性能提升
 - [[sources/source.2109.00001_ResetFreeRL|ResetFreeRL (2109.00001)]] — 多任务互为reset形成自复位循环，减少人工reset依赖。是 RoboClaw"EAP自复位"前身。
@@ -1353,9 +1360,9 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.14522_OPFA]] — Geometry-Aware Latent Representation (GaLR) 学习跨载体共享 latent action space + unified retargeting decoder
 - [[sources/ORION_2503.19755]] — VLA统一架构处理视觉+语言指令直接输出驾驶动作，即插即用兼容Autopilot/Apollo，为无人机语言指令控制提供范式
 - [[sources/RoSLM_2604.10929]] — 机载SLM蒸馏方案：LLM-as-Reward微调小模型，实现无人机任务规划和代码生成的离线部署
-- [[sources/PointBridge_2601.16212]] — 3D点云表征作为跨域策略统一表示，解耦外观变化与几何语义，实现仿真到真实机器人的无缝迁移
+- [[sources/source.2601.16212_PointBridge]] — 3D点云表征作为跨域策略统一表示，解耦外观变化与几何语义，实现仿真到真实机器人的无缝迁移
 - [[sources/PMI_CrossEmbodiment_ResearchFramework_2026-03-26]] — PMI(Perceptual-Motor Interface)作为意图层与执行层之间的标准中间接口，实现跨躯体泛化
-- [[sources/Kinematic_Framework_Pinch_2604.20692]] — 运动学pinch评估框架，无需物体/接触模型即可快速筛选机械手构型，D04跨载体设计阶段工具
+- [[sources/source.2026-04-24_2604.20692_Kinematic_Framework_Pinch_Config_Robotic_Hand]] — 运动学pinch评估框架，无需物体/接触模型即可快速筛选机械手构型，D04跨载体设计阶段工具
 - [[sources/RoboTransfer_2505.23171]] — 几何一致性视频扩散实现跨载体策略迁移，251% 相对提升
 - [[sources/source.2604.15569_ShapeGen|ShapeGen (2604.15569)]] — 3D形状生成扩展类别级操作数据，无需仿真器，补object factor覆盖缺口
 - [[sources/RobotSelfEvolution_ParadigmRoadmap_2026-03-26]] — 机器人自进化范式路线图：手工流水线 → Reset-Free RL → RaC → RoboClaw → PMI双闭环 → 终极目标
@@ -1363,12 +1370,12 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-04-18_RLinf|RL-Co (2602.12628)]] — 两阶段RL解锁sim-real闭环交互，突破SFT静态演示局限，D05数据飞轮/无人机sim-real pipeline
 - [[sources/source.2604.15281_R3D|R3D (2604.15281)]] — 诊断3D policy learning不稳定根因，Transformer 3D encoder+diffusion decoder新架构，跨载体泛化VLA backbone
 - [[sources/source.2603.07165_RoTri-Diff|RoTri-Diff (2603.07165)]] — Robot-Object Triadic Interaction显式编码双臂-物体三角几何约束，分层diffusion imitation learning建模协调轨迹，碰撞率更低抓持更稳
-- [[sources/UnifiedLatentSpace_CrossEmb_2601.15419]] — Adversarial + cycle-consistency 对齐不同载体 state-action spaces 到共享 latent space，无需 paired data
+- [[sources/source.2026-04-16_Unified_Latent_Space_CrossEmb_2601.15419]] — Adversarial + cycle-consistency 对齐不同载体 state-action spaces 到共享 latent space，无需 paired data
 - [[sources/TIDAL_2601.14945]] — 双频架构将 diffusion VLA 提升至 9Hz，temporally misaligned training 解决 stale intent 补偿
 - [[sources/source.2025_NaVILA_Two-Level_VLA_Navigation|NaVILA (2025)]] — 两层VLA框架：上层VLA输出语言式中层指令，下层locomotion policy实时避障，RSS 2025真机验证，VLA层次化部署范式，D06
 - [[sources/source.NaVILA_Two-Level_VLA_Navigation|NaVILA (RSS 2025)]] — 两层VLA框架：上层VLA输出语言式中层指令，下层实时locomotion policy负责障碍规避和执行，四足机器人真实世界部署验证
 - [[sources/source.Nav-R2_RGB_Only_Navigation|Nav-R2 (2025)]] — RGB-only开放词汇目标导航，2Hz推理速度，OVON val-unseen 44.0% SR / 18.0% SPL，轻量适合资源受限平台
-- [[sources/TongSIM_2512.20206]] — 通用多尺度具身智能仿真平台，100+多样化室内场景和开放室外城镇仿真，支持感知/认知/决策全面评测
+- [[sources/source.2512.20206_TongSIM]] — 通用多尺度具身智能仿真平台，100+多样化室内场景和开放室外城镇仿真，支持感知/认知/决策全面评测
 - [[sources/GreenVLA_2602.00919]] — 分阶段VLA框架，人形机器人验证有效，跨形态泛化能力优异
 - [[sources/source.2604.22014_DM3-Nav|DM³-Nav (2604.22014)]] — 去中心化多机器人多目标语义导航，局部地图交换+意图广播，无需中心节点即可追平中心化方案
 - [[sources/GGGS_2601.17835]] — Geometry-Grounded Gaussian Splatting：建立高斯基元与隐式曲面严格数学对应，几何一致性正则消除漂浮物，多视角表面重建SOTA
@@ -1377,11 +1384,11 @@ updated: "2026-06-02 09:38"
 - [[sources/Xiaomi-Robotics-0_2602.12684]] — 小米开源 VLA 专注真机实时连续执行，异步执行训练 + action chunk 时序对齐解决推理延迟
 - [[sources/source.2604.21391_ResVLA|ResVLA (2604.21391)]] — 意图锚定 + 残差细化生成式 VLA，说明从“纯噪声生成”转向“基于语义锚点 refinement”的稳定化路线
 - [[sources/source.2604.21541_X2-N|X2-N (2604.21541)]] — 轮腿/人形双模态可变形机器人 + 统一 RL 全身控制，为 D07 与跨载体问题补充新平台样本
-- [[sources/UnifiedAerialGrasping_2603.15097]]
-- [[sources/UnrealRoboticsLab_2504.14135]] — Unreal Engine + MuJoCo 深度集成高保真仿真框架，同时实现光真实感渲染与精确物理仿真，支持烟雾/火焰/水动力学等复杂环境
+- [[sources/source.2603.15097_AeroGrab]]
+- [[sources/source.2504.14135_UnrealRoboticsLab]] — Unreal Engine + MuJoCo 深度集成高保真仿真框架，同时实现光真实感渲染与精确物理仿真，支持烟雾/火焰/水动力学等复杂环境
 - [[sources/source.2026-04-18_VGG-T3|VGG-T3 (2602.23361)]] — VGG-T3通过测试时训练将场景几何蒸馏到固定MLP，实现大规模前馈3D重建线性扩展，1000张图像仅需54秒，加速11.6倍
 - [[sources/ViSA-Enhanced_AVLN_2603.08007]] — triple-phase collaborative architecture，结构化视觉提示让 VLM 直接在图像平面上做空间推理，training-free 增强空中 VLN — 空中抓取完整 pipeline：主动探索 + 6-DoF 候选 + 碰撞感知评估
-- [[sources/WorldArena_2602.08971]] — 具身世界模型统一评测框架，揭示感知质量≠功能效用的核心 gap
+- [[sources/source.2602.08971_WorldArena]] — 具身世界模型统一评测框架，揭示感知质量≠功能效用的核心 gap
 - [[sources/source.2307.10820_RT-2|RT-2 (2307.10820)]] — VLA奠基工作，web-scale VLM知识直接输出机器人动作，零样本泛化验证
 - [[sources/source.2023-01_RT-2|RT-2 (2023-01)]] — VLA奠基工作首次将机器人动作文本token化与VLM联合训练，互联网规模知识迁移，D01/D02 VLA基线
 - [[sources/source.2603.08546_InteractiveWorldSimulator|Interactive World Simulator (2603.08546)]] — Action-conditioned因果世界模型，单RTX 4090稳定仿真10分钟+
@@ -1390,9 +1397,9 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2025-03-13_Flying-Hand|Flying Hand (RSS 2025)]] — ee-centric统一框架+全身MPC+模仿学习引入空中操作，D02空中操作核心
 - [[sources/source.2025-03-13_An-Integrated-Approach-to-Aerial-Grasping-Bistable-Gripper-Adaptive-Control|Aerial Grasping Bistable Adaptive TMECH (2026)]] — 双稳态夹爪被动触发+Lyapunov自适应控制，80mm容差±50%负载鲁棒
 - [[sources/source.2025-03-13_Aerial_Grasping_Bistable_Adaptive|Aerial Grasping Bistable Adaptive (2025)]] — 双稳态夹爪+自适应控制，80mm容差，负载±50%鲁棒
-- [[sources/WoVR_2602.13977]] — 世界模型可靠性控制层，keyframe回锚减轻hallucination累积，LIBERO +29.3%，真机 +30%
+- [[sources/source.2602.13977_WoVR]] — 世界模型可靠性控制层，keyframe回锚减轻hallucination累积，LIBERO +29.3%，真机 +30%
 - [[sources/source.2026-04-18_XSIM]] — 基于3DGUT扩展多传感器统一仿真框架，Rolling Shutter相机+LiDAR联合建模，Waymo/Argoverse2/PandaSet SOTA
-- [[sources/GoalSwarm_2603.12908]] — 多无人机开放词汇语义协作导航框架，共享语义信息协调路径规划，成功率显著超越单机
+- [[sources/source.GoalSwarm_2603.12908]] — 多无人机开放词汇语义协作导航框架，共享语义信息协调路径规划，成功率显著超越单机
 - [[sources/source.2026-04-19_UAV_VLN_Survey]] — 首个系统性Aerial VLN综述，模块化→VLA agentic完整taxonomy，空地协同路线图
 - [[sources/XSIM_2602.05617]] — XSIM统一多传感器仿真框架，Rolling Shutter+LiDAR相位建模，Waymo/Argoverse2/PandaSet最优
 - [[sources/WorldEval_2505.19017]] — World Model 定位为部署前策略评测器 + 危险动作筛查层，强调排序相关性
@@ -1400,7 +1407,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-04-22_World_Gymnast_2602.02454|World-Gymnast date-prefixed (2026-04-22)]]
 - [[sources/source.2026-04-20_PhysicsConstrainedFlowMatching|Physics-Constrained Flow Matching (2508.09156)]] — 无成对数据下PDE残差引导流匹配模型遵守物理法则，单卡15分钟微调，解决正反问题
 - [[sources/source.2602.21203_Squint|Squint (2602.21203)]] — 视觉 SAC 在单 RTX 3090 上 15 分钟完成策略训练，分布式评论器 + 分辨率眯眼
-- [[sources/Switch_2604.14834]] — 提出Skill Graph建模人形机器人多技能切换可行性，层次化调度执行解决多动作连续切换失稳问题
+- [[sources/source.2604.14834_Switch]] — 提出Skill Graph建模人形机器人多技能切换可行性，层次化调度执行解决多动作连续切换失稳问题
 - [[sources/StreetForward_2603.19552]] — 无姿态依赖的前馈动态街道重建框架，temporal mask attention捕获动态运动，零样本泛化到Waymo、CARLA等多个数据集
 - [[sources/source.Street_Gaussians_2401.01339|Street Gaussians (2401.01339)]] — 3DGS动静解耦动态城市场景，135 FPS渲染超越NeRF类方法，适合自动驾驶仿真场景基础
 - [[sources/SoftMimicGen_2603.25725]] — 可变形物体操作数据合成，1-10 条演示 → 1000 条生成轨迹，zero-shot sim-to-real
@@ -1409,45 +1416,45 @@ updated: "2026-06-02 09:38"
 - [[sources/source.SOMA_2603.24060|SOMA (2603.24060)]] — 对比式双记忆RAG+LLM调度器+MCP干预，无需微调让冻结VLA在OOD长时序任务获89.1%提升，D02 VLA鲁棒性
 - [[sources/source.2603.02443_Safe_Whole-Body_Loco-Manipulation|Safe Whole-Body Loco-Manipulation (2603.02443)]] — ETH四足+6DoF机械臂混合控制：导纳+RL+Reference Governor，兼顾移动中接触安全与末端速度跟踪，ICRA 2026
 - [[sources/source.2603.03960_SAT|SAT (2603.03960)]] — 结构化动作Transformer：具身关节码本+flow matching，异构灵巧手跨载体迁移，CVPR接收
-- [[sources/SimReal_CoTraining_2604.13645]] — 揭示Sim-Real Co-Training有效性两大机制（表征对齐主效应+重要性重加权次级），简化对齐调整方法稳定提升sim-real迁移
-- [[sources/TempoFit_2603.07647]] — 免训练KV记忆注入，LIBERO-LONG +4.0%，复用中间层prefix attention实现历史上下文注入
+- [[sources/source.2604.13645_SimReal_CoTraining]] — 揭示Sim-Real Co-Training有效性两大机制（表征对齐主效应+重要性重加权次级），简化对齐调整方法稳定提升sim-real迁移
+- [[sources/source.2603.07647_TempoFit]] — 免训练KV记忆注入，LIBERO-LONG +4.0%，复用中间层prefix attention实现历史上下文注入
 - [[sources/WheelArm-Sim_2601.21129]] — Isaac Sim 统一轮椅导航 + Kinova 机械臂操作数据底座，13 任务 232 轨迹
 - [[sources/WowWoVal_EmbodiedWorldModel_2601.04137]] — 系统性评估视频基础模型作为世界模型的能力边界，揭示生成泛化不足和长视频推理困难
 - [[sources/source.2604.17335_WholeBody_Humanoid_Locomotion|WholeBody Humanoid Locomotion (2604.17335)]] — ETH扩散式motion generator+RL tracker双模块实现地形感知whole-body人形运动，Unitree G1真机boxes/hurdles/stairs穿越
-- [[sources/Being-H0.5_2601.12993]] — 人类中心学习范式，通过统一动作空间将人类交互轨迹作为跨载体通用表示，实现5种机器人zero-shot部署
+- [[sources/source.2601.12993_Being-H0.5]] — 人类中心学习范式，通过统一动作空间将人类交互轨迹作为跨载体通用表示，实现5种机器人zero-shot部署
 - [[sources/Bench2Drive_2406.03877]] — 首个CARLA v2闭环多能力E2E自动驾驶基准，覆盖13638场景+44种交互+23种天气，揭示交互场景核心瓶颈
 - [[sources/Real-to-Sim-to-Real_Shared_Autonomy_2603.17016]] — kNN human surrogate + residual copilot RL双通道，共享遥操作提效，新手成功率显著提升
-- [[sources/FASTER_2603.19199]] — Horizon-Aware Schedule 压缩 Flow-based VLA 反应延迟10倍，保持长时域轨迹质量
-- [[sources/FODMP_2603.24806]] — 单步扩散蒸馏到 ProDMP 轨迹参数空间，比 action-chunking 扩散快 7 倍，适合接球等时间依赖任务
-- [[sources/TAG_2603.24584]] — 物体擦除对比引导增强 VLA instance-level grounding，解决杂乱场景抓取偏斜问题
-- [[sources/GigaBrain-0_2510.19430]] — 世界模型作为 VLA 数据生成器，合成数据降低真实机器人数据采集成本
-- [[sources/UMBRELLA_2603.25395]] — 共形预测 + LTL + 不确定性感知 MCTS，多机器人协同完工时间方差降低71%
-- [[sources/UAV_VLN_Survey_2604.13654]] — 系统综述UAV-VLN领域方法taxonomy，明确空地协同为未来方向，D06完整技术地图
+- [[sources/source.2603.19199_FASTER]] — Horizon-Aware Schedule 压缩 Flow-based VLA 反应延迟10倍，保持长时域轨迹质量
+- [[sources/source.2603.24806_FODMP]] — 单步扩散蒸馏到 ProDMP 轨迹参数空间，比 action-chunking 扩散快 7 倍，适合接球等时间依赖任务
+- [[sources/source.2603.24584_TAG]] — 物体擦除对比引导增强 VLA instance-level grounding，解决杂乱场景抓取偏斜问题
+- [[sources/source.GigaBrain0_World_Model_VLA_2510.19430]] — 世界模型作为 VLA 数据生成器，合成数据降低真实机器人数据采集成本
+- [[sources/source.2603.25395_UMBRELLA]] — 共形预测 + LTL + 不确定性感知 MCTS，多机器人协同完工时间方差降低71%
+- [[sources/source.2604.13654_UAV_VLN_Survey]] — 系统综述UAV-VLN领域方法taxonomy，明确空地协同为未来方向，D06完整技术地图
 - [[sources/UAV_Moving_Target_Tracking_Review_2026-04-07|UAV_Moving_Target_Tracking_Review (2026-04-07)]] — UAV移动目标跟踪综述，滤波/深度学习/协同三大路线，军事/安防/环监/搜救场景
 - [[sources/source.2603.23481_VTAM|VTAM (2603.23481)]] — 触觉-视觉模态迁移微调，接触丰富任务90%成功率，比纯视觉 VLA 高80%，D02力-触融合
 - [[sources/Robot-Powered-Data-Flywheel]] — 系统梳理机器人数据飞轮闭环，AutoRT+AgiBot World代表平台，国内具身数据飞轮最佳参考
 - [[sources/source.2512.02013_ManualVLA|ManualVLA (2512.02013)]] — MoT双专家架构，Planning Expert生成多模态手册引导Action Expert执行长时域任务，LEGO/物体整理+32%，D02 VLA架构
-- [[sources/AIR-VLA_2601.21602]] — 首个空中操纵 VLA 基准，3000 条遥操作数据集覆盖 UAV-机械臂耦合动力学
-- [[sources/MGP_2512.09101]] — 动作离散化 + Masked Transformer 并行生成，35 倍推理加速，MGP-Long 支持非马尔可夫长时序任务
+- [[sources/source.2601.21602_AIR-VLA]] — 首个空中操纵 VLA 基准，3000 条遥操作数据集覆盖 UAV-机械臂耦合动力学
+- [[sources/source.MGP_Masked_Generative_Policy_2512.09101]] — 动作离散化 + Masked Transformer 并行生成，35 倍推理加速，MGP-Long 支持非马尔可夫长时序任务
 - [[sources/MoDE-VLA_2603.08122]] — MoE 残差注入融合力-触异构模态，IMCopilot 补充 RL 技能，实现双灵巧手层级控制
-- [[sources/FromCodeToAction_2509.24917]] — VLM任务分解+Diffusion Policy执行，Memory机制处理非马尔可夫子任务
+- [[sources/source.From_Code_to_Action_2509.24917]] — VLM任务分解+Diffusion Policy执行，Memory机制处理非马尔可夫子任务
 - [[sources/source.Coconut_CoT_2412.06769|Coconut (2412.06769)]] — LLM在连续隐空间做CoT推理，连续思维可编码多路径实现BFS搜索，D02长程任务规划
-- [[sources/Real2Edit2Real_2512.19402]] — 1-5条真机演示通过3D控制接口生成泛化数据，数据效率提升10-50倍
-- [[sources/PACS_Safety_2511.06385]] — PACS轨迹级路径一致性刹车，保持Diffusion训练分布并提供形式化安全保证
-- [[sources/光流避障_2411.04413]] — 单目光流端到端四旋翼避障，可微分点质量仿真训练，6m/s 穿越复杂环境，可微分物理训练策略典范
-- [[sources/A1_2604.05672]] — 预算感知自适应截断 VLA，跨层一致性监控换取 72% 延迟降低
+- [[sources/source.2512.19402_Real2Edit2Real]] — 1-5条真机演示通过3D控制接口生成泛化数据，数据效率提升10-50倍
+- [[sources/source.PACS_Path_Consistent_Safety_2511.06385]] — PACS轨迹级路径一致性刹车，保持Diffusion训练分布并提供形式化安全保证
+- [[sources/source.2411.04413_OpticalFlow_DiffPhys_Obstacle_Avoidance]] — 单目光流端到端四旋翼避障，可微分点质量仿真训练，6m/s 穿越复杂环境，可微分物理训练策略典范
+- [[sources/source.2604.05672_A1]] — 预算感知自适应截断 VLA，跨层一致性监控换取 72% 延迟降低
 - [[sources/ABot-PhysWorld_2603.23376]] — DPO 后训练 + 解耦判别器，让机器人世界模型更符合物理规律
-- [[sources/ADV_2603.18091]] — diffusion 起草、多候选重排验证，提高动作生成质量
+- [[sources/source.2603.18091_ADV]] — diffusion 起草、多候选重排验证，提高动作生成质量
 - [[sources/Embedding_Morphology_2603.00182]] — 形态嵌入与拓扑偏置注意力，统一多机器人表征
-- [[sources/LaST0_2601.05248]] — Latent CoT + reasoning/acting 双专家异频协同
-- [[sources/Latent_Action_Diffusion_2506.14608]] — 共享 latent action space 支撑少样本跨载体迁移
+- [[sources/source.LaST0_Latent_SpatioTemporal_CoT_2601.05248]] — Latent CoT + reasoning/acting 双专家异频协同
+- [[sources/source.2026-04-16_Latent_Action_Diffusion_ICRA2026_2506.14608]] — 共享 latent action space 支撑少样本跨载体迁移
 - [[sources/Persistent_Robot_World_Models_2603.25685]] — 持久机器人世界模型，强调长期记忆与任务连续性
 - [[sources/PhysicalPriorInjection_WorldModel_Analysis_2026-03-26|PhysicalPriorInjection (2026-03-26)]] — 主人四层物理先验注入+MPC滚动优化体系，世界模型+控制理论融合框架
 - [[sources/PoseFormerV2_2026-04-07|PoseFormerV2 (2026-04-07)]] — 频域高效3D姿态估计，比PoseFormer更高效鲁棒，适配UAV嵌入式场景
-- [[sources/Pi-But-Make-It-Fly_2603.25038]] — 将 π0 式 VLA 迁移到无人机平台的空中操作路线
-- [[sources/Realtime-VLA-V2_2603.26360]] — 面向连续执行的实时 VLA 部署优化
+- [[sources/source.2026-04-16_AirVLA_PhysicsGuidedVLA2Aerial_2603.25038]] — 将 π0 式 VLA 迁移到无人机平台的空中操作路线
+- [[sources/source.2603.26360_RealtimeVLA_V2]] — 面向连续执行的实时 VLA 部署优化
 - [[sources/VGAS_2602.07399]] — value-guided action chunk 选择，改善几何歧义场景决策
-- [[sources/XSim_CrossEmb_Real2Sim2Real_2505.07096]] — real2sim2real 跨载体仿真桥接，提高迁移稳定性
+- [[sources/source.2505.07096_X-Sim]] — real2sim2real 跨载体仿真桥接，提高迁移稳定性
 - [[sources/source.2026-03-26_MPCStyleWorldModel_ResearchFramework]] — 生成式MPC双轨框架，为无人机世界模型研究提供完整路线图
 - [[sources/source.2026-03-26_PMI_ClosedLoop_BodyUsage_Framework]] — 主人自创四层闭环+双状态系统，PMI框架核心升级版
 - [[sources/source.IsaacLab_NVIDIA_机器人仿真框架]] — NVIDIA GPU加速仿真框架，RSL-RL+多旋翼支持，空中机器人仿真最强工具
@@ -1456,22 +1463,22 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2601.16212_PointBridge]] — 3D点云表征作为跨域策略统一表示，解耦外观变化与几何语义，仿真到真实机器人无缝迁移
 - [[sources/source.2604.22715_ATRS|ATRS (2604.22715)]] — 共享策略多智能体RL学会在ADMM并行优化环中自适应重分段轨迹，仿真迭代-26%/时间-19.1%，实机35ms onboard重规划，D04轨迹优化
 - [[sources/source.2602.20055_To_Move_or_Not_to_Move|To Move or Not to Move (2602.20055)]] — 约束式规划显式编码交互条件与行动选择，将可执行性判断从端到端策略剥离，实现zero-shot泛化到陌生交互式导航环境
-- [[sources/2026-04-19_2604.14678_Energy-MPC-Aerial]] — 能量正则化残差MPC，训练神经残差动力学时引入能量守恒约束，改善全向无人机 MPC 跟踪稳定性
-- [[sources/2026-04-19_2604.15215_HiST_AT]] — 两级层次化动作分词器，低级细粒度子簇+高级粗粒度意图，解决 in-context 模仿学习动作冗余问题
-- [[sources/2026-04-19_2604.15289_Abstract_Sim2Real]] — 将抽象 sim2real 形式化为状态抽象问题，历史感知动态校正抽象模拟器，跨抽象级别策略迁移
-- [[sources/2603.12908_GoalSwarm]] — 多无人机协作语义导航，共享环境语义信息协同规划，遮挡和复杂地形下成功率显著提升
-- [[sources/2604.07705_AerialVLN_Survey]] — 系统综述 Aerial VLN 领域，涵盖任务定义/数据集/仿真平台/方法分类，为龙虾项目提供完整技术地图
+- [[sources/source.2604.14678_Energy_MPC_Aerial]] — 能量正则化残差MPC，训练神经残差动力学时引入能量守恒约束，改善全向无人机 MPC 跟踪稳定性
+- [[sources/source.2604.15215_HiST_AT]] — 两级层次化动作分词器，低级细粒度子簇+高级粗粒度意图，解决 in-context 模仿学习动作冗余问题
+- [[sources/source.Abstract_Sim2Real_2604.15289]] — 将抽象 sim2real 形式化为状态抽象问题，历史感知动态校正抽象模拟器，跨抽象级别策略迁移
+- [[sources/source.GoalSwarm_2603.12908]] — 多无人机协作语义导航，共享环境语义信息协同规划，遮挡和复杂地形下成功率显著提升
+- [[sources/source.2604.07705_AerialVLN_Survey]] — 系统综述 Aerial VLN 领域，涵盖任务定义/数据集/仿真平台/方法分类，为龙虾项目提供完整技术地图
 - [[sources/source.2026-04-07_VideoMAE|VideoMAE (2203.12602, date-prefixed)]] — MAE扩展视频自监督，90-95%极高掩码率，3k-4k小数据SOTA，ViT backbone候选预训练方案，D07
 - [[sources/source.2026-04-07_SGLATrack|SGLATrack (2503.06625)]] — 相似性引导层自适应ViT，精度-速度平衡，板载实时部署，D06 UAV目标跟踪
 - [[sources/source.2026-04-07_T-SiamTPN|T-SiamTPN (2509.12913)]] — 时序Siamese Transformer金字塔网络，长时遮挡鲁棒，D06 UAV目标跟踪
 - [[sources/VIBE_1912.05656]] — CNN+GRU 视频人体姿态形状估计，AMASS 对抗训练，CVPR 2020 经典 baseline
 - [[sources/source.2026-04-27_VVPINN|VVPINN (涡量-速度PINN, JFM 2026)]] — 涡量-速度 formulation 消去压力变量，直接约束速度场实现物理一致流场超分辨率，D01/D03流场感知参考
 - [[sources/source.2026-04-07_MotionBERT|MotionBERT (2210.06551)]] — DSTformer统一运动编码器，ICCV 2023 SOTA 3D姿态估计，微调多任务迁移，D06人体跟随backbone
-- [[sources/TCMR_2011.08627]] — 针对 VIBE 时序不一致问题的改进版，CVPR 2021，人体跟随感知信号选型参考
+- [[sources/source.2011.08627_TCMR]] — 针对 VIBE 时序不一致问题的改进版，CVPR 2021，人体跟随感知信号选型参考
 - [[sources/source.2026-04-18_XSIM|XSIM (2602.05617)]] — 基于3DGUT统一多传感器仿真，Rolling Shutter+LiDAR联合建模，Waymo/Argoverse 2最优
 - [[sources/source.2601.18923_DeFM|DeFM (2601.18923)]] — Depth基础模型学习噪声不变表征，Sim2Real迁移SOTA，直接服务D04跨载体泛化
 - [[sources/source.2602.21203_Squint|Squint (2602.21203)]] — 分钟级视觉RL，15分钟收敛并成功迁移真实机械臂，为Isaac Lab提速提供直接参考
-- [[sources/source.2603.12908_GoalSwarm|GoalSwarm (2603.12908)]] — 多无人机开放词汇语义协作导航，显著提升遮挡场景成功率，服务D06多机协同
+- [[sources/source.GoalSwarm_2603.12908|GoalSwarm (2603.12908)]] — 多无人机开放词汇语义协作导航，显著提升遮挡场景成功率，服务D06多机协同
 - [[sources/source.2604.13654_UAV_VLN_Survey|UAV VLN Survey (2604.13654)]] — 无人机VLN系统综述，填补空中VLN缺乏统一taxonomy空白，指向空地协同未来方向
 - [[sources/source.2604.18961_Aerial_Continuum_Manipulator|Aerial Continuum Manipulator (2604.18961)]] — 空中连续体机械臂 hybrid vision/force control，级联滑模+RBF NN+GNN协同闭环
 - [[sources/source.2026-04-23_2604.20100_JoyAI_RA_0.1|JoyAI-RA 0.1 (2604.20100)]] — 多源多级预训练 VLA 基础模型，action-space unification 实现跨载体泛化，服务 D04 跨载体方向
@@ -1571,7 +1578,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-03-17_ANWM|ANWM (2512.21887)]] — 想象驱动3D无人机导航，FFP物理先验将过去帧投影到未来视角，长距离语义导航SOTA
 - [[sources/SG-Nav_2024_Scene_Graph_Navigation|SG-Nav (2024)]] — 在线3D场景图+层级LLM推理提升零样本VLN，MP3D/HM3D/RoboTHOR成功率+10%+
 - [[sources/ApexNav_2504.14478|ApexNav (2504.14478)]] — 语义-几何自适应探索策略，HM3Dv2/MP3D显著超越先前方法，RA-L 2025
-- [[sources/LoongRL_2510.19363|LoongRL (2510.19363)]] — KeyChain数据合成+RL训练诱发出plan-retrieve-reason-recheck推理模式，ICLR 2026 oral
+- [[sources/source.2510.19363_LoongRL|LoongRL (2510.19363)]] — KeyChain数据合成+RL训练诱发出plan-retrieve-reason-recheck推理模式，ICLR 2026 oral
 - [[sources/VG3S_2026|VG3S (2026)]] — 冻结VFM+轻量适配器注入几何知识到3DGS，nuScenes上IoU↑12.6%
 - [[sources/UMI_2402.10329|UMI (2402.10329)]] — 手持夹爪中间媒介最小化具身差距，跨机器人零样本部署，RSS 2024
 - [[sources/source.2026-03-26_PMI_CrossEmbodiment_ResearchFramework|PMI跨躯体意图接口 (2026-03-26)]] — 主人自创PMI作为意图层与执行层标准中间接口，跨躯体泛化核心理论框架
@@ -1586,7 +1593,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-04-10_Goal-VLA|Goal-VLA (2506.23919)]] — 生成式VLM作object-centric世界模型，zero-shot manipulation，ICRA 2026
 - [[sources/source.2026-04-09_Realtime-VLA-V2|Realtime-VLA V2 (2603.26360)]] — VLA连续执行整体优化（抖动/时序/平滑），空中平台直接受益
 - [[sources/source.2026-04-18_InternData-A1|InternData-A1 (2511.16651)]] — 630k合成轨迹里程碑，纯合成数据匹配π0真实数据基线，具身数据合成突破
-- [[sources/Goal-VLA_2506.23919|Goal-VLA (2506.23919)]] — 图像生成式VLM作为object-centric世界模型，zero-shot机器人操作
+- [[sources/source.2506.23919_Goal-VLA|Goal-VLA (2506.23919)]] — 图像生成式VLM作为object-centric世界模型，zero-shot机器人操作
 - [[sources/CausalNav_2601.01872|CausalNav (2601.01872)]] — Embodied Graph+RAG长程导航，动态户外场景具身导航，RAL 2026
 - [[sources/Wan_2503.20314|Wan (2503.20314)]] — 阿里巴巴开源大规模视频生成基础模型，T2V/I2V统一backbone
 - [[sources/SafeDiffuser_OpenReview|SafeDiffuser (OpenReview)]] — CBF集成diffusion采样过程，可证明安全的轨迹生成
@@ -1607,34 +1614,34 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2025-06-30_RoboScape|RoboScape (2506.23135)]] — Physics-Informed Embodied World Model，物理辅助监督降低长时rollout违规率，D01世界模型
 - [[sources/source.2025-08-25_EPiCS|EPiCS (2508.20840)]] — Embodied Physical Consistency Score，具身world model物理一致性评测，D01评测体系
 - [[sources/source.2025-12-10_EToT|EToT (2512.08188)]] — VLM+Physics-Based World Model分离架构，VLM推理+物理仿真器校验，D02物理一致性
-- [[sources/UnifiedAerialGrasping_2603.15097|A Unified Framework for Aerial Grasping in Cluttered Environments]]
-- [[sources/AerialVLA_2603.14363|AerialVLA (2603.14363)]]
+- [[sources/source.2603.15097_AeroGrab|A Unified Framework for Aerial Grasping in Cluttered Environments]]
+- [[sources/source.2603.14363_AerialVLA|AerialVLA (2603.14363)]]
 - [[sources/AerialVLN_Survey_2604.07705|Aerial VLN Survey — Vision-Language Navigation for Aerial Robots (2604.07705v1)]]
 - [[sources/AerialVLN_Survey_2604.13654|UAV Vision-and-Language Navigation: A Research Roadmap (2604.13654)]]
 - [[sources/AeroPlace-Flow_2603.07744|AeroPlace-Flow (2603.07744)]]
 - [[sources/AirVLA_2603.25038|AirVLA (2603.25038)]]
 - [[sources/AkinoPDF_2603.16059|AkinoPDF: 差分平坦性极速运动规划]]
 - [[sources/CeRLP_2603.19602|CeRLP: Cross-Embodiment Robot Local Planning (2603.19602)]]
-- [[sources/DexFlyWheel_2509.23829|DexFlyWheel (2509.23829)]]
+- [[sources/source.2509.23829_DexFlyWheel|DexFlyWheel (2509.23829)]]
 - [[sources/DexFormer_2602.08278|DexFormer: Cross-Embodied Dexterous Manipulation via History-Conditioned Transformer (2602.08278)]]
 - [[sources/DeFM_2601.18923|DeFM: Depth Foundation Model for Robotics (2601.18923)]]
 - [[sources/DriveDreamer-Policy_2604.01765|DriveDreamer-Policy: Geometry-Grounded World-Action Model]]
-- [[sources/F-ACIL_2603.25583|F-ACIL: Factor-Aware Compositional Iterative Learning]]
+- [[sources/source.2603.25583_F-ACIL_Data_Flywheel|F-ACIL: Factor-Aware Compositional Iterative Learning]]
 - [[sources/GGGS_2601.17835|GGGS: Geometry-Grounded Gaussian Splatting (2601.17835)]]
 - [[sources/GoalSwarm_2603.12908|GoalSwarm: Multi-UAV Semantic Coordination for Open-Vocabulary Object Navigation]]
 - [[sources/HUGE-Bench_2603.19822|HUGE-Bench: High-Level UAV Vision-Language-Action Benchmark]]
-- [[sources/HTNav_2604.08883|HTNav: Urban Aerial Vision-and-Language Navigation via Hybrid Hierarchical Framework]]
+- [[sources/source.2604.08883_HTNav|HTNav: Urban Aerial Vision-and-Language Navigation via Hybrid Hierarchical Framework]]
 - [[sources/IMPASTO_2603.29315|IMPASTO: Integrating Model-Based Planning with Learned Dynamics Models for Robotic Oil Painting Reproduction]]
 - [[sources/InteractiveWorldSimulator_2603.08546|Interactive World Simulator for Robot Policy Training and Evaluation]]
 - [[sources/IsaacLab_2511.04831|Isaac Lab (2511.04831)]]
-- [[sources/LAP_2602.10556|LAP: Language-Action Pre-Training Enables Zero-shot Cross-Embodiment Transfer]]
+- [[sources/source.2602.10556_LAP|LAP: Language-Action Pre-Training Enables Zero-shot Cross-Embodiment Transfer]]
 - [[sources/LingBot-World_2601.20540|LingBot-World (2601.20540)]]
-- [[sources/MMaDA-VLA_2603.25406|MMaDA-VLA (2603.25406)]]
-- [[sources/MOTIF_2602.13764|MOTIF (2602.13764)]]
+- [[sources/source.2603.25406_MMaDA-VLA|MMaDA-VLA (2603.25406)]]
+- [[sources/source.2602.13764_MOTIF|MOTIF (2602.13764)]]
 - [[sources/source.OpenFly_2502.18041|OpenFly (2502.18041)]]
 - [[sources/source.2603.14522_OPFA|OPFA (One-Policy-Fits-All) — 2603.14522]]
 - [[sources/PointBridge_2601.16212|PointBridge: 3D Representations for Cross Domain Policy Learning (2601.16212)]]
-- [[sources/QuadAgent_2604.02786|QuadAgent: A Responsive Agent System for Vision-Language Guided Quadrotor Agile Flight]]
+- [[sources/source.2604.02786_QuadAgent|QuadAgent: A Responsive Agent System for Vision-Language Guided Quadrotor Agile Flight]]
 - [[sources/RDT2_2602.03310|RDT2 (2602.03310)]]
 - [[sources/source.RISE_2602.11075|RISE: Self-Improving Robot Policy with Compositional World Model]]
 - [[sources/RL_SimReal_CoTraining_VLA_2602.12628|RL Sim-Real Co-Training for VLA (2602.12628)]]
@@ -1648,7 +1655,7 @@ updated: "2026-06-02 09:38"
 - [[sources/UnifiedLatentSpace_CrossEmb_2601.15419|Unified Latent Space — 2601.15419]]
 - [[sources/ViSA-Enhanced_AVLN_2603.08007|ViSA-Enhanced Aerial Vision-Language Navigation (2603.08007)]]
 - [[sources/WheelArm-Sim_2601.21129|WheelArm-Sim: Unified Navigation + Manipulation Multimodal Synthetic Data]]
-- [[sources/WorldArena_2602.08971|WorldArena (2602.08971)]]
+- [[sources/source.2602.08971_WorldArena|WorldArena (2602.08971)]]
 - [[sources/WorldEval_2505.19017|WorldEval (2505.19017)]]
 - [[sources/WowWoVal_EmbodiedWorldModel_2601.04137|Wow, Wo, Val! A Comprehensive Embodied World Model]]
 - [[sources/WorldSplat_2026-04-18|WorldSplat (2026-04-18)]] — Gaussian-centric前馈4D场景生成，时空一致多视角视频，清华+华为
@@ -1658,34 +1665,34 @@ updated: "2026-06-02 09:38"
 - [[sources/TIAGo_Sim2Real_2403.07091|TIAGo Sim-to-Real (2403.07091)]] — Isaac Gym/Sim vs 真机TIAGo的sim-to-real gap量化
 
 ### Sources
-- [[sources/UnifiedAerialGrasping_2603.15097|A Unified Framework for Aerial Grasping in Cluttered Environments]]
-- [[sources/AerialVLA_2603.14363|AerialVLA (2603.14363)]]
+- [[sources/source.2603.15097_AeroGrab|A Unified Framework for Aerial Grasping in Cluttered Environments]]
+- [[sources/source.2603.14363_AerialVLA|AerialVLA (2603.14363)]]
 - [[sources/AerialVLN_Survey_2604.07705|Aerial VLN Survey — Vision-Language Navigation for Aerial Robots (2604.07705v1)]]
 - [[sources/AerialVLN_Survey_2604.13654|UAV Vision-and-Language Navigation: A Research Roadmap (2604.13654)]]
 - [[sources/AeroPlace-Flow_2603.07744|AeroPlace-Flow (2603.07744)]]
 - [[sources/AirVLA_2603.25038|AirVLA (2603.25038)]]
 - [[sources/AkinoPDF_2603.16059|AkinoPDF: 差分平坦性极速运动规划]]
 - [[sources/CeRLP_2603.19602|CeRLP: Cross-Embodiment Robot Local Planning (2603.19602)]]
-- [[sources/DexFlyWheel_2509.23829|DexFlyWheel (2509.23829)]]
+- [[sources/source.2509.23829_DexFlyWheel|DexFlyWheel (2509.23829)]]
 - [[sources/DexFormer_2602.08278|DexFormer: Cross-Embodied Dexterous Manipulation via History-Conditioned Transformer (2602.08278)]]
 - [[sources/DeFM_2601.18923|DeFM: Depth Foundation Model for Robotics (2601.18923)]]
 - [[sources/DriveDreamer-Policy_2604.01765|DriveDreamer-Policy: Geometry-Grounded World-Action Model]]
-- [[sources/F-ACIL_2603.25583|F-ACIL: Factor-Aware Compositional Iterative Learning]]
+- [[sources/source.2603.25583_F-ACIL_Data_Flywheel|F-ACIL: Factor-Aware Compositional Iterative Learning]]
 - [[sources/GGGS_2601.17835|GGGS: Geometry-Grounded Gaussian Splatting (2601.17835)]]
 - [[sources/GoalSwarm_2603.12908|GoalSwarm: Multi-UAV Semantic Coordination for Open-Vocabulary Object Navigation]]
 - [[sources/HUGE-Bench_2603.19822|HUGE-Bench: High-Level UAV Vision-Language-Action Benchmark]]
-- [[sources/HTNav_2604.08883|HTNav: Urban Aerial Vision-and-Language Navigation via Hybrid Hierarchical Framework]]
+- [[sources/source.2604.08883_HTNav|HTNav: Urban Aerial Vision-and-Language Navigation via Hybrid Hierarchical Framework]]
 - [[sources/IMPASTO_2603.29315|IMPASTO: Integrating Model-Based Planning with Learned Dynamics Models for Robotic Oil Painting Reproduction]]
 - [[sources/InteractiveWorldSimulator_2603.08546|Interactive World Simulator for Robot Policy Training and Evaluation]]
 - [[sources/IsaacLab_2511.04831|Isaac Lab (2511.04831)]]
-- [[sources/LAP_2602.10556|LAP: Language-Action Pre-Training Enables Zero-shot Cross-Embodiment Transfer]]
+- [[sources/source.2602.10556_LAP|LAP: Language-Action Pre-Training Enables Zero-shot Cross-Embodiment Transfer]]
 - [[sources/LingBot-World_2601.20540|LingBot-World (2601.20540)]]
-- [[sources/MMaDA-VLA_2603.25406|MMaDA-VLA (2603.25406)]]
-- [[sources/MOTIF_2602.13764|MOTIF (2602.13764)]]
+- [[sources/source.2603.25406_MMaDA-VLA|MMaDA-VLA (2603.25406)]]
+- [[sources/source.2602.13764_MOTIF|MOTIF (2602.13764)]]
 - [[sources/source.OpenFly_2502.18041|OpenFly (2502.18041)]]
 - [[sources/source.2603.14522_OPFA|OPFA (One-Policy-Fits-All) — 2603.14522]]
 - [[sources/PointBridge_2601.16212|PointBridge: 3D Representations for Cross Domain Policy Learning (2601.16212)]]
-- [[sources/QuadAgent_2604.02786|QuadAgent: A Responsive Agent System for Vision-Language Guided Quadrotor Agile Flight]]
+- [[sources/source.2604.02786_QuadAgent|QuadAgent: A Responsive Agent System for Vision-Language Guided Quadrotor Agile Flight]]
 - [[sources/RDT2_2602.03310|RDT2 (2602.03310)]]
 - [[sources/source.RISE_2602.11075|RISE: Self-Improving Robot Policy with Compositional World Model]]
 - [[sources/RL_SimReal_CoTraining_VLA_2602.12628|RL Sim-Real Co-Training for VLA (2602.12628)]]
@@ -1699,7 +1706,7 @@ updated: "2026-06-02 09:38"
 - [[sources/UnifiedLatentSpace_CrossEmb_2601.15419|Unified Latent Space — 2601.15419]]
 - [[sources/ViSA-Enhanced_AVLN_2603.08007|ViSA-Enhanced Aerial Vision-Language Navigation (2603.08007)]]
 - [[sources/WheelArm-Sim_2601.21129|WheelArm-Sim: Unified Navigation + Manipulation Multimodal Synthetic Data]]
-- [[sources/WorldArena_2602.08971|WorldArena (2602.08971)]]
+- [[sources/source.2602.08971_WorldArena|WorldArena (2602.08971)]]
 - [[sources/WorldEval_2505.19017|WorldEval (2505.19017)]]
 - [[sources/WowWoVal_EmbodiedWorldModel_2601.04137|Wow, Wo, Val! A Comprehensive Embodied World Model]]
 - [[sources/Xiaomi-Robotics-0_2602.12684|Xiaomi-Robotics-0: An Open-Sourced Vision-Language-Action Model with Real-Time Execution]]
@@ -1708,24 +1715,24 @@ updated: "2026-06-02 09:38"
 - [[sources/TIAGo_Sim2Real_2403.07091|TIAGo Sim-to-Real (2403.07091)]] — Isaac Gym/Sim vs 真机TIAGo的sim-to-real gap量化
 - [[sources/BeyondMatchingTiles_2603.22153|Beyond Matching to Tiles (2603.22153)]]
 - [[sources/VLM-Nav_PLOS_2026|VLM-Nav (PLOS One 2026)]]
-- [[sources/AeroVerse_2408.15511|AeroVerse: UAV-Agent Benchmark Suite for Aerospace Embodied World Models (2408.15511)]]
-- [[sources/MM-UAVBench_2512.23219|MM-UAVBench: MLLM Evaluation in Low-Altitude UAV Scenarios (2512.23219)]]
+- [[sources/source.2408.15511_AeroVerse|AeroVerse: UAV-Agent Benchmark Suite for Aerospace Embodied World Models (2408.15511)]]
+- [[sources/source.2512.23219_MM-UAVBench|MM-UAVBench: MLLM Evaluation in Low-Altitude UAV Scenarios (2512.23219)]]
 - [[sources/OnFly_2603.10682|OnFly: Zero-Shot Aerial VLN with Dual-Agent Architecture (2603.10682)]]
-- [[sources/CityNAV_2406.14240|CityNav: Real-World Aerial VLN Dataset (2406.14240)]]
-- [[sources/VLA-AN_2512.15258|VLA-AN: Efficient Aerial Navigation VLA with 3DGS (2512.15258)]]
+- [[sources/source.2406.14240_CityNAV|CityNav: Real-World Aerial VLN Dataset (2406.14240)]]
+- [[sources/source.2512.15258_VLA-AN|VLA-AN: Efficient Aerial Navigation VLA with 3DGS (2512.15258)]]
 
-- [[sources/OpenUAV_2410.07087|OpenUAV (2410.07087)]] — 首个真实无人机VLN平台，4引擎混合渲染+分级引导物体搜索基准
+- [[sources/source.2410.07087_OpenUAV|OpenUAV (2410.07087)]] — 首个真实无人机VLN平台，4引擎混合渲染+分级引导物体搜索基准
 - [[sources/ORTrack_2026-04-07|ORTrack (2026-04-07)]] — Cox过程遮挡建模ViT学习遮挡不变特征，UAV跟踪SOTA，ORTrack-D可Jetson Nano嵌入式实时运行，D06遮挡感知
-- [[sources/CognitiveDrone_2503.01378|CognitiveDrone (2503.01378)]] — 认知推理VLA基准，VLM推理+R1版77.2%成功率，验证两段式架构
+- [[sources/source.2503.01378_CognitiveDrone|CognitiveDrone (2503.01378)]] — 认知推理VLA基准，VLM推理+R1版77.2%成功率，验证两段式架构
 - [[sources/HiST-AT_2604.15215|HiST-AT (2604.15215)]] — 分层动作Tokenizer，两级向量量化捕捉动作语义层次结构
 - [[sources/DroneVLA_2026|DroneVLA (2026)]] — VLA+Grounding DINO+A*空中操作全链路
 - [[sources/UAV-ON_2026|UAV-ON (2026)]] — 首个开放世界ObjectNav空中agent基准，14 UE环境/1270实例
 - [[sources/UAV-Flow_2026|UAV-Flow (2026)]] — Flying-on-a-Word细粒度飞行控制基准，真实世界VLA部署
 - [[sources/Pi07_2026|Pi07 (2026)]] — Physical Intelligence可操控通用机器人基础模型，流匹配+跨具身泛化
 - [[sources/source.2026-04-18_XSIM|source.2026-04-18_XSIM]] — XSIM统一多传感器仿真框架，Rolling Shutter+LiDAR相位建模，Waymo/Argoverse2/PandaSet SOTA
-- [[sources/Abstract_Sim2Real_2604.15289|Abstract_Sim2Real (2604.15289)]] — 历史感知抽象动态校正抽象模拟器，空地迁移核心框架
-- [[sources/SimReal_CoTraining_2604.13645|SimReal_CoTraining (2604.13645)]] — 揭示Sim-Real CoTraining两大机制：表征对齐+重要性重加权
-- [[sources/VolSplat_2509.19297|VolSplat (2509.19297)]] — Voxel-aligned前馈3DGS，取代像素对齐范式实现几何一致重建，UE5感知前端候选
+- [[sources/source.Abstract_Sim2Real_2604.15289|Abstract_Sim2Real (2604.15289)]] — 历史感知抽象动态校正抽象模拟器，空地迁移核心框架
+- [[sources/source.2604.13645_SimReal_CoTraining|SimReal_CoTraining (2604.13645)]] — 揭示Sim-Real CoTraining两大机制：表征对齐+重要性重加权
+- [[sources/source.2509.19297_VolSplat|VolSplat (2509.19297)]] — Voxel-aligned前馈3DGS，取代像素对齐范式实现几何一致重建，UE5感知前端候选
 - [[sources/source.2026-04-18_ReconDrive|ReconDrive (2603.07552)]] — 前馈4DGS扩展VGGT 3D基础模型，nuScenes 8/9指标超越逐场景优化方法
 - [[sources/source.2026-04-18_PhysInOne|PhysInOne (2604.09415)]] — 71类物理现象+15万场景+200万视频统一视觉物理学习套件
 - [[sources/source.2026-04-18_DyanmicVGGT|DynamicVGGT (2603.08254)]] — 将VGGT扩展到4D动态场景重建，MTA模块建模运动连续性
@@ -1733,19 +1740,19 @@ updated: "2026-06-02 09:38"
 - [[sources/EVolSplat4D_2601.15951|EVolSplat4D (2601.15951)]] — 三分支前馈统一静态/动态/远景4D重建，KITTI-360/Waymo验证，为UE数据采集提供真值信号
 - [[sources/source.2026-04-18_VGGT4D|VGGT4D (2511.19971)]] — 从VGGT注意力层挖掘动态线索，训练free动态分割+位姿估计+稠密重建，500帧长序列，D01动态场景
 - [[sources/DynamicVGGT_2603.08254|DynamicVGGT (2603.08254)]] — 前馈4D动态场景重建，MTA运动连续性建模，动态3DGS Head
-- [[sources/UniSplat_2511.04595|UniSplat (2511.04595)]] — 3D Latent Scaffold融合多视角时空，动态场景新视角合成SOTA
-- [[sources/TALO_2512.02341|TALO (2512.02341)]] — TPS薄板样条对齐框架，前馈3D基础模型在线部署全局一致性
+- [[sources/source.2511.04595_UniSplat|UniSplat (2511.04595)]] — 3D Latent Scaffold融合多视角时空，动态场景新视角合成SOTA
+- [[sources/source.2512.02341_TALO|TALO (2512.02341)]] — TPS薄板样条对齐框架，前馈3D基础模型在线部署全局一致性
 - [[sources/source.2603.07040_TacDexGrasp|TacDexGrasp (2603.07040)]] — 触觉反馈+SOCP优化实现多指灵巧抓取力分配，防平移/旋转滑移统一解决，脆弱物体抓取成功率更高
 - [[sources/NeoVerse_2601.00393|NeoVerse (2601.00393)]] — Pose-free单目视频可扩展4D世界建模，航拍动态场景4D重建首选方案
 - [[sources/CDGS_2602.03538|CDGS (2602.03538)]] — 内存约束动态3DGS实现边缘设备可部署，适配无人机等资源受限平台
 - [[sources/AMB3R_2511.20343|AMB3R (2511.20343)]] — 稀疏体素公制尺度前馈3D重建，可扩展到在线视觉里程计，城市级3D建模高效方案
 - [[sources/EyeNavGS_2506.02380|EyeNavGS (2506.02380)]] — 首个3DGS VR 6-DoF导航数据集，46人12场景眼动+头部姿态数据
-- [[sources/SpaceBlender_2409.13926|SpaceBlender (2409.13926)]] — 物理-虚拟混合VR协作空间生成，深度估计+网格对齐+扩散补全pipeline
+- [[sources/source.SpaceBlender_2409.13926|SpaceBlender (2409.13926)]] — 物理-虚拟混合VR协作空间生成，深度估计+网格对齐+扩散补全pipeline
 - [[sources/DISCOVERSE_2507.21981|DISCOVERSE (2507.21981)]] — 模块化3DGS机器人仿真框架，Real2Sim2Real闭环
 - [[sources/DKT_2512.23705|DKT (2512.23705)]] — LoRA微调视频扩散模型透明物体深度估计，TransPhy3D数据集
 - [[sources/FastGS_2511.04283|FastGS (2511.04283)]] — 多视角一致性3DGS训练加速，15.45倍加速达分钟级完成
 - [[sources/ParkGaussian_2601.01386|ParkGaussian (2601.01386)]] — 泊车场景surround-view 3DGS，感知驱动的重建优化范式
-- [[sources/SurfSplat_2602.02000|SurfSplat (2602.02000)]] — 2DGS表面连续性先验解决稀疏视角前馈重建几何不连续问题，HRRC指标全面超越基线
+- [[sources/source.2602.02000_SurfSplat|SurfSplat (2602.02000)]] — 2DGS表面连续性先验解决稀疏视角前馈重建几何不连续问题，HRRC指标全面超越基线
 - [[sources/MeMix_2603.15330|MeMix (2603.15330)]] — 训练-free即插即用流式3D重建，O(1)内存不随帧数增长
 - [[sources/LidarPainter_2507.12114|LidarPainter (2507.12114)]] — LiDAR引导单步扩散新视角合成，解决视图偏离退化问题
 - [[sources/InfiniteVGGT_2601.02281|InfiniteVGGT (2601.02281)]] — 滑动窗口策略扩展VGGT到无限长视频流
@@ -1900,18 +1907,18 @@ updated: "2026-06-02 09:38"
 - [[sources/UAV-Flow_2026|UAV-Flow (2026)]] — Flying-on-a-Word细粒度飞行控制基准，真实世界VLA部署
 - [[sources/Pi07_2026|Pi07 (2026)]] — Physical Intelligence可操控通用机器人基础模型，流匹配+跨具身泛化
 - [[sources/source.2026-04-18_XSIM|source.2026-04-18_XSIM]] — XSIM统一多传感器仿真框架，Rolling Shutter+LiDAR相位建模，Waymo/Argoverse2/PandaSet SOTA
-- [[sources/Abstract_Sim2Real_2604.15289|Abstract_Sim2Real (2604.15289)]] — 历史感知抽象动态校正抽象模拟器，空地迁移核心框架
-- [[sources/SimReal_CoTraining_2604.13645|SimReal_CoTraining (2604.13645)]] — 揭示Sim-Real CoTraining两大机制：表征对齐+重要性重加权
+- [[sources/source.Abstract_Sim2Real_2604.15289|Abstract_Sim2Real (2604.15289)]] — 历史感知抽象动态校正抽象模拟器，空地迁移核心框架
+- [[sources/source.2604.13645_SimReal_CoTraining|SimReal_CoTraining (2604.13645)]] — 揭示Sim-Real CoTraining两大机制：表征对齐+重要性重加权
 - [[sources/UMI_3D_2604.14089|UMI_3D (2604.14089)]] — 腕载LiDAR扩展UMI到3D感知，LiDAR-centric SLAM统一时空标定，解决遮挡/动态场景掉跟踪问题
 - [[sources/HiVLA_2604.14125|HiVLA (2604.14125)]] — 层次化VLA：VLM高层规划+视觉grounding与flow-matching DiT动作专家级联，长时序精操作显著超越端到端
 - [[sources/VLA-World_Autonomous_Driving_2604.09059|VLA-World_Autonomous_Driving (2604.09059)]] — VLA-World将VLA与隐空间世界模型结合，在latent space做action-conditioned rollout，统一优化轨迹规划与未来世界演化
 - [[sources/VLA_Survey_Embodied_AI_2405.14093|VLA_Survey_Embodied_AI (2405.14093)]] — 系统综述VLA架构/训练范式/应用场景，建立embodied AI统一认知框架，主人VLA研究总导航
 - [[sources/UAV_Bimanual_VLA_Review|UAV_Bimanual_VLA_Review]] — 综述VLA在无人机与双手机器人上的架构与动作表示对比，ACT/diffusion/flow matching选型参考
 - [[sources/X-Nav_Cross-Embodiment_2507.14731|X-Nav_Cross-Embodiment (2507.14731)]] — 跨mobile robot统一导航策略，端到端cross-embodiment导航可行性验证，策略从具体机体解耦
-- [[sources/WoVR_2602.13977|WoVR (2602.13977)]] — 世界模型可靠性控制层，keyframe回锚减轻hallucination累积，LIBERO +29.3%，真机 +30%
+- [[sources/source.2602.13977_WoVR|WoVR (2602.13977)]] — 世界模型可靠性控制层，keyframe回锚减轻hallucination累积，LIBERO +29.3%，真机 +30%
 - [[sources/AeroDGS_2602.22376|AeroDGS (2602.22376)]] — 首个物理约束单目无人机4DGS，Monocular Geometry Lifting解决深度模糊
 - [[sources/LLMPC_2501.02486|LLMPC (2501.02486)]] — MPC滚动重规划范式引入LLM规划，预测-评估-重规划循环提升长时一致性
-- [[sources/TongSIM_2512.20206|TongSIM (2512.20206)]] — 清华多尺度通用具身仿真平台，100+室内外场景支持感知/认知/决策全面评测
+- [[sources/source.2512.20206_TongSIM|TongSIM (2512.20206)]] — 清华多尺度通用具身仿真平台，100+室内外场景支持感知/认知/决策全面评测
 - [[sources/WorldScore_2504.00983|WorldScore (2504.00983)]] — 统一世界生成评测基准，建立controllability/quality/dynamics标准化评价体系
 - [[sources/IsaacLab_NVIDIA_机器人仿真框架]] — NVIDIA GPU加速开源机器人仿真框架，RSL-RL/ACT/MimicGen全覆盖，多旋翼/机械臂支持，D07核心基础设施
 - [[sources/LeRobot_HuggingFace_机器人学习框架]] — HuggingFace机器人学习框架，硬件抽象层统一11种机器人，ACT/Diffusion/GR00T等15种策略模型
@@ -1949,7 +1956,7 @@ updated: "2026-06-02 09:38"
 - [[sources/source.dVLA_Diffusion_VLA_CoT_2509.25681|dVLA (2509.25681)]] — Diffusion VLA + Multimodal CoT，LIBERO 96.4%，同作者群 LaST0/ManualVLA/dVLA 构成完整技术栈
 - [[sources/source.2509.24917_From_Code_to_Action|From Code to Action (2509.24917)]] — VLM 代码生成分解 + Diffusion Policy 执行，Memory 处理非马尔可夫子任务
 - [[sources/source.2602.13764_MOTIF|MOTIF (2602.13764)]] — 动作基元跨载体少样本迁移，5-10 条 demo 即可适配，flow-matching 条件化策略
-- [[sources/source.2602.12628_RL_SimReal_CoTraining|RL Sim-Real Co-Training (2602.12628)]] — Isaac Lab RL + Sim-Real CoTraining，D07 Isaac RL 机械臂训练新范式
+- [[sources/source.2602.12628_RLinf|RL Sim-Real Co-Training (2602.12628)]] — Isaac Lab RL + Sim-Real CoTraining，D07 Isaac RL 机械臂训练新范式
 - [[sources/source.2026-03-25_GCD_Generative_Camera_Dolly|GCD (2026-03-25)]] — ECCV 2024 Oral，单目动态新视角合成，diffusion prior引入相机控制
 - [[sources/source.2026-03-25_Dynamic_View_Synthesis_from_Dynamic_Monocular_Video|Dynamic View Synthesis (2026-03-25)]] — ICCV 2021，单目动态视频4D建模，从NeRF走向时变场景
 - [[sources/source.2026-03-25_Diffusion_as_Shader|Diffusion as Shader (2026-03-25)]] — 3D-aware视频扩散控制，引入几何结构信号改善几何稳定性
@@ -2005,13 +2012,13 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2603.02443_Safe_Whole-Body_Loco-Manipulation|Safe Whole-Body Loco-Manipulation (2603.02443)]] — 导纳+RL+Reference Governor四足whole-body loco-manipulation，ETH ICRA 2026，D03腿足
 - [[sources/source.2602.18976_Bumper_Drone|Bumper Drone (2602.18976)]] — 弹性形态设计内嵌机体顺应性，RoboSoft 2026，D06空中操作
 - [[sources/source.2601.21602_AIR-VLA|AIR-VLA (2601.21602)]] — 首个空中操纵VLA benchmark，语言驱动飞行平台-机械臂耦合动作，D02/D06空中VLA
-- [[sources/source.2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Visual Servoing (2604.19618)]] — 扰动感知预测视觉伺服MPC，ESKF+图像特征预测估计总扰动，管线巡检偏差降低52-75%，D06空中操作
+- [[sources/source.2026-04-23_2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware Visual Servoing (2604.19618)]] — 扰动感知预测视觉伺服MPC，ESKF+图像特征预测估计总扰动，管线巡检偏差降低52-75%，D06空中操作
 - [[sources/source.2603.23333_Aerial_Continuum_Manipulator_DualCamera|Aerial Continuum Manip Dual-Camera (2603.23333)]] — Cosserat rod应变参数化+双相机IBVS统一空中连续体机械臂耦合动力学，U Tartu，D06空中操作
 - [[sources/source.2604.20444_VTouch++|VTouch++ (2604.20444)]] — 双臂视觉-触觉联合数据集，接触密集任务多机器人泛化，D07灵巧操作数据飞轮
 - [[sources/source.2603.22263_Robot_Drumming|Robot Drumming (2603.22263)]] — 接触显式奖励+长时序RL击鼓策略，高动态灵巧操作，D07灵巧操作
 - [[sources/source.2604.21914_VistaBot|VistaBot (2604.21914)]] — 4D几何+视频扩散视角合成，ACT/π0跨视角VGS提升2.79×/2.63×，ICRA 2026，D02/D04
 - [[sources/source.2604.21331_FingerViP|FingerViP (2604.21331)]]
-- [[sources/source.2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware VMPC (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%，D06空中操作+低层抗扰控制
+- [[sources/source.2026-04-23_2604.19618_Disturbance_Aware_Predictive_Visual_Servoing|Disturbance-Aware VMPC (2604.19618)]] — 扰动感知预测视觉伺服MPC，管道巡检偏差降低52-75%，D06空中操作+低层抗扰控制
 - [[sources/source.2603.23333_Aerial_Continuum_Manipulator_DualCamera|Aerial Continuum Dual-Camera (2603.23333)]] — Cosserat rod应变参数化+双相机IBVS，RoboSoft 2026，D03空中操作+力-触融合
 - [[sources/source.2602.18976_Bumper_Drone|Bumper Drone (2602.18976)]] — 弹性形态被动顺应接触，RoboSoft 2026，D06接触友好型UAV平台选型
 - [[sources/source.2604.20444_VTouch++|VTouch++ (2604.20444)]] — 双臂视觉-触觉联合数据集，多任务矩阵跨机器人泛化，D07灵巧操作数据底座
@@ -2091,9 +2098,9 @@ updated: "2026-06-02 09:38"
 - [[sources/source.2026-04-27_VVPINN|VVPINN (JFM 2026)]] — 涡量-速度PINN消去压力变量直接约束速度场，物理一致流场超分辨率，D01流场感知
 - [[sources/source.2026-04-28_2604.24447_VLA_XPU_Deployment|VLA XPU Deployment (2604.24447)]] — VLA GPU/XPU/NPU 部署瓶颈两阶段 profile，GPU 2.9×/NPU 6× 加速，D06 具身部署
 - [[sources/source.2026-04-28_2604.04539_FlashSAC|FlashSAC (2604.04539)]] — 分钟级 sim-to-real off-policy RL，大模型+高吞吐+范数约束抑制 critic 漂移，D07 Isaac 强化学习
-- [[sources/source.2026-04-27_2604.21189_Poisson_Safety_Functions|Poisson Safety Functions (2604.21189)]] — 3D Poisson 安全场全局平滑 CBF，机械臂全身实时避障，规划与控制方向
+- [[sources/source.2604.21189_Poisson_Safety_Functions|Poisson Safety Functions (2604.21189)]] — 3D Poisson 安全场全局平滑 CBF，机械臂全身实时避障，规划与控制方向
 - [[sources/source.2026-04-27_2604.22244_HardAffineConstraints|Hard Affine Constraints (2604.22244)]] — 黑盒混合系统仿射排斥策略，硬约束安全保证优于 reward shaping，强化学习方向
-- [[sources/source.2026-04-21_2603.02443_Safe_Whole-Body_Loco-Manipulation|Safe Whole-Body Loco-Manipulation (2603.02443)]] — Unitree Go2+6DoF 导纳+RL+RG 混合控制，ICRA 2026，腿足全身协调
+- [[sources/source.2603.02443_Safe_Whole-Body_Loco-Manipulation|Safe Whole-Body Loco-Manipulation (2603.02443)]] — Unitree Go2+6DoF 导纳+RL+RG 混合控制，ICRA 2026，腿足全身协调
 - [[sources/source.2604.21741_Hi_WM|Hi-WM (2604.21741)]] — Human-in-the-World-Model 可回滚/可分支 WM 纠错工作台，failure mining→human correction→synthetic branching→finetuning 高效闭环，D01世界模型/D02 VLA
 - [[sources/source.2602.10983_Scaling_World_Model_Hierarchical_Manipulation|Scaling WM Hierarchical Manipulation (2602.10983)]] — 世界模型驱动 hierarchical manipulation policy，分层规划提升长时域决策与 OOD 泛化，D01世界模型/D02 VLA架构
 - [[sources/source.2602.10717_Video_World_Models_Instruction_Driven_Manipulation|Video WM Instruction-Driven Manipulation (2602.10717)]] — Say-Dream-Act 视频世界模型路线打通视频预测与动作生成，支撑长时序操作时空推理，D01世界模型

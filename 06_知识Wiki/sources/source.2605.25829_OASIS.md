@@ -4,7 +4,7 @@ id: "source.2605.25829_OASIS"
 pageType: "source"
 tags: []
 summary: "问题背景: 现有 VLA/WAM 操作策略虽然能学到丰富视觉表征，但中间特征仍停留在 observation space，动作解码器不得不自己恢复刚体几何，导致泛化受限。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-05-26_2605.25829_OASIS.md", "../../02_阅读笔记/D02_VLA/2026-05-26_2605.25829_OASIS.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-05-26_2605.25829_OASIS.md", "02_阅读笔记/D02_VLA/2026-05-26_2605.25829_OASIS.md"]
 updated: "2026-06-02"
 ---
 

@@ -4,7 +4,7 @@ id: "source.deltaVLA_2603.08361"
 pageType: "source"
 tags: []
 summary: "- **标题**: Prior-Guided Vision-Language-Action Models via World Knowledge Variation - **arXiv**: 2603.08361 - **时间**: 2026-04-14 (new!) - **方向**: D02_VLA - **深挖层级**: heartbeat 摘要级深挖"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-14_deltaVLA.md", "../../02_阅读笔记/D02_VLA/2026-04-14_deltaVLA.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-14_deltaVLA.md", "02_阅读笔记/D02_VLA/2026-04-14_deltaVLA.md"]
 updated: "2026-06-02"
 ---
 

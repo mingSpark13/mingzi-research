@@ -4,7 +4,7 @@ id: "source.LidarPainter_2507.12114"
 pageType: "source"
 tags: ["3D高斯溅射", "感知与3D视觉", "深度估计", "视频生成", "数据合成", "3D视觉"]
 summary: "问题背景: 现有方法在视图偏离输入轨迹时出现背景退化、车辆模型损坏等问题，难以生成高质量新视角驾驶场景。"
-origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_LidarPainter.md", "../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_LidarPainter.md"]
+origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_LidarPainter.md", "02_阅读笔记/D09_感知与3D视觉/2026-04-18_LidarPainter.md"]
 updated: "2026-06-02"
 ---
 

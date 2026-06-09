@@ -4,7 +4,7 @@ id: "source.2026-04-23_2604.20100_JoyAI_RA_0.1"
 pageType: "source"
 tags: ["foundation model", "robotic autonomy", "VLA", "cross-embodiment", "action-space unification", "VLA架构"]
 summary: "问题背景: 机器人自治受限于数据多样性不足和跨载体迁移差，尤其人类操作视频、仿真轨迹、真实机器人数据之间一直缺乏统一利用方式。"
-origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-04-23_2604.20100_JoyAI_RA_0.1.md", "../../02_阅读笔记/D04_跨载体泛化/2026-04-23_2604.20100_JoyAI_RA_0.1.md"]
+origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-04-23_2604.20100_JoyAI_RA_0.1.md", "02_阅读笔记/D04_跨载体泛化/2026-04-23_2604.20100_JoyAI_RA_0.1.md"]
 updated: "2026-06-02"
 ---
 

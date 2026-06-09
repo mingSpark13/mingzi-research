@@ -99,7 +99,7 @@ FlowMatch: ~20ms/步（5步 ODE = 100ms/chunk）
 
 - ACT奠基: [[sources/source.2026-03-27_ACT]]
 - Diffusion Policy: [[sources/source.2024-09-24_ReKep]]（ReKep≠Diffusion，但可对照）
-- Flow Matching: [[concepts/流匹配]] → 来源页 [[sources/source.2603.03960_SAT]] / [[sources/RDT2_2602.03310]]
+- Flow Matching: [[concepts/流匹配]] → 来源页 [[sources/source.2026-03-04_2603.03960_SAT]] / [[sources/RDT2_2602.03310]]
 
 ## Related
 

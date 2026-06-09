@@ -1,22 +1,2 @@
-- [02_阅读笔记/2026-05-12_ActiveVLA_Injecting_Active_Perception_into_Vision-Language-Action_Models_for_Precise_3D_Robotic_Manipulation.md] 候选概念：主动视角选择（频次：首次出现）
-- [02_阅读笔记/2026-05-12_Aerial_Manipulation_with_Contact-Aware_Onboard_Perception_and_Hybrid_Control.md] 候选概念：接触感知VIO（频次：首次出现）
-- [02_阅读笔记/2026-05-16_AirCopBench.md] 候选概念：感知退化（频次：首次出现）—— 真实世界场景中的视觉退化（遮挡、阴影、运动模糊、噪声、数据丢失、远距离检测等），AirCopBench核心评估维度
-- [02_阅读笔记/2026-05-20_DeiT_数据高效图像Transformer与注意力蒸馏.md] 候选概念：知识蒸馏（频次：首次出现）—— teacher-student 架构下用教师网络指导学生网络训练，DeiT 核心方法，字典无对应规范名
-- [02_阅读笔记/D04_跨载体泛化/2026-05-23_2605.19420_Dual_Heatmap_Semantic_Navigation.md] 候选概念：导航可供性场（频次：首次出现）—— 用连续热力图表达可达区域与朝向约束，替代单点 waypoint 回归
-- [02_阅读笔记/D07_强化学习与控制/2026-05-23_2605.22123_Invariant_Rewards_Real_World_Robotics.md] 候选概念：不变量奖励（频次：首次出现）—— 从少量示范中蒸馏任务级行为不变量，构建跨场景可复用奖励函数
-- [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：prompt措辞敏感性（频次：首次出现）—— DROID 高频动词（pick=25,985次）vs 低频词（0次）带来 14% 性能差距，揭示语言条件化是 VLA 泛化瓶颈
-- [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：USD中间格式（频次：首次出现）—— 用 USD 作为 simulator-agnostic 资产适配中间层，转 MJCF / Isaac native / ManiSkill
-- [02_阅读笔记/D05_数据飞轮/2026-06-02_2602.11337_MolmoSpaces_OpenEcosystem.md] 候选概念：articulated抓取标注（频次：首次出现）—— 验证抓取在关节驱动下不滑脱的 pipeline（铰接物体专属），与刚性抓取 antipodal+抖动测试并列
-- [02_阅读笔记/D07_强化学习与控制/2026-06-02_公众号_传统控制在大模型时代生存现状.md] 候选概念：分层共生架构（频次：首次出现）—— 大脑-小脑-脊髓三层架构（大模型认知/RL敏捷/MPC安全）
-- [02_阅读笔记/D07_强化学习与控制/2026-06-02_公众号_传统控制在大模型时代生存现状.md] 候选概念：双链路切换（频次：首次出现）—— 慢路径VLM/快路径传统规划自适应切换（DriveVLM-Dual）
-- [02_阅读笔记/D02_VLA/2026-06-02_2402.12289_DriveVLM.md] 候选概念：nuScenes+SUP-AD（频次：首次出现）—— 国内长尾场景补充数据集
-- [02_阅读笔记/D07_强化学习与控制/2026-06-02_2409.15610_DIAL-MPC.md] 候选概念：扩散退火MPC（频次：首次出现）—— MPPI与单步扩散的数学等价性 + landscape分析
-- [02_阅读笔记/D07_强化学习与控制/2026-06-02_2310.16828_TD-MPC2.md] 候选概念：统一tokenizer跨embodiment（频次：首次出现）—— 异构观测空间统一编码方法
-- [02_阅读笔记/D02_VLA/2026-06-02_2505.15660_AGNOSTOS_VLA_Cross-Task_Generalization.md] 候选概念：in-context跨任务泛化（频次：首次出现）—— LLM条件在seen task demos上预测unseen task动作
-- [02_阅读笔记/D06_空中VLN/2026-06-02_2605.19600_FlyMirage.md] 候选概念：生成式世界模型（频次：首次出现）—— 把 LLM 场景规范实例化为 3DGS 场景的中间模块（区别于传统 World Model 的状态预测）
-- [02_阅读笔记/D06_空中VLN/2026-06-02_2605.19600_FlyMirage.md] 候选概念：Boxer*自动标注（频次：首次出现）—— Meta Reality Labs Boxer 的 3D 边界框估计变体，2D框→逐帧3D→融合3D→相机路径规划→细化
-- [02_阅读笔记/D06_空中VLN/2026-06-02_2605.19600_FlyMirage.md] 候选概念：动力学可行轨迹（频次：首次出现）—— UAV 物理约束下的轨迹生成，区别于普通最短路径
-
-- [2026-06-06_2606.03159_OmniDreams.md] 候选概念：WAM (World-Action Model) / 世界-动作模型（频次：首次系统命名出现；NVIDIA 2026 OmniDreams 用 2B WAM 反超 10B VLA）
-- [2026-06-06_2606.03159_OmniDreams.md] 候选概念：闭环世界模型 / Closed-Loop World Model（频次：首次系统出现；用于区分"离线 rollout"和"实时闭环仿真"）
-- [2026-06-06_2606.03159_OmniDreams.md] 候选概念：World-Scenario Map / 世界场景地图（频次：首次出现；HD 地图 + 3D bbox + 文本天气作为生成条件）
+- [02_阅读笔记/D07_腿足机器人/2026-06-08_2606.06139_MotionDisco.md] 候选概念：进化式技能发现（频次：首次出现）
+- [02_阅读笔记/D07_腿足机器人/2026-06-08_2606.05880_TAGA.md] 候选概念：地形感知凝视（频次：首次出现）

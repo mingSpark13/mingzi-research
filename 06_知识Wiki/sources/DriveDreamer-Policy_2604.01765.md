@@ -4,7 +4,7 @@ id: "source.DriveDreamer-Policy_2604.01765"
 pageType: "source"
 tags: ["世界模型", "感知与3D视觉", "动作生成", "自动驾驶"]
 summary: "DriveDreamer-Policy 把深度生成、未来视频生成和动作生成统一到 geometry-grounded world-action model 中，为几何锚定的世界模型提供模块化路线。"
-origins: ["../../02_阅读笔记/D01_世界模型/2026-04-14_DriveDreamer-Policy.md", "../../02_阅读笔记/D01_世界模型/2026-04-14_DriveDreamer-Policy.md"]
+origins: ["../../02_阅读笔记/D01_世界模型/2026-04-14_DriveDreamer-Policy.md", "02_阅读笔记/D01_世界模型/2026-04-14_DriveDreamer-Policy.md"]
 updated: "2026-06-02"
 ---
 

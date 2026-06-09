@@ -4,7 +4,7 @@ id: "source.VideoMAE_2203.12602"
 pageType: "source"
 tags: ["待补充", "视频预训练", "自监督学习", "感知与3D视觉", "运动控制"]
 summary: "VideoMAE 将 MAE 扩展到视频自监督预训练，在高掩码率下仍能稳定学习时空表征，适合作为小数据视频感知任务的通用初始化。"
-origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VideoMAE.md", "../../02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VideoMAE.md"]
+origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VideoMAE.md", "02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VideoMAE.md"]
 updated: "2026-06-02"
 ---
 

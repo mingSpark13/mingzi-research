@@ -4,7 +4,7 @@ id: "source.2603.15097_AeroGrab"
 pageType: "source"
 tags: ["aerial grasping", "cluttered environments", "active exploration", "grasp detection", "language-conditioned robotics", "空中操作"]
 summary: "问题背景: 复杂遮挡场景下的空中抓取容易因目标可见性差、碰撞风险高和抓取姿态生成与执行脱节而失败。"
-origins: ["../../02_阅读笔记/99_归档/重复笔记/2026-04-19_2603.15097_AeroGrab.md", "../../02_阅读笔记/99_归档/重复笔记/2026-04-19_2603.15097_AeroGrab.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-19_2603.15097_AeroGrab.md", "02_阅读笔记/D02_VLA/2026-04-19_2603.15097_AeroGrab.md"]
 updated: "2026-06-02"
 ---
 
@@ -13,5 +13,5 @@ updated: "2026-06-02"
 **核心价值**: 问题背景: 复杂遮挡场景下的空中抓取容易因目标可见性差、碰撞风险高和抓取姿态生成与执行脱节而失败。
 
 **原始资料**:
-- [[../../02_阅读笔记/99_归档/重复笔记/2026-04-19_2603.15097_AeroGrab.md]]
-- [[02_阅读笔记/99_归档/重复笔记/2026-04-19_2603.15097_AeroGrab.md]]
+- [[../../02_阅读笔记/D02_VLA/2026-04-19_2603.15097_AeroGrab.md]]
+- [[02_阅读笔记/D02_VLA/2026-04-19_2603.15097_AeroGrab.md]]

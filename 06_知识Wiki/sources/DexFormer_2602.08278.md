@@ -4,7 +4,7 @@ id: "source.DexFormer_2602.08278"
 pageType: "source"
 tags: ["cross-embodiment", "dexterous manipulation", "history-conditioned transformer", "zero-shot transfer", "跨载体泛化", "灵巧操作"]
 summary: "利用历史条件 Transformer 隐式推断不同手型与动力学差异，实现零样本跨灵巧手泛化。"
-origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md", "../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md"]
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md", "02_阅读笔记/D02_VLA/2026-04-09_DexFormer.md"]
 updated: "2026-06-02"
 ---
 
