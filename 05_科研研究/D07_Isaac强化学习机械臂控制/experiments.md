@@ -133,6 +133,8 @@
 - **风险判读纪律**：首轮 reviewer-facing 主表除 `DriftSlope / FFB / FMB` 外，还必须补一句 `boundary-risk note`，明确 residual guidance 是在**宽容边界**上成立，还是只在**狭窄可用区**内成立。只有 residual 同时通过 support subtraction、FFB/FMB、生存到 `g^†=W3`，并且 boundary-focused risk coverage 不显示脆弱窄边界时，才允许进入“机械臂高频稳定器”最强结论。
 - **新增 row-native support match 纪律**：四行最小 bundle 必须先标注各自最自然的 support ceiling，再看是否还有 residual guidance。`B2` 默认先解释 `WSR / PRS / W1` 早窗收益；`B3` 默认先解释 retention-gated 的 `W2/W3` 保持与有限 `CET` 改善；`B4` 默认先解释 `unsafe-action rejection / contact-preserving correction / 局部 PCST` 增益。若优势仍停留在机制原生指标上，则结论必须先冻结为 `acceleration / retention bridge / safety-shell support`，不得直接升级成“机械臂高频稳定器”。
 - **新增 immediate gate**：在既有 `PRS / ROS / VSS / TPS / MCS / WMPS / TFOS / KAS / MTS` subtraction 之后，还必须再过 `FFB + FMB` 双边界与 `ROBOGATE-style boundary-risk coverage`；只有在 support subtraction 之后 residual 仍同时通过固定底座、自由漂移底座、以及边界聚焦风险发现三层测试，才允许进入 strongest MEGA wording。
+- **新增 off-policy throughput support 判读**：若后续引入 FlashSAC 一类分支，其默认最弱解释权应先落在 **OTS（off-policy throughput support）**，只允许先解释 `time-to-threshold / replay_efficiency / critic_stability / seed_variance_reduction`；除非同一行在 matched subtraction 后继续压平 `drift_amp -> BDEE`、改善 `CET/PCST`、存活到 `g^†=W3` 并降低 `PGFR`，否则不得升级成机械臂高频稳定器证据。
+- **最小 OTS 日志字段**：`mega.ots.match / mega.ots.time_to_threshold_gain / mega.ots.replay_efficiency_gain / mega.ots.critic_stability_gain / mega.ots.seed_variance_gain / mega.ots.support_ceiling / mega.ots.residual_guidance`
 
 ---
 
@@ -218,6 +220,46 @@
   - `B4 -> projection / safety-shell support`：默认先解释 `unsafe_action_rejection / contact_preserving_correction / local_PCST_gain`
 - **新增最小日志字段**：`row_native_support_match / row_native_metric_frontier / row_native_residual_guidance / mega.ffb.pass / mega.ffb.note / mega.fmb.pass / mega.fmb.note / mega.boundary_survival_ceiling / mega.risk.coarse_pass_rate / mega.risk.boundary_transition_width / mega.risk.boundary_collapse_axis / mega.risk.coverage_ceiling / mega.risk.boundary_note`
 - **边界生存升级纪律**：任一行即便通过 `PRS / ROS / VSS / TPS / MCS / WMPS / TFOS / KAS / MTS` subtraction，只要 `FMB` 失败，就不能升级到 MEGA strongest wording；默认冻结在 planner-side / projection-side / local-arm support。只有 residual 同时通过 `FFB + FMB`，并继续压平 `DriftSlope`、保持 `g^†=W3`、降低 `ΔPGFR`，才允许升级为 **mechanical-arm high-frequency stabilizer** 叙事。
+
+### 9.1j off-policy throughput support freeze（2026-06-10 新增）
+- **目标**：预先冻结未来 FlashSAC / replay-efficient off-policy 分支的最弱解释权，防止“训练更快/critic 更稳”被误写成 moving-base guidance 已经更强。
+- **默认最弱解释权**：`OTS（off-policy throughput support）` 先解释 `time-to-threshold / replay-efficiency / critic-stability / seed-variance reduction`。
+- **新增最小日志字段**：
+  - `mega.ots.match`
+  - `mega.ots.time_to_threshold_gain`
+  - `mega.ots.replay_efficiency_gain`
+  - `mega.ots.critic_stability_gain`
+  - `mega.ots.seed_variance_gain`
+  - `mega.ots.support_ceiling`
+  - `mega.ots.residual_guidance`
+- **判读纪律**：若某行优势主要停留在 OTS 指标，而 `DriftSlope / CET / PCST / PGFR / FMB` 未同步改善，则结论必须先冻结为 **training-shell support**；只有在 matched subtraction 后 residual 仍通过 `FFB + FMB`，继续压平 `drift_amp -> BDEE`、保住 `g^†=W3` 并降低 payload-bearing 失败，才允许进入更强的 MEGA guidance wording。
+
+### 9.1k row-native support frontier, FFB/FMB, and boundary-risk freeze（2026-06-10 新增）
+- **row-native support frontiers**：
+  - `B2 -> acceleration / warm-start support`：默认先解释 `WSR / PRS / W1 alignment gain`
+  - `B3 -> retention bridge support`：默认先解释 gated retention、`W2/W3` 保持与有限 `ΔCET`
+  - `B4 -> projection / safety-shell support`：默认先解释 `unsafe_action_rejection / contact_preserving_correction / local_PCST_gain`
+- **新增最小日志字段**：
+  - `mega.row_native_support_match`
+  - `mega.row_native_metric_frontier`
+  - `mega.row_native_residual_guidance`
+  - `mega.ffb.pass`
+  - `mega.ffb.note`
+  - `mega.fmb.pass`
+  - `mega.fmb.note`
+  - `mega.boundary_survival_ceiling`
+  - `mega.risk.coarse_pass_rate`
+  - `mega.risk.boundary_transition_width`
+  - `mega.risk.boundary_collapse_axis`
+  - `mega.risk.coverage_ceiling`
+  - `mega.risk.boundary_note`
+- **边界生存升级纪律**：任一行即便通过 support subtraction，只要 `FMB` 失败，就不能升级到 MEGA strongest wording；默认冻结在 planner-side / projection-side / local-arm support。只有 residual 同时通过 `FFB + FMB`，并继续压平 `DriftSlope`、保持 `g^†=W3`、降低 `ΔPGFR`，才允许升级为 **mechanical-arm high-frequency stabilizer** 叙事。
+- **boundary-risk 后置闸门**：即便 residual 已通过 `FFB + FMB`，若 `boundary_transition_width` 过窄、`boundary_collapse_axis` 明显、或 payload / latency / contact-timing 一扰就塌，则该行只能记作“mean-metric 下看似可用”的 support-side 结果，不能直接进入 strongest MEGA wording。
+
+### 9.1ib reviewer-facing main-table note discipline（2026-06-09 新增）
+- 主表中凡涉及 Any2Any/X-DiffVLA 风格路线，`SupportFamilyExplanation` 必须优先写成 `KAS` 或 `MTS`，除非 row-wise residual 已通过 `WMPS / TFOS / KAS / MTS` 四层 subtraction。
+- `PromotionBlocker` 新增合法值：`cross-embodiment support still sufficient`，用于明确说明“当前结果还可被更容易迁移/共享动作头充分解释”。
+- 若 `KAS/MTS` 已经解释掉大部分增益，则 `GuidanceSubtractedCeiling` 最多只能到 `transfer-structure support`，不得直接写成 `deployable hybrid` 或 `mechanical-arm high-frequency stabilizer`。
 - **ROBOGATE 风险覆盖纪律**：即便 `FFB/FMB` 通过，也还必须补做两阶段 boundary-focused risk coverage；若 `boundary_transition_width` 过窄、或 collapse 主要集中在 payload / latency / contact-timing 轴，则结论默认冻结为“deployment-risk 未过”的 support-side 版本，不能直接进入最强标题口径。
 
 ### 9.1f curriculum-shell / platform-survey freeze（2026-06-04 新增）
@@ -235,6 +277,11 @@
 #### 9.1f transfer-protocol support freeze（2026-06-06 新增）
 - **RL-Based Sim-Real Co-Training for VLA (2602.12628) → TPS（transfer-protocol support）**：默认只允许先解释初始化保真、sim-real 适配成本下降、real-anchor continuity、以及 early-window deployment readiness；若没有在 matched subtraction 后继续压平 `drift_amp → BDEE`、把 `g^†` 推进到 `W3`，并在 payload-bearing slice 降低 `PGFR`，不得升级为 **mechanical-arm high-frequency stabilizer** 证据。
 - **四重减法审计**：后续 reviewer-facing 最小残差需显式穿过 `PRS`（platform/reproducibility support）、`ROS`（reward-origin support）、`VSS`（verification-shell support）、`TPS`（transfer-protocol support）四层扣减；只要某行 guidance gain 仍可主要由这四层之一解释，就只能停在对应 support-family ceiling。
+
+#### 9.1g off-policy throughput support freeze（2026-06-09 新增）
+- **FlashSAC (2604.04539) → OTS（off-policy throughput support）**：默认只允许先解释更快 `time-to-threshold`、更高 `replay_efficiency`、更稳 `critic_stability`、以及更低 `seed_variance` 的优化侧收益；若没有在 matched subtraction 后继续压平 `drift_amp → BDEE`、把 `g^†` 推进到 `W3`，并在 payload-bearing slice 降低 `PGFR`，不得升级为 **mechanical-arm high-frequency stabilizer** 证据。
+- **最小 subtraction 字段**：`OTS_match / time_to_threshold_gain / replay_efficiency_gain / critic_stability_gain / seed_variance_gain / ots_support_ceiling / ots_residual_guidance`。
+- **升级纪律**：只要一行结果仍可主要被“off-policy 训练更快、更稳、critic 更不漂”解释，就不能冒领 arm-side guidance residual；只有在扣除 `OTS` 后 residual 仍同时通过 `FFB + FMB`、继续压平 `DriftSlope`、改善 `CET/PCST` 并降低 `ΔPGFR`，才允许进入更强的 MEGA wording。
 - **最小新增日志 key**：
   - `mega.tps.match`
   - `mega.tps.real_anchor_gain`

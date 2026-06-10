@@ -1,7 +1,7 @@
 # Unified Cross-Embodiment Policy Transfer via Shared Geometry and Latent Action Interfaces
 
 > 方向：D04 跨载体泛化 | 目标会议：CoRL 2027 | 状态：🔴 草稿
-> 最后更新：2026-06-08 13:56
+> 最后更新：2026-06-10 03:56
 
 ---
 
@@ -284,7 +284,16 @@ This addition is strategically important for mixed ground–aerial transfer as w
 ### 4. Experiments
 
 ### 4.1 Setup
-[TODO: specify datasets, morphology pairs, and matched-budget training protocol.]
+
+We target mixed cross-embodiment transfer settings in which source and target platforms differ in morphology, kinematic tree, sensing layout, or contact regime, but still share task-level geometric intent. The evaluation should cover at least three transfer families: **human-to-humanoid retargeting without paired demonstrations** (motivated by Human2Humanoid [REF: 2606.03476]), **humanoid-to-humanoid transfer with explicit kinematic alignment and lightweight PEFT adaptation** (motivated by Any2Any [REF: 2605.23733]), and **cross-platform policy deployment through a unified robot I/O substrate** (motivated by RIO [REF: 2605.11564]). This combination is intentional: it prevents D04 from being reduced to one narrow embodiment pair, and it lets us test whether geometry-first transfer survives across data regimes ranging from no-pair supervision to alignment-assisted adaptation.
+
+For each transfer family, we construct matched source-target tuples `(source embodiment, target embodiment, observation support, contact support, adaptation budget)` and require the same backbone scale, context length, training horizon, and target-side data fraction across ablations. The decisive comparison is not only end-task success, but whether the claimed gain is still visible after subtracting easier explanations from earlier sections: `terrain-state completion`, `coordination-state completion`, `contact-interface enrichment`, `kinematic-alignment gain`, `representation/infrastructure exposure`, and `bounded prior-preserving adaptation`. Concretely, Human2Humanoid-style routes instantiate the **unpaired geometry-anchor** regime, Any2Any-style routes instantiate the **explicit alignment + tiny dynamics patch** regime, and RIO-style routes instantiate the **representation/infrastructure exposure** regime. A proposed D04 method is only considered scientifically strong if it survives all three matched comparisons under the same budget.
+
+We therefore define the core evaluation bundle as
+\[
+\mathcal{B}^{D04}=\big(\mathcal{E}_{hum},\;\mathcal{E}_{align},\;\mathcal{E}_{rio},\;\mathcal{C}_{view},\;\mathcal{C}_{contact},\;\mathcal{C}_{budget}\big),
+\]
+where `\mathcal{E}_{hum}` denotes the Human2Humanoid-style unpaired transfer benchmark, `\mathcal{E}_{align}` the Any2Any-style aligned transfer benchmark, `\mathcal{E}_{rio}` the RIO-mediated deployment benchmark, `\mathcal{C}_{view}` the cross-view perturbation control, `\mathcal{C}_{contact}` the contact/tactile support control, and `\mathcal{C}_{budget}` the matched adaptation-budget control. This setup turns the experiments into a true promotion audit: if a route only wins when explicit kinematic alignment is present, the honest ceiling is **alignment-support**; if it only wins when a tiny PEFT patch is enabled, the honest ceiling is **bounded-adaptation support**; if it only wins once unified I/O packaging is restored, the honest ceiling is **representation/infrastructure exposure**.
 
 ### 4.2 Main Results
 
@@ -298,8 +307,19 @@ where `TR` is end-task transfer rate, `IGS` is interface-geometry stability, `LT
 
 This setup is especially important for future mixed ground--aerial transfer experiments. A UAV-to-arm route may look transferable simply because overhead geometry plus hand-designed kinematic remapping removes the hardest mismatch before execution starts. Our table structure therefore requires the paper to say whether the observed gain was consumed pre-contact as a cleaner aligned packet, mid-rollout as a bounded dynamics patch, or only later as true latent or specialist survival. In practice, this gives D04 a submission-ready experiment contract: **alignment and tiny adaptation are valid supports, but they are not allowed to impersonate embodiment-agnostic interface verification.**
 
+To make the table operational, we recommend three canonical row families. **Row A (Human2Humanoid control)** asks whether unpaired geometry anchors plus physics-aware feasibility already recover most transfer without explicit latent reuse; if yes, the gain stays at `UGA/PEC/MIE`-style support. **Row B (Any2Any control)** asks whether explicit kinematic alignment plus a tiny PEFT dynamics branch already explains the remaining uplift; if yes, the gain stays at `KAG/DAG`. **Row C (RIO control)** asks whether a route only becomes stable after robot I/O standardization and deployment cleanup; if yes, the gain stays at `RIG`. Only rows whose `LTS` survives all three control families under the same `CW` may be promoted to **shared latent sufficiency**.
+
 ### 4.3 Ablation Study
-[TODO: add matched toggles for no-alignment, no-PEFT, and no-specialist controls.]
+
+The ablation section should be written as a matched subtraction audit rather than as a flat list of modules. At minimum, we require toggles for `(i)` no geometry-anchor supervision, `(ii)` no explicit kinematic alignment, `(iii)` no lightweight PEFT dynamics patch, `(iv)` no unified robot I/O substrate, and `(v)` no specialist residual branch. These toggles directly correspond to the local high-value anchors Human2Humanoid, Any2Any, and RIO, and they let the paper answer a harder question than “does our full model win?”—namely, *which weaker family still explains the win once the full stack is decomposed?*
+
+We therefore recommend the following canonical matched ablations:
+\[
+\mathcal{A}^{D04}=\{A_{-hum},\; A_{-align},\; A_{-peft},\; A_{-rio},\; A_{-spec}\},
+\]
+where `A_{-hum}` removes unpaired geometry-anchor and physics-feasibility supervision, `A_{-align}` removes explicit kinematic alignment, `A_{-peft}` removes the tiny dynamics-sensitive adapter, `A_{-rio}` removes the unified I/O and deployment abstraction, and `A_{-spec}` removes the final specialist residual cleanup branch. The interpretation rule is strict: if performance collapses mainly under `A_{-align}` but remains stable under `A_{-rio}` and `A_{-spec}`, the route is still best explained as **alignment-support**; if it collapses mainly under `A_{-rio}`, it remains **representation/infrastructure exposure**; if only `A_{-spec}` matters after all earlier families are exhausted, then the gain can be promoted to **remaining embodiment structure**.
+
+A small but critical detail is that each ablation must be reported with the same decisive window `CW` and the same adaptation budget. Without this constraint, a route could appear to survive subtraction merely because it consumed more context, more demonstrations, or more target-side optimization than the control. For that reason, every ablation row should be paired with a budget witness tuple `(data fraction, update steps, context length, sensor support)` and a weakest-honest tag from `{terrain, contact, coordination, alignment, infrastructure, bounded-adaptation, latent, specialist}`. This keeps D04 aligned with the core thesis of the paper: cross-embodiment success should be promoted only after all easier families have been exhausted under matched evidence.
 
 ## References
 
