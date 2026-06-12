@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_ReconDrive.md"
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# ReconDrive: Feed-Forward 4D Gaussian Splatting for Scalable Autonomous Driving Scene Reconstruction
 
 **核心价值**: 问题背景: 现有 4DGS 方法依赖逐场景优化，计算开销巨大，无法扩展到大规模城市场景；前馈方法虽快但视觉质量下降。
 

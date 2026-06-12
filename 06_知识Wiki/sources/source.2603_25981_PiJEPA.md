@@ -8,7 +8,7 @@ origins: []
 updated: "2026-04-17"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# 2603_25981_PiJEPA
 
 **核心价值**: 
 

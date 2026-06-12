@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-09_ARM_Advantage_Reward_Modelin
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# ARM: Advantage Reward Modeling for Long-Horizon Manipulation
 
 **核心价值**: ARM 用相对 advantage 风格奖励建模替代脆弱的 dense progress reward，缓解长时序操作中的稀疏奖励与恢复动作评估问题。
 

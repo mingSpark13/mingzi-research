@@ -8,7 +8,7 @@ origins: []
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# SaPaVe
 
 **核心价值**: ⚠️ 论文已被引用但 L1 笔记未入库（orphan）。暂作占位索引。
 

@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2025-03-13_An-Integrated-Approach-to-Ae
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# An Integrated Approach to Aerial Grasping: Combining a Bistable Gripper With Adaptive Control
 
 **核心价值**: 空中抓取面临精确位姿维持和接触力/负载不确定性两大挑战，现有电机驱动夹爪需精确对准且能耗高，传统控制器需要不确定性边界的先验知识。
 

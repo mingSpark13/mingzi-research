@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D09_感知与3D视觉/2025-03-14_Seamless-Trans
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Seamless Transition Control in Spring-Legged Quadrotors: A Hybrid Dynamics Perspective with Guaranteed Feasibility
 
 **核心价值**: 提出弹簧腿四旋翼统一混合轨迹优化与 HNMPC 控制框架，提升空地模式切换可行性与跟踪性能。
 

@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-03-17_ANWM.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Aerial World Model for Long-horizon Visual Generation and Navigation in 3D Space
 
 **核心价值**: 2026-03-17_ANWM
 

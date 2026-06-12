@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_SAGE-3D.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# SAGE-3D: Towards Physically Executable 3D Gaussian for Embodied Navigation
 
 **核心价值**: 📖 花火格式笔记
 

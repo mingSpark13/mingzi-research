@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-17_AutoFly.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# AutoFly: Vision-Language-Action Model for UAV Autonomous Navigation in the
 
 **核心价值**: 1. AutoFly 是面向野外未知环境自主导航的端到端 VLA 模型，用 pseudo-depth encoder 从 RGB 图像中提取深度感知特征，解决「无精确指令 + 连续避障 + 自主规划」的野外场景挑战 2. 提出渐进两阶段训练策略，有效对齐视觉、深度、语言表征与动作策略 3. 在野外场景中成功率比基线方法提升 14.0%（seen）和 7.9%（unseen），且无需细粒度路线指令
 

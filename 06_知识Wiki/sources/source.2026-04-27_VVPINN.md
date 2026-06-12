@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-27_VVPINN.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Vorticity-velocity physics-informed neural networks for spatio-temporal super-resolution of sub-sampled velocity measurements
 
 **核心价值**: 基于涡量-速度约束的物理信息神经网络，用于流场时空超分辨率重建
 

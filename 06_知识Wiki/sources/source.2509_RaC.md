@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2509_RaC.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# RaC: Recovery and Correction for Long-Horizon Manipulation
 
 **核心价值**: 问题背景: 长程任务执行中失败不可避免，现有问题无法让机器人学会从人类干预轨迹中提取 recovery and correction 策略。
 

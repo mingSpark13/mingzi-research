@@ -8,7 +8,7 @@ origins: []
 updated: "2026-04-17"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# UniGRPO_Unified_Policy_Reasoning_Visual_Generation
 
 **核心价值**: 
 

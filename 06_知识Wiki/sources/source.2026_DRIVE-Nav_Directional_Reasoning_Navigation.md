@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D06_空中VLN/2026_DRIVE-Nav_Directional_Reason
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# DRIVE-Nav: Directional Reasoning and Inspection for Efficient Vision-Language Navigation
 
 **核心价值**: DRIVE-Nav 用方向级推理替代点级贪心探索，在开放词汇导航中显著减少无效扫描与冗余路径。
 

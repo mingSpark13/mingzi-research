@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-18_SceneSmith.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# SceneSmith: Agentic Generation of Simulation-Ready Indoor Scenes
 
 **核心价值**: Agentic 室内场景生成框架，打通文字到可仿真物理场景的自动构建链路。
 

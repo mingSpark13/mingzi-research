@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-03-25_OccAny_Unconst
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# OccAny: Generalized Unconstrained Urban 3D Occupancy
 
 **核心价值**: OccAny: Generalized Unconstrained Urban 3D Occupancy
 

@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-03-19_InSpatio_WorldFM.md
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# InSpatio-WorldFM: An Open-Source Real-Time Generative Frame Model
 
 **核心价值**: 提出基于帧的实时生成式世界模型，通过显式 3D 锚点与隐式空间记忆实现多视角一致的低延迟世界模拟。
 

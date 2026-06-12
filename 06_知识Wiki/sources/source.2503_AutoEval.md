@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2503_AutoEval.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# AutoEval: Autonomous Evaluation Framework for Robot Manipulation
 
 **核心价值**: 真实机器人操作的自主评测框架，降低人工评估成本并支持闭环持续改进
 

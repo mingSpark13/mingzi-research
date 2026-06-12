@@ -249,7 +249,13 @@ PEACE [REF: 2606.00104] reinforces an increasingly important adjacent baseline f
 
 For D06, however, these gains still stop short of the specific claim we now need to defend: a **Semantic Waypoint Packet** must not only be well-typed or planner-friendly, but must remain the *same semantic thread* after serialization into `manifest.json`, `frames.jsonl`, and `actions.jsonl`, after verifier approval, after executor binding, and after delayed `WaypointExecutor` consumption. We therefore freeze PEACE-like gains as **executor-interface support** unless the same row still preserves packet-facing evidence across `C_{ser}` (schema-serialization validity), `e^{auth}` (verifier authorization success), `e^{bind}` (executor bind success), `e^{consume}` (delayed consume-time semantic consistency), and `c^{trace}` (cross-file trace continuity). Better typed plans and cleaner bind-time safety are valuable, but they are not yet evidence that the packet is AirSpark-native, replay-accountable, and faithfully consumable by the executor.
 
-### 2.21 Limitations of Existing Work
+### 2.21 Long-Horizon Asynchronous Aerial VLA improves progress discipline but does not by itself establish WaypointExecutor-consumable packet accountability
+
+Recent local evidence adds a closely adjacent family that D06 must explicitly subtract before promoting stronger executor-facing claims. FLIGHT VLA [REF: 2606.06836] splits low-frequency pilot-style semantic reasoning from high-frequency diffusion control, while Goal2Pixel [REF: 2606.01621] emphasizes goal-conditioned visual grounding that sharpens progress-consistent waypoint commitment under long-horizon aerial instructions. Together, these systems strengthen a **long-horizon asynchronous planning-control** route: they can improve subgoal adherence, reduce stop-and-go oscillation, maintain smoother controller responsiveness, and keep progress traces more coherent across multi-stage flights without necessarily exposing a reusable AirSpark-schema-aligned packet object.
+
+For D06, these gains should therefore be credited first as **progress-discipline support** and **goal-grounding support** rather than as packet-contract evidence. A method may become much better at deciding when to advance, when to refresh, and how to keep controller-time actions aligned with high-level intent, yet still fail to serialize the same semantic thread into `manifest.json`, `frames.jsonl`, and `actions.jsonl` in a way that survives delayed `WaypointExecutor` consumption and post-hoc replay. In our route-closure discipline, FLIGHT-VLA- and Goal2Pixel-style gains are allowed to explain stronger long-horizon subgoal maintenance, lower progress-trace fragmentation, and better goal-conditioned final commitment; however, they freeze below full packet-contract language unless the same row also preserves `C_{ser}`, `e^{auth}`, `e^{bind}`, `e^{consume}`, and `c^{trace}` under online refresh.
+
+### 2.22 Limitations of Existing Work
 
 Existing aerial navigation and VLN approaches share critical gaps:
 (1) No existing method provides a complete aerial VLN framework with 3D semantic frontier exploration.
@@ -270,6 +276,7 @@ Existing aerial navigation and VLN approaches share critical gaps:
 (16) More broadly, current aerial VLN papers rarely separate **schema-clean planner output** from **trace-preserving packet output**. A method may emit cleaner typed commands, lower LLM-call frequency, or stronger bind-time safety checks while still failing to preserve replay-equivalent semantic-thread continuity across refresh, logging, and final consume.
 (17) Recent long-horizon asynchronous aerial systems improve subgoal adherence and real-time continuous control by splitting low-frequency semantic reasoning from high-frequency action generation, but they still rarely prove whether the intermediate object remains a **WaypointExecutor-consumable packet** rather than only an internal planner-control coupling.
 (18) Correspondingly, the field still lacks a matched subtraction protocol that cleanly separates **long-horizon progress discipline** from **AirSpark-schema-aligned packet accountability**; without that split, gains from better asynchronous planning-control can be over-promoted into executor-facing packet claims.
+(19) Goal-conditioned visual-grounding systems can improve final commitment and progress-trace smoothness, but current aerial VLN papers still rarely show whether those gains survive as a stable, replay-reconstructable semantic packet after delayed executor consumption.
 
 ## 3. Method
 

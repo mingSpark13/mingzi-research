@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2602_21203_Squint.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Squint: Fast Visual Reinforcement Learning for Sim-to-Real Robotics
 
 **核心价值**: Squint 结合并行仿真、distributional critic 与分辨率 squinting，在单卡上把视觉 RL 训练压缩到十几分钟，并验证了可行的 sim-to-real 迁移。
 

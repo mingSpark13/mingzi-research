@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D04_跨载体泛化/2026-04-19_X-Nav_Cross-Embo
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# X-Nav: Learning End-to-End Cross-Embodiment Navigation for Mobile Robots
 
 **核心价值**: 问题背景: 导航策略通常强依赖特定机器人形态与传感器接口，换平台后往往需要重新训练，限制了移动机器人策略的复用与扩展。
 

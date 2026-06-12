@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VIBE.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# VIBE: Video Inference for Human Body Pose and Shape Estimation
 
 **核心价值**: VIBE 以 CNN+GRU 建模视频人体姿态与形状，是视觉前端叠加轻量时序模块的经典基线。
 

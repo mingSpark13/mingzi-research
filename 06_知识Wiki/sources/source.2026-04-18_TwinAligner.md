@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-18_TwinAligner.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# TwinAligner: Visual-Dynamic Alignment Empowers Physics-aware Real2Sim2Real for Robotic Manipulation
 
 **核心价值**: 📖 TwinAligner: Visual-Dynamic Alignment Empowers Physics-aware Real2Sim2Real for Robotic Manipulation
 

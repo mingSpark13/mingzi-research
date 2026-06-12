@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-03-17_ASCENT.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Stairway to Success: An Online Floor-Aware Zero-Shot Object-Goal Navigation Framework via LLM-Driven Coarse-to-Fine Exploration
 
 **核心价值**: ASCENT 面向多楼层零样本 object-goal navigation，结合楼层感知表示与 LLM 驱动的 coarse-to-fine exploration 实现在线长程导航。
 

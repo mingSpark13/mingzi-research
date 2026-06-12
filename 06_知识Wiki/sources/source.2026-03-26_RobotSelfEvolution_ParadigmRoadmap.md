@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D10_仿真与框架/2026-03-26_RobotSelfEvoluti
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# 机器人自进化范式路线图：从数据闭环 → 意图-身体双闭环
 
 **核心价值**: 系统梳理机器人自进化从数据闭环到意图-身体双闭环的路线，把 RoboClaw、AutoEval、Reset-Free RL 与 PMI 统一到可执行演进框架中。
 

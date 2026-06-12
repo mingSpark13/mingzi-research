@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D10_仿真与框架/2026-05-02_RLBench.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# RLBench: The Robot Learning Benchmark & Learning Environment
 
 **核心价值**: 机器人学习缺乏统一的大规模 benchmark，现有数据集任务单一、规模小，难以评估算法的泛化能力和多任务学习能力
 

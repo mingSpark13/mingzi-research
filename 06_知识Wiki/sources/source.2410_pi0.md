@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2410_pi0.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# π0: Flow-Matching VLA for Generalist Robot Control
 
 **核心价值**: π0 将 flow matching 引入通用机器人 VLA，直接生成高频连续动作块，兼顾语义泛化与精细操控能力。
 

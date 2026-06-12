@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-03-25_Diffusion_as_Shader
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Diffusion as Shader: 3D-aware Video Diffusion for Versatile Video Generation Control
 
 **核心价值**: 将3D几何感知引入视频扩散控制，提升多视角生成的一致性、稳定性与可编辑性。
 

@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-18_WMPO.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# WMPO: World Model-based Policy Optimization for Vision-Language-Action Models
 
 **核心价值**: 问题背景: VLA模型依赖专家演示数据学习，泛化能力受限，无法从失败中自我纠正；强化学习虽有自改进能力，但样本效率低、训练复杂。
 

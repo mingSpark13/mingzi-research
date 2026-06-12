@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-03-25_DynIBaR.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# DynIBaR: Neural Dynamic Image-Based Rendering
 
 **核心价值**: DynIBaR: Neural Dynamic Image-Based Rendering
 

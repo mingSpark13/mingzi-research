@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D06_空中VLN/2025-12-22_IndoorUAV.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# IndoorUAV: Benchmarking Vision-Language UAV Navigation in Continuous Indoor Environments
 
 **核心价值**: 首个面向连续室内3D环境的UAV视觉语言导航基准，补齐室内空中VLN评测空白。
 

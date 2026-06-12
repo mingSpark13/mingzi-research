@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2109_ResetFreeRL.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Reset-Free Reinforcement Learning via Multi-Task Learning
 
 **核心价值**: 问题背景: 传统 RL 需要人工 reset 来重置环境，效率低，真实世界无法频繁人工干预。
 

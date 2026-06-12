@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-07_AgentWorld.md"
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# AgentWorld: An Interactive Simulation Platform for Scene Construction and Mobile Robotic Manipulation
 
 **核心价值**: AgentWorld 将自动场景构建与移动操作遥操作结合，为家庭机器人提供高效仿真数据生产平台。
 

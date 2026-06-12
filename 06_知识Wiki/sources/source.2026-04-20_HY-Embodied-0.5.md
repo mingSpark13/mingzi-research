@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-20_HY-Embodied-0.5.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# **HY-Embodied-0.5: Embodied Foundation Models for Real-World Agents**
 
 **核心价值**: 以 MoT 架构、视觉隐层 token、迭代自进化训练与在线蒸馏构建可落地的具身基础模型闭环，小模型端侧部署与大模型云端推理两线并进。
 

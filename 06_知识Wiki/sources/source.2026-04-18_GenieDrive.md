@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-04-18_GenieDrive.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# GenieDrive: Towards Physics-Aware Driving World Model with 4D Occupancy Guided Video Generation
 
 **核心价值**: GenieDrive 用 4D 占用作为中间物理表征，再条件生成驾驶视频，提升了世界模型的物理一致性与效率。
 

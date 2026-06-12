@@ -8,7 +8,7 @@ origins: []
 updated: "2026-04-17"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# WildWorld_Dynamic_World_Modeling_Actions
 
 **核心价值**: 
 

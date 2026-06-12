@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2025-03-13_Flying-Hand.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Flying Hand: End-Effector-Centric Framework for Versatile Aerial Manipulation Teleoperation and Policy Learning
 
 **核心价值**: 现有空中操作方案往往针对特定任务定制硬件和算法，缺乏跨任务、跨平台的通用性，限制了算法发展和实际应用范围。
 

@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2025-06-17_PCFM.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# PCFM: Physics-Constrained Flow Matching
 
 **核心价值**: 在flow matching采样过程中持续施加physics-based correction，实现轨迹生成的精确物理约束满足。
 

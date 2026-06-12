@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-04-18_OmniNWM.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# OmniNWM: Omniscient Driving Navigation World Models
 
 **核心价值**: 现有世界模型大多单一维度建模（仅状态或仅动作），无法支撑自动驾驶所需的完整因果预测与闭环评测。
 

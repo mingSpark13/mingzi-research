@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D06_空中VLN/2026-04-18_RoSLM.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Ro-SLM: Onboard Small Language Models for Robot Task Planning and Operation Code Generation
 
 **核心价值**: Ro-SLM 通过蒸馏与 reward-guided 微调把语言规划和代码生成压到机载小模型，为无人机离线边缘部署提供可行路线。
 

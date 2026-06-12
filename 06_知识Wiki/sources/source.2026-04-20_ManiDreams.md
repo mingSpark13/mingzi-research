@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-04-20_ManiDreams.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# **ManiDreams: Robust Object Manipulation via Uncertainty-aware Task-specific Intuitive Physics**
 
 **核心价值**: ManiDreams 是一个开源的模块化操作规划框架，通过**不确定性感知的任务特定直觉物理模型**，无需重训练即可自适应应对环境各类不确定性（物体属性、初始状态、外部扰动）。核心范式为 **sample-predict-constrain**：用 DRIS 表示分布式状态、TSIP 预测前向动力学、caging 约束限制不确定性边界，最终通过求解器选择鲁棒动作。在真实机器人高不确定性任务上验证有效，面对逐步升级的扰动显著优于 RL 基线。
 

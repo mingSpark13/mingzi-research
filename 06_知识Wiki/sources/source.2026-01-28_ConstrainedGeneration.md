@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-01-28_ConstrainedGenerati
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Constrained Generation: From Language Models to Hard-Constraint Satisfaction
 
 **核心价值**: 这篇综述把 constrained decoding、barrier guidance 与投影采样统一到“硬约束生成”框架下，强调只有把约束嵌入生成过程才能真正保证可行性。
 

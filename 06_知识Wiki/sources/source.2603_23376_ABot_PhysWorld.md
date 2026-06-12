@@ -8,7 +8,7 @@ origins: []
 updated: "2026-04-17"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# 2603_23376_ABot_PhysWorld
 
 **核心价值**: 
 

@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2025-04-23_SafeFlow.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# SafeFlow: Control Barrier Functions for Safe Flow Matching Trajectory Generation
 
 **核心价值**: 将 control barrier functions 直接注入 flow matching 采样过程，在生成轨迹时同时维持安全约束与轨迹质量。
 

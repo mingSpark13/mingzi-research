@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-03-25_Dynamic_View_Synthe
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Dynamic View Synthesis from Dynamic Monocular Video
 
 **核心价值**: Dynamic View Synthesis from Dynamic Monocular Video
 

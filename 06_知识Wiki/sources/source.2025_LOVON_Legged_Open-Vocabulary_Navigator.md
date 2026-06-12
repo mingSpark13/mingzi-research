@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D06_空中VLN/2025_LOVON_Legged_Open-Vocabulary
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# LOVON: 四足开放词汇目标导航器
 
 **核心价值**: LOVON 面向真实四足平台构建开放词汇目标导航系统，强调视觉抖动、盲区和目标丢失等工程问题下的可部署性。
 

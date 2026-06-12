@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D01_世界模型/2026-03-25_Wan_Open_and_Advanc
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# Wan: Open and Advanced Large-Scale Video Generative Models
 
 **核心价值**: Wan 是开放大规模视频生成基础模型，覆盖 T2V/I2V/编辑多任务，并已成为 InSpatio-World 等系统工作的生成骨干层。
 

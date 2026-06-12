@@ -8,7 +8,7 @@ origins: ["../../02_阅读笔记/D02_VLA/2026-03-28_GroundedPlanBench.md"]
 updated: "2026-06-02"
 ---
 
-# ViSA-Enhanced AVLN (2603.08007)
+# "Spatially Grounded Long-Horizon Task Planning in the Wild"
 
 **核心价值**: 评估 VLM 长程任务规划中空间接地能力的基准与自动数据生成框架
 
