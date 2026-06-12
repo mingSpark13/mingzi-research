@@ -1,3 +1,4 @@
 - [02_阅读笔记/D07_腿足机器人/2026-06-08_2606.06139_MotionDisco.md] 候选概念：进化式技能发现（频次：首次出现）
 - [02_阅读笔记/D07_腿足机器人/2026-06-08_2606.05880_TAGA.md] 候选概念：地形感知凝视（频次：首次出现）
 - [02_阅读笔记/2026-06-09_2605.20613_HRM-Text.md] 候选概念：HRM（Hierarchical Reasoning Model）/ MagicNorm / warmup deep credit assignment / 双时间尺度递归 / 推理-知识解耦 / Lean General Intelligence（频次：HRM 系列工作首次入库；建议建立独立 concepts/HRM.md 候选）
+- [02_阅读笔记/D02_VLA/2026-06-12_ViT3_Test_Time_Training_Vision.md] 候选概念：Test-Time Training（TTT）/ Inner Module / Inner Training / 在线学习式 Attention（频次：TTT 系列工作首次入库；建议在 VLA架构 下新增二级子概念 `TTT测试时训练`，或合并到 `持续学习` 作为在线学习子类）
