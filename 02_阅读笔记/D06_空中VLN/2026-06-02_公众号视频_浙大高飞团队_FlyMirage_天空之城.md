@@ -10,7 +10,7 @@ bvid: BV1JgVq6uE2P
 aid: 116679111808497
 duration: 66
 author: 深蓝学院
-video_path: "../../50_资源库/公众号视频/flymirage_BV1JgVq6uE2P.mp4"
+video_path: ""  # 2026-06-12 删除冗余 50_资源库/ 后清空；如需恢复可从 B 站重新下载 BV1JgVq6uE2P
 pdf_path: ""
 word_count: 视频介绍约 200 字
 image_count: 22

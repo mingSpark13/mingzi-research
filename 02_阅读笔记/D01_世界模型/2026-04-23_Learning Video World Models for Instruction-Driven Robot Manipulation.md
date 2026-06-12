@@ -6,12 +6,13 @@ date: 2026-01/02
 institution: 待补充
 conf: arXiv
 keywords: [视频世界模型, 指令驱动操作, 时空推理]
-tags: []
+tags: [世界模型, 动作条件预测, 视频生成]
 domain: 世界模型/通用操作
 pdf_path: "../../01_论文库/2602.10717_Learning Video World Models for Instruction-Driven Robot Manipulation.pdf"
 reading_date: 2026-04-23
 reading_status: 已读
-related_concepts: ['世界模型', '通用操作', '多模态学习']
+summary: "论文让视频世界模型为指令驱动操作提供前瞻轨迹上下文，用想象出的未来辅助动作生成与长时序规划。"
+related_concepts: ["世界模型", "动作条件预测", "视频生成"]
 ---
 
 # 📖 花火格式笔记

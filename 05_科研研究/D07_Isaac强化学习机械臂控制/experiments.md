@@ -356,6 +356,23 @@
   - `mega.residual.high_freq_stabilizer_survives_after_mcs`
 - **解释纪律**：只要一行结果仍可被“multi-task curriculum 更好、示教引导更顺、训练壳更稳”解释，就不能冒领 **mechanical-arm high-frequency stabilizer** 叙事；只有在扣除 `MCS` 后 residual 仍继续压平 `DriftSlope`、推进 `g^†=W3`、并降低 `ΔPGFR` 时，才允许继续升级。
 
+#### 9.1l promotion-ladder + TPS/VSS coupled residual audit（2026-06-10 新增）
+- **目标**：把现有 `F0 fixed base -> F1 low-drift -> F2 bounded-drift-with-contact -> F3 payload-bearing drift` 促升梯子，与 `TPS/VSS` 扣减审计绑成同一份 reviewer-facing 结果合同，防止“更顺的 sim-real protocol”或“更完整的 verification shell”被误写成机械臂高频稳定器已经站住。
+- **最小 promotion 字段**：
+  - `mega.promotion.f0_pass`
+  - `mega.promotion.f1_pass`
+  - `mega.promotion.f2_pass`
+  - `mega.promotion.f3_pass`
+  - `mega.promotion.highest_stage`
+- **最小 coupled-subtraction 字段**：
+  - `mega.tps_vss.coupled_match`
+  - `mega.tps_vss.protocol_gain`
+  - `mega.tps_vss.shell_gain`
+  - `mega.tps_vss.coupled_support_ceiling`
+  - `mega.residual.guidance_survives_after_tps_vss`
+- **解释纪律**：若某行主要靠更稳的 real-anchor continuity、curriculum continuity、task coverage 或 failure surfacing 才通过 `F1/F2`，则默认先冻结为 `protocol support` 或 `verification-shell support`；只有在 `TPS/VSS` matched subtraction 后，row 仍继续压平 `drift_amp -> BDEE`、把 `g^†` 推进到 `W3`、并在 `F3` 降低 `PGFR`，才允许继续升级到 **mechanical-arm high-frequency stabilizer** 叙事。
+- **默认 reviewer-facing 读法**：先看 `highest_stage`，再看 `TPS/VSS coupled support ceiling`，最后才看 `residual guidance survives`。只要 residual 在 `F3` 前消失，即便 row 看起来更会迁移、更会验证，也不得冒领 MEGA strongest wording。
+
 ## 9.2 推荐日志 key（训练侧直接导出）
 - `mega.bdee.mean_d1`
 - `mega.bdee.mean_d2`
@@ -388,6 +405,16 @@
 - `mega.vss.slice_coverage`
 - `mega.vss.benchmark_build_cost`
 - `mega.vss.subtracted_ceiling`
+- `mega.promotion.f0_pass`
+- `mega.promotion.f1_pass`
+- `mega.promotion.f2_pass`
+- `mega.promotion.f3_pass`
+- `mega.promotion.highest_stage`
+- `mega.tps_vss.coupled_match`
+- `mega.tps_vss.protocol_gain`
+- `mega.tps_vss.shell_gain`
+- `mega.tps_vss.coupled_support_ceiling`
+- `mega.residual.guidance_survives_after_tps_vss`
 
 ### 9.3 四行 bundle 的默认 guidance-first 解读
 - **B1 scratch PPO**：只作为零 support 最弱基线；若 `ΔBDEE/ΔCET/ΔPCST/ΔPGFR` 全弱，则仅保留 planner-side lower bound。
@@ -559,6 +586,7 @@
 - **MobileManiBench**：默认先解释 `task coverage / failure surfacing / slice completeness`，只能作为 **benchmark-shell support**
 
 #### 本轮冻结结论
-- 本轮高价值扫描命中本地锚点：**MobileManiBench / Find the Fruit / Q2RL / Reactive Dexterous Grasping**
+- 本轮高价值扫描命中本地锚点：**RL-Based Sim-Real Co-Training for VLA / IsaacLab-Arena / MobileManiBench**
 - 正式新增入库：**0 篇**
-- D07 下一步不该扩 paper list，而应优先把 `guidance tuple + verification tuple` 真正映射进首轮 bundle 的训练脚本与主表导出逻辑
+- D07 下一步不该扩方法矩阵，而应优先把 `F0/F1/F2/F3 + TPS/VSS coupled subtraction + residual guidance survives` 真正映射进首轮 bundle 的训练脚本与主表导出逻辑
+- 当前最重要的新收束：**先回答 row 是不是只靠 protocol continuity / verification shell 更顺地爬上 promotion ladder，再回答机械臂 residual guidance 是否仍活到 `F3`**

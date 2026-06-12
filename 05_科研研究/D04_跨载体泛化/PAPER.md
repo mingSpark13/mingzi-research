@@ -1,7 +1,7 @@
 # Unified Cross-Embodiment Policy Transfer via Shared Geometry and Latent Action Interfaces
 
 > 方向：D04 跨载体泛化 | 目标会议：CoRL 2027 | 状态：🔴 草稿
-> 最后更新：2026-06-10 03:56
+> 最后更新：2026-06-12 04:22
 
 ---
 
@@ -219,11 +219,106 @@ This design is motivated by three complementary observations in prior work. Poin
 
 We further refine the packet with a **contact-interface slot**, a paired **coordination-state slot**, an explicit **terrain-state slot**, and an explicit **contact-capable embodiment-parameterization slot**. In addition to pose- and phase-level geometry, the shared state may optionally contain platform-reusable tactile or contact summaries such as pressure onset, slip likelihood, and contact persistence. This extension is motivated by FlexiTac [REF: 2604.28156], which suggests that a low-cost standardized tactile layer can be mounted across embodiments and reused in real-to-sim-to-real learning pipelines. For D04, the implication is sharp: when cross-embodiment transfer fails primarily after contact, the missing ingredient may be an incomplete shared interface rather than insufficient morphology-aware adaptation. We therefore treat tactile/contact packetization as an optional completion of C1, not as a late-stage embodiment-specific patch.
 
-### 3.12 Human-to-Humanoid Geometry Anchors without Paired Demonstrations
+### 3.3 Geometry-Conditioned Latent Action Retargeting (C2)
+
+Once the shared geometry packet is validated, we do not decode actions directly from raw observations. Instead, we factor transfer into a reusable **core transition latent** and an embodiment-facing **formatting layer**. The core latent is supposed to explain task-phase-consistent subgoal motion, contact timing, and intent progression, while the formatting layer only converts that latent into embodiment-feasible actuation. This separation is important for D04: if transfer fails before the formatting layer is stressed, the honest diagnosis is still geometry or latent insufficiency rather than morphology-aware residuals.
+
+Let the verified packet from Section 3.1 be serialized into
+\[
+x_t = [M_t^{\text{scene}},\; P_t^{\text{obj}},\; A_t^{\text{contact}},\; T_t,\; C_t,\; W_t,\; \phi_t],
+\]
+and let `E^s`, `E^\tau` denote the source and target embodiment descriptors with capability bounds `B^s`, `B^\tau`. We encode a shared transition latent
+\[
+z_t^{core} = f_{core}(x_t),
+\]
+and derive embodiment-facing formatter states
+\[
+q_t^{s} = g_{fmt}(z_t^{core}, E^s, B^s), \qquad
+q_t^{\tau} = g_{fmt}(z_t^{core}, E^\tau, B^\tau).
+\]
+The retargeted target action is then
+\[
+\hat a_t^{\tau} = D_{\tau}(z_t^{core}, q_t^{\tau}),
+\]
+where `D_\tau` is intentionally lightweight: it is allowed to express actuator range, control frequency, and end-effector feasibility, but it is not allowed to invent new task semantics that are absent from `z_t^{core}`.
+
+We train this factorization with a geometry- and phase-aware objective
+\[
+\mathcal{L}_{lat} =
+\lambda_{bc}\mathcal{L}_{bc}
++ \lambda_{align}\mathcal{L}_{align}
++ \lambda_{cycle}\mathcal{L}_{cycle}
++ \lambda_{cap}\mathcal{L}_{cap}
++ \lambda_{contact}\mathcal{L}_{contact},
+\]
+where `\mathcal{L}_{bc}` matches retargeted actions to target demonstrations, `\mathcal{L}_{align}` contrastively pulls same-phase source-target segments together, `\mathcal{L}_{cycle}` enforces source-target-source consistency, `\mathcal{L}_{cap}` penalizes capability-violating outputs, and `\mathcal{L}_{contact}` preserves contact onset and persistence semantics across embodiments. In practice, the important constraint is that `\mathcal{L}_{align}` operates on subgoal-consistent windows rather than raw joint traces; otherwise the model can appear to align actions while actually memorizing morphology-specific timing.
+
+This section gives D04 a concrete latent-transfer object rather than an abstract “shared action space” claim. The paper can now ask a clean question: after geometry is fixed, does `z_t^{core}` already explain target-side subgoal transitions under matched controls, or does the route still need context inference, bounded adaptation, or later specialist rescue? That distinction is what later promotion blockers will audit.
+
+### 3.4 In-Context Embodiment Residual Modeling
+
+Even when `z_t^{core}` is well formed, some transfer failures only appear after several closed-loop steps because morphology, payload, view drift, or contact timing are only partially observable at a single time step. Following the intuition of AdaTracker [REF: 2604.20305], we therefore model embodiment residuals as a **history-conditioned correction path** rather than as a replacement for the shared latent interface. The critical discipline is that this residual path starts from zero and is promoted only after the base latent route from Section 3.3 has been tested on its own.
+
+Let a rollout window `H_{t-k:t}` contain recent observations, actions, contact outcomes, and state errors. We encode a context state
+\[
+h_t^{ctx} = f_{ctx}(H_{t-k:t}, E^\tau),
+\]
+and split the correction into a slow embodiment branch and a fast execution branch
+\[
+r_t^{slow} = g_{slow}(h_t^{ctx}), \qquad
+r_t^{fast} = g_{fast}(h_t^{ctx}, \delta_t^{pose}, \delta_t^{contact}, \delta_t^{stab}),
+\]
+where `\delta_t^{pose}`, `\delta_t^{contact}`, and `\delta_t^{stab}` summarize pre-contact pose error, contact mismatch, and stabilization error. The final control proposal becomes
+\[
+u_t = \hat a_t^{\tau} + m_t \odot (r_t^{slow} + r_t^{fast}),
+\qquad
+m_t = \sigma(W_m[h_t^{ctx}, \phi_t]),
+\]
+so the gate `m_t` decides whether residual support is actually needed at the current task phase.
+
+We train the residual path with a constrained objective
+\[
+\mathcal{L}_{ctx} =
+\mathcal{L}_{task}
++ \beta_{sp}\|m_t\|_1
++ \beta_{res}\|r_t^{slow} + r_t^{fast}\|_2^2
++ \beta_{sm}\mathcal{L}_{smooth},
+\]
+where `\mathcal{L}_{task}` is the downstream control loss, the sparsity term keeps residual use minimal, the residual norm discourages the context branch from overwriting the latent route, and `\mathcal{L}_{smooth}` regularizes adjacent-window corrections to avoid oscillatory patching. For mixed ground--aerial transfer, this branch is where payload shift, wind-induced bias, delayed contact realization, or morphology-specific stabilization can be absorbed without pretending that the shared latent itself already solved them.
+
+This makes the embodiment-context story measurable rather than rhetorical. If the route only becomes competitive once `h_t^{ctx}` is enabled, the honest interpretation ceiling is **context-conditioned embodiment support**, not shared latent sufficiency. Only gains that survive after subtracting this residual family are allowed to promote further.
+
+### 3.5 Weakest-Honest Escalation Rule
+
+The base D04 protocol must decide whether a gain should stop at geometry completion, context-conditioned support, bounded adaptation, or shared latent sufficiency. We therefore use an explicit ordered claim audit rather than a single best-score selection. The point is simple: the paper should stop at the weakest explanation that still survives matched controls, because stronger narratives are only scientifically justified when weaker families have already failed.
+
+For each evaluated route we maintain
+\[
+\Pi_t = (IGS,\; IEC,\; BPA,\; BSC,\; LTS,\; SRS,\; CW,\; PC),
+\]
+where `IGS` is interface-geometry stability, `IEC` is in-context embodiment contribution, `BPA` is bounded prior-preserving adaptation gain, `BSC` is bounded supervision/copilot gain, `LTS` is latent-transition sufficiency under residual-off controls, `SRS` is specialist-residual survival after family subtraction, `CW` is the decisive consumption window, and `PC` is the current promotion ceiling. The ordered base claim set is
+\[
+\mathcal{C}_{base} =
+\{\text{terrain},\text{coordination},\text{contact},\text{IEC},\text{BPA},\text{BSC},\text{LTS},\text{SRS}\}.
+\]
+A route is assigned the first claim in `\mathcal{C}_{base}` whose residual remains positive under matched context length, adaptation budget, and sensory support.
+
+Operationally, let `\Delta_{row}` denote the matched-budget gain of one route and let `\mathcal{F}_{<c}` be the union of all weaker explanation families preceding claim `c`. We compute
+\[
+\Delta_t^{res}(c) = \Delta_{row} \setminus \mathcal{F}_{<c},
+\qquad
+PC = \operatorname*{argmin}_{c \in \mathcal{C}_{base}}
+\{c \mid \Delta_t^{res}(c) > \tau_c\}.
+\]
+In plain terms, the route is not allowed to claim shared latent sufficiency if the same gain disappears once context-conditioned support, bounded adaptation, or sparse supervision are already enough to explain it. Likewise, a specialist branch is only promotable when the shared latent route has survived and all cheaper correction families have been exhausted in the same decisive window.
+
+This base escalation rule is intentionally minimal. The later Method sections do not replace it; they append additional blocker families such as unpaired human anchors, kinematic alignment, representation exposure, and aerial-side support before the route is allowed to reach `LTS` or `SRS`. That way the paper keeps one stable decision logic while the local D04 evidence set grows.
+
+### 3.6 Human-to-Humanoid Geometry Anchors without Paired Demonstrations
 
 A second ambiguity appears even earlier in the supervision pipeline: some apparently strong cross-embodiment gains may not come from a stronger reusable latent interface, but from **better cross-morphology supervision construction** under scarce or unpaired data. Human2Humanoid [REF: 2606.03476] is a timely local signal here. Its skeleton-aware graph encoding, morphology-invariant end-effector consistency, and physics-aware feasibility constraints show that a large part of human-to-humanoid transfer can be recovered before paired demonstrations exist, provided that supervision is first organized around **topology-respecting motion structure** and **execution-feasible contact/kinematics constraints**. For D04, this means unpaired human demonstrations should not be treated as raw imitation trajectories; they should be converted into **geometry anchors** that preserve subgoal ordering, end-effector semantics, and physically executable contact structure while stripping away human-specific actuation style.
 
-We therefore add a human-to-humanoid geometry-anchor route on top of Section 3.4. Let an unpaired human sequence be projected into a structured anchor packet
+We therefore add a human-to-humanoid geometry-anchor route on top of the base geometry-latent pipeline in Sections 3.3--3.5. Let an unpaired human sequence be projected into a structured anchor packet
 \[
 A_t^{hum} = (G_t^{body},\; E_t^{ee},\; C_t^{phy},\; \phi_t,\; \kappa_t),
 \]
@@ -237,11 +332,11 @@ where `UGA` denotes **unpaired geometry-anchor gain**, `PEC` denotes **physics-e
 
 This addition matters because D04 is increasingly connected to humanoid and whole-body transfer settings, not only arm-to-arm or ground-to-air policy reuse. Human2Humanoid shows that unpaired cross-morphology supervision can recover a surprising amount of transfer structure, but that evidence lives upstream of the latent interface itself. By inserting `\Psi_t` into Method 3.x, we keep the paper honest about where the gain was created: **better unpaired geometry supervision**, **better physics-aware retargeting**, or a genuinely stronger reusable latent transition. In practical terms, this route also gives D04 a cleaner bridge to future humanoid and whole-body experiments without forcing the paper to overclaim every human-derived improvement as direct proof of embodiment-agnostic policy transfer.
 
-### 3.13 Family-Matched Unified-Latent Survival after Human-Anchor Subtraction
+### 3.7 Family-Matched Unified-Latent Survival after Human-Anchor Subtraction
 
 Human-to-humanoid geometry anchors are still not the final explanation layer. Even after a route benefits from unpaired geometry supervision, physics-aware feasibility filtering, and morphology-invariant end-effector alignment, we still need to decide whether the remaining gain truly indicates a **shared latent transition interface** or merely reflects that the route received better upstream structure than competing baselines. The local anchor set already suggests three strong weaker explanations: **representation/infrastructure exposure** from RIO [REF: 2605.11564], **bounded prior-preserving adaptation** from D-CLING [REF: 2605.19690], and **in-context embodiment inference** from AdaTracker [REF: 2604.20305]. Together with the newly added human-anchor tuple `\Psi_t`, these works imply that a latent-looking gain can still be produced without a reusable latent interface if the route simply sees cleaner packets, inherits a safer side adapter, or obtains more informative rollout-conditioned embodiment cues.
 
-We therefore insert a second promotion blocker after Section 3.12 and define the family-matched latent-survival tuple
+We therefore insert a second promotion blocker after Section 3.6 and define the family-matched latent-survival tuple
 \[
 \Lambda_t^{hum} = (UGA,\; PEC,\; MIE,\; RIG,\; BPA,\; IEC,\; LTS,\; HRS^{lat},\; CW,\; PC,\; PB_{hum-lat}),
 \]
@@ -255,7 +350,7 @@ and only allow promotion when `HRS^{lat} > \tau_{lat}` under the same decisive w
 
 This extra blocker matters because D04 increasingly aims to unify robot-to-robot transfer with human-to-robot supervision. Without `\Lambda_t^{hum}`, a reviewer could reasonably argue that what looks like latent transfer is simply better upstream supervision organization. By forcing human-anchor, representation, bounded-adaptation, and in-context routes to all lose before latent promotion, we keep the paper honest about whether it has truly discovered a reusable latent interface or merely a cleaner way to package supervision for the target embodiment.
 
-### 3.14 Data-First Interface Formation
+### 3.8 Data-First Interface Formation
 
 The shared-latent blocker is still not the last gate. Even after a route survives kinematic alignment, lightweight adaptation, and representation-side exposure, we still need to decide whether its remaining gain should be credited to **specialist embodiment structure** or whether it is better explained by weaker support families already represented in the local D04 anchor set. The most important current anchors are **prior-preserving bounded adaptation** (D-CLING [REF: 2605.19690]), **bounded supervision-side completion** (Human-Robot Copilot [REF: 2604.03613]), and **generalist-to-specialist residual cleanup** (Embodiment-Aware Generalist Specialist Distillation [REF: 2602.02960]). Their common lesson is that a route can look strongly embodiment-aware even when it is only preserving a useful prior, sparsely correcting execution tails, or cleaning up a residual after the shared backbone has already done most of the work.
 
@@ -263,7 +358,7 @@ We therefore refine the promotion tuple to
 \[
 \Xi_t = (RIG,\; BPA,\; BSC,\; LTS,\; SRS,\; CW,\; PC,\; PB),
 \]
-where `RIG` denotes representation / infrastructure exposure gain, `BPA` prior-preserving bounded-adaptation gain, `BSC` bounded supervision/copilot gain, `LTS` latent-transition sufficiency, `SRS` specialist-residual survival after family subtraction, `CW` the last honest consumption window, `PC` the current promotion ceiling, and `PB` the active promotion blocker. Unlike `\Omega_t`, which protects the latent claim itself, `\Xi_t` protects the jump from `shared latent survived` to `remaining embodiment structure`. The rule is again weakest-honest: if a specialist-looking gain disappears after matching the same decisive window with bounded adaptation or bounded supervision, then the specialist claim is blocked and the row must remain in a weaker explanation bucket.
+where `RIG` denotes representation / infrastructure exposure gain, `BPA` prior-preserving bounded-adaptation gain, `BSC` bounded supervision/copilot gain, `LTS` latent-transition sufficiency, `SRS` specialist-residual survival after family subtraction, `CW` the last honest consumption window, `PC` the current promotion ceiling, and `PB` the active promotion blocker. Unlike the latent-promotion tuple introduced below, `\Omega_t`, `\Xi_t` protects the jump from `shared latent survived` to `remaining embodiment structure`. The rule is again weakest-honest: if a specialist-looking gain disappears after matching the same decisive window with bounded adaptation or bounded supervision, then the specialist claim is blocked and the row must remain in a weaker explanation bucket.
 
 A second upstream ambiguity appears in how transfer supervision itself is built under scarce or unpaired data. Any2Any [REF: 2605.23733] is a useful local counterpoint because it does **not** claim a universal shared latent interface; instead, it first performs explicit kinematic alignment between source and target humanoids and then attaches lightweight PEFT adapters only to dynamics-sensitive modules. For D04, this matters because some strong-looking cross-embodiment gains may actually come from **data-first interface formation**: the supervision packet has been made morphology-compatible through explicit alignment, and only the irreducibly dynamics-sensitive residue is delegated to a bounded adapter. In that case, the first honest interpretation is not “the latent interface is universally reusable,” but “the transfer route was made structurally admissible before policy reuse was even evaluated.”
 
@@ -281,45 +376,101 @@ where `KAG` denotes **kinematic-alignment gain**, `DAG` denotes **bounded dynami
 
 This addition is strategically important for mixed ground–aerial transfer as well. A future UAV-to-arm or arm-to-UAV route may also benefit from a hand-designed shared mapping and very small platform-specific dynamic patches. By formalizing `\mathcal{D}_t` and `\Omega_t`, we keep D04 honest about whether a route truly discovers a reusable shared interface, or simply engineers a cleaner aligned packet plus a tiny residual fixer. That distinction is precisely what the paper needs if it wants to argue for a geometry-first transfer protocol rather than just another parameter-efficient adaptation recipe.
 
-### 4. Experiments
+### 3.9 Aerial World-Prediction, Pilot-Reasoning, and Grounding Supports before Embodiment Promotion
+
+Mixed ground--aerial transfer introduces a further ambiguity that is not captured by human-anchor, alignment, or infrastructure controls alone. A route may look more transferable not because it has discovered a stronger cross-embodiment interface, but because the aerial side now supplies better **future-state prediction**, better **long-horizon subgoal reasoning**, or better **open-vocabulary grounding coverage** before the embodiment handoff is stressed. WorldFly [REF: 2606.06147] is a strong local signal for the first family: its world-model-based dual-branch flow predicts future observations and actions jointly, suggesting that some success attributed to transfer may actually come from better aerial-side future imagination. FLIGHT [REF: 2606.06836] is a strong signal for the second family: its low-frequency streaming pilot reasoning plus high-frequency diffusion control shows that long-horizon UAV execution can improve substantially when reasoning and control are frequency-decoupled. WildRoadBench [REF: 2605.20306] is a strong signal for the third family: better aerial grounding and inspection-side language localization can enlarge the task surface on which the transfer route appears competent before controller-side embodiment mismatch is even exposed.
+
+We therefore introduce an aerial-support blocker
+\[
+\Phi_t^{air} = (WPS,\; PRS^{air},\; GGS,\; LTS,\; HRS^{air},\; CW,\; PC,\; PB_{air}),
+\]
+where `WPS` denotes **world-prediction support** induced by WorldFly-style future-video/future-action modeling, `PRS^{air}` denotes **pilot-reasoning support** induced by FLIGHT-style low-frequency planning and subgoal serialization, `GGS` denotes **grounding/generalization support** induced by WildRoadBench-style aerial language grounding coverage, `LTS` is latent-transition sufficiency after aerial controls are matched, `HRS^{air}` is the residual that survives aerial-side subtraction, `CW` is the decisive consumption window, `PC` is the current promotion ceiling, and `PB_{air}` is the active aerial-support blocker. The rule is intentionally conservative: if a gain appears only after stronger aerial prediction, better long-horizon pilot reasoning, or broader aerial grounding are installed, then the first honest explanation remains an aerial-side support family rather than shared latent sufficiency.
+
+Operationally, for any candidate route with matched-budget gain `\Delta_{row}`, we compute
+\[
+HRS^{air} = \Delta_{row} \setminus (WPS \cup PRS^{air} \cup GGS),
+\]
+and only allow promotion when `HRS^{air} > \tau_{air}` under the same decisive window `CW`. If the residual disappears after aerial-side support subtraction, the claim must remain frozen at **world-prediction support**, **pilot-reasoning support**, or **grounding-side support**, even if the route looks strong in end-task success. This is precisely how the new UAV note set should be used inside D04: not as extra cross-embodiment evidence, but as a reviewer-facing stress-test family that prevents aerial competence from masquerading as embodiment-agnostic interface transfer.
+
+### 3.10 Executable Geometry-to-Latent Promotion Algorithm
+
+The current Method sections define the right explanatory families, but a paper-ready protocol also needs an **executable training-and-promotion procedure** that tells the reader how a route is actually trained, audited, and frozen under matched controls. We therefore summarize Sections 3.1--3.9 into a single loop that maps `(observation stream, embodiment descriptor, optional human/demo anchors)` into `(shared geometry packet, latent retargeted policy state, residual-support diagnosis, promotion ceiling)`. The key principle is that D04 does not allow the optimizer to directly chase end-task success. Instead, geometry validity is established first, latent reuse is tested second, embodiment-context and bounded-support families are audited third, and only then can stronger cross-embodiment claims be promoted.
+
+Let each episode produce a route-state tuple
+\[
+\mathcal{R}_t = (\mathcal{G}_t,\; z_t^{core},\; z_t^{fmt},\; h_t^{ctx},\; u_t,\; \pi_t^{ceiling}),
+\]
+where `\mathcal{G}_t` is the shared geometry packet from Section 3.1, `z_t^{core}` is the embodiment-agnostic latent transition state, `z_t^{fmt}` is the embodiment-facing formatting or actuation state, `h_t^{ctx}` is the rollout-conditioned embodiment context, `u_t` is the emitted control proposal, and `\pi_t^{ceiling}` is the current weakest-honest promotion ceiling. We use stage-activation gates
+\[
+\gamma_t^{lat}=\mathbb{1}[S_{geo} \ge \tau_{geo} \land IGS_t \ge \tau_{IGS}],
+\qquad
+\gamma_t^{ctx}=\mathbb{1}[\gamma_t^{lat}=1 \land LTS_t^{base} \ge \tau_{lat}^{warm}],
+\]
+where `LTS_t^{base}` is measured with the residual branch disabled. The optimization objective is then
+\[
+\mathcal{L}_{total}=\mathcal{L}_{geo}+\gamma_t^{lat}\mathcal{L}_{lat}+\gamma_t^{ctx}\mathcal{L}_{ctx},
+\]
+so the context residual branch cannot learn before the geometry packet and the base latent path already pass their warm-start tests. This matters because it prevents `h_t^{ctx}` from silently compensating for an invalid geometry packet or a weak latent interface.
+
+We then run the promotion audit as a sequential matched-control algorithm rather than a post-hoc narrative choice. Let
+\[
+\mathcal{C}=\{\text{terrain},\text{coordination},\text{contact},\text{UGA/PEC/MIE},\text{KAG/DAG},\text{RIG},\text{WPS},\text{PRS}^{air},\text{GGS},\text{BPA},\text{BSC},\text{LTS},\text{SRS}\}
+\]
+be ordered from weakest to strongest explanation. For each family `c \in \mathcal{C}`, we construct a matched ablation `r_t^{-c}` that removes family `c`, keeps all weaker families available, and matches data fraction, context length, sensor support, prediction horizon, reasoning frequency, and target-side update budget. We define the indispensability score
+\[
+A_t(c)=Q(r_t)-Q(r_t^{-c}),
+\qquad
+Q(r_t)=\eta_1 TR_t+\eta_2 IGS_t+\eta_3 LTS_t+\eta_4 SRS_t,
+\]
+with nonnegative weights `\eta_i` fixed before training. The promotion ceiling is assigned by the first family whose removal causes a significant drop:
+\[
+PC_t = \operatorname*{argmin}_{c \in \mathcal{C}} \{ c \mid A_t(c) > \tau_c \}.
+\]
+If no family exceeds its threshold, the route is frozen as unresolved and is not allowed to claim cross-embodiment transfer beyond the currently validated stage.
+
+In executable form, one training cycle follows six steps. **Step 1:** optimize `\mathcal{L}_{geo}` and reject the route early if `S_{geo}` fails under cross-view, coordination, or terrain perturbation. **Step 2:** activate `\gamma_t^{lat}` and train `z_t^{core}` with residual branches off; record `LTS_t^{base}`. **Step 3:** only if `LTS_t^{base}` remains above `\tau_{lat}^{warm}` for `m` consecutive decisive windows do we activate `\gamma_t^{ctx}` and learn `h_t^{ctx}`. **Step 4:** evaluate the ordered control bank `\mathcal{C}` with matched ablations `r_t^{-c}`. **Step 5:** assign `PC_t` and freeze the route at the weakest indispensable family. **Step 6:** continue optimization only for heads that are consistent with `PC_t`; stronger explanation branches remain frozen until the next audit round. This last rule is what keeps the method honest: if an Any2Any-style row is still blocked by `KAG/DAG`, or a mixed ground--aerial row is still blocked by `WPS` or `PRS^{air}`, the optimizer is not allowed to hide that fact by shifting credit to `LTS` or `SRS`.
+
+This algorithm converts D04 from a collection of careful reviewer-facing rules into a reproducible protocol. A practitioner can now read the paper and know what is optimized first, which families must be toggled as matched controls, how promotion is computed, and when a stronger claim is legally promotable. Just as importantly, it makes the geometry-first philosophy falsifiable: if a route never survives beyond `UGA/PEC/MIE`, `KAG/DAG`, `RIG`, or `WPS/PRS^{air}/GGS`, the paper should report that the interface was not yet reusable enough, rather than hiding the failure inside a single averaged transfer score.
+
+## 4. Experiments
 
 ### 4.1 Setup
 
-We target mixed cross-embodiment transfer settings in which source and target platforms differ in morphology, kinematic tree, sensing layout, or contact regime, but still share task-level geometric intent. The evaluation should cover at least three transfer families: **human-to-humanoid retargeting without paired demonstrations** (motivated by Human2Humanoid [REF: 2606.03476]), **humanoid-to-humanoid transfer with explicit kinematic alignment and lightweight PEFT adaptation** (motivated by Any2Any [REF: 2605.23733]), and **cross-platform policy deployment through a unified robot I/O substrate** (motivated by RIO [REF: 2605.11564]). This combination is intentional: it prevents D04 from being reduced to one narrow embodiment pair, and it lets us test whether geometry-first transfer survives across data regimes ranging from no-pair supervision to alignment-assisted adaptation.
+We target mixed cross-embodiment transfer settings in which source and target platforms differ in morphology, kinematic tree, sensing layout, contact regime, and in some cases mobility carrier, but still share task-level geometric intent. The evaluation should cover six matched control families: **human-to-humanoid retargeting without paired demonstrations** (Human2Humanoid [REF: 2606.03476]), **humanoid-to-humanoid transfer with explicit kinematic alignment and lightweight PEFT adaptation** (Any2Any [REF: 2605.23733]), **cross-platform policy deployment through a unified robot I/O substrate** (RIO [REF: 2605.11564]), **aerial future-prediction support** (WorldFly [REF: 2606.06147]), **long-horizon pilot-reasoning support** (FLIGHT [REF: 2606.06836]), and **open-vocabulary aerial grounding support** (WildRoadBench [REF: 2605.20306]). This combination is intentional: the first three families test whether transfer was created upstream by supervision organization, alignment, or infrastructure cleanup, while the latter three test whether apparent mixed ground--aerial transfer is actually coming from stronger aerial prediction, reasoning, or grounding rather than from a reusable embodiment interface.
 
-For each transfer family, we construct matched source-target tuples `(source embodiment, target embodiment, observation support, contact support, adaptation budget)` and require the same backbone scale, context length, training horizon, and target-side data fraction across ablations. The decisive comparison is not only end-task success, but whether the claimed gain is still visible after subtracting easier explanations from earlier sections: `terrain-state completion`, `coordination-state completion`, `contact-interface enrichment`, `kinematic-alignment gain`, `representation/infrastructure exposure`, and `bounded prior-preserving adaptation`. Concretely, Human2Humanoid-style routes instantiate the **unpaired geometry-anchor** regime, Any2Any-style routes instantiate the **explicit alignment + tiny dynamics patch** regime, and RIO-style routes instantiate the **representation/infrastructure exposure** regime. A proposed D04 method is only considered scientifically strong if it survives all three matched comparisons under the same budget.
+For each family, we construct matched source-target tuples `(source embodiment, target embodiment, observation support, contact support, adaptation budget)` and require the same backbone scale, context length, training horizon, and target-side data fraction across ablations. The decisive comparison is not only end-task success, but whether the claimed gain is still visible after subtracting easier explanations from earlier sections: `terrain-state completion`, `coordination-state completion`, `contact-interface enrichment`, `kinematic-alignment gain`, `representation/infrastructure exposure`, `bounded prior-preserving adaptation`, `world-prediction support`, `pilot-reasoning support`, and `grounding-side support`. Concretely, Human2Humanoid-style routes instantiate the **unpaired geometry-anchor** regime, Any2Any-style routes instantiate the **explicit alignment + tiny dynamics patch** regime, RIO-style routes instantiate the **representation/infrastructure exposure** regime, WorldFly-style routes instantiate the **aerial future-imagination** regime, FLIGHT-style routes instantiate the **frequency-decoupled pilot-policy** regime, and WildRoadBench-style routes instantiate the **wild grounding coverage** regime. A proposed D04 method is only considered scientifically strong if it survives these matched comparisons under the same budget.
 
 We therefore define the core evaluation bundle as
 \[
-\mathcal{B}^{D04}=\big(\mathcal{E}_{hum},\;\mathcal{E}_{align},\;\mathcal{E}_{rio},\;\mathcal{C}_{view},\;\mathcal{C}_{contact},\;\mathcal{C}_{budget}\big),
+\mathcal{B}^{D04}=\big(\mathcal{E}_{hum},\;\mathcal{E}_{align},\;\mathcal{E}_{rio},\;\mathcal{E}_{wm},\;\mathcal{E}_{pilot},\;\mathcal{E}_{ground},\;\mathcal{C}_{view},\;\mathcal{C}_{contact},\;\mathcal{C}_{budget}\big),
 \]
-where `\mathcal{E}_{hum}` denotes the Human2Humanoid-style unpaired transfer benchmark, `\mathcal{E}_{align}` the Any2Any-style aligned transfer benchmark, `\mathcal{E}_{rio}` the RIO-mediated deployment benchmark, `\mathcal{C}_{view}` the cross-view perturbation control, `\mathcal{C}_{contact}` the contact/tactile support control, and `\mathcal{C}_{budget}` the matched adaptation-budget control. This setup turns the experiments into a true promotion audit: if a route only wins when explicit kinematic alignment is present, the honest ceiling is **alignment-support**; if it only wins when a tiny PEFT patch is enabled, the honest ceiling is **bounded-adaptation support**; if it only wins once unified I/O packaging is restored, the honest ceiling is **representation/infrastructure exposure**.
+where `\mathcal{E}_{hum}` denotes the Human2Humanoid-style unpaired transfer benchmark, `\mathcal{E}_{align}` the Any2Any-style aligned transfer benchmark, `\mathcal{E}_{rio}` the RIO-mediated deployment benchmark, `\mathcal{E}_{wm}` the WorldFly-style future-prediction control, `\mathcal{E}_{pilot}` the FLIGHT-style long-horizon pilot control, `\mathcal{E}_{ground}` the WildRoadBench-style grounding control, `\mathcal{C}_{view}` the cross-view perturbation control, `\mathcal{C}_{contact}` the contact/tactile support control, and `\mathcal{C}_{budget}` the matched adaptation-budget control. This setup turns the experiments into a true promotion audit: if a route only wins when explicit kinematic alignment is present, the honest ceiling is **alignment-support**; if it only wins when a tiny PEFT patch is enabled, the honest ceiling is **bounded-adaptation support**; if it only wins once unified I/O packaging is restored, the honest ceiling is **representation/infrastructure exposure**; if it only wins after aerial future prediction or pilot reasoning is strengthened, the honest ceiling remains an aerial-side support family.
 
 ### 4.2 Main Results
 
-A reviewer-facing first-pass table should be organized around the same weakest-honest routing used in Section 3 rather than around a single end-task success number. For each route, we report whether the decisive gain is first consumed as terrain-state completion, coordination-state completion, contact-interface enrichment, kinematic-alignment gain, bounded dynamics-adaptation gain, shared latent sufficiency, or specialist residual survival. This forces Any2Any-style routes to declare whether they win because `K_t^{align}` and `G_t^{map}` already make the task structurally admissible, or because a genuinely reusable latent transition interface survives after those easier explanations are subtracted.
+A reviewer-facing first-pass table should be organized around the same weakest-honest routing used in Section 3 rather than around a single end-task success number. For each route, we report whether the decisive gain is first consumed as terrain-state completion, coordination-state completion, contact-interface enrichment, kinematic-alignment gain, bounded dynamics-adaptation gain, representation/infrastructure exposure, world-prediction support, pilot-reasoning support, grounding-side support, shared latent sufficiency, or specialist residual survival. This forces Any2Any-style routes to declare whether they win because `K_t^{align}` and `G_t^{map}` already make the task structurally admissible, and it forces mixed ground--aerial routes to declare whether they win because the aerial side simply became better at imagining, planning, or grounding before the embodiment interface itself was tested.
 
 Concretely, every main-result row should at minimum log
 \[
-\Upsilon_{row}^{D04} = (TR,\; IGS,\; LTS,\; KAG,\; DAG,\; RIG,\; BPA,\; BSC,\; SRS,\; CW,\; PC),
+\Upsilon_{row}^{D04} = (TR,\; IGS,\; LTS,\; KAG,\; DAG,\; RIG,\; WPS,\; PRS^{air},\; GGS,\; BPA,\; BSC,\; SRS,\; CW,\; PC),
 \]
-where `TR` is end-task transfer rate, `IGS` is interface-geometry stability, `LTS` is latent-transition sufficiency after matched controls, `KAG` is kinematic-alignment gain, `DAG` is bounded dynamics-adaptation gain, `RIG` is representation/infrastructure exposure gain, `BPA` is prior-preserving bounded-adaptation gain, `BSC` is bounded supervision/copilot gain, `SRS` is specialist-residual survival, `CW` is the decisive consumption window, and `PC` is the current promotion ceiling. A row is not allowed to promote beyond **alignment-support** if `KAG` dominates and `LTS` collapses under matched no-alignment controls; similarly, a row cannot promote beyond **bounded-adaptation support** if `DAG` remains the only stable explanation after geometry and alignment are fixed.
+where `TR` is end-task transfer rate, `IGS` is interface-geometry stability, `LTS` is latent-transition sufficiency after matched controls, `KAG` is kinematic-alignment gain, `DAG` is bounded dynamics-adaptation gain, `RIG` is representation/infrastructure exposure gain, `WPS` is WorldFly-style world-prediction support, `PRS^{air}` is FLIGHT-style pilot-reasoning support, `GGS` is WildRoadBench-style grounding/generalization support, `BPA` is prior-preserving bounded-adaptation gain, `BSC` is bounded supervision/copilot gain, `SRS` is specialist-residual survival, `CW` is the decisive consumption window, and `PC` is the current promotion ceiling. A row is not allowed to promote beyond **alignment-support** if `KAG` dominates and `LTS` collapses under matched no-alignment controls; similarly, it cannot promote beyond an aerial-side support ceiling if `WPS`, `PRS^{air}`, or `GGS` remains the only stable explanation after geometry and alignment are fixed.
 
-This setup is especially important for future mixed ground--aerial transfer experiments. A UAV-to-arm route may look transferable simply because overhead geometry plus hand-designed kinematic remapping removes the hardest mismatch before execution starts. Our table structure therefore requires the paper to say whether the observed gain was consumed pre-contact as a cleaner aligned packet, mid-rollout as a bounded dynamics patch, or only later as true latent or specialist survival. In practice, this gives D04 a submission-ready experiment contract: **alignment and tiny adaptation are valid supports, but they are not allowed to impersonate embodiment-agnostic interface verification.**
+This setup is especially important for future mixed ground--aerial transfer experiments. A UAV-to-arm route may look transferable simply because overhead geometry plus hand-designed kinematic remapping removes the hardest mismatch before execution starts, or because the aerial side is already much better at future prediction and language grounding. Our table structure therefore requires the paper to say whether the observed gain was consumed pre-contact as a cleaner aligned packet, mid-rollout as an aerial reasoning/prediction aid, or only later as true latent or specialist survival. In practice, this gives D04 a submission-ready experiment contract: **alignment, tiny adaptation, world prediction, pilot reasoning, and wild grounding are all valid supports, but none are allowed to impersonate embodiment-agnostic interface verification.**
 
-To make the table operational, we recommend three canonical row families. **Row A (Human2Humanoid control)** asks whether unpaired geometry anchors plus physics-aware feasibility already recover most transfer without explicit latent reuse; if yes, the gain stays at `UGA/PEC/MIE`-style support. **Row B (Any2Any control)** asks whether explicit kinematic alignment plus a tiny PEFT dynamics branch already explains the remaining uplift; if yes, the gain stays at `KAG/DAG`. **Row C (RIO control)** asks whether a route only becomes stable after robot I/O standardization and deployment cleanup; if yes, the gain stays at `RIG`. Only rows whose `LTS` survives all three control families under the same `CW` may be promoted to **shared latent sufficiency**.
+To make the table operational, we recommend six canonical row families. **Row A (Human2Humanoid control)** asks whether unpaired geometry anchors plus physics-aware feasibility already recover most transfer without explicit latent reuse; if yes, the gain stays at `UGA/PEC/MIE`-style support. **Row B (Any2Any control)** asks whether explicit kinematic alignment plus a tiny PEFT dynamics branch already explains the remaining uplift; if yes, the gain stays at `KAG/DAG`. **Row C (RIO control)** asks whether a route only becomes stable after robot I/O standardization and deployment cleanup; if yes, the gain stays at `RIG`. **Row D (WorldFly control)** asks whether future-world imagination already explains the aerial uplift; if yes, the gain stays at `WPS`. **Row E (FLIGHT control)** asks whether low-frequency pilot reasoning plus high-frequency control already explains the long-horizon uplift; if yes, the gain stays at `PRS^{air}`. **Row F (WildRoadBench control)** asks whether broader aerial grounding coverage already explains the result; if yes, the gain stays at `GGS`. Only rows whose `LTS` survives all relevant control families under the same `CW` may be promoted to **shared latent sufficiency**.
 
 ### 4.3 Ablation Study
 
-The ablation section should be written as a matched subtraction audit rather than as a flat list of modules. At minimum, we require toggles for `(i)` no geometry-anchor supervision, `(ii)` no explicit kinematic alignment, `(iii)` no lightweight PEFT dynamics patch, `(iv)` no unified robot I/O substrate, and `(v)` no specialist residual branch. These toggles directly correspond to the local high-value anchors Human2Humanoid, Any2Any, and RIO, and they let the paper answer a harder question than “does our full model win?”—namely, *which weaker family still explains the win once the full stack is decomposed?*
+The ablation section should be written as a matched subtraction audit rather than as a flat list of modules. At minimum, we require toggles for `(i)` no geometry-anchor supervision, `(ii)` no explicit kinematic alignment, `(iii)` no lightweight PEFT dynamics patch, `(iv)` no unified robot I/O substrate, `(v)` no aerial future-prediction branch, `(vi)` no low-frequency pilot-reasoning branch, `(vii)` no aerial grounding support, and `(viii)` no specialist residual branch. These toggles directly correspond to the local high-value anchors Human2Humanoid, Any2Any, RIO, WorldFly, FLIGHT, and WildRoadBench, and they let the paper answer a harder question than “does our full model win?”—namely, *which weaker family still explains the win once the full stack is decomposed?*
 
 We therefore recommend the following canonical matched ablations:
 \[
-\mathcal{A}^{D04}=\{A_{-hum},\; A_{-align},\; A_{-peft},\; A_{-rio},\; A_{-spec}\},
+\mathcal{A}^{D04}=\{A_{-hum},\; A_{-align},\; A_{-peft},\; A_{-rio},\; A_{-world},\; A_{-pilot},\; A_{-ground},\; A_{-spec}\},
 \]
-where `A_{-hum}` removes unpaired geometry-anchor and physics-feasibility supervision, `A_{-align}` removes explicit kinematic alignment, `A_{-peft}` removes the tiny dynamics-sensitive adapter, `A_{-rio}` removes the unified I/O and deployment abstraction, and `A_{-spec}` removes the final specialist residual cleanup branch. The interpretation rule is strict: if performance collapses mainly under `A_{-align}` but remains stable under `A_{-rio}` and `A_{-spec}`, the route is still best explained as **alignment-support**; if it collapses mainly under `A_{-rio}`, it remains **representation/infrastructure exposure**; if only `A_{-spec}` matters after all earlier families are exhausted, then the gain can be promoted to **remaining embodiment structure**.
+where `A_{-hum}` removes unpaired geometry-anchor and physics-feasibility supervision, `A_{-align}` removes explicit kinematic alignment, `A_{-peft}` removes the tiny dynamics-sensitive adapter, `A_{-rio}` removes the unified I/O and deployment abstraction, `A_{-world}` removes WorldFly-style future prediction support, `A_{-pilot}` removes FLIGHT-style low-frequency pilot reasoning, `A_{-ground}` removes WildRoadBench-style aerial grounding support, and `A_{-spec}` removes the final specialist residual cleanup branch. The interpretation rule is strict: if performance collapses mainly under `A_{-align}` but remains stable under `A_{-world}`, `A_{-pilot}`, and `A_{-ground}`, the route is still best explained as **alignment-support**; if it collapses mainly under `A_{-world}`, the route remains **world-prediction support**; if it collapses mainly under `A_{-pilot}`, the route remains **pilot-reasoning support**; if it collapses mainly under `A_{-ground}`, the route remains **grounding-side support**; if only `A_{-spec}` matters after all earlier families are exhausted, then the gain can be promoted to **remaining embodiment structure**.
 
-A small but critical detail is that each ablation must be reported with the same decisive window `CW` and the same adaptation budget. Without this constraint, a route could appear to survive subtraction merely because it consumed more context, more demonstrations, or more target-side optimization than the control. For that reason, every ablation row should be paired with a budget witness tuple `(data fraction, update steps, context length, sensor support)` and a weakest-honest tag from `{terrain, contact, coordination, alignment, infrastructure, bounded-adaptation, latent, specialist}`. This keeps D04 aligned with the core thesis of the paper: cross-embodiment success should be promoted only after all easier families have been exhausted under matched evidence.
+A small but critical detail is that each ablation must be reported with the same decisive window `CW` and the same adaptation budget. Without this constraint, a route could appear to survive subtraction merely because it consumed more context, more demonstrations, more target-side optimization, or more aerial-side reasoning frequency than the control. For that reason, every ablation row should be paired with a budget witness tuple `(data fraction, update steps, context length, sensor support, prediction horizon, reasoning frequency)` and a weakest-honest tag from `{terrain, contact, coordination, alignment, infrastructure, world-prediction, pilot, grounding, bounded-adaptation, latent, specialist}`. This keeps D04 aligned with the core thesis of the paper: cross-embodiment success should be promoted only after all easier families have been exhausted under matched evidence.
 
 ## References
 

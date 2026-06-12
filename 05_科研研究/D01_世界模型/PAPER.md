@@ -771,14 +771,23 @@ This compact tuple is intentionally reviewer-facing. It forces every late-window
 - `Physical Plausibility Preservation Rate (PPPR)`
 - `Executable Packet Validity Rate (EPVR)`
 - `Decode-Honest Latent Action Rate (DHLR)`
+- `Temporal-Context Preservation Rate (TCPR)`
+- `Contact-Semantics Preservation Rate (CSPR)`
+- `History-to-Consume Mismatch Rate (HCMR)`
 - `window-conditioned delayed-consumption matrix` over `W0/W1/W2 × B0/B1/B2`
 
 **Physics-accountable interpretation rule**:
 - `PPPR` reports whether a released or repaired packet remains free of penetration, unsupported contact, anti-gravity transition, and flight-envelope inconsistency after post-training.
 - `EPVR` reports whether a physically plausible packet is still reachable, smooth, and controller-consumable under the current dynamics budget.
 - `DHLR` reports whether the packet's imagined future can still be decoded into a control-oriented latent action without silent loss of clause identity, temporal consistency, or downstream inverse-dynamics support; this metric is motivated by MoLA-style multi-expert latent-action decoding.
+- `TCPR` reports whether working memory, episodic retrieval, and imagined-future context still agree with the downstream packet thread at bind and consume time; this metric is motivated by MemoryVLA++-style temporal modeling.
+- `CSPR` reports whether the packet still preserves the motion/contact semantics required by the local interaction controller after refresh and delayed use; this metric is motivated by iMaC-style image-action representations.
+- `HCMR` reports how often retrieved history or imagined future support the wrong downstream clause/thread at the actual consume timestamp.
 - A result that improves only `PPPR` should be read as stronger physical sanitization; a result that improves only `EPVR` should be read as stronger controller-facing executability; only joint gains may support stronger deployment-time supervision claims.
 - A result that improves `EPVR` but not `DHLR` should be interpreted as controller-bindable yet decode-fragile packet quality, not full consume-honest action-interface improvement.
+- A result that improves only `TCPR` should be interpreted as stronger temporal-context support, not yet stronger contact-honest packet execution.
+- A result that improves only `CSPR` or `DHLR` should be interpreted as stronger contact-aware action-interface support, not yet stronger history-preserving packet honesty.
+- Only joint gains in `TCPR`, `CSPR`, `PHC`, and `CTTPR` may support the stronger claim that D01 preserves temporal episode context and contact semantics through delayed downstream consume.
 
 ### 4.2 Main Results
 
@@ -1165,6 +1174,28 @@ We further pre-register a falsification-oriented reading of the experiment matri
 By contrast, a stronger claim becomes acceptable only when `W2/B1` and at least one hard stress cell in `W2/B2` remain positive relative to all lighter baselines on `PHC`, `CTTPR`, and bounded `Δplan`, while A5/A6 materially hurt the same cells. This criterion gives the paper a reviewer-resistant promotion rule: the manuscript may only move from **freshness-accountable invalidation** or **phase-bounded recovery** to **progress-preserving delayed-consumption supervision** when the exact cells most likely to reveal semantic thread breakage remain positive under ablation.
 
 A dedicated falsification branch also targets the TRM-style ranking-interface hypothesis [REF: 2605.22164]. If a horizon-matched reachability head substantially improves candidate ordering, terminal-score calibration, or `W0/W1` route choice while leaving `PHC`, `CTTPR`, and use-time clause preservation unchanged in `W2/B1-B2`, then D01 must explicitly report that the improvement is **planner-facing ranking repair** rather than packet-contract progress. This guard is important because it prevents us from confusing better latent future selection with better delayed-consumption supervision.
+
+### 4.3.3 Temporal-Context and Contact-Semantics Preservation Ablation
+
+Recent local anchors MemoryVLA++ [REF: 2606.09827] and iMaC [REF: 2606.09813] suggest that delayed-consumption failure can arise from two different packet losses: losing the right temporal episode context, or losing the motion/contact semantics needed for local consume-time control. We therefore add a four-way ablation over the same packet supervisor: `Base`, `+Memory`, `+Contact`, and `+Memory+Contact`. `+Memory` augments the packet state with a compact tuple of working-memory summary, episodic retrieval id, and short imagined-future trace. `+Contact` replaces the low-dimensional action condition with a motion/contact token interface that preserves local interaction semantics under refresh and delayed consume. All four variants run under matched planner proposals, matched refresh budget, and the same downstream controller.
+
+We place this ablation only in the stress cells `W1/B1`, `W2/B1`, and `W2/B2`, and focus on S2-S4 with special emphasis on contact-rich `S3` and `S4`. The mandatory readout is `(TCPR, CSPR, HCMR, DHLR, PHC, CTTPR, Δplan)`. `TCPR` asks whether the same episode history and imagined future are still available at bind and consume time. `CSPR` asks whether the same motion/contact semantics survive packet refresh and downstream use. `HCMR` counts cases where retrieved history or imagined future support the wrong clause/thread at consume time. This turns the recent D01 insight into a concrete matched experiment instead of leaving it at the level of related-work interpretation.
+
+The reporting rule is intentionally conservative. If `+Memory` mainly improves `TCPR` and lowers `HCMR` while `CSPR` and `DHLR` remain flat, the gain is frozen as temporal-context support. If `+Contact` mainly improves `CSPR` or `DHLR` while `TCPR` remains flat, the gain is frozen as contact-semantics support. Only if `+Memory+Contact` still improves `PHC`, `CTTPR`, and bounded `Δplan` in `W2/B1-B2` after subtracting both single-factor gains may D01 promote the result to a stronger temporal-context-and-contact-semantics preserving packet-contract claim. If the combined gain remains confined to `W1/B1`, it must still be frozen as hover-window support rather than as general delayed-consumption supervisory progress.
+
+We further require the ablation to be reported as a single reviewer-facing table rather than as scattered metric paragraphs. For each stress cell, the minimal row schema is `Method | TCPR | CSPR | HCMR | DHLR | PHC | CTTPR | Δplan | Claim Freeze`, where `Claim Freeze` must be assigned from `{temporal-context support, contact-semantics support, hover-window combined support, delayed-consumption packet-contract support}`. This table is intentionally narrow: `TCPR/HCMR` expose whether memory preserved the right executable history, `CSPR/DHLR` expose whether the action representation preserved the right local consume semantics, and `PHC/CTTPR/Δplan` decide whether any of that support survives into actual downstream handoff value.
+
+### 4.3.4 Combined-Gain Promotion Gate for `+Memory+Contact`
+
+The key reviewer-facing question is not whether `+Memory` and `+Contact` both help, but whether their combination creates a residual that survives the strongest delayed-consumption cells after single-factor subtraction. We therefore define a combined-gain promotion residual
+
+\[
+\Gamma^{mc}_{w,b} = G_{w,b}(\texttt{+Memory+Contact}) - G_{w,b}(\texttt{Base}) - \max\left(0, G_{w,b}(\texttt{+Memory}) - G_{w,b}(\texttt{Base})\right) - \max\left(0, G_{w,b}(\texttt{+Contact}) - G_{w,b}(\texttt{Base})\right),
+\]
+
+where `G_{w,b}` is evaluated separately on `PHC`, `CTTPR`, and bounded `-Δplan` in each stress cell `(w,b) \in \{(W1,B1),(W2,B1),(W2,B2)\}`. The residual is only interpreted as packet-contract evidence when it remains positive in `W2/B1` and at least non-negative in `W2/B2`, while `TCPR` and `CSPR` both stay above their single-factor baselines and `HCMR` does not regress.
+
+This rule prevents a common overclaim. A model can look better simply because memory rescues the right history at bind time, or because contact-aware tokens make the action interface more controller-friendly at consume time. Neither case alone proves that D01 has learned a stronger delayed-consumption packet contract. Accordingly, if `\Gamma^{mc}` is positive only in `W1/B1`, the row must freeze at **hover-window combined support**. If it is positive in `W2/B1` but collapses in `W2/B2`, the row may freeze at **bounded-delay packet support**. Only when `\Gamma^{mc}` remains stable through `W2/B1` and does not flip sign under `W2/B2` may D01 promote the evidence to **temporal-context-and-contact-semantics preserving delayed-consumption support**.
 
 ### 4.4 Cross-Direction Interface Validation
 
