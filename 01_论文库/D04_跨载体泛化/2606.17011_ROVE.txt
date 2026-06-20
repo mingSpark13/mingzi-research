@@ -1,0 +1,122 @@
+ROVE: Unlocking Human Interventions for
+Humanoid Manipulation via Reinforcement Learning
+Wei Xiao1,2,∗
+
+arXiv:2606.17011v1 [cs.RO] 15 Jun 2026
+
+1
+
+Weiliang Tang1,3,∗ Yuying Ge1,†
+Yao Mu4 Li Zhang2 Yixiao Ge1
+
+Hui Zhou1
+
+Fudan University 3 The Chinese University of Hong Kong
+4
+Shanghai Jiao Tong University
+∗
+Equal contribution † Corresponding author
+https://xpeng-robotics.github.io/rove
+
+XPENG Robotics
+
+2
+
+Put bread into toaster (Fine-grained)
+
+Learning from Experience
+VLA
+Success Rate - Iter.1
+Advantage +/-
+
+Re-match
+
+Value
+Function
+
+ROVE
+
+Value
+
+Experience Buffer
+Erase whiteboard (Contact-rich)
+
+Ideal Human
+Intervention
+Mixed Quality
+(Success & Failure)
+
+Re-erase
+
+VLA Rollout
+Success Rate - Multi-Iteration
+
+Actual Human
+Intervention
+(Hesitate, Mistake...)
+
+Cross Embodiment
+(Humanoid & Human)
+
+Figure 1: ROVE learns from imperfect humanoid interventions. (Left) Our method recovers
+task progress through re-matching and re-erasing. (Middle) Human interventions after near-failure
+VLA rollouts can deviate from ideal corrections in humanoid manipulation; our method learns a
+value function from mixed-quality and cross-embodiment experience to extract a better VLA policy.
+(Right) It outperforms all baselines and consistently improves across multiple iterations.
+Abstract: Human interventions provide crucial corrective signals for posttraining Vision-Language-Action (VLA) models. However, enabling seamless
+humanoid interventions is a formidable systems challenge due to complex wholebody kinematics and dexterous-hand control. Consequently, the collected intervention trajectories are often suboptimal, and methods that rely on human interventions as expert supervision can absorb hesitant, inefficient, or even erroneous behaviors. To address both the system and algorithmic challenges, we propose ROVE, a reinforcement learning framework for humanoid VLA post-training
+with imperfect human interventions. First, ROVE introduces a human-in-the-loop
+pipeline capable of collecting deployment and intervention data for humanoid manipulation. Second, it utilizes Optimistic Value Estimation (OVE) to prioritize
+high-value behaviors from mixed-quality trajectories. To further robustify value
+estimation, we incorporate cross-embodiment human experience videos to provide
+rich supervision for long-tailed failure and recovery modes. The resulting critic
+yields informative advantage signals, steering the VLA actor to focus on highvalue behaviors rather than indiscriminately imitating all actions. On challenging
+real-world contact-rich and fine-grained humanoid manipulation tasks, ROVE outperforms experience-learning baselines and consistently improves across multiple
+rollout-intervention iterations.
+Keywords: Vision-Language-Action Model, Reinforcement Learning, Humanoid
+Manipulation
+
+1
+
+Introduction
+
+Vision-Language-Action (VLA) models provide a promising foundation for general-purpose robot
+policies by grounding language instructions and visual observations into actions [1, 2]. Most recent progress has been largely demonstrated on robot-arm manipulation with parallel-jaw grippers,
+while extending VLA to humanoid robots with dexterous hands substantially increases the complexity of the robot dynamics and kinematics. This inherent complexity makes the humanoid robot
+fragile to accumulated errors stemming from whole-body poses, systematic errors, object contacts,
+etc. As a result, VLA policies trained only on offline demonstrations often fail to reach satisfactory
+performance during deployment, struggling to handle deployment-time distribution shift. Consequently, we seek a post-training solution to harness the deployment data for policy improvement.
+Reinforcement learning (RL) [3] and interactive imitation learning (IIL) [4, 5] allow robots to collect autonomous rollouts, observe their own failures, and incorporate human corrections. Recent
+post-training methods for VLA have shown that the deployment experience can improve pretrained
+policies beyond the offline demonstration tuning. Yet extending this paradigm to humanoid manipulation introduces a new difficulty: human teleoperation itself can be suboptimal, and this issue
+becomes especially severe during intervention takeover.
+In a robot-arm with grippers setup, teleoperation interfaces such as 3D space mouse or leaderfollower arms can often provide smooth and effective corrective actions [6, 7]. In contrast, humanoid
+teleoperation with dexterous hands is harder to master due to difficulty in whole-body coordination,
+dexterous manipulation, and joint-limit handling under imperfect retargeting and limited force or
+tactile feedback. During the takeover, even skilled operators may hesitate, retract their hands, or
+spend a period of time adapting to the humanoid’s current configuration. Prior human-in-the-loop
+RL (e.g., HIL-SERL [6], RECAP [3]) and IIL (e.g., HG-DAgger [5]) methods typically assume
+that human interventions provide optimal corrective actions, so intervention data can be directly
+treated as expert supervision or positive improvement signals. This assumption becomes fragile in
+humanoid manipulation: due to the large teleoperation gap, the takeover phase often contains hesitant, redundant, or retargeting-induced actions. The key challenge is therefore how to learn from
+suboptimal data.
+In this work, we propose ROVE, an RL framework with Optimistic Value Estimation for humanoid
+VLA post-training. ROVE builds a human-in-the-loop data collection pipeline that supports wholebody and dexterous-hand intervention during VLA rollouts. To account for suboptimal collected
+data, we decompose intervention episodes into rollout, adaptation, and recovery stages, and construct value labels with a conservative boundary at the end of adaptation. We further learn a state
+value function with Optimistic Value Estimation (OVE), which combines TD bootstrapping with
+expectile regression to estimate high-value recoverable behavior from mixed-quality data. Beyond
+robot trajectories, the critic also learns from videos of humans, which provide cross-embodiment
+supervision for progress and recovery without requiring robot-aligned actions. The learned critic
+provides advantage labels for advantage-conditioned policy extraction, allowing the VLA actor to
+emphasize high-value actions instead of imitating all collected actions uniformly. As shown in
+Fig. 1, ROVE improves upon SFT and experience-learning baselines, including RL and IIL methods, and continues to gain performance over multiple rollout-intervention iterations.
+Our main contributions are summarized as follows: (i) Human-in-the-loop data collection pipeline
+for humanoid manipulation. We build a whole-body human-in-the-loop collection pipeline and
+model the suboptimality of humanoid teleoperation, especially the noisy adaptation phase during intervention takeover; (ii) Optimistic value estimation for heterogeneous experience. We propose a
+state-value learning recipe that combines robot rollouts, human intervention trajectories, and human
+experience videos, producing robust advantage signals for policy extraction; (iii) Iterative VLA
+policy improvement in real-world tasks. Real-world experiments on two manipulation tasks, illustrated in Fig. 2, show that ROVE improves VLA policies from demonstrations, experience, and
+multiple rounds of rollout-intervention data.
+2
+
+

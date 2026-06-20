@@ -132,9 +132,14 @@
 - **最小新增日志字段**：`mega.risk.coarse_pass_rate / mega.risk.boundary_transition_width / mega.risk.boundary_collapse_axis / mega.risk.coverage_ceiling`。
 - **风险判读纪律**：首轮 reviewer-facing 主表除 `DriftSlope / FFB / FMB` 外，还必须补一句 `boundary-risk note`，明确 residual guidance 是在**宽容边界**上成立，还是只在**狭窄可用区**内成立。只有 residual 同时通过 support subtraction、FFB/FMB、生存到 `g^†=W3`，并且 boundary-focused risk coverage 不显示脆弱窄边界时，才允许进入“机械臂高频稳定器”最强结论。
 - **新增 row-native support match 纪律**：四行最小 bundle 必须先标注各自最自然的 support ceiling，再看是否还有 residual guidance。`B2` 默认先解释 `WSR / PRS / W1` 早窗收益；`B3` 默认先解释 retention-gated 的 `W2/W3` 保持与有限 `CET` 改善；`B4` 默认先解释 `unsafe-action rejection / contact-preserving correction / 局部 PCST` 增益。若优势仍停留在机制原生指标上，则结论必须先冻结为 `acceleration / retention bridge / safety-shell support`，不得直接升级成“机械臂高频稳定器”。
+- **新增 local-guidance-state 审计**：首轮 bundle 除了 support subtraction，还必须补一层 `LGS_row` 检查，至少区分 `joint-response consistency / contact-state reliability / collision-consistent correction` 三类局部状态质量。若某行的 `BDEE/CET/PCST` 改善主要来自更干净的局部状态假设、固定底座便利、或接触状态被模拟器过度简化，则该行默认先冻结为 `transfer/infrastructure/hybrid support`，不得直接写成 moving-base guidance residual。
+- **最小 LGS 日志字段**：`mega.lgs.joint_response_mismatch / mega.lgs.contact_state_reliability / mega.lgs.collision_consistent_correction / mega.lgs.local_state_ceiling / mega.lgs.residual_survives`
+- **LGS 判读纪律**：只有当某行在 `SEG / TPS / VSS / OCS / WMPS` 扣除后，仍能在局部状态受压条件下保住更平的 `drift_amp -> BDEE` 曲线、并继续改善 `CET/PCST`，才允许把该 residual 继续上推到 strongest MEGA wording。
 - **新增 immediate gate**：在既有 `PRS / ROS / VSS / TPS / MCS / WMPS / TFOS / KAS / MTS` subtraction 之后，还必须再过 `FFB + FMB` 双边界与 `ROBOGATE-style boundary-risk coverage`；只有在 support subtraction 之后 residual 仍同时通过固定底座、自由漂移底座、以及边界聚焦风险发现三层测试，才允许进入 strongest MEGA wording。
-- **新增 off-policy throughput support 判读**：若后续引入 FlashSAC 一类分支，其默认最弱解释权应先落在 **OTS（off-policy throughput support）**，只允许先解释 `time-to-threshold / replay_efficiency / critic_stability / seed_variance_reduction`；除非同一行在 matched subtraction 后继续压平 `drift_amp -> BDEE`、改善 `CET/PCST`、存活到 `g^†=W3` 并降低 `PGFR`，否则不得升级成机械臂高频稳定器证据。
-- **最小 OTS 日志字段**：`mega.ots.match / mega.ots.time_to_threshold_gain / mega.ots.replay_efficiency_gain / mega.ots.critic_stability_gain / mega.ots.seed_variance_gain / mega.ots.support_ceiling / mega.ots.residual_guidance`
+- **新增 execution-scheduling support freeze**：若后续引入 EQRL 一类执行调度分支，其默认最弱解释权应先落在 **EQS（elastic-query scheduling support）**，只允许先解释 `average_inference_cost / query_allocation_efficiency / chunk_length_adaptation / latency_sensitive_stability`；除非同一行在 matched subtraction 后继续压平 `drift_amp -> BDEE`、改善 `CET/PCST`、存活到 `g^†=W3` 并降低 `PGFR`，否则不得升级成机械臂高频稳定器证据。
+- **新增 execution/warm-start/protocol ceiling tags**：除既有 `EQS` 外，首轮主表还必须显式记录 `SEG`（warm-start/sample-efficiency gain）与 `TPS`（transfer-protocol support）两类 ceiling。若某行优势主要来自更快收敛、BC 初始化更稳、或 sim-real handoff 更顺，则它默认先冻结为 `SEG/TPS support-dominant`，不能直接升格成机械臂高频稳定器残差。
+- **最小新增日志字段**：`mega.seg.ceiling / mega.seg.time_to_threshold_gain / mega.seg.early_window_gain / mega.tps.ceiling / mega.tps.transfer_cost_gain / mega.tps.real_anchor_gain / mega.main.eqs_ceiling / mega.main.seg_ceiling / mega.main.tps_ceiling`。
+- **support-tag 判读纪律**：只有当一行在 `EQS/SEG/TPS` 三类 ceiling 都被显式标记为 `subtracted` 后，仍继续压平 `drift_amp -> BDEE`、改善 `CET/PCST`、存活到 `g^†=W3`，并在 `FFB + FMB` 下保住 residual，才允许进入 strongest MEGA wording。
 
 ---
 

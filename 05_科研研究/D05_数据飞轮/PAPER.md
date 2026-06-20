@@ -113,6 +113,18 @@ Before scaling the full flywheel, we propose a first-deployment audit that asks 
 
 This first-deployment audit is intentionally narrow. It does not claim that the world model has solved aerial data generation end to end; instead, it tests whether the pipeline has crossed the minimum threshold for accountable growth. A data factory that produces many nominal successes but low replay pass rate, low actionable-failure density, or negligible downstream reuse should be interpreted as a buffer-expansion system rather than a true flywheel. By contrast, if promotion-gated samples consistently survive replay, preserve bucket purity, and improve at least one downstream regime-specific metric, then the system has earned the stronger claim of reusable synthetic supervision.
 
+### 4.6 Calibration and Reliability of Heterogeneous Supervision
+
+Beyond replayability, the flywheel must decide how much to trust heterogeneous supervision once it has been collected. We therefore introduce a calibration layer over the four-bucket ledger, with separate reliability estimates for successful traces, near-failure traces, recovery traces, and weak-label traces. Inspired by recent reliability-focused data-flywheel work such as SPARC [REF: 2606.13497], we treat annotation confidence, replay consistency, and downstream usefulness as three distinct signals rather than a single scalar quality score. This is important because a sample can be replay-stable yet still weakly informative, or weakly labeled yet highly valuable if it consistently improves recovery behavior under a specific disturbance bucket.
+
+Operationally, each promoted sample receives a reliability tuple \((u^{ann}, u^{rep}, u^{down})\), where `u^{ann}` measures supervision confidence, `u^{rep}` measures replay stability, and `u^{down}` measures observed downstream utility during retraining. Training-time mixing weights are then bucket-aware and reliability-aware: weak-label traces with low `u^{ann}` but high `u^{rep}` may remain in auxiliary losses, while recovery traces with modest label confidence but high `u^{down}` are preferentially retained for robustness training. This prevents the flywheel from over-trusting nominally clean but low-value data, and aligns D05 more closely with accountable deployment rather than raw corpus growth.
+
+### 4.7 Reliability-Aware Ablation over Promotion Policies
+
+To test whether the reliability layer is genuinely useful, we compare three promotion policies under the same anchor budget and disturbance coverage: a naive volume-maximizing policy, a replayability-only policy, and a full reliability-aware policy using the tuple \((u^{ann}, u^{rep}, u^{down})\). The first asks whether simply retaining more data is enough, the second asks whether replay stability alone is a sufficient gate, and the third asks whether supervision calibration changes what kinds of samples should survive into the main corpus.
+
+The key readout is not only overall success rate, but whether reliability-aware promotion yields cleaner bucket boundaries and more transferable gains to downstream tasks such as D04-style cross-embodiment transfer or D06-style navigation-recovery support. If the full policy improves disturbance-conditioned robustness while keeping bucket-purity audits stable, then we gain evidence that D05 should be framed as a calibrated data-flywheel problem rather than a generic synthetic-data scaling problem.
+
 ---
 
 ## 5. Conclusion

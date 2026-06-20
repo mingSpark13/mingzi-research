@@ -1,0 +1,16 @@
+---
+type: "source"
+id: "source.2026-04-07_VIBE"
+pageType: "source"
+tags: ["待补充", "6D位姿估计", "感知与3D视觉", "空中操作", "运动控制"]
+summary: "VIBE 以 CNN+GRU 建模视频人体姿态与形状，是视觉前端叠加轻量时序模块的经典基线。"
+origins: ["../../02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VIBE.md"]
+updated: "2026-06-02"
+---
+
+# VIBE: Video Inference for Human Body Pose and Shape Estimation
+
+**核心价值**: VIBE 以 CNN+GRU 建模视频人体姿态与形状，是视觉前端叠加轻量时序模块的经典基线。
+
+**原始资料**:
+- [[../../02_阅读笔记/D11_UAV目标跟踪/2026-04-07_VIBE.md]]

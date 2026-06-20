@@ -6,6 +6,9 @@
 
 ## sources/
 
+### 最新添加（2026-06-18 20:02）
+- [[sources/source.2606.10639_PlanarSectorLOS|Planar-Sector LOS Guidance (2606.10639, ICRA'26 FSR Best Paper)]] — PS-LOS 把可见性与追击机动性显式解耦，LOS 邻域释放近 50% 额外可用推力，138m 实飞敏捷目标截获，D11 UAV目标跟踪/运动控制/最优控制
+
 ### 最新添加（2026-06-02 11:53）
 - [[sources/source.2025_E2Map_Experience_Emotion_Map_Navigation|E2Map Experience/Emotion Map (ICRA 2025)]] — 首次把用户偏好/风险规避显式存入 experience/emotion map，导航中支持 custom user instruction，D06 语义导航/空中VLN
 - [[sources/source.2026-03-28_ST-VLA|ST-VLA (2026-03)]] — 3D-4D 统一表征桥接 VLM 语义与低层控制，ST-Human 300k episodes 训练，RLBench 零样本 +44.6%/真机 +30.3%，D02 VLA架构/时空理解

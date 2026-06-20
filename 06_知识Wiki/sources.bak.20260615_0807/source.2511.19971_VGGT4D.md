@@ -1,0 +1,16 @@
+---
+type: "source"
+id: "source.2511.19971_VGGT4D"
+pageType: "source"
+tags: ["感知与3D视觉", "3D重建", "SLAM", "3D视觉"]
+summary: "VGGT4D 挖掘 Visual Geometry Transformer 的运动线索，在无需训练的前提下实现动态场景分离与 4D 重建。"
+origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_VGGT4D.md"]
+updated: "2026-06-02"
+---
+
+# VGGT4D (2511.19971)
+
+**核心价值**: VGGT4D 挖掘 Visual Geometry Transformer 的运动线索，在无需训练的前提下实现动态场景分离与 4D 重建。
+
+**原始资料**:
+- [[../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_VGGT4D.md]]

@@ -1,0 +1,16 @@
+---
+type: "source"
+id: "source.2026-03-25_Wan_Open_and_Advanced_Large_Scale_Video_Generative_Models"
+pageType: "source"
+tags: ["Wan", "Video Foundation Model", "T2V", "I2V", "Video Diffusion", "视频生成"]
+summary: "Wan 是开放大规模视频生成基础模型，覆盖 T2V/I2V/编辑多任务，并已成为 InSpatio-World 等系统工作的生成骨干层。"
+origins: ["../../02_阅读笔记/D01_世界模型/2026-03-25_Wan_Open_and_Advanced_Large_Scale_Video_Generative_Models.md"]
+updated: "2026-06-02"
+---
+
+# Wan: Open and Advanced Large-Scale Video Generative Models
+
+**核心价值**: Wan 是开放大规模视频生成基础模型，覆盖 T2V/I2V/编辑多任务，并已成为 InSpatio-World 等系统工作的生成骨干层。
+
+**原始资料**:
+- [[../../02_阅读笔记/D01_世界模型/2026-03-25_Wan_Open_and_Advanced_Large_Scale_Video_Generative_Models.md]]

@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/pY2hBg1KtdIxZQsrnSsjZHKexcE</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND (all:"ground to aerial" OR all:"sim-to-real" OR all:"cross-embodiment" OR all:"morphology transfer" OR all:"ground manipulation" OR all:"policy transfer")&amp;id_list=&amp;start=0&amp;max_results=10</title>
+  <updated>2026-06-18T12:13:02Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+(all:%22ground+to+aerial%22+OR+(all:%22sim-to-real%22+OR+(all:%22cross-embodiment%22+OR+(all:%22morphology+transfer%22+OR+(all:%22ground+manipulation%22+OR+all:%22policy+transfer%22)))))&amp;start=0&amp;max_results=10&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>1466</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2606.19122v1</id>
+    <title>Monocular 3D Occupancy Perception for Robots on Sidewalks via Hybrid 2D-3D Learning</title>
+    <updated>2026-06-17T14:35:52Z</updated>
+    <link href="https://arxiv.org/abs/2606.19122v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.19122v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Sidewalks in the real world are crowded, cluttered, and less structured than roads, making 3D occupancy prediction a key ingredient for the safe navigation of mobile robots such as delivery bots and electric wheelchairs. Existing occupancy learning pipelines are largely designed for on-road autonomous driving and often train on large-scale paired LiDAR-RGB datasets with dense 3D supervision and multiple camera inputs, which are costly to collect and do not adequately capture sidewalk-specific characteristics. We propose WalkOCC, a hybrid Ray-marching monocular 3D occupancy perception framework for robots operating on sidewalks. WalkOCC explicitly couples geometric grounding from LiDAR-RGB paired data with scalable learning from large-scale unpaired monocular images. It bootstraps pseudo occupancy supervision from paired sequences and jointly learns image-level representations on additional 2D-only data. It yields stable optimization and improved generalization without requiring costly 3D occupancy annotations. Extensive experiments demonstrate consistent gains in prediction accuracy, fine-grained segmentation of subtle urban structures such as curbs and gutters, and robustness to environmental and cross-embodiment shifts compared with self-supervised image-based baselines. To facilitate evaluation and benchmarking, we also introduce Sidewalk3D, a large-scale sidewalk perception dataset with LiDAR-camera paired sequences collected across multiple locations and time periods, along with 3D semantic occupancy annotations for evaluation. Code and data will be made available.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T14:35:52Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yukai Ma</name>
+    </author>
+    <author>
+      <name>Joe Lin</name>
+    </author>
+    <author>
+      <name>Liu Liu</name>
+    </author>
+    <author>
+      <name>Honglin He</name>
+    </author>
+    <author>
+      <name>Lulu Ricketts</name>
+    </author>
+    <author>
+      <name>Brad Squicciarini</name>
+    </author>
+    <author>
+      <name>Yong Liu</name>
+    </author>
+    <author>
+      <name>Bolei Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18959v1</id>
+    <title>TactSpace: Learning a Physics-enriched Shared Latent Space for Tactile Sim-to-Real Transfer</title>
+    <updated>2026-06-17T11:41:27Z</updated>
+    <link href="https://arxiv.org/abs/2606.18959v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18959v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Tactile sensing provides direct measurements of contact interactions that are essential for robotic manipulation. However, current simulators lack the fidelity to faithfully model the complex deformation and transduction mechanics of tactile sensors, severely hindering sim-to-real transfer in robot learning pipelines. To address this challenge, we propose a multi-modal representation learning framework that aligns heterogeneous tactile modalities within a shared latent space, eliminating the need for accurate raw-signal simulation while preserving relevant contact information. Our approach employs modality-specific encoders to project diverse tactile observations, such as simulated penetration depth and real-world capacitance, into a common embedding space. The model is trained using self- and cross-reconstruction objectives alongside contrastive alignment, encouraging modality-invariant yet information-rich representations. We evaluate the learned embeddings on indenter shape identification, force prediction, and geometric reconstruction tasks, training exclusively in simulation and testing directly on real sensor measurements. Our results demonstrate zero-shot sim-to-real transfer across physically dissimilar representations. Furthermore, incorporating multi-physics simulation modalities yields more informative embeddings that transfer across diverse downstream tasks, demonstrating a 16.7% reduction in force prediction error and a 45.8% reduction in shape reconstruction error. Finally, we release an efficient Warp-based implementation of a penalty-based tactile simulation model for Isaac Lab, enabling scalable tactile data generation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T11:41:27Z</published>
+    <arxiv:comment>9 pages, 6 figures, 4 tables, accepted into IROS 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Arunim Joarder</name>
+    </author>
+    <author>
+      <name>Arjun Bhardwaj</name>
+    </author>
+    <author>
+      <name>René Zurbrügg</name>
+    </author>
+    <author>
+      <name>Mayank Mittal</name>
+    </author>
+    <author>
+      <name>Florin Püntener</name>
+    </author>
+    <author>
+      <name>Sira Bielefeldt</name>
+    </author>
+    <author>
+      <name>Cosmin Roman</name>
+    </author>
+    <author>
+      <name>Vaishakh Patil</name>
+    </author>
+    <author>
+      <name>Marco Hutter</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18955v1</id>
+    <title>Motion-Focused Latent Action Enables Cross-Embodiment VLA Training from Human EgoVideos</title>
+    <updated>2026-06-17T11:37:59Z</updated>
+    <link href="https://arxiv.org/abs/2606.18955v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18955v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training generalist Vision-Language-Action(VLA) models typically requires massive, diverse robotic datasets with high-fidelity action annotations. While egocentric human manipulation videos are abundant and capture significant environmental diversity, the absence of action labels makes them difficult to use in conventional training paradigms. To address this, we propose a latent-action-based framework designed to extract general action priors from unlabeled human videos. The architecture features a Hybrid Disentangled VQ-VAE that decouples motion dynamics from environmental backgrounds through physical masks, enabling the construction of a cross-embodiment action codebook. By pre-training on human videos with the codebook, the VLM backbone learns deep representations of action intent. For adaptation to specific embodiments, we introduce an intent-perception decoupling strategy where the VLM predicts the action intent while a separate frozen visual encoder provides state-specific features to the action expert, thereby reducing action hallucinations. Results in simulation and real-world environments show that our method, pre-trained exclusively on unlabeled human videos, performs competitively with state-of-the-art VLA models trained on massive annotated datasets, requiring only 50 trajectories for downstream adaptation.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T11:37:59Z</published>
+    <arxiv:comment>Accepted to IROS 2026</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Runze Xu</name>
+    </author>
+    <author>
+      <name>Yiluo Zhang</name>
+    </author>
+    <author>
+      <name>Jian Wang</name>
+    </author>
+    <author>
+      <name>Yu Wang</name>
+    </author>
+    <author>
+      <name>Jincheng Yu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18953v1</id>
+    <title>Object-Centric Residual RL for Zero-Shot Sim-to-Real VLA Enhancement</title>
+    <updated>2026-06-17T11:36:54Z</updated>
+    <link href="https://arxiv.org/abs/2606.18953v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18953v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Vision-Language-Action (VLA) models can generalize across diverse manipulation tasks, but their imitation-learning-based policies remain brittle in precise physical interactions due to compounding execution errors; Can a reinforcement learning policy trained purely in simulation improve the robustness of real-world VLAs zero-shot? Residual RL, which learns a corrective policy on top of a frozen VLA, offers a natural framework, but existing approaches face a fundamental sim-to-real dilemma: privileged-state methods require lossy distillation for deployment; image-based methods suffer from the visual domain gap; and real-world RL is costly and unsafe. We propose an object-centric residual RL framework that refines VLA actions using object poses, enabling a compact observation space that transfers consistently between simulation and reality. To align the two domains, we additionally replay the same teleoperation demonstrations in simulation to train a sim counterpart of the real-world VLA. The residual RL policy is trained only in simulation with pose noise injection and dropout, and transfers zero-shot to the real robot. Across five manipulation tasks on a real Franka Research 3 (FR3) robot, our method improves the success rate from 42% to 76% zero-shot, and the improved rollouts can be further reused to retrain the base VLA for self-improvement without additional teleoperation. Project page: https://www.microsoft.com/en-us/research/articles/object-centric-residual-rl/</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T11:36:54Z</published>
+    <arxiv:comment>8 pages, 7 figures, 2 tables; 8-page appendix</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Kinam Kim</name>
+    </author>
+    <author>
+      <name>Namiko Saito</name>
+    </author>
+    <author>
+      <name>Heecheol Kim</name>
+    </author>
+    <author>
+      <name>Katsushi Ikeuchi</name>
+    </author>
+    <author>
+      <name>Jaegul Choo</name>
+    </author>
+    <author>
+      <name>Yasuyuki Matsushita</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18646v1</id>
+    <title>A Scalable Embodied Intelligence Platform for Seamless Real-to-Sim-to-Real Transfer of Household Mobile Manipulation Tasks</title>
+    <updated>2026-06-17T03:31:43Z</updated>
+    <link href="https://arxiv.org/abs/2606.18646v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18646v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Mobile manipulation is a fundamental capability in embodied intelligence robotics. The growing demand for robust and generalizable manipulation in unstructured household environments has driven rapid progress in embodied intelligence platforms. However, achieving a seamless transfer across the real-to-sim-to-real cycle faces three key challenges, including costly high-fidelity simulation scenes reconstruction, the complexity of systematic strategy evaluation in simulation, and incompatible real-world deployments. To address these challenges, we develop BestMan, a scalable and seamless real-to-sim-to-real platform that bridges the gap between the simulation and the real world, enabling effective strategy development, integration, and deployment for household mobile manipulation. Specifically, we design a novel Automated Scene Generation (ASG) module to reconstruct realistic simulations from real observations. Then, we propose a simulation-guided task formalization and skill learning architecture that supports the flexible integration and large-scale evaluations of hybrid skill strategies in simulation. Finally, to enhance the real-world scalability, we develop a Hardware-agnostic and Unified Middleware (HUM) to ensure seamless and compatible sim-to-real transfer across heterogeneous mobile manipulators for real deployments. Experimental results demonstrate the superior performance of our proposed platform in establishing standardized benchmarks and facilitating promising research in the field of mobile manipulation.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T03:31:43Z</published>
+    <arxiv:comment>CCF Transactions on Pervasive Computing and Interaction</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Kui Yang</name>
+    </author>
+    <author>
+      <name>Xianlei Long</name>
+    </author>
+    <author>
+      <name>Haoxuan Li</name>
+    </author>
+    <author>
+      <name>Yan Ding</name>
+    </author>
+    <author>
+      <name>Chao Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18625v1</id>
+    <title>SRL: Combining SLIP Model and Reinforcement Learning for Agile Robotic Jumping</title>
+    <updated>2026-06-17T02:41:53Z</updated>
+    <link href="https://arxiv.org/abs/2606.18625v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18625v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robotic jumping is pivotal in applications such as search and rescue and logistics, where crossing obstacles and enhancing mobility efficiency are critical. The Spring-Loaded Inverted Pendulum (SLIP) model leverages simplified spring-mass dynamics that naturally encode biologically plausible hopping motions, yet its performance degrades on irregular terrain due to idealized assumptions regarding contact and joint dynamics. Meanwhile, Reinforcement Learning (RL) can adapt to diverse and complex environments but often requires extensive data from unguided exploration. The complementary strengths of SLIP's physically grounded baseline and RL's adaptive capabilities motivate a hybrid framework that overcomes these individual limitations. We therefore propose Spring-loaded Reinforcement Learning (SRL), which integrates SLIP-based feedforward control signals with RL-driven real-time feedback, enabling continuous optimization of robotic jumping. Experimental results demonstrate that SRL can achieve more stable jumps with much less training time than the baseline method, maintaining an average position tracking error below 0.1 m and velocity tracking errors within +/-3% of the target values. Through bipedal and quadrupedal simulations of ground and stair jumping, as well as sim-to-sim and sim-to-real validations, SRL exhibits robust adaptability to various task requirements and environmental complexities, underscoring its potential for real-world deployment.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T02:41:53Z</published>
+    <arxiv:comment>17 pages, 12 figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xiaowen Hu</name>
+    </author>
+    <author>
+      <name>Linqi Ye</name>
+    </author>
+    <author>
+      <name>Yudi Zhu</name>
+    </author>
+    <author>
+      <name>Chenyue Shao</name>
+    </author>
+    <author>
+      <name>Rankun Li</name>
+    </author>
+    <author>
+      <name>Qingdu Li</name>
+    </author>
+    <author>
+      <name>Yan Peng</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18594v1</id>
+    <title>Benchmarking Action Spaces in Reinforcement Learning for Vision-based Robotic Manipulation</title>
+    <updated>2026-06-17T01:45:13Z</updated>
+    <link href="https://arxiv.org/abs/2606.18594v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18594v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>In real-world reinforcement learning (RL), the choice of action space can play a key role in shaping motion smoothness, safety, and overall task performance. In this study, we evaluate pose increment, pose velocity, joint position increment, and joint velocity across two vision-based manipulation tasks: object picking and pushing. We train policies in simulation and deploy them to the real world using sim-to-real transfer. We find that action-space representation indeed significantly affects sim-to-real performance. In particular, we find that the joint velocity action space is best for the vision-based picking and pushing tasks in terms of smoothness and final task performance. We also provide practical guidance for RL practitioners in choosing action spaces for both simulation and real-world experiments.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T01:45:13Z</published>
+    <arxiv:comment>9 pages with references</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Seyed Alireza Azimi</name>
+    </author>
+    <author>
+      <name>Homayoon Farrahi</name>
+    </author>
+    <author>
+      <name>Abhishek Naik</name>
+    </author>
+    <author>
+      <name>Colin Bellinger</name>
+    </author>
+    <author>
+      <name>A. Rupam Mahmood</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18328v1</id>
+    <title>Recover, Discover, Plan: Learning Skills and Concepts from Robot Failures</title>
+    <updated>2026-06-16T17:59:57Z</updated>
+    <link href="https://arxiv.org/abs/2606.18328v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18328v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Intelligent robots should not only recover from failures, but also acquire the abstract knowledge needed to avoid them in the future. While reinforcement learning (RL) can learn reactive recovery behaviors, training a separate policy for every distinct failure mode is highly inefficient. We introduce Recovery-Driven Synthesis of Relational Concepts (ReSYNC), the first approach that progressively discovers and refines state abstractions (relational predicates) from failure-recovery experience to support abstract planning. Unlike purely reactive methods, ReSYNC jointly learns skills and concepts through an incremental dual-learning process. In the skill-learning phase, the robot uses RL to learn to recover from failures seen in training tasks. In the concept-learning phase, the robot discovers new relational predicates and refines its abstract planning model to explain and generalize the learned recovery behaviors. This interaction enables ReSYNC to convert local recoveries seen during training into global failure avoidance at test time. Across four simulated domains, we show that ReSYNC's ability to continually expand and refine its abstraction library allows it to solve long-horizon, previously unseen problems, outperforming strong baselines by over 50%. Additionally, we demonstrate sim-to-real transfer of ReSYNC, where it performs real-world non-prehensile manipulation skills and generalizes to unseen scenarios through abstract planning. Overall, ReSYNC represents a significant step toward robots that autonomously acquire abstractions for scalable, failure-aware planning in the physical world.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:59:57Z</published>
+    <arxiv:comment>9 pages, 6 figures. Website: https://jaraxxus-me.github.io/ReSYNC/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Bowen Li</name>
+    </author>
+    <author>
+      <name>Mayank Mishra</name>
+    </author>
+    <author>
+      <name>Y. Isabel Liu</name>
+    </author>
+    <author>
+      <name>Stone Tao</name>
+    </author>
+    <author>
+      <name>Nishanth Kumar</name>
+    </author>
+    <author>
+      <name>Alexander G. Gray</name>
+    </author>
+    <author>
+      <name>Ruwan Wickramarachchi</name>
+    </author>
+    <author>
+      <name>Jonathan Francis</name>
+    </author>
+    <author>
+      <name>Sebastian Scherer</name>
+    </author>
+    <author>
+      <name>Tom Silver</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17846v2</id>
+    <title>Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robotic Manipulation Foundation Models</title>
+    <updated>2026-06-17T17:06:39Z</updated>
+    <link href="https://arxiv.org/abs/2606.17846v2" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17846v2" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Foundation models in language and multimodality achieve strong generalization by aligning heterogeneous data under a unified formulation and training at scale. In this report, we investigate whether this scaling recipe can be applied to robotic manipulation to achieve genuine generalization. This is challenging because, unlike text, manipulation data is heterogeneous by nature, expensive to collect, and narrow in diversity, making alignment and scale simultaneously difficult. We present Qwen-RobotManip, a generalizable Vision-Language-Action foundation model built on Qwen-VL. Qwen-RobotManip introduces a unified alignment framework across the representation, motion, and behavioral dimensions of manipulation, making large-scale multi-source training coherent rather than conflicting. This alignment capability in turn enables Qwen-RobotManip to absorb manipulation data at a scale that prior training regimes could not sustain. A human-to-robot synthesis pipeline converts egocentric hand demonstrations into robot trajectories across 15 platforms, and a rigorous curation pipeline harmonizes heterogeneous datasets. Using only open-source datasets and human videos without proprietary data collection, Qwen-RobotManip constructs a ~38,100-hour pretraining corpus and exhibits emergent generalization capabilities, including zero-shot instruction following, robustness to perturbations, reactive error recovery, and cross-embodiment transfer. We find that standard benchmarks fail to capture pretraining quality and instead adopt OOD settings including RoboCasa365, LIBERO-Plus, EBench, RoboTwin-Clean2Rand, RoboTwin-IF, and RoboTwin-XE. Qwen-RobotManip substantially outperforms prior state-of-the-art models, including $π$0.5, across all OOD settings, ranks 1st in RoboChallenge with a 20% relative improvement, and is validated on real-robot platforms including AgileX ALOHA, Franka, UR, and ARX.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T12:14:39Z</published>
+    <arxiv:comment>44 pages</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Haoqi Yuan</name>
+    </author>
+    <author>
+      <name>Zhixuan Liang</name>
+    </author>
+    <author>
+      <name>Anzhe Chen</name>
+    </author>
+    <author>
+      <name>Ye Wang</name>
+    </author>
+    <author>
+      <name>Haoyang Li</name>
+    </author>
+    <author>
+      <name>Pei Lin</name>
+    </author>
+    <author>
+      <name>Yiyang Huang</name>
+    </author>
+    <author>
+      <name>Zixing Lei</name>
+    </author>
+    <author>
+      <name>Tong Zhang</name>
+    </author>
+    <author>
+      <name>Jiazhao Zhang</name>
+    </author>
+    <author>
+      <name>Jie Zhang</name>
+    </author>
+    <author>
+      <name>Jingyang Fan</name>
+    </author>
+    <author>
+      <name>Gengze Zhou</name>
+    </author>
+    <author>
+      <name>Qihang Peng</name>
+    </author>
+    <author>
+      <name>Chenxu Lv</name>
+    </author>
+    <author>
+      <name>Xiaoyue Chen</name>
+    </author>
+    <author>
+      <name>An Yang</name>
+    </author>
+    <author>
+      <name>Fei Huang</name>
+    </author>
+    <author>
+      <name>Junyang Lin</name>
+    </author>
+    <author>
+      <name>Dayiheng Liu</name>
+    </author>
+    <author>
+      <name>Jingren Zhou</name>
+    </author>
+    <author>
+      <name>Chenfei Wu</name>
+    </author>
+    <author>
+      <name>Xiong-Hui Chen</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17520v1</id>
+    <title>GASE: Gaussian Splatting-Based Automated System for Reconstructing Embodied-Simulation Environments</title>
+    <updated>2026-06-16T05:00:42Z</updated>
+    <link href="https://arxiv.org/abs/2606.17520v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17520v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training embodied agents in the real world requires skilled operators and expensive hardware. Simulation environments offer a compelling alternative by enabling large-scale, cost-effective data augmentation. Consequently, rapidly constructing high-fidelity simulation scenes with a minimal sim-to-real gap has become a critical objective in robot learning. While reconstruction-based methods provide superior visual quality, current workflows are hindered by inefficient data acquisition and subpar foreground object extraction. We thus propose GASE, a highly automated system for simulation scene construction. GASE leverages multi-view video streams from panoramic camera arrays to enable rapid environment scanning. To ensure high-quality asset generation, our pipeline introduces a camera-pose-based strategy that robustly extracts objects across frames in the 2D domain, followed by high-fidelity scene inpainting. Foreground objects and the static background are then reconstructed independently and seamlessly imported into physics simulators for policy training. Extensive experiments demonstrate that GASE outperforms existing 3D Gaussian-based methods in segmentation accuracy by over 10\% while achieving state-of-the-art inpainting quality. Furthermore, real-robot deployments across manipulation and navigation tasks maintains a performance gap of less than 10\% compared to policies trained purely on real-world data. These results confirm that GASE provides an efficient and highly effective solution for bridging the sim-to-real gap. Code will be released.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T05:00:42Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jiawei Zhang</name>
+    </author>
+    <author>
+      <name>Yiming Yan</name>
+    </author>
+    <author>
+      <name>Chao Liang</name>
+    </author>
+    <author>
+      <name>Nuo Xu</name>
+    </author>
+    <author>
+      <name>Seson Sun</name>
+    </author>
+    <author>
+      <name>Qichen Zhang</name>
+    </author>
+    <author>
+      <name>Yuhao Xu</name>
+    </author>
+    <author>
+      <name>Yantai Yang</name>
+    </author>
+    <author>
+      <name>Yingqiao Wang</name>
+    </author>
+    <author>
+      <name>Qin Jin</name>
+    </author>
+    <author>
+      <name>Zhipeng Zhang</name>
+    </author>
+  </entry>
+</feed>

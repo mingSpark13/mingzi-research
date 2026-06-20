@@ -1,0 +1,194 @@
+Geometric Action Model for Robot Policy Learning
+Jisang Han∗ 1 Seonghu Jeon∗ 1 Jaewoo Jung1 René Zurbrügg2,3
+Honggyu An1 Tifanny Portela2,3 Marco Hutter2
+Marc Pollefeys2 Seungryong Kim† 1 Sunghwan Hong† 2,3
+1
+
+KAIST AI 2 ETH Zurich 3 ETH AI Center
+https://cvlab-kaist.github.io/Geometric-Action-Model
+GAM
+(Ours)
+
+80
+70
+
+Layer
+
+...
+
+Layer
+
+...
+current
+
+future
+
+Multi-view RGBs
+Previous
+Action
+Language 
+Instruction
+Current
+
+Feature
+
+...
+
+Causal 
+Future 
+Predictor
+
+Next 
+
+Action
+
+60
+40
+
+Model Size
+
+OpenVLA-OFT
+
+60
+50
+
+3D Reconstruction
+
+Cosmos 
+-Policy
+
+7B
+
+50
+
+500
+65
+
+Ours
+Spatial Forcing
+
+55
+
+52.5
+35
+
+30
+22.5
+
+20
+Future
+
+Feature
+
+t
+
+t+1 t+2
+
+...
+
+t+7
+
+Action Chunk
+
+(a) Overall Pipeline of Geomeric Action Model
+
+0
+
+3B 1B
+
+10
+
+In-distibution 
+Camera
+
+Pertrubed
+Camera
+
+5
+
+Real-World Success Rate (%)
+
+arXiv:2606.17046v1 [cs.RO] 15 Jun 2026
+
+Inference Latency (ms)
+
+90
+
+LIBERO-Plus Camera (%)
+
+Geomeric Foundation Model
+
+Geomeric Action Model
+
+(b) Quantitative Results
+
+Figure 1: GAM repurposes geometric foundation models into fast and robust robot policies. (a)
+GAM jointly predicts future 3D geometry and action chunks within a shared geometric backbone.
+(b) By leveraging explicit 3D geometric priors, GAM improves robustness and real-world performance while reducing latency and model size compared to existing baselines.
+Abstract: Generalist robot policies must follow user instructions while reasoning
+about how objects, cameras, and robot actions interact in the 3D physical world.
+Recent vision-language-action models (VLAs) and video world-action models
+(WAMs) inherit strong semantic or temporal priors from large-scale foundation
+models, but they still operate primarily on 2D image frames or 2D-derived latent spaces, leaving implicit the 3D geometry required for contact-rich manipulation. We propose the Geometric Action Model (GAM), a language-conditioned
+manipulation policy that directly repurposes a pretrained geometric foundation
+model (GFM) as a shared substrate for perception, temporal prediction, and action decoding. GAM splits the GFM at an intermediate layer: the shallow layers
+serve as an observation encoder, and a causal future predictor inserted at the split
+layer forecasts future latent tokens conditioned on language, proprioception, and
+action history. The predicted future tokens are then routed through the remaining GFM blocks for feature propagation and decoding, allowing a single backbone to produce both future geometry and actions. This design equips the GFM
+with language-conditioned temporal world modeling through minimal architectural modification while preserving its rich geometric priors. Across a broad suite
+of simulation and real-robot manipulation benchmarks, GAM is more accurate,
+more robust, faster, and lighter than current foundation-model-scale baselines.
+∗
+†
+
+Equal contribution.
+Corresponding author.
+
+1
+
+Introduction
+
+A long-standing goal in robotics is to build generalist manipulation policies that can follow naturallanguage instructions and manipulate arbitrary objects across diverse scenes [1, 2, 3, 4]. To achieve
+this, a general manipulation model must not only recognize objects and parse instructions, but also
+reason about how the physical world will evolve under its own actions. This requires a unified
+understanding of language, visual appearance, scene geometry, robot state, and physical dynamics.
+Recent progress has therefore increasingly relied on large-scale foundation models as pretrained
+substrates for robot policies. Vision-language-action models (VLAs) build on vision-language models whose representations are aligned with natural language, and learn to map visual and linguistic
+tokens to robot actions [5, 1, 2, 4, 6, 7]. Video world-action models (WAMs) instead leverage pretrained video generation models, using their world prediction priors to jointly model future frames
+and actions [3, 8]. While these approaches have shown impressive language-conditioned manipulation ability, they are fundamentally in 2D: 3D cues such as depth, scale, and occlusion are left
+implicit in monocular cues that the action decoder must disentangle on its own, leading to limited
+generalization across environment changes, especially in robot initial state and camera viewpoint [9].
+To overcome this limitation, recent work incorporates 3D geometric information into robot policies. One line learns policies directly on explicit 3D observations such as raw point clouds [10, 11],
+demonstrating the value of geometry for generalization but typically requiring task-specific encoders
+trained from scratch. With the emergence of Geometric Foundation Models (GFMs) [12, 13, 14],
+some works transfer pretrained geometric priors into VLA policies, either distilling selected GFM
+features into the VLA backbone through representation alignment [15, 16, 17] or attaching a
+lightweight action head on top of a GFM’s final features [18, 19]. These improve spatial awareness, but use the GFM only as a static feature extractor: its multi-layer geometric structure is never
+repurposed as the policy’s own temporal and action-generating substrate.
+In this work, we propose Geometric Action Model (GAM), which directly repurposes a GFM as
+a manipulation policy by using it as a shared medium for perception, future-state prediction, and
+action decoding. We show that by jointly predicting future action and geometry, geometric world
+dynamics can be inherently incorporated into robot policies.
+Specifically, we split the pretrained GFM at an intermediate layer: the shallow layers serve as an
+observation encoder, while the remaining layers serve as a decoder block. Given the current visual
+observation, the observation encoder extracts spatially meaningful scene representations. To model
+how the world evolves over time, we insert a causal transformer at the intermediate layer that predicts
+future feature representations. This predictor is conditioned on task language, proprioception, and
+action history by introducing them as additional tokens at each timestep. The predicted future-state
+tokens are then processed by the remaining GFM decoder together with an action token, allowing
+the backbone to produce both future geometry and robot actions. An intuitive comparison between
+existing paradigms and our proposed framework is illustrated in Figure 2.
+Across diverse simulation [20, 9, 21] and real-world benchmarks, GAM matches or exceeds the
+success rate of current foundation-model-scale baselines such as VLAs and WAMs while using
+substantially fewer trainable parameters and substantially faster inference (55× faster), and shows
+improved generalization to unseen scenarios. GAM especially achieves outstanding performance in
+camera perturbation settings (↑9.7%p), which requires geometric understanding priors.
+Our contributions are as follows:
+• We introduce Geometric Action Model (GAM), a manipulation policy that combines temporal world modeling, latent feature-space prediction, and a geometric foundation-model
+substrate in a single shared-backbone architecture.
+• We show that action and geometry can be predicted in a shared token space: a single
+autoregressive sequence and a single backbone forward pass produce both action tokens
+and future-scene tokens, decoded by a lightweight action regression head and a depth head.
+2
+
+

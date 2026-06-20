@@ -1,6 +1,6 @@
 # D01 世界模型实验设计
 
-> 最后更新：2026-04-18 R813
+> 最后更新：2026-06-16
 > 状态：E1 已立项，等待主人确认后执行
 
 ## E1. 部署前验收栈最小实验
@@ -74,6 +74,35 @@
 - 若 C2 相对 C1 没有明确提升 `SRY`，则 Dream2Fix recovery 暂不升主线
 - 若 C2/C3 的 `AER` 高于 C1，哪怕恢复率更高，也降级为候选
 - 若 `HHB` 明显升高，则说明系统只是把复杂度转移给人工，不算主线收益
+
+## E13. 首轮主叙事冻结烟测（R862 新增）
+
+### 目标
+把 D01 现阶段已经出现的五种主叙事候选——`evaluator-first / triage-first / route-first / hover-recovery-first / interface-first`——放进同一张首轮判线表，不再靠直觉决定论文标题谁做主线。换句话说，本实验不再问“哪个模块看起来更酷”，而是直接问：**哪条叙事在首轮预算内带来最独占、最可部署、最能跨方向复用的净收益**。
+
+### 叙事槽位
+1. **N0 evaluator-first**：主收益来自 `rank_score / ranking correlation / danger-action filtering`
+2. **N1 triage-first**：主收益来自 `F1/F2 known-failure vs anomaly` 分诊
+3. **N2 route-first**：主收益来自 `route_action + stage-aware routing`，显著减少 `late stop / misroute`
+4. **N3 hover-recovery-first**：主收益主要来自 `hover-bounded recovery`
+5. **N4 interface-first**：主收益来自 D01→D06 的执行前 supervisor 接口，即同一预筛/路由接口可直接服务 packet 执行链
+
+### 核心指标
+- **CSG**（Core Safety Gain）：相对最弱基线减少的 danger-action 漏放、late stop、misroute 综合收益
+- **NEX**（Narrative Exclusivity）：该收益是否只能由当前叙事解释，还是其他槽位也能轻松覆盖
+- **CDU**（Cross-Direction Utility）：能否直接复用到 D06 / D07，而不只是 D01 自己闭环里成立
+- **BGR**（Budget-to-Gain Ratio）：单位实验/工程预算换来的净收益是否足够高
+- **RIF**（Risk Inflation）：该叙事引入的新风险是否在可控范围内，尤其关注 `AER / WRR / HHB / PSL`
+
+### 判线规则
+- 若 **N0/N1** 已拿到大部分 `CSG`，且 `N2/N3/N4` 的额外收益不独占，则论文主叙事优先冻结为 **evaluator-first + triage-first**，其余只做 supporting evidence。
+- 若 **N2 route-first** 显著压低 `late stop / misroute`，且 `CDU` 高，说明 D01 更像 **stage-aware route supervisor**，可升主标题。
+- 若 **N3 hover-recovery-first** 只有在停悬窗口带来局部收益，且 `RIF` 不够低，则明确降级为 **hover-bounded supporting evidence**，不争主标题。
+- 若 **N4 interface-first** 在 D01→D06 接口烟测里同时改善 `DPR / WRR / PSL`，则可把 D01 主叙事冻结为 **interface-first execution supervisor**。
+- 若任何叙事虽然提升局部指标，但 `BGR` 很差或 `RIF` 明显恶化，则不得升格为主线。
+
+### 当前预期结论
+首轮更值得竞争主标题的不是通用 recovery，而是 **stage-aware route supervisor** 或 **interface-first execution supervisor**；`hover-bounded recovery` 只有在出现低风险、跨阶段、独占性的净收益时，才有资格上升到主叙事。
 
 ## E15. Refresh-Window Honesty Attribution Smoke Test（R20260522 新增）
 
@@ -150,396 +179,226 @@
 ### 当前预期结论
 更可能出现的诚实结论是：**semantic latent + fast refresh** 先稳定改善 proposal 侧筛选质量，但真正能穿过扣减审计、留下 `CHR*` 的方法会少得多；这正好能保护 D01 不把“更会选包”误写成“更会保包”。
 
-## E13. 首轮主叙事冻结烟测（R862 新增）
-
+## E16. Temporal-Context / Contact-Semantics Packet Audit（R20260613 新增）
 
 ### 目标
-把 D01 现阶段已经出现的五种主叙事候选——`evaluator-first / triage-first / route-first / hover-recovery-first / interface-first`——放进同一张首轮判线表，不再靠直觉决定论文标题谁做主线。换句话说，本实验不再问“哪个模块看起来更酷”，而是直接问：**哪条叙事在首轮预算内带来最独占、最可部署、最能跨方向复用的净收益**。
+把 D01 最近在 `PAPER.md 3.36` 冻结下来的新边界真正落到可观测实验日志：**包在 delayed consume 前，不仅要保 object/clause/thread identity，还要保 temporal episode context 与 contact-intent semantics。** 这一组实验专门回答：MemoryVLA++ 式 memory gain 与 iMaC 式 contact-aware action gain，是否真的穿过 bind/consume 审计，而不是只提升 proposal 或 bind 侧的好看数字。
 
-### 叙事槽位
-1. **N0 evaluator-first**：主收益来自 `rank_score / ranking correlation / danger-action filtering`
-2. **N1 triage-first**：主收益来自 `F1/F2 known-failure vs anomaly` 分诊
-3. **N2 route-first**：主收益来自 `route_action + stage-aware routing`，显著减少 `late stop / misroute`
-4. **N3 hover-recovery-first**：主收益主要来自 `hover-bounded recovery`
-5. **N4 interface-first**：主收益来自 D01→D06 的执行前 supervisor 接口，即同一预筛/路由接口可直接服务 packet 执行链
+### 对照组
+1. **T0 base packet**：无显式 memory、无 contact-aware action token
+2. **T1 +Memory**：加入 episodic retrieval + imagined-future context，但动作接口不变
+3. **T2 +Contact**：加入 motion/contact-aware packetization，但不加 memory retrieval
+4. **T3 +Memory+Contact**：同时保留 temporal context 与 contact semantics
+
+### 最小日志 tuple
+- `c_episode`：emit/refresh/bind/consume 时是否仍指向同一 episode context
+- `c_future`：imagined near-future 是否仍与 remaining-plan 对齐
+- `a_contact`：packet 是否仍保留相同 contact/motion semantics
+- `h_bind`：bind-honest 是否成立
+- `h_consume`：consume-honest 是否成立
+
+可统一记为：
+`τ_t = (c_episode, c_future, a_contact, h_bind, h_consume)`
 
 ### 核心指标
-- **CSG**（Core Safety Gain）：相对最弱基线减少的 danger-action 漏放、late stop、misroute 综合收益
-- **NEX**（Narrative Exclusivity）：该收益是否只能由当前叙事解释，还是其他槽位也能轻松覆盖
-- **CDU**（Cross-Direction Utility）：能否直接复用到 D06 / D07，而不只是 D01 自己闭环里成立
-- **BGR**（Budget-to-Gain Ratio）：单位实验/工程预算换来的净收益是否足够高
-- **RIF**（Risk Inflation）：该叙事引入的新风险是否在可控范围内，尤其关注 `AER / WRR / HHB / PSL`
+- **TCPR**（Temporal-Context Preservation Rate）：temporal episode context 保真的比例
+- **CSPR**（Contact-Semantics Preservation Rate）：contact-intent semantics 保真的比例
+- **HCMR**（History-Context Mis-Retrieve Rate）：历史检索命中错上下文的比例
+- **DHLR**（Decode-Honesty Loss after Refresh）：refresh 后 contact/action 语义在 decode 端丢失的比例
+- **PHC**（Packet Handoff Continuity）：包在 handoff 链路上的 continuity
+- **CTTPR**（Consumption-Time Thread Preservation Rate）：最终 consume 时 thread 仍诚实保留的比例
+- **Δplan**：consume 后 remaining-plan compatibility 的净变化
 
 ### 判线规则
-- 若 **N0/N1** 已拿到大部分 `CSG`，且 `N2/N3/N4` 的额外收益不独占，则论文主叙事优先冻结为 **evaluator-first + triage-first**，其余只做 supporting evidence。
-- 若 **N2 route-first** 显著压低 `late stop / misroute`，且 `CDU` 高，说明 D01 更像 **stage-aware route supervisor**，可升主标题。
-- 若 **N3 hover-recovery-first** 只有在停悬窗口带来局部收益，且 `RIF` 不够低，则明确降级为 **hover-bounded supporting evidence**，不争主标题。
-- 若 **N4 interface-first** 在 D01→D06 接口烟测里同时改善 `DPR / WRR / PSL`，则可把 D01 主叙事冻结为 **interface-first execution supervisor**。
-- 若任何叙事虽然提升局部指标，但 `BGR` 很差或 `RIF` 明显恶化，则不得升格为主线。
+- 若 `T1` 主要提升 `TCPR`、降低 `HCMR`，但 `CSPR / DHLR / CTTPR` 基本不动，则冻结为 **temporal-context support**。
+- 若 `T2` 主要提升 `CSPR` 或降低 `DHLR`，但 `TCPR / HCMR / CTTPR` 基本不动，则冻结为 **contact-semantics support**。
+- 若 `T3` 只在 `bind` 侧更稳，而 `consume` 侧仍掉线，则最多记为 **hover-window combined support** 或 **bounded-delay support**。
+- 只有当 `T3` 在 `PHC + CTTPR + bounded Δplan` 上同时优于 `T1/T2`，并且提升不只是来自单边 memory/contact gain，才允许升级成 **temporal-context-and-contact-semantics preserving packet-contract support**。
 
 ### 当前预期结论
-首轮更值得竞争主标题的不是通用 recovery，而是 **stage-aware route supervisor** 或 **interface-first execution supervisor**；`hover-bounded recovery` 只有在出现低风险、跨阶段、独占性的净收益时，才有资格上升到主叙事。
+更诚实的首轮结果大概率是：`+Memory` 先稳住 history/episode continuity，`+Contact` 先稳住 consume-time local semantics，而真正能穿过 delayed-consumption 审计的会是两者结合后的少数 stress cells。这样能保护 D01 不把“记得更久”或“动作更像接触语义”直接冒领成完整 deployment-time supervisor 进步。
 
-## E14. D01→D06 packet 预筛接口烟测（R863 新增）
+## E16b. Combined-Gain Promotion Gate for `+Memory+Contact`（R20260616 新增）
 
 ### 目标
-把 D01 作为 D06 的 **执行前 pre-screen / route supervisor** 这条主线继续压成最小接口级烟测，不再泛谈“世界模型可做安全层”。这一轮只回答一个更硬的问题：**同一份 `Semantic Waypoint Packet` 在进入 D06 controller 前，D01 能否稳定给出比 `local-only` 更好的预筛、路由与停悬窗口补件判断**。
+避免把 `+Memory` 与 `+Contact` 两条单因子收益简单相加后，误写成已经解决 delayed-consumption packet contract。这个实验把 `T3=+Memory+Contact` 的 reviewer-facing 升级门槛写死：**只有组合残差穿过 consume-time stress cells，才配升格成 joint packet-contract support。**
 
-### 对照组
-1. **X0 local-only**：D06 packet 直接走本地 verifier / controller，不接 D01
-2. **X1 rank-score gate**：D01 只返回 `rank_score`，低分 packet 直接拦截
-3. **X2 triage + route_action**：D01 返回 `rank_score + F1/F2 + route_action`
-4. **X3 hover-bounded recovery**：在 X2 基础上，仅 `hover/search` 窗口允许 `packet repair / recovery_scope`
+### 最小日志 tuple
+- `TCPR`
+- `CSPR`
+- `HCMR`
+- `DHLR`
+- `PHC`
+- `CTTPR`
+- `Δplan`
+- `Γ^{mc}`
 
-### 接口字段
-- **D06 → D01**：`packet_id / stage_tag / semantic_waypoint_packet / planner_confidence / verifier_features`
-- **D01 → D06**：`rank_score / F1-F2 / route_action / recovery_scope / risk_budget`
+其中
 
-### 主指标
-- **DPR**（Dangerous Pass Rate）：本应拦截却被放行的 packet 比例
-- **Late Stop Rate**：本该前置阻断却拖到执行后期才停下的比例
-- **Misroute Rate**：本该 `repair/replan/hover` 却继续执行或错误升级的比例
-- **PRY**（Packet Repair Yield）：停悬窗口内 packet repair 真正带回的净收益
-- **PSL**（Packet Screening Latency）：单次 packet 预筛时延
+\[
+\Gamma_t^{mc} = G_t^{(T3)} - \max\big(G_t^{(T1)}, G_t^{(T2)}\big)
+\]
 
-### 解释顺序（冻结）
-1. `DPR`
-2. `Late Stop Rate`
-3. `Misroute Rate`
-4. `PRY`
-5. `PSL`
+用于表示 `+Memory+Contact` 相对单边最强因子的**真实组合残差**。
 
 ### 判线规则
-- 若 **X1** 对 **X0** 不能明显降低 `DPR`，说明 D01 还不具备跨方向执行前预筛资格。
-- 若 **X2** 相对 **X1** 不能明显降低 `Late Stop Rate / Misroute Rate`，则 D01 暂不升为 route supervisor，只保留 score gate。
-- 若 **X3** 只提升 `PRY`，却不能同步改善前三项核心指标，则 `hover-bounded recovery` 明确降级为 supporting evidence。
-- 若 `PSL` 过高，即便判断更准，也只能作为低频 gate 或离线筛查，不默认接在线链路。
+- 若 `T3` 只是同时提升 `TCPR` 与 `CSPR`，但在 `W2/B2` 仍出现 `CTTPR \le 0` 或明显负的 `Δplan`，则冻结为 **combined support under bounded delay**。
+- 只有当 `Γ^{mc} > 0`、`PHC` 在 `W2/B1` 仍为正、且 `CTTPR` 在 `W2/B2` 不翻负时，才允许升级成 **temporal-context-and-contact-semantics preserving delayed-consumption support**。
+- reviewer 默认只看 `W2/B1` 与 `W2/B2` 两类 hard cells，不允许用 easy bind-time cell 的平均值冲淡 consume-time 失真。
 
 ### 当前预期结论
-首轮若出现净收益，最可能成立的是 **rank-score gate → triage+route_action** 这条主线；`hover-bounded recovery` 更像停悬窗口内的补件证据，而不是 D01 的主标题。
+更可能的诚实结果是：组合条件先在 bounded-delay 场景站稳，而真正能穿过 `W2/B2` consume-time hard cell 的只会是少数配置。这样能保护 D01 不把“两个 support 一起开”直接写成完整 handoff gain。
 
-## E7. 阶段感知恢复部署窗口烟测（R820/R830 整理合并）
-
-### 目标
-把 D01 的 recovery 从“统一在线开关”进一步压成 **phase-bounded recovery**，直接验证它到底只适合 `停悬/回锚`，还是能安全进入 `运动中执行`。
-
-### 对照组
-1. **P0**：offline recommendation only（只做离线建议）
-2. **P1**：hover-gated recovery（仅在停悬/回锚阶段允许 `R3 recovery`）
-3. **P2**：approach-window recovery（只在低速接近窗口允许短窗 recovery）
-4. **P3**：in-motion recovery（运动中直接允许 recovery，作为高风险对照）
-
-### 核心指标
-- **HSR**（Hover-stage Success Recovery）
-- **MSR**（Motion-stage Success Recovery）
-- **AER**（Anomaly Escape Rate）
-- **Jerk/碰撞超限率**
-- **Gate-to-act latency**（从分诊到恢复动作发出的时延）
-
-### 关键问题
-- Dream2Fix-style recovery 的真实甜区是不是 `停悬/回锚阶段`，而不是运动中在线接管？
-- 若 `P1 > P0` 但 `P3` 明显恶化，D01 就该明确把 recovery 写成 **阶段性恢复器**。
-- `P2` 是否能成为折中位，即在低速接近段保留有限 recovery 收益，但不付出 `P3` 那样的安全代价？
-
-### 判停规则
-- 若 `P1` 都不能稳定优于 `P0`，则 R3 recovery 不升主线
-- 若 `P3` 的 `AER` 或 jerk/碰撞超限率明显高于 `P1/P2`，则在线 recovery 只保留到停悬或低速窗口
-- 若 `P2` 与 `P1` 接近，则论文主线优先写 **停悬/回锚后恢复**，不强求运动中恢复
-
-## E8. 阶段感知路由烟测（R820 新增）
+## E17. Object-Centric Planner Support versus Packet-Contract Residual（R20260616 新增）
 
 ### 目标
-验证 D01 新补的 `rank_score + failure_state + route_action` 三元输出，能不能真正把 **WorldEval evaluator / F1-F2 分诊 / Dream2Fix recovery** 收成一条统一决策链，而不是三套彼此割裂的模块。
+把今日新增本地锚点 **COMET (2606.14418)** 吸收到 D01 的实验审计里，但保持它只作为 **object-centric causal planning support family**，不让“更会在对象槽上做 MCTS / causal attention”自动冒领成 deployment-time packet-contract 进步。
 
 ### 对照组
-1. **R0 score-only**：只有 `pass score`，不输出恢复路由
-2. **R1 score + triage**：输出 `pass / F1 / F2`，但无阶段感知路由
-3. **R2 stage-aware routing**：输出 `rank_score + failure_state + route_action`
-4. **R3 aggressive routing**：在 P2/P3 也尽量放开 recovery，作为风险对照
+1. **O0 monolithic latent planner**：单块 latent，无对象槽
+2. **O1 object-centric slots without causal fusion**：有对象槽，但动作-对象绑定弱
+3. **O2 object-centric causal planner**：COMET 式 action-slot fusion + object-causal attention
+4. **O3 O2 + packet audit**：在 O2 上继续做 delayed-consumption bind/consume 审计
 
-### 核心指标
-- **Route Precision**：推荐的 `route_action` 与最终最优处置是否一致
-- **Late Stop Rate**：本应更早 `hard stop` 却被拖到后续阶段才拦下的比例
-- **Recovery Misroute Rate**：本该 `fallback/hard stop` 却被错误送入 `gated_recovery` 的比例
-- **Stage Transfer Delay**：从发现问题到进入正确处置阶段的额外时延
+### 最小日志 tuple
+- `OAR`：object-attention relevance
+- `CPS`：causal-planning support
+- `IAS`：identity-address stability（emit→refresh→bind→consume 是否仍是同一对象/锚点/子句）
+- `BHR^{obj}`：扣掉 object-centric planning support 后剩余的 bind-honest 增益
+- `CHR^{obj}`：扣掉 object-centric planning support 后剩余的 consume-honest 增益
 
-### 关键问题
-- 单有 `pass score` 是否会把大量“该停悬后再处理”的情况误判成还能继续飞？
-- `route_action` 能否显著降低 `Late Stop Rate` 与 `Recovery Misroute Rate`？
-- 对空中平台而言，阶段感知路由是不是比“更强 recovery 模块”本身更值钱？
-
-### 判停规则
-- 若 R2 相比 R1 没有显著降低 `Late Stop Rate`，则阶段感知路由暂不升主线
-- 若 R3 的 `Recovery Misroute Rate` 明显恶化，则明确禁止在 P3 默认放开 recovery
-- 若 `Stage Transfer Delay` 过高，则 route_action 只保留给离线评测，不进入在线控制
-
-## E6. D01→D06/D07 路由接口烟测（R824 新增）
-
-### 目标
-验证 D01 的 `route_action` 是否真能作为 **跨方向统一安全路由接口**，而不是只在 D01 自己的评测栈里自洽。
-
-### 对照组
-1. **X0 local-only**：D06/D07 各自用本地方向里的 fallback 规则，不接 D01 路由
-2. **X1 D01 route supervisor**：统一接 `rank_score + failure_state + route_action + stage_tag`
-3. **X2 aggressive cross-use**：在 D06/D07 中尽量放开 `gated_recovery`，作为风险对照
-
-### 观察任务
-- **D06 侧**：planner packet 下发、packet repair、local replan、hover stop
-- **D07 侧**：policy rollout、shield fallback、residual correction、emergency stop
-
-### 核心指标
-- **Cross-Task Route Precision**：同一接口在 D06/D07 上是否都能把动作送到正确处置分支
-- **Fallback Consistency**：相近风险等级下，两条链是否给出一致保守度，而不是一条过激一条过松
-- **Late Stop Rate**：应更早停下却拖到下游才停的比例
-- **Interface Overhead**：接 D01 路由后新增的决策时延
-
-### 关键问题
-- D01 的 `route_action` 能否减少 D06/D07 各自重复发明 verifier/shield 规则？
-- `gated_recovery` 在 D06 的低速导航窗口可能成立，但在 D07 的高接触不确定区间是否应默认更保守？
-- 若统一接口成立，D01 就能从“单方向评测器”升级成跨方向 **route supervisor**。
-
-### 判停规则
-- 若 X1 相比 X0 没有明显降低 `Late Stop Rate`，则 4.12 只保留为概念接口，不升为主线
-- 若 X2 在任一方向明显放大误恢复或误放行，则跨方向接口默认禁用激进 recovery
-- 若 `Interface Overhead` 超过短程控制预算，则 D01 路由只保留给离线评测或低速阶段
-
-## E9. D01→D06 packet 预筛接口烟测（R844/R849 收束版）
-
-### 目标
-验证 D01 作为 **D06 planner packet 进入执行链前的统一 supervisor** 是否真的值钱：不是替 D06 做规划，而是稳定完成 `预筛 → 分诊 → 路由 → 限定恢复`，并用统一首轮规则直接冻结 D01 主叙事。
-
-### 对照组
-1. **P0 local-only**：D06 仅用本地 verifier / fallback 规则
-2. **P1 rank-score gate**：D06 接入 D01 的 `rank_score`
-3. **P2 rank + triage + route_action**：接入 `rank_score + F1/F2 + route_action`
-4. **P3 P2 + hover-bounded recovery**：仅在 `hover / re-anchor` 阶段允许 `recovery_scope=hover_only`
-
-### 观察阶段
-- `search`
-- `hover`
-- `re-anchor`
-- `approach`
-- `inspect`
-
-### 核心指标（固定优先级）
-1. **danger-action 漏放率**
-2. **late stop rate**
-3. **misroute rate**（本该 fallback / human-review 却继续执行）
-4. **packet repair 成功率**
-5. **hover 阶段恢复成功率**
-6. **新增执行时延**
-
-### 首轮主叙事冻结规则（R849 新增）
-- 若 **P1** 相比 **P0** 已显著降低 `danger-action 漏放率`，说明 D01 至少具备 evaluator-first 价值。
-- 若 **P2** 相比 **P1** 继续显著降低 `late stop / misroute`，则 D01 主叙事默认冻结为 **pre-execution route supervisor**。
-- 若 **P3** 只提升 `packet repair 成功率` 或 `hover 阶段恢复成功率`，但对前三项核心指标净收益不足，则 recovery 只保留为 **阶段性补件 / supporting evidence**，不得抢主标题。
-- 只有当 **P3** 在不明显恶化时延的前提下，同时改善前三项核心指标中的至少两项，recovery 才允许进入下一轮主线讨论。
-
-### 判停规则
-- 若 P1 对 P0 几乎不降 danger-action 漏放率，D01 暂不宣传跨方向 packet 预筛价值。
-- 若 P2 对 P1 不能明显降低 late stop / misroute，说明 route supervisor 还不值得抢主叙事。
-- 若 P3 的净收益只体现在 `hover / re-anchor`，则 recovery 明确保留为 **hover-bounded mechanism**，不扩到更激进阶段。
-- 若 P3 带来额外时延却不改善 repair / recovery 成功率，则 recovery 不进入 D06 首轮接口方案。
-
-## E7. 阶段感知恢复部署窗口烟测（R820/R830 整理合并）- **对比**：按首轮结果分别统计 `evaluator+verifier`、`triage+route supervisor`、`hover-bounded recovery`、`D01→D06 interface supervisor` 四条子线的净收益与预算占用
-- **场景**：复用 E1/E2/E6/E8 的统一日志，不新增新环境；目标是做主叙事冻结，不是再刷成功率
-- **主指标**：Net Narrative Gain, Budget Share, Human Burden, Cross-direction Reuse Value, Risk Inflation
-- **判据**：
-  - 若 `evaluator+verifier` 收益最高且最稳，则 D01 主叙事固定为 **deployment-time evaluator**
-  - 若 `triage+route supervisor` 对 late stop / misroute 改善最明显，则固定为 **stage-aware supervisor**
-  - 若 recovery 只在停悬阶段收益稳定，则固定为 **phase-bounded recovery**
-  - 若 D01→D06 复用价值最高，则主叙事转向 **interface-first execution supervisor**
-- **失败先查**：先确认是不是同一收益被多条子线重复记账；若重复严重，优先合并叙事而不是并列写贡献
-- **备注**：该实验直接服务 R839，强制 D01 首轮后只保留一条论文主叙事，避免报告继续发散
-
-### 对照输入
-- **Z0 evaluator-first**：B1/B2 结果最佳时采用
-- **Z1 triage-first**：F1/F2 分诊收益最稳时采用
-- **Z2 recovery-first**：Y3 hover-bounded recovery 成立时采用
-- **Z3 route-first**：route_action 在跨方向任务中收益最稳时采用
-- **Z4 interface-first**：Grounded tokenizer / geometry backbone 增益最大时采用
-
-### 决策指标
-- 主线对应指标提升幅度是否 **稳定且可复现**
-- 其他路线是否只提供边际增益，适合降为 supporting evidence
-- 是否与 D06 当前真实需求直接对齐（预筛 / 分诊 / 阶段化处置）
-- 是否需要额外高风险在线闭环才成立
-
-### 冻结规则
-- 若 `AER` 或 `RCS` 不稳，**Z2 recovery-first** 自动失去主叙事资格
-- 若 `route_action` 只在 D01 内自洽、不具跨方向收益，**Z3** 降级
-- 若接口层 / 几何主干解释了大部分收益，**Z4** 优先级高于 recovery 线
-- 最终只允许保留 1 个 `Z*` 作为论文摘要与标题主线
-
-### 输出物
-- 一张“主叙事选择表”
-- 一页 supporting evidence 清单
-- 一页冻结清单（明确哪些线本轮不再追加实验预算）
-
-## E11. D01→D06 最小接口烟测（R834 新增）
-
-### 目标
-验证 D01 对龙虾/D06 最现实的价值，是不是 **执行前预筛 + 阶段化处置 supervisor**，而不是替 D06 planner 做重规划。
-
-### 对照组
-1. **L0 D06 local-only**：只用 D06 自己的 packet 规则
-2. **L1 + rank_score**：加入 D01 预筛分数
-3. **L2 + failure_state**：再加入 F1/F2 分诊
-4. **L3 + route_action**：统一 `continue / hover / fallback / human review`
-5. **L4 + hover-bounded recovery**：只在停悬窗口允许小范围修补
-
-### 核心指标
-- packet 危险放行率
-- hover stop 触发是否更及时
-- recovery misroute rate
-- planner packet 被错误过度拦截的比例
-- 接口额外时延
-
-### 判停规则
-- 若 L3 相比 L2 没有显著降低误路由或晚停，`route_action` 暂不升跨方向主线
-- 若 L4 只带来边际收益却抬高误放行或时延，D01 对 D06 仅保留 `rank_score + failure_state`
-- 若 L1/L2 已覆盖大部分收益，说明当前最值钱的是预筛与分诊，而非 recovery
-
-### 对照维度
-1. **V线**：`evaluator + WAV + F1/F2 triage`
-2. **R线**：`stage-aware route_action`
-3. **C线**：`Dream2Fix-style recovery`
-
-### 核心指标
-- **danger-action 漏放率**
-- **Late Stop Rate**
-- **Route Precision**
-- **SRY / AER / RCS**
-- **单位收益对应的额外预算消耗**（GPU小时 / 标注 / 人工确认）
+可统一记为：
+`Ω_t^{obj} = (OAR, CPS, IAS, BHR^{obj}, CHR^{obj})`
 
 ### 判线规则
-- 若 verifier/triage 还没稳定压低漏放率 → **冻结 C线**，预算先回 V线
-- 若 `Route Precision↑` 且 `Late Stop Rate↓`，但 recovery 收益有限 → **冻结 C线扩展**，主线转 R线
-- 若 recovery 只在 `P1 hover` 成立 → **冻结 P2/P3**，保留 hover-bounded 证据包
-- 若 `AER` 或 `RCS` 长期不过线 → 自动恢复整体降级为 recommendation-only
-- 任何时刻只允许 **一条主线** 占主实验槽位，其余降为对照
-5. **Y4 low-speed window online**：仅在低速接近窗口允许 `R3`
-6. **Y5 unrestricted online**：运动中也允许 `R3`，作为高风险反例
+- 若 `O2` 主要提升 candidate ranking、对象消歧或早期 sample efficiency，但 `IAS / CHR^{obj}` 弱，则冻结为 **object-centric proposal support**。
+- 若 `IAS` 在 bind 前稳定、但 consume 时 referent 或 clause 漂移，则冻结为 **address-stable bind support**。
+- 只有当 `CHR^{obj}` 在扣减 object-centric planning support 后仍为正，才允许升级成 **object-aware packet-contract residual**。
+- reviewer-facing 默认先看 proposal gain，再看 `IAS`，最后才看 `CHR^{obj}`；不允许直接把对象级规划收益写成 full handoff gain。
 
-### 统一记账指标
-- **SRY**（Safe Recovery Yield）
-- **AER**（Anomaly Escape Rate）
-- **HHB**（Human Handoff Burden）
-- **RDR**（Recovery Debt Ratio）
-- **RCS**（Recovery Calibration Score）
+### 当前预期结论
+更诚实的首轮结果大概率是：COMET 先显著提升 **proposal-side object disambiguation** 与早期规划效率，但只有少数配置会把这部分增益真正带过 delayed-consumption 审计。这正好让 D01 把 **object-centric planner support** 与 **packet-contract residual** 分开记账。
 
-### 首轮读数判线
-- 若 **Y2/Y3** 不能稳定优于 **Y0/Y1** 的 `SRY`，则 Dream2Fix recovery 不升主线
-- 若 `SRY` 上升但 `AER` 或 `HHB` 同时明显恶化，则 recovery 仅保留 recommendation-only
-- 若 `Y3` 成立而 `Y5` 明显恶化，则正式把 D01 主叙事写成 **phase-bounded recovery**
-- 若 `RCS` 长期失准，则 recovery 禁止默认自动执行
-- 若 `RDR` 明显高于规则回退，则 recovery 仅保留给高价值任务或停悬阶段
-
-### 输出物
-- 一张 `Y0~Y5` 统一记账对照表
-- 一页 go / no-go 结论：`offline recommendation` / `hover-only` / `low-speed window` / `not worth deploying`
-
-## E8. 执行阶段恢复部署判线烟测（R830 新增）
+## E18. WEAVER-Style Test-Time Planner Support versus Packet-Contract Residual（R20260618 新增）
 
 ### 目标
-把 E7 的统一记账结果直接压成 **部署结论**，不再停在“哪组指标更好”，而是明确回答 recovery 到底该停留在 `offline recommendation`、`hover-bounded online`、`low-speed window online`，还是根本不该部署。
-
-### 输入来源
-- 直接复用 `Y0~Y5` 的实验结果
-- 统一使用 `SRY / AER / HHB / RDR / RCS`
-- 按 `P1 停悬/回锚`、`P2 低速接近`、`P3 运动中执行` 三段分别判线
-
-### 判线表
-1. **Z0 不部署**：`SRY` 无明显提升，或 `RDR` 明显偏高
-2. **Z1 仅离线建议**：`SRY↑` 但 `AER` 明显恶化
-3. **Z2 人工确认后执行**：`SRY↑`、`AER` 稳定，但 `HHB` 很高或 `RCS` 失准
-4. **Z3 仅停悬窗口部署**：`Y3 >> Y2`，且 `AER/HHB/RDR/RCS` 都可控
-5. **Z4 停悬+低速窗口部署**：`Y4 ≈ Y3` 且未带来明显额外风险
-6. **Z5 禁止 unrestricted online**：`Y5` 才有收益但 `AER` 或 `RCS` 波动明显
-
-### 输出物
-- 一张 `Y0~Y5 → Z0~Z5` 的部署映射表
-- 一页 go / no-go 结论：`not worth deploying / recommendation-only / human-confirmed / hover-only / hover+low-speed`
-- 一句论文级主结论：D01 recovery 的真实部署边界是什么
-
-## E12. D01→D06 接口主导权判线烟测（R850 新增）
-
-### 目标
-把 D01 与 D06 的边界再压硬一点：首轮不再只问 D01 能不能当 packet supervisor，而要直接回答 **收益主要来自 D01 的执行前预筛，还是来自 D06 自己的 packet schema / verifier 修补**，避免跨方向接口把功劳和锅继续混在一起。
+把今日新增本地锚点 **WEAVER (2606.13672)** 吸收到 D01 的实验审计里，但保持它只作为 **test-time planner support family**：multi-view world model + reward prediction + flow matching + 评估/改进/规划三路打通，并不天然冒领成 deployment-time packet-contract 进步。
 
 ### 对照组
-1. **H0 D06-local**：仅修 D06 本地 `packet schema + verifier`，不接 D01 supervisor
-2. **H1 D01-pre-screen**：在 H0 基础上接入 D01 `rank_score + F1/F2 + route_action`
-3. **H2 D01-pre-screen + hover-only recovery**：H1 再加 `recovery_scope=hover_only`
-4. **H3 aggressive-cross-use**：把恢复放宽到 `approach`，作为高风险反例
+1. **T0 single-view latent WM**：单视角 latent，无 reward prediction，无 test-time planning
+2. **T1 multi-view latent WM**：多视角 latent，训练目标同 T0
+3. **T2 T1 + reward prediction**：WEAVER 式 latent + reward 联合预测
+4. **T3 T2 + test-time planning**：WEAVER 完整版本，含 flow-matching policy improvement + test-time MCTS/planning
+5. **T4 T3 + packet audit**：在 T3 之上继续做 delayed-consumption bind/consume 审计
 
-### 核心指标
-- **Supervisor Gain Ratio (SGR)**：H1/H2 相对 H0 的净收益占比
-- **Schema Defect Share (SDS)**：失败中可直接归因到 `target_pose / yaw_hint / altitude_band / handoff_tag` 缺陷的比例
-- **Cross-Boundary Misattribution (CBM)**：本属 D06 接口问题却被误记成 D01 路由收益/失败的比例
-- **Hover-only Net Benefit (HNB)**：`hover / re-anchor` 阶段限定恢复的净收益
-- **Approach Risk Spillover (ARS)**：把恢复扩到 `approach` 后新增的误路由/额外风险
+### 最小日志 tuple
+- `PMR`：planner-match relevance（候选 rollouts 与 same-cycle planner 的重合度）
+- `TPL`：test-time planning lift（成功率 × 延迟综合指标）
+- `PGS`：same-cycle proposal gain
+- `BHR^{ttp}`：扣掉 test-time planner support 后剩余的 bind-honest 增益
+- `CHR^{ttp}`：扣掉 test-time planner support 后剩余的 consume-honest 增益
 
-### 关键问题
-- 若 H0 通过单修 packet schema 就已明显降低 late stop / misroute，是否说明首轮主收益仍在 D06，而不是 D01？
-- 若 H1 明显优于 H0，D01 才配被写成 **pre-execution supervisor**；否则应退回 supporting interface。
-- 若 H2 的收益集中在 `hover / re-anchor` 而 H3 明显恶化，是否应把跨方向恢复正式冻结为 **hover-only**？
+可统一记为：
+`Υ_t^{ttp} = (PMR, TPL, PGS, BHR^{ttp}, CHR^{ttp})`
 
-### 判停规则
-- 若 **SDS 高而 SGR 低**，优先判定为 D06 packet/interface 问题，暂停夸大 D01 价值。
-- 若 **H1 相对 H0 增益不稳定**，D01 仅保留 `rank_score` 观测位，不升主叙事。
-- 若 **HNB 为正而 ARS 明显恶化**，恢复边界正式冻结为 `hover-only`，不再讨论 `approach` 扩张。
-- 若 **CBM 持续偏高**，先补统一日志标签与责任归因表，再继续跨方向接口实验。
+### 判线规则
+- 若 `T3` 主要提升 `PMR` 或 `TPL`，则冻结为 **test-time planner support**。
+- 若 `PGS` 与 `BHR^{ttp}` 均为正、但 `CHR^{ttp}` 在 `W2/B1-B2` 翻负，则冻结为 **same-cycle bind-stable planner support**。
+- 只有当 `CHR^{ttp}` 在 consume-time stress cells 仍为正、且 `CTTPR` 不退化时，才允许升级成 **test-time-planner-subtracted packet-contract residual**。
+- reviewer-facing 默认先看 `PMR/TPL`（planner-side 解释力），再看 `BHR^{ttp}`，最后才看 `CHR^{ttp}`；不允许把 test-time planning 的胜利直接写成 full handoff gain。
 
-### 输出物
-- 一张 `H0~H3` 的主导权判线表
-- 一页“D01 收益 / D06 接口收益 / 边界混淆”责任拆账表
-- 一句主结论：当前跨方向主收益究竟在 supervisor，还是在 packet schema 修补
+### 当前预期结论
+更可能的诚实结果是：WEAVER 先显著提升 **planner-match relevance** 与 **test-time planning lift**，但只有少数配置会把这部分 planner-side 增益真正带过 delayed-consumption 审计。这正好让 D01 把 **test-time planner support** 与 **packet-contract residual** 分开记账，避免被“同 cycle 内 test-time planning 跑得更好”误读成 deployment-time supervisor 也更强。
 
-### 判停规则
-- 只要 `AER` 或 `RCS` 明显恶化，就禁止升到默认在线 recovery
-- 若 `Y3` 成立但 `Y4/Y5` 不成立，主叙事固定为 `phase-bounded / hover-bounded recovery`
-- 若 `Z2` 长期成立而进不到 `Z3`，则 recovery 仅保留作辅助系统，不占论文主贡献槽位
-
-## E13. 首轮主叙事冻结烟测（R861 新增）
+## E19. RepWAM-Style Shared Visual-Action Tokenizer as Representation-Alignment Support（R20260618 新增）
 
 ### 目标
-把 D01 当前已经铺开的 `evaluator / verifier / triage / route supervisor / hover-bounded recovery / cross-direction interface` 六条线，进一步压成 **首轮结果一出来就能冻结论文主标题** 的单一判线协议，避免继续在 REPORT 里并列扩张。
+把今日新增本地锚点 **RepWAM (2606.13674)** 吸收到 D01 的实验审计里，但保持它只作为 **representation-alignment support family**：shared semantic visual-action tokenizer + 对齐潜空间动作，并天然冒领成 deployment-time packet-contract 进步。
 
-### 对照叙事槽位
-1. **N1 evaluator-first**：主收益来自 `rank_score + WAV/self-check`
-2. **N2 triage-first**：主收益来自 `F1/F2 已知失败 vs 异常` 分诊
-3. **N3 route-first**：主收益来自 `route_action` 降低 late stop / misroute
-4. **N4 hover-recovery-first**：主收益来自 `hover-bounded recovery`
-5. **N5 interface-first**：主收益来自 `D01→D06 packet pre-screen supervisor`
+### 对照组
+1. **R0 reconstruction-oriented WAM tokenizer**：传统面向像素重建的 tokenizer
+2. **R1 semantic visual tokenizer**：用 VFM 表征对齐的 visual tokenizer，但 latent action 仍独立
+3. **R2 R1 + latent action alignment**：RepWAM 完整版本，含 shared visual-action latent action
+4. **R3 R2 + packet audit**：在 R2 之上继续做 delayed-consumption bind/consume 审计
 
-### 统一冻结指标
-- **Core Safety Gain (CSG)**：`danger-action 漏放率 + late stop rate + misroute rate` 的净改善
-- **Narrative Exclusivity (NE)**：该叙事解释的独占收益占比，避免多条线重复记账
-- **Cross-Direction Utility (CDU)**：是否能稳定复用到 D06，而不是只在 D01 内自洽
-- **Budget-to-Gain Ratio (BGR)**：单位收益所需额外预算/链路复杂度
-- **Risk Inflation (RI)**：是否靠抬高 `AER / HHB / RCS / latency` 换取表面增益
+### 最小日志 tuple
+- `VAA`：visual-action alignment（tokenizer 潜空间中视觉与动作的对齐质量）
+- `AAS`：latent action abstraction quality
+- `AGP`：address-grounding preservation（emit/refresh/bind/consume 是否仍是同一对象/锚点/子句）
+- `BHR^{ras}`：扣掉 representation-alignment support 后剩余的 bind-honest 增益
+- `CHR^{ras}`：扣掉 representation-alignment support 后剩余的 consume-honest 增益
 
-### 冻结规则
-- 若 **N1/N2** 已解释大部分 `CSG`，则 **N4** 自动降为 supporting evidence，不得抢主标题。
-- 若 **N3** 对 `late stop / misroute` 的净改善最稳定，且 `RI` 可控，则 D01 主叙事冻结为 **stage-aware route supervisor**。
-- 若 **N5** 的 `CDU` 最高，且收益不主要来自 D06 自己修 packet schema，则主叙事冻结为 **interface-first execution supervisor**。
-- 若 **N4** 只在 `hover / re-anchor` 有稳定收益，则只能冻结为 **phase-bounded recovery supporting line**，不能升为摘要主线。
-- 任意叙事只要 `RI` 明显上升，立即失去主叙事资格。
+可统一记为：
+`Φ_t^{ras} = (VAA, AAS, AGP, BHR^{ras}, CHR^{ras})`
 
-### 输出物
-- 一张 `N1~N5` 主叙事选择表
-- 一页 supporting evidence 清单（明确谁降级）
-- 一句冻结结论：D01 首轮之后到底该把自己写成 evaluator、route supervisor，还是 interface-first supervisor
+### 判线规则
+- 若 `R2` 主要提升 `VAA` 与 `AAS`、但 `AGP` 在 refresh 后漂移，则冻结为 **tokenizer-side representation support**。
+- 若 `AGP` 在 bind 前稳定、但 `CHR^{ras}` 在 consume-time stress cells 翻负，则冻结为 **address-stable representation bind support**。
+- 只有当 `AGP` 在 emit/refresh/bind/consume 全程稳定、且 `CHR^{ras}` 在 consume-time stress cells 仍为正时，才允许升级成 **representation-subtracted packet-contract residual**。
+- reviewer-facing 默认先看 `VAA/AAS`（representation-side 解释力），再看 `AGP`，最后才看 `CHR^{ras}`；不允许把 tokenizer 升级的胜利直接写成 full handoff gain。
 
-## 下轮可接续
-- 若 E1 通过：进入 `video-WM vs geometry-WM` 的短程对位对照
-- 若 E2 通过：把 `SRY/AER/HHB` 固化为 D01 论文主表指标
-- 若 E3 通过：把 `RG0~RG3` 固化为 recovery 准入协议
-- 若 E4 通过：把 `phase-bounded recovery` 固化为 D01 主叙事的一部分
-- 若 E5 通过：把 `route_action` 固化为 D01 对 D06/D07 的统一接口输出
-- 若 E6 通过：把 D01 升级为跨方向 `route supervisor`，并回写 D06/D07 的实验接口
-- 若 E7 通过：把 D01 的 recovery 正式收束为“值不值得部署 + 该部署在哪个阶段”的主结论
-- 若 E13 通过：强制只保留 1 条论文主叙事，其余全部降为对照或 supporting evidence
-- 若 E1 未通过：回到 C6 接口层，只做 tokenizer + evaluator 稳定性修正
+### 当前预期结论
+更可能的诚实结果是：RepWAM 先显著提升 **visual-action alignment** 与 **latent action abstraction**，但只有少数配置会把这部分 representation-side 增益真正带过 delayed-consumption 审计，且 `AGP` 稳定性是关键瓶颈。这正好让 D01 把 **representation-alignment support** 与 **packet-contract residual** 分开记账，避免被“tokenizer 语义对齐”误读成 deployment-time supervisor 也更强。
 
+## E20. Persistent Task Simulator with Cross-Episode Memory as Refresh-Stable Latent Support（R20260620 新增）
+
+### 目标
+把今日扫描本地新增锚点 **Mem-World (2606.18960)** 吸收进 D01 的实验审计，但保持它只作为 **persistent task simulator support family**：long-horizon memory token + 跨 episode reset/replay 协议，并天然冒领成 deployment-time packet-contract 进步。重点是验证 Mem-World 风格的长时程 coherent rollouts 是否真的能在 `W2/B1-B2` consume-time stress cells 中保持 consume-honest，还是只能停留在 planner-side 或 refresh-side 增益。
+
+### 对照组
+1. **M0 observation-only action-conditioned world model**：标准 ACWM，无 memory 模块
+2. **M1 frame-stacking baseline**：naive 帧堆叠历史观测，不做 memory 压缩
+3. **M2 Mem-World 完整版本**：long-horizon memory token + 当前视觉 token 联合预测未来帧
+4. **M3 M2 + packet audit**：在 M2 之上继续做 delayed-consumption bind/consume 审计，跨 episode reset 强制 vs 自然触发对照
+
+### 最小日志 tuple
+- `mem-token`：memory token 自身的压缩质量、跨 refresh 一致性、drift 曲线
+- `long-horizon`：memory-conditioned 未来是否仍保持 multi-step coherent
+- `consume-honest`：D01 packet-contract 残留指标
+- `address-stable`：memory token 在跨 episode reset 后是否仍指向同一对象 / waypoint / 子句
+- `reset-protocol`：跨 episode reset 是显式触发（训练侧）还是隐式触发（部署侧）
+- `sim2real`：persistent simulator 跨域是否需要 retraining
+
+可统一记为：
+`Μ_t = (mem-token, long-horizon, consume-honest, address-stable, reset-protocol, sim2real)`
+
+### 判线规则
+- 若 `M2` 主要提升 `mem-token` 与 `long-horizon`、但 `consume-honest` 在 delayed uptake 下塌缩，则冻结为 **persistent simulator representation support**。
+- 若 `consume-honest` 仅在跨 episode `reset-protocol` 与 refresh 同步触发时才为正，则冻结为 **reset-coupled support**。
+- 只有当 `consume-honest` 与 `address-stable` 在 `W2/B1` 与 `W2/B2` consume-time stress cells 中均为正、且 reset 协议不强制锁定到 consume time 时，才允许升级为 **persistent-task-simulator-subtracted packet-contract residual**。
+- reviewer-facing 默认先看 `mem-token / long-horizon`（representation-side 解释力），再看 `address-stable`，最后才看 `consume-honest`；不允许把 Mem-World 的 rollout fidelity 提升直接写成 full handoff gain。
+
+### 当前预期结论
+更可能的诚实结果是：Mem-World 先显著提升 **memory token 压缩质量** 与 **长时程 coherent rollouts**，但只有少数配置会把这部分 persistent simulation 增益真正带过 delayed-consumption 审计，且 `address-stable` 在跨 episode reset 后是否仍指向同一对象是核心瓶颈。这正好让 D01 把 **persistent simulator support** 与 **packet-contract residual** 分开记账，避免被"长时程一致 rollouts"误读成 deployment-time supervisor 也更强。
+
+## E21. RL-Augmented World-Action Model as Action-Honest Refresh Prior（R20260620 新增）
+
+### 目标
+把今日扫描本地新增锚点 **WAM-RL (2606.17906)** 吸收进 D01 的实验审计，但保持它只作为 **RL-augmented WAM support family**：reconstruction reward + online video SFT，并天然冒领成 deployment-time packet-contract 进步。重点是验证 WAM-RL 风格的 representation-action 闭环耦合是否能在 world-model refresh 与 action-head update 显式解耦后仍保持 action-honest，还是只能停留在 same-cycle long-horizon 增益。
+
+### 对照组
+1. **W0 imitation-only WAM**：纯模仿学习的 World-Action Model baseline
+2. **W1 WAM + reconstruction reward（无 online SFT）**：仅加 RL 信号，不做 online self-rollout fine-tune
+3. **W2 WAM-RL 完整版本**：reconstruction reward + Online Video SFT 联合训练
+4. **W3 W2 + de-synchronized packet audit**：在 W2 之上故意把 world-model refresh 与 action-head update 解耦，看 action-honest 是否塌缩
+
+### 最小日志 tuple
+- `recon-reward`：训练 / 决策时 action head 受 WM 重建质量影响的强度
+- `online-sft`：action head 从 self-rollout 更新的频率与幅度
+- `action-honest`：released action 在 refresh 后是否仍指向同一 clause / waypoint / contact intent
+- `consume-honest`：D01 packet-contract 残留指标
+- `drift`：训练重建目标与部署观测的域漂移
+- `sim2real`：RL-augmented WAM 在真实空中操作平台上的迁移表现
+
+可统一记为：
+`Ρ_t = (recon-reward, online-sft, action-honest, consume-honest, drift, sim2real)`
+
+### 判线规则
+- 若 `W2` 主要提升 `recon-reward` 与 `online-sft`、但 `action-honest` 与 `consume-honest` 在 delayed uptake 下都塌缩，则冻结为 **RL-shape support**。
+- 若 `action-honest` 仅在训练/部署场景匹配时为正，则冻结为 **same-domain RL support**。
+- 若 `consume-honest` 仅在 world-model refresh 与 action-head update 同步触发时为正，则冻结为 **synchronous RL support**。
+- 只有当 `action-honest`、`consume-honest` 与 `drift` 在 `W1/B1`、`W2/B1`、`W2/B2` 三个 stress cells 中均为正、且 reconstruction reward 在 refresh-induced gap 后仍处于 active 状态时，才允许升级为 **RL-augmented packet-contract residual**。
+- reviewer-facing 默认先看 `recon-reward / online-sft`（RL-shape 解释力），再看 `drift`，最后才看 `consume-honest`；不允许把 WAM-RL 的 CALVIN long-horizon 胜利直接写成 full handoff gain。
+
+### 当前预期结论
+更可能的诚实结果是：WAM-RL 先显著提升 **重建奖励强度** 与 **online SFT 频次**，但只有少数配置会把 representation-action 闭环耦合真正带过 consume-time audit，且 de-synchronized refresh 时 `action-honest` 极易塌缩。这正好让 D01 把 **RL-augmented support** 与 **packet-contract residual** 分开记账，避免被"representation-action 闭环耦合"误读成 deployment-time supervisor 也更强。

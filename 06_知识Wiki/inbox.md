@@ -2,3 +2,13 @@
 - [02_阅读笔记/D07_腿足机器人/2026-06-08_2606.05880_TAGA.md] 候选概念：地形感知凝视（频次：首次出现）
 - [02_阅读笔记/2026-06-09_2605.20613_HRM-Text.md] 候选概念：HRM（Hierarchical Reasoning Model）/ MagicNorm / warmup deep credit assignment / 双时间尺度递归 / 推理-知识解耦 / Lean General Intelligence（频次：HRM 系列工作首次入库；建议建立独立 concepts/HRM.md 候选）
 - [02_阅读笔记/D02_VLA/2026-06-12_ViT3_Test_Time_Training_Vision.md] 候选概念：Test-Time Training（TTT）/ Inner Module / Inner Training / 在线学习式 Attention（频次：TTT 系列工作首次入库；建议在 VLA架构 下新增二级子概念 `TTT测试时训练`，或合并到 `持续学习` 作为在线学习子类）
+- [02_阅读笔记/D02_VLA/2026-06-13_2606.13355_Real-Time_Execution_with_Autoregressive_Policies.md] 候选概念：异步推理执行 / constrained decoding latency bound（频次：实时执行型 AR-VLA 工作首次出现；建议先挂在 `实时推理` 别名层）
+- [concepts/生成式策略_概念笔记.md] 候选概念：生成式策略（Generative Policy）（频次：legacy 笔记，已为早于字典 v1.1 落库历史页；建议在 字典 v1.2 评估升级为二级规范名（依据：与扩散策略/流匹配同属"动作生成"父类，但三者是不同实现路径）或归并到 `动作生成` 作为子概念别名；已补 frontmatter 标 `status: legacy-pending-dict-review`，待主人评估）
+- [02_阅读笔记/D01_世界模型/2026-06-15_2606.13674_RepWAM.md] 候选概念：World Action Model / representation visual-action tokenizer / latent action tokenizer（频次：WAM 表示层细分路线首次出现）
+- [02_阅读笔记/2026-06-15_2501.02709_HorizonGeneralization_RL.md] 候选概念：规划不变性（Planning Invariance）/ 拟度量策略（Quasimetric Policy）（频次：ICLR 2025 论文首次入库；建议在 强化学习 下新增二级子概念，或归并到 长程任务规划 作为规划不变性子类）
+- [02_阅读笔记/D05_数据飞轮/2026-06-15_2606.14665_EgoGuide.md] 候选概念：第一视角质量引导 / egocentric residual policy（频次：EgoGuide 首次入库；建议先挂在 遥操作 / 主动感知 别名层）
+- [02_阅读笔记/01_机器人与具身/2026-06-15_2606.14551_TRACE.md] 候选概念：延迟证据记忆 / path signature memory routing（频次：TRACE 首次入库；建议先挂在 长程任务规划 / 模仿学习 别名层）
+- [02_阅读笔记/D06_空中视觉语言导航/2026-06-16_2606.14585_SensitivityShaping_LatentModeling.md] 候选概念：control-sensitivity regularization / support-conditioned sensitivity shaping（频次：D06 planner-side latent safety 路线首次入库；建议先挂在 隐空间世界模型 / 零样本泛化 别名层）
+- [02_阅读笔记/D02_VLA/2026-06-18_2606.18247_VERITAS_Visual_Verification_VLA.md] 候选概念：Test-time Verification（推理时无梯度视觉验证器）/ verified rollouts / Generator-Verifier 框架 / Autonomous Policy Improvement（频次：VERITAS 首次入库；建议在 VLA架构 下新增二级子概念 `推理时验证`，与 WAM-RL / World Pilot 同属"部署时 steering"父类）
+- [02_阅读笔记/D01_世界模型/2026-06-18_2606.12403_World_Pilot_VLA_WAM.md] 候选概念：World-Action Model (WAM) / WAM priors / Latent Steering / Action Steering / 双路径 steering（频次：WAM 跨方向 steering 首次入库；建议在 隐空间世界模型 下新增 `WAM-Priors-Steering` 二级子概念）
+- [02_阅读笔记/D04_跨载体泛化/2026-06-18_2606.18189_Beyond_Failure_Recovery_RSS2026.md] 候选概念：Engagement-Aware MPC / user interaction dynamics / proactive engagement / workload-constrained interaction（频次：E-MPC 首次入库；建议在 MPC 下新增 `Engagement-Aware-MPC` 二级子概念，或归并到 任务与运动规划 作为 user-state 子类）

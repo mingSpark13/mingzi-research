@@ -1,0 +1,97 @@
+Guided Diffusion with Distilled Vision-Language
+Reliability for Aerial Navigation
+
+arXiv:2606.13883v1 [cs.RO] 11 Jun 2026
+
+Ivan Valuev
+
+Iana Zhura
+
+Valerii Serpiva
+
+Didar Seyidov
+
+Dzmitry Tsetserukou
+
+Abstract: Autonomous UAV navigation is conventionally solved by pipelines
+that separate perception, mapping, and planning into distinct stages, which propagates errors, accumulates latency, and requires environment-specific retuning.
+End-to-end generative models remove these interfaces by mapping raw observations directly to trajectories, but inherit a subtle failure mode: trained on clean
+data, they cannot recognise when an observation is unreliable, and treat degraded
+regions such as glass, mirrors, and overexposed surfaces as valid evidence for
+planning. We present a reliability-aware diffusion planner for 3D UAV navigation. It conditions trajectory generation on the observation together with a scenelevel reliability heatmap that marks where perception cannot be trusted, produced
+by a lightweight network that distils the open-vocabulary reasoning of a visionlanguage model within the real-time planning budget. To generalise to unseen
+environments without retraining, we steer the denoising process with a differentiable two-stage ESDF cost that treats physical obstacles from depth and virtual
+obstacles from highly unreliable regions on equal footing. In simulation and on
+a real quadrotor, our planner produces markedly safer trajectories than a state-ofthe-art diffusion baseline, reducing the obstacle-violation rate from 40.3% to 9.6%
+and raising the mean reliability of traversed regions from 0.588 to 0.925. Ablating
+the reliability term alone drops mean reliability from 0.898 to 0.783, confirming
+it as the decisive component, while distillation runs the framework up to 2× faster
+than the full vision-language model.
+Keywords: Diffusion models, Knowledge Distillation, UAV
+
+1
+
+Introduction
+
+Autonomous aerial navigation in unstructured indoor environments remains a challenging problem
+in robot learning. A micro aerial vehicle must perceive the scene, infer a feasible collision-free path,
+and act in real time under tight onboard compute and power budgets. Classical navigation stacks
+decompose this into a chain of separate modules for perception, mapping, planning, and control.
+While modular, these pipelines discard information at every hand-designed interface, accumulate
+latency, and allow early errors to propagate and amplify downstream, degrading reliability in cluttered real-world settings [1, 2, 3, 4].
+End-to-end learned policies mitigate these limitations by mapping raw observations directly to trajectories within a single model, preserving the full information content of the input. Diffusion
+models are well-suited to this setting. In contrast to optimisation-based planners that return a single
+deterministic solution, they learn a conditional distribution over feasible trajectories [5], allowing
+the policy to represent the multimodality inherent to navigation rather than collapse it to a point
+estimate.
+A further difficulty is that classical pipelines assume the constructed map faithfully represents the environment. This assumption fails in the presence of glass, mirrors, specular reflections, and saturated
+illumination, where depth sensors return confident yet incorrect measurements that occupancy-based
+planners cannot detect [6, 7, 8]. Rather than trusting depth uniformly, we estimate the reliability of
+the depth measurement directly from the RGB image, identifying regions in which perception is
+
+likely to be misleading. This reliability estimate is then used as a conditioning signal that guides
+the diffusion sampling process away from unreliable regions, integrating perceptual reliability into
+trajectory generation rather than treating it as a separate post-hoc check.
+Robust reliability estimation across diverse indoor conditions benefits from the semantic priors of
+Vision-Language Models (VLMs), which can identify glass, mirrors, and reflective surfaces from
+language-grounded visual cues [9, 10, 11]. Their computational cost, however, is incompatible
+with onboard inference budgets. We therefore distil the VLM into a compact student model that
+reproduces its perceptual reliability estimates at a fraction of the cost, and deploy only the student
+at runtime.
+In this work, we present an end-to-end diffusion-based framework for safe autonomous UAV navigation indoors. The framework conditions trajectory generation jointly on visual observations,
+geometric context, and an RGB-derived reliability map, and enforces geometric feasibility through
+guided sampling on a three-dimensional ESDF. Our main contributions can thus be summarized as
+follows:
+• End-to-end perception and planning. A single diffusion model that maps raw observations directly to distributions over three-dimensional trajectories, removing the errorcompounding interfaces of modular pipelines.
+• RGB-based reliability detection with diffusion guidance. Estimation of RGBD-sensor
+reliability from the RGB image, incorporated as a conditioning signal that steers the diffusion sampler away from regions where perception is unreliable.
+• Distillation of vision-language reliability reasoning. A teacher-student scheme in which
+a VLM supervises reliability estimation during training and is distilled into a compact student capable of real-time inference.
+• Training-free obstacle avoidance. A guided sampling procedure that enforces geometric collision constraints using 3D ESDF gradients without environment-specific retraining,
+supporting generalisation to unseen indoor layouts.
+
+2
+2.1
+
+Related Work
+Diffusion-Based Navigation
+
+Diffusion policies recast navigation as sampling from a learned distribution of trajectories conditioned on raw observations, replacing explicit maps and hand-tuned cost functions. Conditioning
+jointly on images, range data, goals, and recent states supports mapless operation, with training
+biased toward traversable regions improving path quality on physical robots [12]. The mechanism
+most relevant to our method is guided sampling: treating the gradient of a differentiable cost as a
+surrogate for the classifier in classifier guidance [13] steers a pretrained denoiser toward feasible
+paths and transfers to new scenes without retraining [14]. Related designs unify directed navigation
+and exploration through goal masking [15] or recover actions from language-conditioned imagined
+futures [16].
+Three limitations of these methods motivate our design. First, the conditioning signal is typically
+produced by a separate and considerably larger perception backbone, so the deployed system carries
+the cost of an auxiliary model alongside the denoiser rather than a single compact policy. Second, the
+iterative denoising chain is slow relative to flight dynamics, and although warm-starting from partially noised samples [17] or staging noise levels across planning steps [18] raises replanting rates,
+real-time onboard operation remains constrained. Third, and most critically, the guidance encodes
+only geometric feasibility. None of these methods assesses whether the conditioning measurement
+can be trusted, so failures on glass, mirrors, or overexposed surfaces are absent from the planning
+objective. Our approach addresses all three: it distills the conditioning model into a compact onboard predictor, keeps the guided sampler lightweight for fast replanning, and injects an explicit
+2
+
+

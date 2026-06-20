@@ -1,0 +1,412 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/J1sJNvHS0HBNNbK3HjavbQ1G1sM</id>
+  <title>arXiv Query: search_query=cat:cs.RO AND (all:"data flywheel" OR all:"synthetic data" OR all:"data augmentation" OR all:"data scaling" OR all:"replayability" OR all:"weak supervision")&amp;id_list=&amp;start=0&amp;max_results=10</title>
+  <updated>2026-06-18T12:13:03Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:cs.RO+AND+(all:%22data+flywheel%22+OR+(all:%22synthetic+data%22+OR+(all:%22data+augmentation%22+OR+(all:%22data+scaling%22+OR+(all:%22replayability%22+OR+all:%22weak+supervision%22)))))&amp;start=0&amp;max_results=10&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>10</opensearch:itemsPerPage>
+  <opensearch:totalResults>851</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2606.19186v1</id>
+    <title>Learning to Annotate Delayed and False AEB Events: A Practical System for Extreme Class Imbalance and Asymmetric Label Noise</title>
+    <updated>2026-06-17T15:27:15Z</updated>
+    <link href="https://arxiv.org/abs/2606.19186v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.19186v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Autonomous Emergency Braking (AEB) optimization relies on accurately annotated real-world trigger events, particularly rare but critical delayed and false AEB triggers that expose system deficiencies. However, these minority samples comprise less than 5% of thousands of daily triggers, making manual annotation prohibitively expensive at scale. We present the first automated AEB annotation framework to address this problem. During development, we identified two fundamental challenges that severely impair delayed/false trigger annotation accuracy: (1) Extreme class imbalance where delayed/false triggers are overwhelmed by true triggers; (2) Asymmetric label noise where mislabeled majority samples (true triggers) suppress minority samples (delayed/false triggers) learning. To overcome these challenges, we propose two key innovations: (1) Specific data augmentation that synthesizes realistic samples by manipulating focal target attributes, transplanting ego-vehicle dynamics, and masking non-focal agents; (2) noise suppression using stable hardness estimation and probe-guided adaptive threshold to clean mislabeled true trigger samples. Crucially, we deploy our model as a practical annotation system with full-stack architecture, efficiently identifying critical delayed/false triggers from thousands of daily AEB events. Production results demonstrate 80% improvement in recall of delayed/false triggers and 50% reduction in manual workload. Beyond immediate gains, the system enables continuous self-improvement through accumulated high-quality annotations, establishing a necessary data foundation for on-vehicle AEB system optimization</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.LG" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T15:27:15Z</published>
+    <arxiv:comment>8 pages, 5 figures, accepted by IEEE International Conference on Robotics and Automation (ICRA)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>2026 IEEE International Conference on Robotics and Automation (ICRA)</arxiv:journal_ref>
+    <author>
+      <name>Mengxiang Hao</name>
+    </author>
+    <author>
+      <name>Xin Jiang</name>
+    </author>
+    <author>
+      <name>Xinghao Huang</name>
+    </author>
+    <author>
+      <name>Wenliang Su</name>
+    </author>
+    <author>
+      <name>Zhiteng Wang</name>
+    </author>
+    <author>
+      <name>Junjie Rao</name>
+    </author>
+    <author>
+      <name>Xiaotian Yang</name>
+    </author>
+    <author>
+      <name>Wei Liao</name>
+    </author>
+    <author>
+      <name>Chengyu Han</name>
+    </author>
+    <author>
+      <name>Gen Liang</name>
+    </author>
+    <author>
+      <name>Yulun Song</name>
+    </author>
+    <author>
+      <name>Zhitao Xu</name>
+    </author>
+    <author>
+      <name>Xianpeng Lang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18960v1</id>
+    <title>Mem-World: Memory-Augmented Action-Conditioned World Models for Persistent Robot Manipulation</title>
+    <updated>2026-06-17T11:42:00Z</updated>
+    <link href="https://arxiv.org/abs/2606.18960v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18960v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Action-conditioned world models have emerged as a promising paradigm for robot learning, offering a scalable alternative to costly real-world experimentation by generating action-consistent video rollouts. However, persistent world modeling remains challenging in manipulation: frequent end-effector occlusions and rapid wrist-camera motion make the current observation insufficient for predicting future views, causing models to forget or hallucinate scene details seen in earlier frames. Existing memory retrieval strategies often fail to identify informative history in dynamic manipulation scenarios. To address this limitation, we propose Mem-World, a memory-augmented multi-view action-conditioned world model. At its core, we present W-VMem, a 4D wrist-view-centered surfel-indexed memory that anchors historical observations to temporally evolving surface elements. By explicitly modeling when and where scene elements are observed, W-VMem enables geometry-aware retrieval of relevant history frames conditioned on future actions. During generation, relevant history frames are selected via surfel-based rendering and scoring, providing informative and non-redundant context for prediction. Extensive experiments show that Mem-World generates persistent rollouts in complex manipulation scenarios, enables more reliable policy evaluation than Ctrl-World, improving the Pearson correlation with real-world performance by 14.5\%, and supports effective policy improvement through synthetic data generation, increasing success rates from 58\% to 72\% on long-horizon tasks.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-17T11:42:00Z</published>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Zirui Zheng</name>
+    </author>
+    <author>
+      <name>Jiaqian Yu</name>
+    </author>
+    <author>
+      <name>Xiongfeng Peng</name>
+    </author>
+    <author>
+      <name>jun shi</name>
+    </author>
+    <author>
+      <name>Mingyi Li</name>
+    </author>
+    <author>
+      <name>Chao Zhang</name>
+    </author>
+    <author>
+      <name>Weiming Li</name>
+    </author>
+    <author>
+      <name>Dong Wang</name>
+    </author>
+    <author>
+      <name>Huchuan Lu</name>
+    </author>
+    <author>
+      <name>Xu Jia</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.18243v1</id>
+    <title>MOCHI: Motion Enhancement of Collaborative Human-object Interactions</title>
+    <updated>2026-06-16T17:58:44Z</updated>
+    <link href="https://arxiv.org/abs/2606.18243v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.18243v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Collaborative human-object interaction shows dynamic and complex movements that require mutual anticipation and continuous adjustment between participants and the shared object. Modeling such collaborative multi-human object interaction (MHOI) scenarios requires high-quality data acquisition as a foundational step; however, this is challenging due to the inherent complexity of MHOI where human-human and human-object interactions occur simultaneously. Such complexity leads to noisy MHOI captures characterized by several artifacts: contact misalignment between hands and objects, motion jitter and temporal inconsistencies in the captured sequences, and missing or incomplete finger-level articulation details. To address these challenges, we present MOCHI (MOtion Enhancement of Collaborative Human-object Interactions), a two-stage framework for enhancing noisy MHOI data. Our approach first generates physically plausible hand grasps through optimization from noisy body input, producing grasps that are both physically plausible and semantically consistent with the body pose, where these optimized grasps are extended into complete hand-object interaction sequences. Consequently, the full-body motion for all participants are refined through a diffusion-based noise optimization framework that uses single-person motion priors. During the optimization process, we introduce optimization objectives to encode human-object and human-human interaction information within these single-person priors. Experimental results demonstrate the effectiveness of our pipeline across diverse MHOI data, either acquired by existing capture methods or synthesized by generative models. We further show robustness of our system across varying numbers of participants and types of interactions, and demonstrate various applications including keyframe-based MHOI creation and data augmentation through varying object geometries.</summary>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.GR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T17:58:44Z</published>
+    <arxiv:comment>SIGGRAPH 2026 Journal (ACM TOG); Project page: https://jiyewise.github.io/projects/MOCHI/</arxiv:comment>
+    <arxiv:primary_category term="cs.CV"/>
+    <author>
+      <name>Jiye Lee</name>
+    </author>
+    <author>
+      <name>Yonghun Choi</name>
+    </author>
+    <author>
+      <name>Jungdam Won</name>
+    </author>
+    <arxiv:doi>10.1145/3811308</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1145/3811308" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17520v1</id>
+    <title>GASE: Gaussian Splatting-Based Automated System for Reconstructing Embodied-Simulation Environments</title>
+    <updated>2026-06-16T05:00:42Z</updated>
+    <link href="https://arxiv.org/abs/2606.17520v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17520v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Training embodied agents in the real world requires skilled operators and expensive hardware. Simulation environments offer a compelling alternative by enabling large-scale, cost-effective data augmentation. Consequently, rapidly constructing high-fidelity simulation scenes with a minimal sim-to-real gap has become a critical objective in robot learning. While reconstruction-based methods provide superior visual quality, current workflows are hindered by inefficient data acquisition and subpar foreground object extraction. We thus propose GASE, a highly automated system for simulation scene construction. GASE leverages multi-view video streams from panoramic camera arrays to enable rapid environment scanning. To ensure high-quality asset generation, our pipeline introduces a camera-pose-based strategy that robustly extracts objects across frames in the 2D domain, followed by high-fidelity scene inpainting. Foreground objects and the static background are then reconstructed independently and seamlessly imported into physics simulators for policy training. Extensive experiments demonstrate that GASE outperforms existing 3D Gaussian-based methods in segmentation accuracy by over 10\% while achieving state-of-the-art inpainting quality. Furthermore, real-robot deployments across manipulation and navigation tasks maintains a performance gap of less than 10\% compared to policies trained purely on real-world data. These results confirm that GASE provides an efficient and highly effective solution for bridging the sim-to-real gap. Code will be released.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-16T05:00:42Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Jiawei Zhang</name>
+    </author>
+    <author>
+      <name>Yiming Yan</name>
+    </author>
+    <author>
+      <name>Chao Liang</name>
+    </author>
+    <author>
+      <name>Nuo Xu</name>
+    </author>
+    <author>
+      <name>Seson Sun</name>
+    </author>
+    <author>
+      <name>Qichen Zhang</name>
+    </author>
+    <author>
+      <name>Yuhao Xu</name>
+    </author>
+    <author>
+      <name>Yantai Yang</name>
+    </author>
+    <author>
+      <name>Yingqiao Wang</name>
+    </author>
+    <author>
+      <name>Qin Jin</name>
+    </author>
+    <author>
+      <name>Zhipeng Zhang</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.17040v1</id>
+    <title>R2RDreamer: 3D-aware Data Augmentation for Spatially-generalized 2D Manipulation Policies</title>
+    <updated>2026-06-15T17:56:19Z</updated>
+    <link href="https://arxiv.org/abs/2606.17040v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.17040v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Spatial generalization is critical for imitation-learned manipulation policies, but achieving it typically requires scaling demonstrations across diverse object poses, robot configurations, and camera viewpoints. Data augmentation from a few source demonstrations offers a practical alternative to costly real-world collection. Simulation-based augmentation can create controllable variation, but requires complex environment and object setup and may introduce a sim-to-real gap. Recent real-to-real methods avoid these issues by jointly editing 3D observations and action trajectories from real demonstrations, yet they still rely on strong 3D scene parsing and geometry completion, and often produce observations tailored to 3D pointcloud policies rather than RGB-based 2D policies. We propose R2RDreamer, a real-to-real demonstration augmentation framework that preserves the geometric consistency of 3D action-observation editing while moving visual completion to 2D video space. Specifically, R2RDreamer first performs lightweight 3D augmentation by editing incomplete object pointclouds and end-effector trajectories in a shared 3D frame; it then projects the edited scene into masked image-space control videos with occlusion-aware reasoning and uses a dense-control image-to-video model to complete temporally coherent RGB observations. Experiments on spatially shifted manipulation tasks with both 2D diffusion-style policies and vision-language-action policies show that R2RDreamer improves spatial generalization from limited source demonstrations, with analyses validating the contributions of 3D editing, occlusion-aware projection, and video completion.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.CV" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-15T17:56:19Z</published>
+    <arxiv:comment>Project page: https://r2rdreamer.github.io/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Xiuwei Xu</name>
+    </author>
+    <author>
+      <name>Haowen Sun</name>
+    </author>
+    <author>
+      <name>Angyuan Ma</name>
+    </author>
+    <author>
+      <name>Yiwei Zhang</name>
+    </author>
+    <author>
+      <name>Zhenyu Wu</name>
+    </author>
+    <author>
+      <name>Xiaofeng Wang</name>
+    </author>
+    <author>
+      <name>Bingyao Yu</name>
+    </author>
+    <author>
+      <name>Zheng Zhu</name>
+    </author>
+    <author>
+      <name>Jie Zhou</name>
+    </author>
+    <author>
+      <name>Jiwen Lu</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.16953v1</id>
+    <title>SidewalkBench: Benchmarking Visual Navigation on Urban Sidewalks</title>
+    <updated>2026-06-15T16:54:30Z</updated>
+    <link href="https://arxiv.org/abs/2606.16953v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.16953v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Urban sidewalk navigation presents significant challenges due to complex structural layouts, dynamic pedestrian behaviors, and long distances. While recent visual navigation models offer a promising solution, the lack of a unified benchmark hinders quantitative and reproducible evaluation. To bridge this gap, we propose SidewalkBench, a comprehensive benchmark designed for visual navigation on urban sidewalks. Built upon NVIDIA Isaac Sim, SidewalkBench brings GPU-accelerated simulation of diverse, high-fidelity sidewalk environments, including both procedurally generated and real-world scanned scenes. We further populate the scenes with rich, reactive event-based pedestrian behaviors and flexible, efficient animation, enabling standardized model evaluation under realistic real-world settings. We conduct a comprehensive evaluation of 9 visual navigation models on 330 unit-test scenarios, 800 pedestrian-reactive scenarios, and 105 long-horizon scenarios. Our findings highlight that pedestrian interaction and long-horizon robustness remain critical bottlenecks for existing models, and scaling up sidewalk training with synthetic data emerges as a promising solution.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-15T16:54:30Z</published>
+    <arxiv:comment>Project Page: https://vail-ucla.github.io/SidewalkBench/</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhizheng Liu</name>
+    </author>
+    <author>
+      <name>Honglin He</name>
+    </author>
+    <author>
+      <name>Vivek Alumootil</name>
+    </author>
+    <author>
+      <name>Akshat Pandya</name>
+    </author>
+    <author>
+      <name>Brad Squicciarini</name>
+    </author>
+    <author>
+      <name>Wayne Wu</name>
+    </author>
+    <author>
+      <name>Bolei Zhou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.14665v1</id>
+    <title>EgoGuide: Egocentric Guidance for Efficient Robot-Free Demonstration Collection and Learning</title>
+    <updated>2026-06-12T17:36:23Z</updated>
+    <link href="https://arxiv.org/abs/2606.14665v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.14665v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Robot learning from real-world demonstrations is currently constrained by data scaling. Universal Manipulation Interface (UMI) provides an efficient robot-free data collection interface, yet current UMI-style pipelines often collect redundant demonstrations and lack global scene context. To improve data efficiency, we present EgoGuide, a collection interface that records synchronized wrist and head/egocentric observations and couples them with online visual-geometric data quality guidance. We also introduce a Gated Egocentric Residual Policy for robust learning from a viewpoint-varying egocentric camera, allowing head/egocentric context to correct ambiguous local observations while preserving stable wrist-view control. Real-world experiments show that EgoGuide reduces the required number of data episodes and improves data efficiency. The residual policy further improves robustness under visual occlusion. Project Page: https://silicx.github.io/EgoGuide</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-12T17:36:23Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Yue Xu</name>
+    </author>
+    <author>
+      <name>Mingtao Nie</name>
+    </author>
+    <author>
+      <name>Tianle Li</name>
+    </author>
+    <author>
+      <name>Hong Li</name>
+    </author>
+    <author>
+      <name>Yibo Luo</name>
+    </author>
+    <author>
+      <name>Siyuan Huang</name>
+    </author>
+    <author>
+      <name>Yong-Lu Li</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.12936v1</id>
+    <title>An Embodied Simulation Platform, Benchmark, and Data-Efficient Augmentation Framework for Wet-Lab Robotics</title>
+    <updated>2026-06-11T05:58:38Z</updated>
+    <link href="https://arxiv.org/abs/2606.12936v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.12936v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Wet-lab robots can improve the reproducibility, throughput, and safety of biomedical experiments, but scaling their learning requires customizable simulators for safe and reproducible task generation, open editable laboratory assets, and efficient pipelines that turn limited demonstrations into usable training data. We present Pipette, an embodied simulation platform, benchmark, and data-efficient augmentation framework for wet-lab robot learning. Pipette releases over 43 open-source and re-editable wet-lab assets, together with an extensible asset-building pipeline. A key component of Pipette is its simulation-based data augmentation pipeline, replaying human demonstrations in simulation, applies lighting, camera, speed, and action perturbations, and filters generated episodes with automatic task success checks, rapidly expanding usable training data from limited manual demonstrations. We further introduce an 11-task wet-lab embodied benchmark covering sample handling, culture-ware manipulation, device operation, and precision placement. With only 30 demonstrations per task, ACT achieves 65.5% average success rate, while simulation augmentation improves SmolVLA from 44.1% to 74.7% and π0 from 40.4% to 46.5%, validating the effectiveness of Pipette for data-efficient VLA training and evaluation. Pipette also supports natural-language-driven scene construction and task registration, lowering the barrier for non-expert users to define new wet-lab robotic tasks.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="cs.AI" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-11T05:58:38Z</published>
+    <arxiv:comment>25 pages, 17figures</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Zhe Liu</name>
+    </author>
+    <author>
+      <name>Huanbo Jin</name>
+    </author>
+    <author>
+      <name>Zhaohui Du</name>
+    </author>
+    <author>
+      <name>Zhe Wang</name>
+    </author>
+    <author>
+      <name>He Xu</name>
+    </author>
+    <author>
+      <name>Peijia Li</name>
+    </author>
+    <author>
+      <name>Jiaming Gu</name>
+    </author>
+    <author>
+      <name>Quan Lu</name>
+    </author>
+    <author>
+      <name>Qi Wang</name>
+    </author>
+    <author>
+      <name>Bin Ji</name>
+    </author>
+    <author>
+      <name>Ting Xiao</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.12048v1</id>
+    <title>Point Cloud Segmentation for Autonomous Clip Positioning in Laparoscopic Cholecystectomy on a Phantom</title>
+    <updated>2026-06-10T13:12:45Z</updated>
+    <link href="https://arxiv.org/abs/2606.12048v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.12048v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>High-risk applications in robotics, such as robot-assisted surgery, present unique challenges. These systems must be both highly precise and interpretable in order to be deployed in environments with very low tolerance for error or unsafe exploration. We present the first robotic system to demonstrate autonomous clip positioning on a physical phantom in laparoscopic surgery, one of the most common interventions in general surgery. After segmentation of a colorless point cloud from a single camera, target positions for the clips are extracted using spline interpolation, and can then be adjusted by the human operator. The segmentation model is trained on only 60 hand-labeled real point clouds, reflecting data scarcity in the surgical domain. We overcome this with a combination of pre-training on 128,000 synthetic point clouds and two novel data augmentation techniques. The motion of the end-effector to each target is visualized for the operator, satisfying the unique motion constraints of minimally-invasive surgery while ensuring that the robot's actions are verifiable and interpretable. In real robot experiments, our system localizes targets with the required precision of 0.75mm at a 95% success rate and executes autonomous clip positioning with a 100% success rate. We provide insights that are applicable to many other surgical and non-surgical tasks that require identifying and navigating to a precise target. Source code and project page: https://github.com/balazsgyenes/kirurc</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-10T13:12:45Z</published>
+    <arxiv:comment>8 pages, 5 figures, accepted to IEEE Robotics and Automation Letters (RAL)</arxiv:comment>
+    <arxiv:primary_category term="cs.RO"/>
+    <arxiv:journal_ref>IEEE Robotics and Automation Letters (Volume: 10, Issue: 8, August 2025)</arxiv:journal_ref>
+    <author>
+      <name>Balázs Gyenes</name>
+    </author>
+    <author>
+      <name>Nikolai Franke</name>
+    </author>
+    <author>
+      <name>Paul Maria Scheikl</name>
+    </author>
+    <author>
+      <name>Pit Henrich</name>
+    </author>
+    <author>
+      <name>Rayan Younis</name>
+    </author>
+    <author>
+      <name>Gerhard Neumann</name>
+    </author>
+    <author>
+      <name>Martin Wagner</name>
+    </author>
+    <author>
+      <name>Franziska Mathis-Ullrich</name>
+    </author>
+    <arxiv:doi>10.1109/LRA.2025.3585357</arxiv:doi>
+    <link rel="related" href="https://doi.org/10.1109/LRA.2025.3585357" title="doi"/>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2606.10305v1</id>
+    <title>SARM2: Multi-Task Stage Aware Reward Modeling for Self Improving Robotic Manipulation</title>
+    <updated>2026-06-09T01:46:23Z</updated>
+    <link href="https://arxiv.org/abs/2606.10305v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2606.10305v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Fine-tuning vision-language-action (VLA) policies for long-horizon manipulation still relies heavily on behavior cloning, which requires costly high-quality demonstrations and keeps policies near the demonstration distribution. Reward models can reduce this dependence by reweighting demonstrations and providing dense supervision for on-robot reinforcement learning (RL), but they must be dense, accurate, and general. Existing methods fall short: task-specific stage-aware models are accurate but require per-task annotations, while general vision-language-model (VLM) reward models are broadly applicable but too coarse for fine-grained long-horizon progress. We introduce RM, a multi-task stage-aware reward model that combines an action-primitive-based stage estimator with a multi-gate Mixture-of-Experts (MMoE) value head to produce dense per-step rewards across manipulation tasks. Building on RM, we further propose SPIRAL (Self-Policy Improvement via Reward-Aligned Learning), an on-policy reward-guided framework that improves VLA policies from cheap autonomous rollouts. On a 10-task benchmark, RM reduces value-estimation MSE by 80% over the strongest baselines; when used in SPIRAL, it improves task success from around 50% to near-perfect performance on Folding Shorts (58% to 100%) and Cleaning Whiteboard (50% to 90%), showing that high-quality dense rewards are key to a stable robot data flywheel. Project website: https://qianzhong-chen.github.io/sarm2.github.io/.</summary>
+    <category term="cs.RO" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-06-09T01:46:23Z</published>
+    <arxiv:primary_category term="cs.RO"/>
+    <author>
+      <name>Qianzhong Chen</name>
+    </author>
+    <author>
+      <name>Hau Zheng</name>
+    </author>
+    <author>
+      <name>Justin Yu</name>
+    </author>
+    <author>
+      <name>Suning Huang</name>
+    </author>
+    <author>
+      <name>Jiankai Sun</name>
+    </author>
+    <author>
+      <name>Ken Goldberg</name>
+    </author>
+    <author>
+      <name>Chuan Wen</name>
+    </author>
+    <author>
+      <name>Pieter Abbeel</name>
+    </author>
+    <author>
+      <name>Yide Shentu</name>
+    </author>
+    <author>
+      <name>Philipp Wu</name>
+    </author>
+    <author>
+      <name>Mac Schwager</name>
+    </author>
+  </entry>
+</feed>

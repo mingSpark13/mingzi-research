@@ -31,4 +31,5 @@
 
 | 日期 | 响应的批注 | 执行动作 |
 |------|-----------|---------|
+| 2026-06-16 | — | 本轮按本地优先回扫 MemoryVLA++ / iMaC / COMET，并将 D01 的 PAPER.md 4.3.5 新增为 object-centric planner support versus packet-contract residual，同时在 experiments.md 新增 E16b / E17，把 `+Memory+Contact` 的组合残差门槛与 COMET 的对象级规划减法审计写成 reviewer-facing 实验协议。 |
 | — | — | — |

@@ -5,7 +5,7 @@ pageType: "overview"
 tags: ["空中视觉语言导航", "VLA", "3D感知", "D06"]
 summary: "D06 已从 packet-first + verifier-first 继续推进到 live-refresh-stable packet 与 stage-bounded recovery：不是谁更会搜，而是谁能在反复刷新和延迟消费后仍保住 packet 合同。"
 origins: ["../../05_科研研究/D06_空中视觉语言导航/REPORT.md"]
-updated: "2026-05-27"
+updated: "2026-06-18"
 ---
 
 # 方向_空中VLN_技术路线图
@@ -35,6 +35,7 @@ updated: "2026-05-27"
 - **恢复边界**：默认只保留 `search-bounded` 在线恢复，晚期阶段优先 recommendation-only、packet repair 或 hard-stop。
 - **最新推进（2026-05-18）**：主链已补上 `First-Reject Routing` 与阶段化判线表，明确 search 阶段保留完整 `retry / repair / replan / escalate`，而后期阶段优先 recommendation-only、packet repair 或 hard-stop，避免把恢复线误写成通用解法。
 - **最新推进（2026-05-27）**：PAPER 已把 live refresh -> consume-time preservation -> NtM shell 压成连续证据路线。今后 planner-side 主动感知、world prior、semantic completion 这些上游收益，都必须先经过 refresh-stable packet 再谈 controller handoff，不能直接越级宣传。
+- **最新推进（2026-06-18）**：06-13~06-16 新增 5 篇 D06 核心论文（AgenticNav/Explore-From-Sketch/AerialClaw/SensitivityShaping/Guided-Diffusion-VLM），进一步把 D06 主链从 packet/verifier 拓展到：① agentic tool-use 多轮规划（AgenticNav）② sketch-conditioned 拓扑探索（Explore-From-Sketch）③ 视觉到接近的 claw-level handoff（AerialClaw）④ planner-side latent 安全正则（SensitivityShaping）⑤ VLM 可靠性形式化评测（Guided-Diffusion-VLM）。其中 AerialClaw 与 SensitivityShaping 直接对接我们 D03/D11 的下游执行，是首次有"空中 VLN→执行"完整闭环证据。
 
 ## 关键技术装置
 

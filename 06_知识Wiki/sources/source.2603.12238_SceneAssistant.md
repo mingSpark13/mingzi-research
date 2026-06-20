@@ -4,7 +4,7 @@ id: "source.2603.12238_SceneAssistant"
 pageType: "source"
 tags: ["visual feedback", "open-vocabulary", "3D scene generation", "VLM", "iterative refinement", "程序化内容生成"]
 summary: "问题背景: 现有text-to-3D方法一次性生成场景，难以保证空间关系符合文本描述，且缺乏对生成过程的有效控制。"
-origins: ["../../02_阅读笔记/数据合成/2603.12238_SceneAssistant.md", "02_阅读笔记/数据合成/2603.12238_SceneAssistant.md"]
+origins: ["../../02_阅读笔记/D05_数据飞轮/2603.12238_SceneAssistant.md", "02_阅读笔记/D05_数据飞轮/2603.12238_SceneAssistant.md"]
 updated: "2026-06-02"
 ---
 
@@ -13,5 +13,5 @@ updated: "2026-06-02"
 **核心价值**: 问题背景: 现有text-to-3D方法一次性生成场景，难以保证空间关系符合文本描述，且缺乏对生成过程的有效控制。
 
 **原始资料**:
-- [[../../02_阅读笔记/数据合成/2603.12238_SceneAssistant.md]]
-- [[02_阅读笔记/数据合成/2603.12238_SceneAssistant.md]]
+- [[../../02_阅读笔记/D05_数据飞轮/2603.12238_SceneAssistant.md]]
+- [[02_阅读笔记/D05_数据飞轮/2603.12238_SceneAssistant.md]]

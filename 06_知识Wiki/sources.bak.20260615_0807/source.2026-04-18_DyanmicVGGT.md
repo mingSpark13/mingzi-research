@@ -1,0 +1,16 @@
+---
+type: "source"
+id: "source.2026-04-18_DyanmicVGGT"
+pageType: "source"
+tags: ["3D高斯溅射", "深度估计", "感知与3D视觉"]
+summary: "问题背景: 现有前馈 3D 重建方法（如 VGGT）只能处理静态场景，无法应对自动驾驶中常见的行人、车辆等动态物体，导致时间不一致和时间域外推困难。"
+origins: ["../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_DyanmicVGGT.md"]
+updated: "2026-06-02"
+---
+
+# DynamicVGGT: Feed-Forward 4D Dynamic Scene Reconstruction for Autonomous Driving
+
+**核心价值**: 问题背景: 现有前馈 3D 重建方法（如 VGGT）只能处理静态场景，无法应对自动驾驶中常见的行人、车辆等动态物体，导致时间不一致和时间域外推困难。
+
+**原始资料**:
+- [[../../02_阅读笔记/D09_感知与3D视觉/2026-04-18_DyanmicVGGT.md]]

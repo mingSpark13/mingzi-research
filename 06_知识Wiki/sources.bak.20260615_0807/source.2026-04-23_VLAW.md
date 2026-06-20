@@ -1,0 +1,16 @@
+---
+type: "source"
+id: "source.2026-04-23_VLAW"
+pageType: "source"
+tags: ["VLA", "世界模型", "迭代协同", "合成数据", "VLA架构", "Sim2Real"]
+summary: "问题背景: VLA（视觉-语言-动作）策略与世界模型的协同提升尚未充分探索，合成rollout数据的潜力未被充分挖掘，尤其在接触丰富任务和可变形物体任务上表现不足。"
+origins: ["../../02_阅读笔记/D02_VLA/2026-04-23_VLAW.md"]
+updated: "2026-06-02"
+---
+
+# VLAW: Iterative Co-Improvement of VLA Policy and World Model
+
+**核心价值**: 问题背景: VLA（视觉-语言-动作）策略与世界模型的协同提升尚未充分探索，合成rollout数据的潜力未被充分挖掘，尤其在接触丰富任务和可变形物体任务上表现不足。
+
+**原始资料**:
+- [[../../02_阅读笔记/D02_VLA/2026-04-23_VLAW.md]]
