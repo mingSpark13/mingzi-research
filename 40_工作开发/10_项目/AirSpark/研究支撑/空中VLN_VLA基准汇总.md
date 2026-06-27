@@ -9,25 +9,25 @@
 
 按任务类型排列，覆盖数据规模、动作空间、评测指标、可用性等关键维度。
 
-| 基准                   | 任务类型                 | 场景         | 数据规模                              | 动作空间         | 核心指标                | 现实性         | 公开状态    | 来源               |
-| -------------------- | -------------------- | ---------- | --------------------------------- | ------------ | ------------------- | ----------- | ------- | ---------------- |
-| **AerialVLN**        | Route VLN            | 城市开放       | 8,446 条轨迹                         | 离散 4-DoF     | SR / SPL / NE       | Synthetic   | ✅ 公开    | ICCV 2023        |
-| **TravelUAV**        | Route VLN            | 城市         | —                                 | 连续 3-DoF     | SR / SPL            | Synthetic   | ✅ 公开    | AAAI             |
-| **AVDN**             | Dialog Nav           | 城市         | 6,269 条轨迹                         | 离散 3-DoF     | SR / SPL            | Synthetic   | ✅ 公开    | ACL 2023         |
-| **CityNAV**          | Goal Nav             | 真实城市       | 32,637 条轨迹，4.65 km²               | 连续 4-DoF     | SR / SPL / NE       | Real Recon  | ✅ 公开    | arXiv 2024       |
-| **OpenUAV**          | Object Search        | 22 场景      | 12,149 条 6-DoF 轨迹                 | 连续 6-DoF     | NE / SR / OSR / SPL | Synthetic   | ✅ 公开    | ICLR 2025        |
-| **AirNav**           | Goal Nav             | 真实城市       | 137K navigation samples           | 连续 6-DoF     | SR / SPL / NE       | Real Data   | 🔄 部分公开 | arXiv 2601.03707 |
-| **IndoorUAV**        | Indoor VLN           | 1000+ 室内场景 | 16K+ instruction-trajectory pairs | 连续 6-DoF     | SR / SPL / NE       | Synthetic   | ✅ 公开    | AAAI 2026        |
-| **UAV-ON**           | ObjectNav            | 14 UE 环境   | 1,270 实例级目标                       | 连续           | SR / SPL            | Synthetic   | ✅ 公开    | ACM MM 2025      |
-| **HUGE-Bench**       | High-level VLA       | 4 数字孪生场景   | 256 万米轨迹，8 类任务                    | 连续 6-DoF     | TCR / CR / CSPL     | Real Recon  | ✅ 公开    | arXiv 2603.19822 |
-| **UAV-Flow**         | Fine-grained Control | 真实部署       | —                                 | 连续低层         | 轨迹模仿精度              | Real Deploy | ✅ 公开    | NeurIPS 2025     |
-| **CosFly-Track**     | UAV Visual Tracking  | 城市         | 12,000 条轨迹，2.4M timesteps         | 连续 6-DoF     | 跟踪精度 / 可见性          | Synthetic   | 🔄 部分公开 | arXiv 2605.17776 |
-| **UAV-Track VLA**    | Semantic Tracking    | —          | 890K+ 帧，176 任务                    | 连续 6-DoF     | 跟踪成功率               | Synthetic   | 🔄 部分公开 | arXiv 2604.02241 |
-| **AIR-VLA**          | Nav + Manip          | 实验室        | 3,000 遥操作 demo                    | UAV 4D + 机械臂 | 任务成功率               | Syn+Real    | 🔄 部分公开 | arXiv 2601.21602 |
-| **AeroVerse**        | 全栈评测                 | 多场景        | Ego10k + Ego500k                  | —            | 5 类任务               | Real+Syn    | ✅ 公开    | arXiv 2408.15511 |
-| **MM-UAVBench**      | MLLM 评测              | 多场景        | —                                 | —            | 19 类任务              | Real+Syn    | ✅ 公开    | arXiv 2512.23219 |
-| **UAVReason**        | 空中推理                 | —          | —                                 | —            | 22 类推理              | Synthetic   | ✅ 公开    | arXiv 2604.05377 |
-| **CognitiveDrone-B** | 认知推理                 | —          | —                                 | 实时 4D        | 任务成功率               | Synthetic   | ✅ 公开    | arXiv 2503.01378 |
+| 基准                   | 任务类型                 | 场景         | 数据规模                                    | 动作空间         | 核心指标                | 现实性         | 公开状态    | 来源               |
+| -------------------- | -------------------- | ---------- | --------------------------------------- | ------------ | ------------------- | ----------- | ------- | ---------------- |
+| **AerialVLN**        | Route VLN            | 城市开放       | 8,446 条轨迹                               | 离散 4-DoF     | SR / SPL / NE       | Synthetic   | ✅ 公开    | ICCV 2023        |
+| **TravelUAV**        | Route VLN            | 城市         | —                                       | 连续 3-DoF     | SR / SPL            | Synthetic   | ✅ 公开    | AAAI             |
+| **AVDN**             | Dialog Nav           | 城市         | 6,269 条轨迹                               | 离散 3-DoF     | SR / SPL            | Synthetic   | ✅ 公开    | ACL 2023         |
+| **CityNAV**          | Goal Nav             | 真实城市       | 32,637 条轨迹，4.65 km²                     | 连续 4-DoF     | SR / SPL / NE       | Real Recon  | ✅ 公开    | arXiv 2024       |
+| **OpenUAV**          | Object Search        | 22 场景      | 12,149 条 6-DoF 轨迹                       | 连续 6-DoF     | NE / SR / OSR / SPL | Synthetic   | ✅ 公开    | ICLR 2025        |
+| **AirNav**           | Goal Nav             | 真实城市       | 137K navigation samples                 | 连续 6-DoF     | SR / SPL / NE       | Real Data   | 🔄 部分公开 | arXiv 2601.03707 |
+| **IndoorUAV**        | Indoor VLN           | 1000+ 室内场景 | 16K+ instruction-trajectory pairs       | 连续 6-DoF     | SR / SPL / NE       | Synthetic   | ✅ 公开    | AAAI 2026        |
+| **UAV-ON**           | ObjectNav            | 14 UE 环境   | 1,270 实例级目标                             | 连续           | SR / SPL            | Synthetic   | ✅ 公开    | ACM MM 2025      |
+| **HUGE-Bench**       | High-level VLA       | 4 数字孪生场景   | 256 万米轨迹，8 类任务                          | 连续 6-DoF     | TCR / CR / CSPL     | Real Recon  | ✅ 公开    | arXiv 2603.19822 |
+| **UAV-Flow**         | Fine-grained Control | 真实部署       | —                                       | 连续低层         | 轨迹模仿精度              | Real Deploy | ✅ 公开    | NeurIPS 2025     |
+| **CosFly-Track**     | UAV Visual Tracking  | 城市         | 12,000 条轨迹，2.4M timesteps               | 连续 6-DoF     | 跟踪精度 / 可见性          | Synthetic   | 🔄 部分公开 | arXiv 2605.17776 |
+| **UAV-Track VLA**    | Semantic Tracking    | —          | 890K+ 帧，176 任务                          | 连续 6-DoF     | 跟踪成功率               | Synthetic   | 🔄 部分公开 | arXiv 2604.02241 |
+| **AIR-VLA**          | Nav + Manip          | 实验室        | 3,000 遥操作 demo                          | UAV 4D + 机械臂 | 任务成功率               | Syn+Real    | 🔄 部分公开 | arXiv 2601.21602 |
+| **AeroVerse**        | 全栈评测                 | 多场景        | Ego10k + Ego500k                        | —            | 5 类任务               | Real+Syn    | ✅ 公开    | arXiv 2408.15511 |
+| **MM-UAVBench**      | MLLM 评测              | 多场景        | —                                       | —            | 19 类任务              | Real+Syn    | ✅ 公开    | arXiv 2512.23219 |
+| **UAVReason**        | 空中推理                 | —          | —                                       | —            | 22 类推理              | Synthetic   | ✅ 公开    | arXiv 2604.05377 |
+| **CognitiveDrone-B** | 认知推理                 | —          | —                                       | 实时 4D        | 任务成功率               | Synthetic   | ✅ 公开    | arXiv 2503.01378 |
 | **OpenFly**          | Route VLN / 预训练平台    | 18 场景（多引擎） | 100K 轨迹，多引擎（UE/GTA V/Google Earth/3DGS） | 连续           | SR / SPL            | Syn+Real    | ✅ 公开    | ICLR 2026        |
 
 ---
@@ -37,18 +37,18 @@
 ### 2.1 AerialVLN
 **定位**：首个空中 VLN 基准，城市级开放环境路线跟随。
 
-| 属性 | 内容 |
-|---|---|
-| 论文 | AerialVLN: Towards Vision-and-Language Navigation for UAVs |
-| 会议 | ICCV 2023 |
-| 仿真平台 | AirSim |
-| 场景 | 城市开放环境 |
-| 数据规模 | 8,446 条轨迹 |
-| 动作空间 | 离散 4-DoF 航点（前/后/左/右/上/下/停止） |
-| 观测模态 | 单视角 RGB |
-| 评测指标 | SR / SPL / NE |
-| 现实性 | Synthetic |
-| 代码/数据 | https://github.com/AirVLN/AirVLN |
+| 属性    | 内容                                                         |
+| ----- | ---------------------------------------------------------- |
+| 论文    | AerialVLN: Towards Vision-and-Language Navigation for UAVs |
+| 会议    | ICCV 2023                                                  |
+| 仿真平台  | AirSim                                                     |
+| 场景    | 城市开放环境                                                     |
+| 数据规模  | 8,446 条轨迹                                                  |
+| 动作空间  | 离散 4-DoF 航点（前/后/左/右/上/下/停止）                                |
+| 观测模态  | 单视角 RGB                                                    |
+| 评测指标  | SR / SPL / NE                                              |
+| 现实性   | Synthetic                                                  |
+| 代码/数据 | https://github.com/AirVLN/AirVLN                           |
 
 **特点与局限**
 - 首个空中 VLN 基准，奠定了领域基础评测协议
